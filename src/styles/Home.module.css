@@ -28,36 +28,58 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 6rem;
   margin-bottom: 1rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.15em solid #f2e9e4;
-  width: 27ch;
+  width: 17ch;
   display: inline-block;
-  animation: typingTitle 3s steps(27, end), blink 0.8s step-end infinite;
+  animation: typingTitle 3s steps(28, end), blink 0.8s step-end infinite;
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 4rem;
   margin-bottom: 2rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.15em solid #f2e9e4;
-  width: 22ch;
+  width: 10ch;
   display: inline-block;
-  animation: typingSubtitle 3s steps(22, end), blink 0.8s step-end infinite;
+  animation: typingSubtitle 3s steps(28, end), blink 0.8s step-end infinite;
   animation-delay: 3.2s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
 
+.exploreBtn {
+  padding: 0.85rem 3rem;
+  font-size: 1.5rem;
+  font-family: "American", sans-serif; /* Nå bruker bare knappen Poppins */
+  border: 4px solid #f2e9e4;
+  background: transparent;
+  color: #f2e9e4;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 1rem;
+}
+
+.exploreBtn:hover {
+  font-family: "American", sans-serif; /* Nå bruker bare knappen Poppins */
+  background: #f2e9e4;
+  color: #0a0a0d;
+}
+
+@font-face {
+  font-family: "American";
+  src: url("/fonts/AmericanPurpose.ttf");
+}
 @keyframes typingTitle {
   from {
     width: 0ch;
   }
   to {
-    width: 27ch;
+    width: 19ch;
   }
 }
 
@@ -67,7 +89,7 @@
     opacity: 1;
   }
   to {
-    width: 22ch;
+    width: 20ch;
     opacity: 1;
   }
 }
@@ -76,19 +98,4 @@
   50% {
     border-color: transparent;
   }
-}
-
-.exploreBtn {
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  border: 1px solid #f2e9e4;
-  background: transparent;
-  color: #f2e9e4;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-
-.exploreBtn:hover {
-  background: #f2e9e4;
-  color: #0a0a0d;
 }
