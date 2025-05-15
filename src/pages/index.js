@@ -62,15 +62,8 @@ export default function Home() {
 
       <div className={styles.container}>
         <div className={styles.content}>
-          <h1 className={styles.title}>
-            <span className={styles.typing}>Hi, I'm Hedda Olimb.</span>
-            <span className={styles.cursor}></span>
-          </h1>
-          <p className={styles.subtitle}>
-            <span className={styles.typingSubtitle}>
-              Welcome to my website!
-            </span>
-          </p>
+          <h1 className={styles.title}>Hi, I'm Hedda Olimb.</h1>
+          <p className={styles.subtitle}>Welcome to my website!</p>
           <button
             className={styles.exploreBtn}
             onClick={() => scrollToSection("about")}

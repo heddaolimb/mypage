@@ -112,37 +112,33 @@
   height: 100%;
   text-align: center;
 }
-
 .title {
   font-size: 6rem;
   margin-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #f2e9e4;
+  width: 0;
+  animation: typingTitle 3s steps(28, end) forwards,
+    blink 0.8s step-end infinite;
 }
 
 .subtitle {
   font-size: 4rem;
   margin-bottom: 2rem;
-  text-align: center;
-  opacity: 1; /* Må være synlig, selve span har delay */
-}
-
-.typingSubtitle {
-  display: inline-block;
-  overflow: hidden;
   white-space: nowrap;
-  animation: typingSubtitle 3s steps(21, end) forwards;
-  animation-delay: 3.5s;
+  overflow: hidden;
+  border-right: 0.15em solid #f2e9e4;
+  width: 0;
+  animation: typingSubtitle 3s steps(21, end) forwards,
+    blink 0.8s step-end infinite;
+  animation-delay: 3.2s;
   opacity: 0;
-  animation-fill-mode: forwards;
 }
 
-.typing {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typingTitle 3s steps(28, end) forwards;
-}
-
-.cursor {
+.title::after,
+.subtitle::after {
+  content: "";
   display: inline-block;
   width: 0.15em;
   height: 1em;
@@ -201,7 +197,6 @@
   transition: color 0.3s ease, transform 0.3s ease;
   font-family: "American", sans-serif;
 }
-
 .navLinks span:hover {
   color: #ffdeed;
   transform: scale(1.2);
