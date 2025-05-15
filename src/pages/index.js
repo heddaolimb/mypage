@@ -35,10 +35,10 @@ export default function Home() {
         <div className={styles.logo}>HO</div>
         <nav className={styles.navLinks}>
           <span onClick={() => scrollToSection("about")}>About</span>
-          <span onClick={() => scrollToSection("courses")}>Courses</span>
           <span onClick={() => scrollToSection("education")}>Education</span>
           <span onClick={() => scrollToSection("work")}>Work</span>
           <span onClick={() => scrollToSection("projects")}>Projects</span>
+          <span onClick={() => scrollToSection("courses")}>Courses</span>
           <span onClick={() => scrollToSection("contact")}>Contact</span>
         </nav>
       </header>
@@ -81,28 +81,24 @@ export default function Home() {
         </div>
       )}
 
-      <div
-        className={`${styles.mainContent} ${
-          showSidebar ? styles.withSidebar : ""
-        }`}
-      >
+      <div className={styles.mainContent}>
         <section id="about" className={styles.section}>
-          About Me
-        </section>
-        <section id="courses" className={styles.section}>
-          Courses and Certificates
+          <div>About Me</div>
         </section>
         <section id="education" className={styles.section}>
-          Education
+          <div>Education</div>
         </section>
         <section id="work" className={styles.section}>
-          Work Experience
+          <div>Work experience</div>
         </section>
         <section id="projects" className={styles.section}>
-          Projects
+          <div>Projects</div>
+        </section>
+        <section id="courses" className={styles.section}>
+          <div>Courses and Certifications</div>
         </section>
         <section id="contact" className={styles.section}>
-          Contact
+          <div>Contact</div>
         </section>
       </div>
     </>
