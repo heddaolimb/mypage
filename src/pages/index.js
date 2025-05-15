@@ -43,23 +43,17 @@ export default function Home() {
       <Head>
         <title>Hedda Olimb Portfolio</title>
       </Head>
-
-      <header
-        className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}
-      >
+      <header className={styles.navbar}>
         <div className={styles.logo}>HO</div>
         <nav className={styles.navLinks}>
-          <span onClick={() => scrollToSection("about")}>About</span>
-          <span onClick={() => scrollToSection("courses")}>
-            Courses & Certificates
-          </span>
-          <span onClick={() => scrollToSection("education")}>Education</span>
-          <span onClick={() => scrollToSection("work")}>Work</span>
-          <span onClick={() => scrollToSection("projects")}>Projects</span>
-          <span onClick={() => scrollToSection("contact")}>Contact</span>
+          <span>About</span>
+          <span>Courses</span>
+          <span>Education</span>
+          <span>Work</span>
+          <span>Projects</span>
+          <span>Contact</span>
         </nav>
       </header>
-
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>Hi, I'm Hedda Olimb.</h1>
