@@ -22,12 +22,44 @@
 @font-face {
   font-family: "RoseSally";
   src: url("/fonts/RoseSally.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+}
+
+@font-face {
+  font-family: "American";
+  src: url("/fonts/AmericanPurpose.ttf") format("truetype");
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: "RoseSally", sans-serif;
+  background: #1b263b;
+  color: #f2e9e4;
+}
+
+@keyframes typingTitle {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 28ch;
+  }
+}
+
+@keyframes typingSubtitle {
+  from {
+    width: 0ch;
+    opacity: 1;
+  }
+  to {
+    width: 21ch;
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
