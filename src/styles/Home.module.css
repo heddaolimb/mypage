@@ -68,17 +68,17 @@
   width: 200px; /* endre bredden */
   height: calc(100vh - 70px); /* så den ikke går bak navbar */
   padding: 4rem 1rem;
-  background: rgba(60, 60, 60, 0.6);
-  backdrop-filter: blur(8px);
-  color: #f2e9e4;
+  color: #eb17ce;
   font-family: "American", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  opacity: 5.2;
+  background: rgba(1, 1, 1, 0.7);
+  backdrop-filter: blur(8px);
   z-index: 999; /* 👈 Sørg for lavere enn navbar */
   margin-top: 68px; /* eksakt høyde på navbar */
+  animation: fadeIn 0.8s ease forwards; /* ✅ Fade inn */
 }
 
 .sidebarImg {
@@ -102,7 +102,7 @@
 .sidebarInfo a {
   font-size: 0.9rem;
   margin: 0.3rem 0;
-  color: #f2e9e4;
+  color: #cd8f6d;
   text-decoration: none;
 }
 
@@ -114,12 +114,6 @@
   .sidebar {
     display: none;
   }
-}
-
-.divider {
-  height: 8px;
-  width: 100%;
-  background: #f2e9e4;
 }
 
 .container {
@@ -249,5 +243,16 @@
 @keyframes hideCursor {
   to {
     opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

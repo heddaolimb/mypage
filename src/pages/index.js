@@ -1,34 +1,22 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const dividerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      if (window.scrollY >= window.innerHeight) {
+        setShowSidebar(true);
+      } else {
+        setShowSidebar(false);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleSidebarVisibility = () => {
-      const divider = dividerRef.current;
-      if (divider) {
-        const rect = divider.getBoundingClientRect();
-        if (rect.top <= 0) {
-          setShowSidebar(true);
-        } else {
-          setShowSidebar(false);
-        }
-      }
-    };
-    window.addEventListener("scroll", handleSidebarVisibility);
-    return () => window.removeEventListener("scroll", handleSidebarVisibility);
   }, []);
 
   const scrollToSection = (id) => {
@@ -54,6 +42,7 @@ export default function Home() {
           <span onClick={() => scrollToSection("contact")}>Contact</span>
         </nav>
       </header>
+
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>Hi, I'm Hedda Olimb.</h1>
@@ -66,7 +55,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className={styles.divider} ref={dividerRef}></div>
 
       {showSidebar && (
         <div className={styles.sidebar}>
