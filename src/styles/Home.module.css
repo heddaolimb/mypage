@@ -130,21 +130,10 @@
   overflow: hidden;
   border-right: 0.15em solid #f2e9e4;
   width: 0;
-  animation: typingSubtitle 3s steps(21, end) forwards,
-    blink 0.8s step-end infinite;
-  animation-delay: 3.2s;
+  animation: typingSubtitle 3s steps(21, end) forwards;
+  animation-delay: 3.5s;
   opacity: 0;
-}
-
-.title::after,
-.subtitle::after {
-  content: "";
-  display: inline-block;
-  width: 0.15em;
-  height: 1em;
-  background: #f2e9e4;
-  margin-left: 0.1em;
-  animation: blink 0.8s step-end infinite;
+  animation-fill-mode: forwards;
 }
 
 .exploreBtn {
@@ -199,5 +188,5 @@
 }
 .navLinks span:hover {
   color: #ffdeed;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
