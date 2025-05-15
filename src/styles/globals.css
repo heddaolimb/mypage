@@ -30,33 +30,3 @@ body {
   background: #1b263b;
   color: #f2e9e4;
 }
-
-@keyframes typingTitle {
-  from {
-    width: 0ch;
-  }
-  to {
-    width: 27ch;
-  }
-}
-
-@keyframes typingSubtitle {
-  from {
-    width: 0ch;
-  }
-  to {
-    width: 20ch;
-  }
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes hideCursor {
-  to {
-    opacity: 0;
-  }
-}

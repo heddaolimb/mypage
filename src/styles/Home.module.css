@@ -119,7 +119,7 @@
   margin-bottom: 1rem;
   white-space: nowrap;
   overflow: hidden;
-  width: 27ch;
+  width: 23ch;
   display: inline-block;
   animation: typingTitle 3s steps(27, end) forwards;
 }
@@ -128,7 +128,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 0.15em;
+  width: 0.12em;
   height: 100%;
   background-color: #f2e9e4;
   animation: blink 0.8s step-end infinite, hideCursor 0s 3s forwards;
@@ -140,21 +140,22 @@
   margin-bottom: 2rem;
   white-space: nowrap;
   overflow: hidden;
-  width: 20ch;
+  width: 0; /* Starter med 0 */
   display: inline-block;
-  animation: typingSubtitle 3s steps(20, end) forwards;
-  animation-delay: 3.2s;
-  opacity: 1;
+  opacity: 0; /* Starter helt skjult */
+  animation: typingSubtitle 3s steps(21, end) forwards;
+  animation-delay: 3.5s; /* Starter ETTER title er ferdig */
 }
 .subtitle::after {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
-  width: 0.15em;
+  width: 0.11em;
   height: 100%;
   background-color: #f2e9e4;
-  animation: blink 0.8s step-end infinite, hideCursor 0s 6.2s forwards;
+  animation: blink 0.8s step-end infinite, hideCursor 0s 6.5s forwards;
+  animation-delay: 3.5s, 6.5s;
 }
 .exploreBtn {
   padding: 0.85rem 3rem;
@@ -207,4 +208,36 @@
 .navLinks span:hover {
   color: #ffdeed;
   transform: scale(1.1);
+}
+
+@keyframes typingTitle {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 20ch;
+  }
+}
+
+@keyframes typingSubtitle {
+  0% {
+    width: 0ch;
+    opacity: 1;
+  }
+  100% {
+    width: 21ch;
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes hideCursor {
+  to {
+    opacity: 0;
+  }
 }
