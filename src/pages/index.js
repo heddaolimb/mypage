@@ -46,12 +46,12 @@ export default function Home() {
       <header className={styles.navbar}>
         <div className={styles.logo}>HO</div>
         <nav className={styles.navLinks}>
-          <span>About</span>
-          <span>Courses</span>
-          <span>Education</span>
-          <span>Work</span>
-          <span>Projects</span>
-          <span>Contact</span>
+          <span onClick={() => scrollToSection("about")}>About</span>
+          <span onClick={() => scrollToSection("courses")}>Courses</span>
+          <span onClick={() => scrollToSection("education")}>Education</span>
+          <span onClick={() => scrollToSection("work")}>Work</span>
+          <span onClick={() => scrollToSection("projects")}>Projects</span>
+          <span onClick={() => scrollToSection("contact")}>Contact</span>
         </nav>
       </header>
       <div className={styles.container}>
