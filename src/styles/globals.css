@@ -36,23 +36,27 @@ body {
     width: 0ch;
   }
   to {
-    width: 28ch;
+    width: 27ch;
   }
 }
 
 @keyframes typingSubtitle {
   from {
     width: 0ch;
-    opacity: 1;
   }
   to {
-    width: 21ch;
-    opacity: 1;
+    width: 20ch;
   }
 }
 
 @keyframes blink {
   50% {
-    border-color: transparent;
+    opacity: 0;
+  }
+}
+
+@keyframes hideCursor {
+  to {
+    opacity: 0;
   }
 }

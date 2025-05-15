@@ -111,31 +111,51 @@
   justify-content: center;
   height: 100%;
   text-align: center;
+  color: #f2e9e4;
 }
 .title {
+  position: relative;
   font-size: 6rem;
   margin-bottom: 1rem;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 0.15em solid #f2e9e4;
-  width: 0;
-  animation: typingTitle 3s steps(28, end) forwards,
-    blink 0.8s step-end infinite;
+  width: 27ch;
+  display: inline-block;
+  animation: typingTitle 3s steps(27, end) forwards;
+}
+.title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.15em;
+  height: 100%;
+  background-color: #f2e9e4;
+  animation: blink 0.8s step-end infinite, hideCursor 0s 3s forwards;
 }
 
 .subtitle {
+  position: relative;
   font-size: 4rem;
   margin-bottom: 2rem;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 0.15em solid #f2e9e4;
-  width: 0;
-  animation: typingSubtitle 3s steps(21, end) forwards;
-  animation-delay: 3.5s;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  width: 20ch;
+  display: inline-block;
+  animation: typingSubtitle 3s steps(20, end) forwards;
+  animation-delay: 3.2s;
+  opacity: 1;
 }
-
+.subtitle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.15em;
+  height: 100%;
+  background-color: #f2e9e4;
+  animation: blink 0.8s step-end infinite, hideCursor 0s 6.2s forwards;
+}
 .exploreBtn {
   padding: 0.85rem 3rem;
   font-size: 1.5rem;
@@ -161,9 +181,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
   z-index: 10;
-  background: transparent;
 }
 
 .navbarScrolled {
@@ -183,8 +201,8 @@
   margin-left: 2rem;
   cursor: pointer;
   color: #f2e9e4;
-  transition: color 0.3s ease, transform 0.3s ease;
   font-family: "American", sans-serif;
+  transition: color 0.3s, transform 0.3s;
 }
 .navLinks span:hover {
   color: #ffdeed;
