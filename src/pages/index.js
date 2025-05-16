@@ -6,7 +6,11 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showAboutItems, setShowAboutItems] = useState(false);
+  const [showDogs, setShowDogs] = useState(false);
+  const [showHearts, setShowHearts] = useState(false);
+
   const aboutRef = useRef(null);
+  const dogsRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,11 +46,37 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const observerDogs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowDogs(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (dogsRef.current) {
+      observerDogs.observe(dogsRef.current);
+    }
+
+    return () => {
+      if (dogsRef.current) {
+        observerDogs.unobserve(dogsRef.current);
+      }
+    };
+  }, []);
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleSayHi = () => {
+    setShowHearts(true);
+    setTimeout(() => setShowHearts(false), 2000);
   };
 
   return (
@@ -113,6 +143,7 @@ export default function Home() {
         <section id="about" className={styles.section}>
           <h2 className={styles.sectionTitle}>About Me</h2>
           <div ref={aboutRef} className={styles.aboutBox}>
+            {/* dine punkter */}
             <div
               className={`${styles.aboutItem} ${
                 showAboutItems ? styles.show : ""
@@ -168,6 +199,58 @@ export default function Home() {
               Curious and always eager to learn – currently exploring game
               development.
             </div>
+          </div>
+
+          {/* Hundeseksjon */}
+          <h3 className={styles.dogTitle}>Say hi to my dogs</h3>
+          <div className={styles.arrowIcon}>⬇️</div>
+
+          <div
+            ref={dogsRef}
+            className={`${styles.dogBox} ${showDogs ? styles.fadeIn : ""}`}
+          >
+            <img
+              src="/images/girls-fotor-bg-remover-20250515175420.png"
+              alt="My dogs"
+              className={styles.dogImg}
+            />
+
+            {/* Navnene plassert relativt */}
+            <span className={styles.dogName} style={{ top: "8%", left: "20%" }}>
+              Fido
+            </span>
+            <span className={styles.dogName} style={{ top: "8%", left: "50%" }}>
+              Luna
+            </span>
+            <span className={styles.dogName} style={{ top: "8%", left: "80%" }}>
+              Bella
+            </span>
+            <span
+              className={styles.dogName}
+              style={{ top: "60%", left: "15%" }}
+            >
+              Max
+            </span>
+            <span
+              className={styles.dogName}
+              style={{ top: "60%", left: "50%" }}
+            >
+              Milo
+            </span>
+            <span
+              className={styles.dogName}
+              style={{ top: "60%", left: "85%" }}
+            >
+              Nala
+            </span>
+
+            {/* Snakkeboble */}
+            <div className={styles.speakBubble} onClick={handleSayHi}>
+              Hi 👋
+            </div>
+
+            {/* Hjerter */}
+            {showHearts && <div className={styles.hearts}>❤️ ❤️ ❤️</div>}
           </div>
         </section>
 
