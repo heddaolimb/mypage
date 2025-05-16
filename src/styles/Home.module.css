@@ -9,8 +9,9 @@
   align-items: center;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  z-index: 9999; /* ✅ alltid over sidebar */
+  z-index: 9999;
 }
+
 .navLinks {
   display: flex;
 }
@@ -22,7 +23,7 @@
   font-family: "American", sans-serif;
   transition: color 0.3s ease, transform 0.3s ease;
   position: relative;
-  z-index: 99999; /* 👈 garantert over ALT */
+  z-index: 99999;
   font-size: 1.2rem;
 }
 
@@ -32,36 +33,83 @@
 }
 
 .mainContent {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .withSidebar {
-    margin-left: 0;
-    max-width: 100%;
-  }
+  position: relative;
+  z-index: 2;
 }
 
 .section {
   min-height: 100vh;
   padding: 5rem 2rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
+  flex-direction: column;
+  align-items: flex-start;
   color: #f2e9e4;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.section > div {
-  background: rgba(10, 10, 15, 0.8);
-  padding: 2rem;
+.sectionTitle {
+  background: #222;
+  padding: 1rem 15rem;
+  border-radius: 15px;
+  font-size: 3rem;
+  color: #f2e9e4;
+  text-align: left;
+  margin-bottom: 2rem;
+  margin-left: 380px;
+  max-width: 1000px;
+}
+
+.aboutBox {
+  background: #0a0a0f;
+  padding: 3rem 1.2rem;
   border-radius: 20px;
   max-width: 900px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  width: calc(100% - 450px);
+  margin-left: 330px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.aboutItem {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #f2e9e4;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.aboutItem.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.aboutItem:nth-child(1).show {
+  transition-delay: 0.3s;
+}
+.aboutItem:nth-child(2).show {
+  transition-delay: 0.8s;
+}
+.aboutItem:nth-child(3).show {
+  transition-delay: 1.2s;
+}
+.aboutItem:nth-child(4).show {
+  transition-delay: 1.6s;
+}
+.aboutItem:nth-child(5).show {
+  transition-delay: 2s;
+}
+
+.icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.icon {
+  margin-right: 1rem;
+  flex-shrink: 0;
 }
 
 .sidebar {
@@ -69,7 +117,7 @@
   top: 0px;
   left: 0;
   width: 200px;
-  height: calc(100vh - 70px); /* så den ikke går bak navbar */
+  height: calc(100vh - 70px);
   padding: 4rem 1rem;
   color: #eb17ce;
   font-family: "American", sans-serif;
@@ -79,19 +127,18 @@
   text-align: center;
   background: rgba(1, 1, 1, 0.7);
   backdrop-filter: blur(8px);
-  z-index: 999; /* 👈 Sørg for lavere enn navbar */
-  margin-top: 68px; /* eksakt høyde på navbar */
-  animation: fadeIn 0.8s ease forwards; /* ✅ Fade inn */
+  z-index: 999;
+  margin-top: 68px;
+  animation: fadeIn 0.8s ease forwards;
 }
 
 .sidebarImg {
   width: 150px;
   height: 150px;
-  border-radius: 19%;
+  border-radius: 1rem;
   object-fit: cover;
   margin-bottom: 1rem;
   border: 2px solid #de1fce;
-  border-radius: 1rem;
   border-style: groove;
   border-width: 10px;
 }
@@ -126,18 +173,6 @@
   overflow: hidden;
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("/animations/minimal_dark_waves.svg") no-repeat center center;
-  background-size: cover;
-  z-index: -1;
-}
-
 .content {
   display: flex;
   flex-direction: column;
@@ -146,7 +181,10 @@
   height: 100%;
   text-align: center;
   color: #f2e9e4;
+  position: relative;
+  z-index: 1;
 }
+
 .title {
   position: relative;
   font-size: 6rem;
@@ -157,6 +195,7 @@
   display: inline-block;
   animation: typingTitle 3s steps(24, end) forwards;
 }
+
 .title::after {
   content: "";
   position: absolute;
@@ -174,12 +213,13 @@
   margin-bottom: 2rem;
   white-space: nowrap;
   overflow: hidden;
-  width: 0; /* Starter med 0 */
+  width: 0;
   display: inline-block;
-  opacity: 0; /* Starter helt skjult */
+  opacity: 0;
   animation: typingSubtitle 3s steps(21, end) forwards;
-  animation-delay: 3.5s; /* Starter ETTER title er ferdig */
+  animation-delay: 3.5s;
 }
+
 .subtitle::after {
   content: "";
   position: absolute;
@@ -191,6 +231,7 @@
   animation: blink 0.8s step-end infinite, hideCursor 0s 6.5s forwards;
   animation-delay: 3.5s, 6.5s;
 }
+
 .exploreBtn {
   padding: 0.72rem 1.9rem;
   font-size: 1.4rem;

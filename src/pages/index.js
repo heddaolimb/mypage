@@ -1,10 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showAboutItems, setShowAboutItems] = useState(false);
+  const aboutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,27 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowAboutItems(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => {
+      if (aboutRef.current) {
+        observer.unobserve(aboutRef.current);
+      }
+    };
+  }, []);
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -31,6 +54,8 @@ export default function Home() {
       <Head>
         <title>Hedda Olimb Portfolio</title>
       </Head>
+
+      {/* NAVBAR */}
       <header className={styles.navbar}>
         <div className={styles.logo}>HO</div>
         <nav className={styles.navLinks}>
@@ -43,6 +68,7 @@ export default function Home() {
         </nav>
       </header>
 
+      {/* HERO */}
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>Hi, I'm Hedda Olimb.</h1>
@@ -56,6 +82,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* SIDEBAR */}
       {showSidebar && (
         <div className={styles.sidebar}>
           <img
@@ -81,10 +108,69 @@ export default function Home() {
         </div>
       )}
 
+      {/* MAIN */}
       <div className={styles.mainContent}>
         <section id="about" className={styles.section}>
-          <div>About Me</div>
+          <h2 className={styles.sectionTitle}>About Me</h2>
+          <div ref={aboutRef} className={styles.aboutBox}>
+            <div
+              className={`${styles.aboutItem} ${
+                showAboutItems ? styles.show : ""
+              }`}
+            >
+              <span className={styles.icon}>
+                <img src="/icons/norway.svg" alt="Norway" />
+              </span>
+              My name is Hedda, and I am a 25-year-old educated web developer
+              from Norway.
+            </div>
+            <div
+              className={`${styles.aboutItem} ${
+                showAboutItems ? styles.show : ""
+              }`}
+            >
+              <span className={styles.icon}>
+                <img src="/icons/webdev.svg" alt="WebDev" />
+              </span>
+              I have a bachelor's degree in Web Development from NTNU – the
+              Norwegian University of Science and Technology.
+            </div>
+            <div
+              className={`${styles.aboutItem} ${
+                showAboutItems ? styles.show : ""
+              }`}
+            >
+              <span className={styles.icon}>
+                <img src="/icons/drawing.svg" alt="Drawing" />
+              </span>
+              Experienced in web development, UX/UI design, graphic design, and
+              more.
+            </div>
+            <div
+              className={`${styles.aboutItem} ${
+                showAboutItems ? styles.show : ""
+              }`}
+            >
+              <span className={styles.icon}>
+                <img src="/icons/dogpugface.svg" alt="PugFace" />
+              </span>
+              In my free time, I love dogs – I have six of them that you’ll get
+              to meet soon.
+            </div>
+            <div
+              className={`${styles.aboutItem} ${
+                showAboutItems ? styles.show : ""
+              }`}
+            >
+              <span className={styles.icon}>
+                <img src="/icons/game.svg" alt="Game" />
+              </span>
+              Curious and always eager to learn – currently exploring game
+              development.
+            </div>
+          </div>
         </section>
+
         <section id="education" className={styles.section}>
           <div>Education</div>
         </section>

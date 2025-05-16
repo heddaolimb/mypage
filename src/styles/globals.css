@@ -27,8 +27,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: "RoseSally", sans-serif;
-
-  background: url("/animations/minimal_dark_waves.svg") repeat;
+  background: url("/animations/minimal_dark_waves.svg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
 }
