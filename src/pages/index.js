@@ -101,7 +101,7 @@ export default function Home() {
       {/* HERO */}
       <div className={styles.container}>
         <div className={styles.content}>
-          <h1 className={styles.title}>Hi, I'm Hedda Olimb.</h1>
+          <h1 className={styles.title}>Hi, I'm Hedda.</h1>
           <p className={styles.subtitle}>Welcome to my website!</p>
           <button
             className={styles.exploreBtn}
@@ -140,10 +140,10 @@ export default function Home() {
 
       {/* MAIN */}
       <div className={styles.mainContent}>
+        {/* About Me beholdes urørt */}
         <section id="about" className={styles.section}>
           <h2 className={styles.sectionTitle}>About Me</h2>
           <div ref={aboutRef} className={styles.aboutBox}>
-            {/* dine punkter */}
             <div
               className={`${styles.aboutItem} ${
                 showAboutItems ? styles.show : ""
@@ -202,58 +202,76 @@ export default function Home() {
           </div>
 
           {/* Hundeseksjon */}
-          <h3 className={styles.dogTitle}>Say hi to my dogs</h3>
-          <div className={styles.arrowIcon}>⬇️</div>
-
           <div
             ref={dogsRef}
-            className={`${styles.dogBox} ${showDogs ? styles.fadeIn : ""}`}
+            className={`${styles.dogSection} ${showDogs ? styles.show : ""}`}
           >
-            <img
-              src="/images/girls-fotor-bg-remover-20250515175420.png"
-              alt="My dogs"
-              className={styles.dogImg}
-            />
-
-            {/* Navnene plassert relativt */}
-            <span className={styles.dogName} style={{ top: "8%", left: "20%" }}>
-              Fido
-            </span>
-            <span className={styles.dogName} style={{ top: "8%", left: "50%" }}>
-              Luna
-            </span>
-            <span className={styles.dogName} style={{ top: "8%", left: "80%" }}>
-              Bella
-            </span>
-            <span
-              className={styles.dogName}
-              style={{ top: "60%", left: "15%" }}
-            >
-              Max
-            </span>
-            <span
-              className={styles.dogName}
-              style={{ top: "60%", left: "50%" }}
-            >
-              Milo
-            </span>
-            <span
-              className={styles.dogName}
-              style={{ top: "60%", left: "85%" }}
-            >
-              Nala
-            </span>
-
-            {/* Snakkeboble */}
-            <div className={styles.speakBubble} onClick={handleSayHi}>
-              Hi 👋
+            <h3 className={styles.dogTitle}>Say hi to my dogs!</h3>
+            <div className={styles.dogImgBox}>
+              <img
+                src="/images/girls-fotor-bg-remover-20250515175420.png"
+                alt="My dogs"
+                className={styles.dogImg}
+              />
+              <div className={styles.speakBubble} onClick={handleSayHi}>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M2 2h20v14H6l-4 4V2z" />
+                </svg>
+                Hi
+              </div>
+              <span
+                className={`${styles.dogName} ${styles.show}`}
+                style={{ top: "5%", left: "20%", transitionDelay: "0.3s" }}
+              >
+                Fido
+              </span>
+              <span
+                className={`${styles.dogName} ${styles.show}`}
+                style={{ top: "10%", left: "55%", transitionDelay: "0.6s" }}
+              >
+                Luna
+              </span>
+              <span
+                className={`${styles.dogName} ${styles.show}`}
+                style={{ top: "15%", left: "75%", transitionDelay: "0.9s" }}
+              >
+                Bella
+              </span>
+              <span
+                className={`${styles.dogName} ${styles.show}`}
+                style={{ top: "60%", left: "18%", transitionDelay: "1.2s" }}
+              >
+                Max
+              </span>
+              <span
+                className={`${styles.dogName} ${styles.show}`}
+                style={{ top: "58%", left: "50%", transitionDelay: "1.5s" }}
+              >
+                Milo
+              </span>
+              <span
+                className={`${styles.dogName} ${styles.show}`}
+                style={{ top: "62%", left: "80%", transitionDelay: "1.8s" }}
+              >
+                Nala
+              </span>
+              {showHearts && (
+                <div className={styles.hearts}>
+                  <span>❤️</span>
+                  <span>❤️</span>
+                  <span>❤️</span>
+                </div>
+              )}
             </div>
-
-            {/* Hjerter */}
-            {showHearts && <div className={styles.hearts}>❤️ ❤️ ❤️</div>}
           </div>
         </section>
 
+        {/* Resten */}
         <section id="education" className={styles.section}>
           <div>Education</div>
         </section>

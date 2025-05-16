@@ -300,3 +300,116 @@
     transform: translateX(0);
   }
 }
+
+/* 👇 Ryddet og korrekt hundeseksjon */
+
+.dogSection {
+  position: relative;
+  width: 100%;
+  margin-top: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.dogSection.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dogTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #f2e9e4;
+  margin-bottom: 2rem;
+  font-family: "RoseSally", sans-serif;
+}
+
+.dogImgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.dogImg {
+  width: 45%;
+  display: block;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.dogSection.show .dogImg {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.speakBubble {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  background: url("/chatbubble.svg") no-repeat center/contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.dogSection.show .speakBubble {
+  opacity: 1;
+  transform: translateY(0);
+}
+.speakBubble span {
+  color: #f2e9e4;
+  font-family: "American", sans-serif;
+  font-size: 1rem;
+}
+
+.dogName {
+  position: absolute;
+  color: #fff9f9;
+  font-size: 1.3rem;
+  font-family: "American", sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.dogSection.show .dogName {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hearts {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  pointer-events: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.hearts span {
+  animation: floatHeart 2s ease forwards;
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-150px) scale(1.5) rotate(20deg);
+  }
+}
