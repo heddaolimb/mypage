@@ -556,9 +556,10 @@
 
 .jobSection {
   display: flex;
-  margin-left: 400px;
-  gap: 3rem;
-  margin-top: 3rem;
+  flex-direction: row; /* Fra column → row */
+  align-items: flex-start;
+  gap: 2rem;
+  margin-left: 380px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
@@ -571,53 +572,55 @@
 
 .jobTabs {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Vertsvis faner */
   gap: 1rem;
+  min-width: 160px;
 }
 
 .jobTab {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #f2e9e4;
-  color: #f2e9e4;
   padding: 0.8rem 1.2rem;
+  background: #2a2a2a;
+  color: #f2e9e4;
   font-family: "American", sans-serif;
   cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  text-align: left;
+  border-left: 4px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
 }
 
-.jobTab:hover,
-.jobTab.active {
+.jobTab:hover {
   background: #de1fce;
-  color: #fff;
   transform: scale(1.05);
+}
+.active {
+  background: #de1fce;
+  border-left: 4px solid #de1fce;
 }
 
 .jobContent {
-  max-width: 600px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-
 .jobContent h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.3rem;
-  color: #f2e9e4;
-}
-
-.jobContent p {
-  color: #bfbfbf;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.jobCompany {
-  font-style: italic;
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
-  color: #ffbdf1;
+  color: #f2e9e4;
+  font-family: "RoseSally", sans-serif;
+}
+.jobContent p {
+  font-size: 1rem;
+  color: #bfbfbf;
+  line-height: 1.6;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+.jobCompany,
 .jobPeriod {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #cd8f6d;
+  margin-bottom: 0.5rem;
 }

@@ -377,34 +377,30 @@ export default function Home() {
 
         <section id="work" className={styles.section}>
           <h2 className={styles.sectionTitle}>Work Experience</h2>
-          <div className={styles.workContainer}>
-            <div className={styles.workTabs}>
-              <button
-                className={selectedJob === "job1" ? styles.activeTab : ""}
-                onClick={() => setSelectedJob("job1")}
-              >
-                Netlife
-              </button>
-              <button
-                className={selectedJob === "job2" ? styles.activeTab : ""}
-                onClick={() => setSelectedJob("job2")}
-              >
-                Designit
-              </button>
-              <button
-                className={selectedJob === "job3" ? styles.activeTab : ""}
-                onClick={() => setSelectedJob("job3")}
-              >
-                Freelance
-              </button>
+          <div
+            className={`${styles.jobSection} ${
+              showEducation ? styles.show : ""
+            }`}
+          >
+            <div className={styles.jobTabs}>
+              {Object.keys(jobs).map((jobKey) => (
+                <div
+                  key={jobKey}
+                  className={`${styles.jobTab} ${
+                    selectedJob === jobKey ? styles.active : ""
+                  }`}
+                  onClick={() => setSelectedJob(jobKey)}
+                >
+                  {jobs[jobKey].company}
+                </div>
+              ))}
             </div>
-
-            <div className={styles.workDetails}>
+            <div className={styles.jobContent}>
               <h3>{jobs[selectedJob].title}</h3>
-              <p>
-                <strong>{jobs[selectedJob].company}</strong> —{" "}
-                {jobs[selectedJob].period}
-              </p>
+              <div className={styles.jobCompany}>
+                {jobs[selectedJob].company}
+              </div>
+              <div className={styles.jobPeriod}>{jobs[selectedJob].period}</div>
               <p>{jobs[selectedJob].description}</p>
             </div>
           </div>
