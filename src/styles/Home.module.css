@@ -553,7 +553,18 @@
   border-radius: 50%;
   border: 3px solid #fff;
 }
-
+.bulletList {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  color: #bfbfbf;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.bulletList li {
+  font-weight: normal; /* 🔧 sørger for at teksten ikke er bold */
+}
 .jobSection {
   display: flex;
   flex-direction: row; /* Fra column → row */
@@ -581,10 +592,11 @@
   padding: 0.8rem 1.2rem;
   background: #2a2a2a;
   color: #f2e9e4;
-  font-family: "American", sans-serif;
+  font-family: "Arial", sans-serif;
   cursor: pointer;
   border-left: 4px solid transparent;
   transition: background 0.3s, border-color 0.3s;
+  unicode-bidi: plaintext;
 }
 
 .jobTab:hover {
@@ -617,7 +629,10 @@
   line-height: 1.6;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-
+.jobContent ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
 .jobCompany,
 .jobPeriod {
   font-size: 1rem;

@@ -12,29 +12,49 @@ export default function Home() {
 
   const [selectedJob, setSelectedJob] = useState("job1");
 
+  // ✅ Endret: description er nå array
   const jobs = {
     job1: {
-      title: "Frontend Developer",
-      company: "Netlife Design",
-      period: "2023 - now",
-      description:
-        "Worked with design systems and React to create scalable frontend solutions.",
+      title: "Health care assistant",
+      company: "Villa Skaar Jevnaker",
+      period: "Summers/with more- 2018, 2020, 2021, 2022, 2023, year 2024",
+      description: [
+        "Gained practical experience in geriatric care, infection control procedures, and basic medical knowledge related to common illnesses affecting the elderly. ",
+        "Received training in safe patient handling and mobility techniques, including how to prevent injuries during heavy lifting and transfers.",
+        "Worked extensively in one-on-one care settings, which included instruction in personal safety and de-escalation techniques to manage potentially aggressive or unpredictable situations.",
+        "Also acquired knowledge in nutrition, personal hygiene, and the daily routines essential for maintaining residents' physical and mental well-being.",
+      ],
     },
     job2: {
-      title: "Internship UX/UI",
-      company: "Designit",
-      period: "2022 - 2023",
-      description:
-        "Participated in UX research and wireframing using Figma. Collaborated with devs.",
+      title: "Operational Soldier",
+      company:
+        "Royal Norwegian Armed Forces (FOH - Norwegian Joint Headquarters)",
+      period: "2019",
+      description: [
+        "Served in the Norwegian Armed Forces at the Joint Operational Headquarters (FOH) as part of the Royal Norwegian Navy.",
+        "Stationed at the Surveillance Center, where I worked with real-time maritime monitoring and situational awareness across Norwegian and NATO waters.",
+        "Operated classified surveillance and command systems in a high-security environment to track, report, and assess sea activity in strategic areas such as the North Atlantic.",
+        "Supported national defense readiness and contributed to the coordination and communication of joint military operations between Norwegian and allied forces.",
+        "Gained hands-on experience with both technical and operational military systems in a maritime setting, focusing on secure information flow, mission support, and operational oversight.",
+        "Certificate in Qualified First Aid – Level 2",
+        "Certificate in Training on Organizational Work, Meeting Management Techniques, and Health, Safety and Environment (HSE).",
+      ],
     },
+
     job3: {
-      title: "Freelancer",
-      company: "Various clients",
-      period: "2021 - 2022",
-      description:
-        "Built websites and portfolios for small businesses using modern tools.",
+      title: "Health care assistant",
+      company: "JORS - Jevnaker Care and Rehabilitation Center",
+      period: "Summer 2017",
+      description: [
+        "Performed a wide range of essential care duties in a nursing home environment, focusing on hygiene routines, assistance with meals, mobility support, and observing residents' physical and mental health.",
+        "Gained insight into professional standards of elderly care, including communication with residents, documentation of care, and working as part of a multidisciplinary team. ",
+        "Built upon previous knowledge in infection control, nutrition, and basic medical care, while adapting to the structured routines of a larger care facility.",
+        "Certificate in Training on Ethics and Attitudes, User Involvement, Use of Force and Coercion, Hygiene and Personal Care, Dementia, Mobility, and Fire Safety",
+      ],
     },
   };
+
+  // ...
 
   const aboutRef = useRef(null);
   const dogsRef = useRef(null);
@@ -201,8 +221,8 @@ export default function Home() {
               <span className={styles.icon}>
                 <img src="/icons/norway.svg" alt="Norway" />
               </span>
-              My name is Hedda, and I am a 25-year-old educated web developer
-              from Norway.
+              My name is Hedda, I'm a 25-year-old educated web developer from
+              Norway.
             </div>
             <div
               className={`${styles.aboutItem} ${
@@ -234,8 +254,8 @@ export default function Home() {
               <span className={styles.icon}>
                 <img src="/icons/dogpugface.svg" alt="PugFace" />
               </span>
-              In my free time, I love dogs – I have six of them that you’ll get
-              to meet soon.
+              My biggest passion is dogs – I have six of them that you’ll get to
+              meet soon.
             </div>
             <div
               className={`${styles.aboutItem} ${
@@ -334,14 +354,25 @@ export default function Home() {
               className={styles.educationItem}
               style={{ transitionDelay: "0.3s" }}
             >
-              <span className={styles.educationYear}>2021 - 2024</span>
+              <span className={styles.educationYear}>2015 - 2018</span>
               <div className={styles.educationBox}>
-                <h3>Bachelor in Web Development</h3>
-                <p>
-                  Norwegian University of Science and Technology (NTNU). Focused
-                  on modern web technologies, UX/UI principles, and front-end
-                  frameworks.
-                </p>
+                <h3>High School – Hadeland Upper Secondary School (Norway)</h3>
+                <ul className={styles.bulletList}>
+                  <p>
+                    Specialization in general studies, with subjects including:
+                  </p>
+
+                  <li>
+                    English and Spanish (participated in Erasmus+ project
+                    Learning through Languages and Culture in 2017 at Institut
+                    de Bruguers, Gava, Spain).
+                  </li>
+                  <li>Information Technology 1.</li>
+                  <li>Marketing and Management 1 & 2.</li>
+                  <li>Politics and Human Rights 1 & 2.</li>
+                  <li>Sociology and Social Anthropology.</li>
+                  <li>Law 1 (Norwegian Legal Studies).</li>
+                </ul>
               </div>
             </div>
 
@@ -349,13 +380,57 @@ export default function Home() {
               className={styles.educationItem}
               style={{ transitionDelay: "0.7s" }}
             >
-              <span className={styles.educationYear}>2020 - 2021</span>
+              <span className={styles.educationYear}>2020 - 2023</span>
               <div className={styles.educationBox}>
-                <h3>Front-end & UX Design</h3>
-                <p>
-                  Completed online courses and bootcamps focusing on user
-                  experience, interaction design, and accessibility.
-                </p>
+                <h3>
+                  Bachelor in Web Development - Norwegian University of Science
+                  and Technology (NTNU)
+                </h3>
+                <ul className={styles.bulletList}>
+                  <li>
+                    Built static and dynamic websites using HTML, CSS,
+                    JavaScript, Node.js, PHP, and React.
+                  </li>
+                  <li>
+                    Familiar with Tailwind, Express, SQL (MySQL), MongoDB, REST
+                    APIs, and Postman.
+                  </li>
+                  <li>
+                    Used tools like Figma, Miro, GitHub, Adobe Creative Cloud
+                    (Photoshop, InDesign), and VS Code.
+                  </li>
+                  <li>
+                    Experienced with responsive layouts, prototyping, and
+                    mobile-first design principles.
+                  </li>
+                  <li>
+                    Worked on project-based development with planning and
+                    collaboration.
+                  </li>
+                  <li>
+                    Covered accessibility (WCAG), SEO (meta-tags), and usability
+                    testing.
+                  </li>
+                  <li>
+                    Learned information architecture, databases, and content
+                    structuring.
+                  </li>
+                  <li>
+                    Explored cloud tech, deployment, and Raspberry Pi server
+                    usage.
+                  </li>
+                  <li>
+                    Studied history and protocols of the Internet and the WWW.
+                  </li>
+                  <li>
+                    Understood GDPR, ethics, legal frameworks, and research
+                    methods.
+                  </li>
+                  <li>
+                    All coursework in English – fluent in written and spoken
+                    English.
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -363,18 +438,19 @@ export default function Home() {
               className={styles.educationItem}
               style={{ transitionDelay: "1.1s" }}
             >
-              <span className={styles.educationYear}>2017 - 2020</span>
+              <span className={styles.educationYear}>2024 - 2025</span>
               <div className={styles.educationBox}>
-                <h3>High School Diploma</h3>
+                <h3>Courses</h3>
                 <p>
-                  Specialized in media and communication. Developed early skills
-                  in design, web tools, and digital storytelling.
+                  Completed online courses and bootcamps focusing on user
+                  experience, interaction design, and accessibility.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* ✅ Endret WORK SECTION */}
         <section id="work" className={styles.section}>
           <h2 className={styles.sectionTitle}>Work Experience</h2>
           <div
@@ -401,7 +477,11 @@ export default function Home() {
                 {jobs[selectedJob].company}
               </div>
               <div className={styles.jobPeriod}>{jobs[selectedJob].period}</div>
-              <p>{jobs[selectedJob].description}</p>
+              <ul>
+                {jobs[selectedJob].description.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
