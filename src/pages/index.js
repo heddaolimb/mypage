@@ -8,9 +8,37 @@ export default function Home() {
   const [showAboutItems, setShowAboutItems] = useState(false);
   const [showDogs, setShowDogs] = useState(false);
   const [showHearts, setShowHearts] = useState(false);
+  const [showEducation, setShowEducation] = useState(false); // ✅ NY DEL
+
+  const [selectedJob, setSelectedJob] = useState("job1");
+
+  const jobs = {
+    job1: {
+      title: "Frontend Developer",
+      company: "Netlife Design",
+      period: "2023 - now",
+      description:
+        "Worked with design systems and React to create scalable frontend solutions.",
+    },
+    job2: {
+      title: "Internship UX/UI",
+      company: "Designit",
+      period: "2022 - 2023",
+      description:
+        "Participated in UX research and wireframing using Figma. Collaborated with devs.",
+    },
+    job3: {
+      title: "Freelancer",
+      company: "Various clients",
+      period: "2021 - 2022",
+      description:
+        "Built websites and portfolios for small businesses using modern tools.",
+    },
+  };
 
   const aboutRef = useRef(null);
   const dogsRef = useRef(null);
+  const educationRef = useRef(null); // ✅ NY DEL
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,6 +91,27 @@ export default function Home() {
     return () => {
       if (dogsRef.current) {
         observerDogs.unobserve(dogsRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const observerEducation = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowEducation(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (educationRef.current) {
+      observerEducation.observe(educationRef.current);
+    }
+
+    return () => {
+      if (educationRef.current) {
+        observerEducation.unobserve(educationRef.current);
       }
     };
   }, []);
@@ -213,20 +262,17 @@ export default function Home() {
                 alt="My dogs"
                 className={styles.dogImg}
               />
-              <div className={styles.speakBubble} onClick={handleSayHi}>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M2 2h20v14H6l-4 4V2z" />
-                </svg>
-                Hi
+              <div
+                className={`${styles.speakBubble} ${
+                  showDogs ? styles.show : ""
+                }`}
+                onClick={handleSayHi}
+              >
+                Hi!
               </div>
               <span
                 className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "5%", left: "20%", transitionDelay: "0.3s" }}
+                style={{ top: "20%", left: "20%", transitionDelay: "0.3s" }}
               >
                 Fido
               </span>
@@ -265,6 +311,10 @@ export default function Home() {
                   <span>❤️</span>
                   <span>❤️</span>
                   <span>❤️</span>
+                  <span>❤️</span>
+                  <span>❤️</span>
+                  <span>❤️</span>
+                  <span>❤️</span>
                 </div>
               )}
             </div>
@@ -273,10 +323,91 @@ export default function Home() {
 
         {/* Resten */}
         <section id="education" className={styles.section}>
-          <div>Education</div>
+          <h2 className={styles.sectionTitle}>Education</h2>
+          <div
+            ref={educationRef}
+            className={`${styles.educationTimeline} ${
+              showEducation ? styles.show : ""
+            }`}
+          >
+            <div
+              className={styles.educationItem}
+              style={{ transitionDelay: "0.3s" }}
+            >
+              <span className={styles.educationYear}>2021 - 2024</span>
+              <div className={styles.educationBox}>
+                <h3>Bachelor in Web Development</h3>
+                <p>
+                  Norwegian University of Science and Technology (NTNU). Focused
+                  on modern web technologies, UX/UI principles, and front-end
+                  frameworks.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className={styles.educationItem}
+              style={{ transitionDelay: "0.7s" }}
+            >
+              <span className={styles.educationYear}>2020 - 2021</span>
+              <div className={styles.educationBox}>
+                <h3>Front-end & UX Design</h3>
+                <p>
+                  Completed online courses and bootcamps focusing on user
+                  experience, interaction design, and accessibility.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className={styles.educationItem}
+              style={{ transitionDelay: "1.1s" }}
+            >
+              <span className={styles.educationYear}>2017 - 2020</span>
+              <div className={styles.educationBox}>
+                <h3>High School Diploma</h3>
+                <p>
+                  Specialized in media and communication. Developed early skills
+                  in design, web tools, and digital storytelling.
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
+
         <section id="work" className={styles.section}>
-          <div>Work experience</div>
+          <h2 className={styles.sectionTitle}>Work Experience</h2>
+          <div className={styles.workContainer}>
+            <div className={styles.workTabs}>
+              <button
+                className={selectedJob === "job1" ? styles.activeTab : ""}
+                onClick={() => setSelectedJob("job1")}
+              >
+                Netlife
+              </button>
+              <button
+                className={selectedJob === "job2" ? styles.activeTab : ""}
+                onClick={() => setSelectedJob("job2")}
+              >
+                Designit
+              </button>
+              <button
+                className={selectedJob === "job3" ? styles.activeTab : ""}
+                onClick={() => setSelectedJob("job3")}
+              >
+                Freelance
+              </button>
+            </div>
+
+            <div className={styles.workDetails}>
+              <h3>{jobs[selectedJob].title}</h3>
+              <p>
+                <strong>{jobs[selectedJob].company}</strong> —{" "}
+                {jobs[selectedJob].period}
+              </p>
+              <p>{jobs[selectedJob].description}</p>
+            </div>
+          </div>
         </section>
         <section id="projects" className={styles.section}>
           <div>Projects</div>

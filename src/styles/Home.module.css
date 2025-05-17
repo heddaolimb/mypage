@@ -322,7 +322,15 @@
   text-align: center;
   color: #f2e9e4;
   margin-bottom: 2rem;
+  margin-top: 4rem; /* Endre for å flytte opp/ned */
   font-family: "RoseSally", sans-serif;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(20px);
+  opacity: 1;
+}
+.dogTitle.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dogImgBox {
@@ -335,11 +343,16 @@
 }
 
 .dogImg {
-  width: 45%;
+  width: 45%; /* Endre prosent for størrelse */
   display: block;
-  transform: translateY(20px);
+  margin: 0 auto; /* Sentrerer bildet */
+  transform: translateX(90px); /* Flytt bildet mot høyre (endre verdien) */
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
+}
+.dogImg.show {
+  opacity: 1;
+  transform: translateX(90px) translateY(0); /* Flytt høyre og opp/ned */
 }
 
 .dogSection.show .dogImg {
@@ -350,10 +363,10 @@
 .speakBubble {
   position: absolute;
   top: 5%;
-  right: 10%;
-  width: 80px;
-  height: 80px;
-  background: url("/chatbubble.svg") no-repeat center/contain;
+  right: 5%;
+  width: 80px; /* juster størrelse */
+  height: 50px;
+  background: url("/icons/chatbubble.svg") no-repeat center center / contain;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -361,26 +374,42 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
+  font-size: 1.2rem;
+  color: white;
+  font-family: "American", sans-serif;
+}
+.speakBubble.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.speakBubble img {
+  width: 50px;
+  height: auto;
+}
+.speakBubble span {
+  font-size: 1.4rem;
+  color: white;
+  font-family: "American", sans-serif;
 }
 
 .dogSection.show .speakBubble {
   opacity: 1;
   transform: translateY(0);
 }
-.speakBubble span {
-  color: #f2e9e4;
-  font-family: "American", sans-serif;
-  font-size: 1rem;
-}
 
 .dogName {
   position: absolute;
-  color: #fff9f9;
+  color: #fff9f9; /* Lys farge */
   font-size: 1.3rem;
   font-family: "American", sans-serif;
   opacity: 0;
   transform: translateY(20px);
+  text-shadow: 0 0 10px #fff; /* Gir lys-effekt */
   transition: opacity 1s ease, transform 1s ease;
+}
+.dogName.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dogSection.show .dogName {
@@ -390,19 +419,53 @@
 
 .hearts {
   position: absolute;
-  top: 30%;
+  top: 30%; /* Over bildet */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2rem;
   pointer-events: none;
-  display: flex;
-  gap: 1rem;
 }
 
 .hearts span {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0;
   animation: floatHeart 2s ease forwards;
 }
+.hearts span:nth-child(1) {
+  left: -20px;
+  animation-delay: 0s;
+}
 
+.hearts span:nth-child(2) {
+  left: 0;
+  animation-delay: 0.2s;
+}
+
+.hearts span:nth-child(3) {
+  left: 10px;
+  animation-delay: 0.4s;
+}
+.hearts span:nth-child(4) {
+  left: 20px;
+  animation-delay: 0.6s;
+}
+.hearts span:nth-child(5) {
+  left: 30px;
+  animation-delay: 0.8s;
+}
+.hearts span:nth-child(6) {
+  left: 40px;
+  animation-delay: 1s;
+}
+.hearts span:nth-child(7) {
+  left: 50px;
+  animation-delay: 1.2s;
+}
+.hiText {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-left: 3rem;
+}
 @keyframes floatHeart {
   0% {
     opacity: 1;
@@ -410,6 +473,151 @@
   }
   100% {
     opacity: 0;
-    transform: translateY(-150px) scale(1.5) rotate(20deg);
+    transform: translateY(-100px) scale(1.5) rotate(20deg);
   }
+}
+.educationTimeline {
+  position: relative;
+  margin-left: 500px; /* mer til høyre */
+  padding-left: 20px;
+  border-left: 3px solid #f2e9e4;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.educationTimeline.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.educationItem {
+  margin-bottom: 2rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.educationYear {
+  position: relative;
+  left: -150px;
+  top: 0;
+  font-size: 1.2rem;
+  color: #f2e9e4;
+  font-family: "American", sans-serif;
+}
+
+.educationTimeline.show .educationItem {
+  opacity: 1;
+  transform: translateY(0);
+}
+.educationBox {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  width: 500px; /* Sett en spesifikk bredde hvis du vil */
+  max-width: 100%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.educationBox h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #f2e9e4;
+  font-family: "RoseSally", sans-serif;
+}
+.educationBox p {
+  color: #bfbfbf;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.educationContent h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #f2e9e4;
+}
+
+.educationContent p {
+  color: #bfbfbf;
+  font-size: 1rem;
+}
+
+.educationItem::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 90px;
+  width: 15px;
+  height: 15px;
+  background: #de1fce;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+.jobSection {
+  display: flex;
+  margin-left: 400px;
+  gap: 3rem;
+  margin-top: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.jobSection.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.jobTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jobTab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #f2e9e4;
+  color: #f2e9e4;
+  padding: 0.8rem 1.2rem;
+  font-family: "American", sans-serif;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.jobTab:hover,
+.jobTab.active {
+  background: #de1fce;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.jobContent {
+  max-width: 600px;
+}
+
+.jobContent h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+  color: #f2e9e4;
+}
+
+.jobContent p {
+  color: #bfbfbf;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.jobCompany {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  color: #ffbdf1;
+}
+
+.jobPeriod {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 1rem;
 }
