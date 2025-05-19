@@ -11,7 +11,7 @@ export default function Home() {
   const [showEducation, setShowEducation] = useState(false); // ✅ NY DEL
   const [showProjects, setShowProjects] = useState(false);
   const [selectedJob, setSelectedJob] = useState("job1");
-
+  const [currentCourse, setCurrentCourse] = useState(0);
   // ✅ Endret: description er nå array
   const jobs = {
     job1: {
@@ -96,6 +96,49 @@ export default function Home() {
       link: "https://github.com/heddaolimb/mypage.git",
     },
   ];
+
+  const courses = [
+    {
+      title: "Digital Marketing Basics",
+      image: "/images/digital-marketing.png",
+      link: "https://example.com/marketing-course",
+      why: "To understand how digital marketing works and how to promote my own projects.",
+      learned:
+        "The fundamentals of SEO, paid ads, content strategy, and analytics.",
+    },
+    {
+      title: "Intro to AI",
+      image: "/images/ai-course.png",
+      link: "https://example.com/ai-course",
+      why: "I'm curious about AI and how it's used in real-world applications.",
+      learned: "Machine learning basics, ethical use, and practical AI tools.",
+    },
+    {
+      title: "Intro to AI",
+      image: "/images/ai-course.png",
+      link: "https://example.com/ai-course",
+      why: "I'm curious about AI and how it's used in real-world applications.",
+      learned: "Machine learning basics, ethical use, and practical AI tools.",
+    },
+    {
+      title: "Intro to AI",
+      image: "/images/ai-course.png",
+      link: "https://example.com/ai-course",
+      why: "I'm curious about AI and how it's used in real-world applications.",
+      learned: "Machine learning basics, ethical use, and practical AI tools.",
+    },
+    // legg til flere kurs her
+  ];
+
+  // legg til flere kurs senere
+
+  const handlePrev = () => {
+    setCurrentCourse((prev) => (prev - 1 + courses.length) % courses.length);
+  };
+
+  const handleNext = () => {
+    setCurrentCourse((prev) => (prev + 1) % courses.length);
+  };
   // ...
 
   const aboutRef = useRef(null);
@@ -598,7 +641,67 @@ export default function Home() {
           </div>
         </section>
         <section id="courses" className={styles.section}>
-          <div>Courses and Certifications</div>
+          <h2 className={styles.sectionTitle}>Courses</h2>
+
+          <div className={styles.courseSlider}>
+            <div className={styles.courseNavButtons}>
+              <button className={styles.navButton} onClick={handlePrev}>
+                &#8592;
+              </button>
+              <button className={styles.navButton} onClick={handleNext}>
+                &#8594;
+              </button>
+            </div>
+
+            <div
+              className={styles.courseTrack}
+              style={{
+                transform: `translateX(-${currentCourse * 100}%)`,
+              }}
+            >
+              {courses.map((course, idx) => (
+                <div
+                  key={idx}
+                  className={`${styles.courseCard} ${
+                    idx === currentCourse ? styles.active : ""
+                  }`}
+                >
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className={styles.courseImage}
+                  />
+                  <a
+                    href={course.link}
+                    className={styles.courseTitle}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {course.title}
+                  </a>
+                  <h4 className={styles.courseSubtitle}>
+                    Why I took this course
+                  </h4>
+                  <p className={styles.courseText}>{course.why}</p>
+                  <h4 className={styles.courseSubtitle}>
+                    What I learned in this course
+                  </h4>
+                  <p className={styles.courseText}>{course.learned}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.courseDots}>
+              {courses.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`${styles.courseDot} ${
+                    idx === currentCourse ? styles.active : ""
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </section>
         <section id="contact" className={styles.section}>
           <div>Contact</div>

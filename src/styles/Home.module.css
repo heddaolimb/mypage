@@ -738,3 +738,129 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/*course section*/
+.coursesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-left: 220px;
+  margin-right: 220px;
+}
+.courseSlider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.courseCard {
+  flex: 0 0 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  color: #f2e9e4;
+  font-family: "American", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.courseCard.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.courseImage {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.courseTitle {
+  font-size: 1.4rem;
+  color: #cd8f6d;
+  font-weight: bold;
+  text-decoration: underline;
+  display: inline-block;
+  margin-bottom: 0.7rem;
+}
+
+.courseSubtitle {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #f2e9e4;
+  font-size: 1.1rem;
+}
+
+.courseText {
+  color: #bfbfbf;
+  line-height: 1.4;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.courseSlider {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content: flex-start;
+  margin-left: 280px; /* Mer til høyre */
+}
+.courseTrack {
+  display: flex;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+.courseNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+.courseNavButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto;
+}
+.navButton {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #f2e9e4;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.navButton:hover {
+  transform: scale(1.2);
+}
+.courseDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.courseDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #777;
+  transition: background 0.3s ease;
+}
+.courseDot.active {
+  background: #cd8f6d;
+}
