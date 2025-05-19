@@ -75,7 +75,7 @@ export default function Home() {
       title: "Flower Power – Cosmo & Wanda",
       image: "/images/cosmowanda.png",
       description:
-        "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation. Although several planned features like temperature sensors and app integration were not fully implemented, the prototype successfully demonstrated a scalable, user-centered IoT solution for smart plant care.",
+        "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation. Although several planned features like temperature sensors and app integration were not fully implemented, the prototype successfully demonstrated a scalable, user-centered IoT solution for smart plant care. Note: The prototype shows selected parts of the design flow. Not all screens are linked, but the core concept is demonstrated.",
       tech: [
         "#Microbit",
         "#Figma",
@@ -85,15 +85,15 @@ export default function Home() {
         "#Automation",
         "#UXDesign",
       ],
-      link: "https://github.com/bruker/portfolio",
+      link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power?node-id=160-134&t=z5g2qbMi22hYaXM6-1&scaling=scale-down&content-scaling=fixed&page-id=157%3A117&starting-point-node-id=160%3A134&show-proto-sidebar=1",
     },
     {
-      title: "AI Mood Journal",
-      image: "/images/mood-journal.png",
+      title: "My page",
+      image: "/images/code.png",
       description:
-        "An AI-powered journal to track and analyze emotional patterns.",
-      tech: ["React", "OpenAI API", "MongoDB"],
-      link: "https://github.com/bruker/ai-journal",
+        "I designed and developed a fully responsive, animated portfolio website using Next.js, React Hooks, and CSS Modules to present my education, experience, and projects in a dynamic and user-friendly way. The site features scroll-based animations with IntersectionObserver, interactive job tabs with stateful display logic, and dynamic project rendering using structured data objects. The layout includes sections such as About Me, Education, Work, Projects, and Contact, each enhanced with smooth transitions and custom styling.Styling is handled with vanilla CSS and CSS animations, including a typing effect for the hero section and animated hearts for interactive elements. All content is modular and component-based, designed for easy updates and extension. The portfolio emphasizes clean UI/UX, attention to detail, and highlights both technical skills and personal interests – such as my love for dogs.",
+      tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
+      link: "https://github.com/heddaolimb/mypage.git",
     },
   ];
   // ...
