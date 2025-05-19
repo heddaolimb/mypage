@@ -38,6 +38,7 @@ export default function Home() {
         "Gained hands-on experience with both technical and operational military systems in a maritime setting, focusing on secure information flow, mission support, and operational oversight.",
         "Certificate in Qualified First Aid – Level 2",
         "Certificate in Training on Organizational Work, Meeting Management Techniques, and Health, Safety and Environment (HSE).",
+        "I was appointed as the elected representative within my shift team.",
       ],
     },
 
@@ -430,6 +431,15 @@ export default function Home() {
                     All coursework in English – fluent in written and spoken
                     English.
                   </li>
+                  <li>
+                    Served as an elected representative for the Faculty of
+                    Architecture and Design in 2023. The Student Council
+                    (Studenttinget) is the highest student body at NTNU and
+                    represents all NTNU students. During council meetings,
+                    policies affecting the entire student body are discussed and
+                    decided—ranging from exchange opportunities to the
+                    psychosocial learning environment.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -442,8 +452,12 @@ export default function Home() {
               <div className={styles.educationBox}>
                 <h3>Courses</h3>
                 <p>
-                  Completed online courses and bootcamps focusing on user
-                  experience, interaction design, and accessibility.
+                  Completed online courses and bootcamps focused on topics
+                  related to my field of study, such as digital marketing,
+                  digital strategy, and AI. I also pursued additional courses
+                  out of personal interest, including Lean Manufacturing and
+                  Robotics in Systems, as well as Financial Markets. A more
+                  detailed overview is available under the "Courses" section.
                 </p>
               </div>
             </div>
