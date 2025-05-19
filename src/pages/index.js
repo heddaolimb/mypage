@@ -9,7 +9,7 @@ export default function Home() {
   const [showDogs, setShowDogs] = useState(false);
   const [showHearts, setShowHearts] = useState(false);
   const [showEducation, setShowEducation] = useState(false); // ✅ NY DEL
-
+  const [showProjects, setShowProjects] = useState(false);
   const [selectedJob, setSelectedJob] = useState("job1");
 
   // ✅ Endret: description er nå array
@@ -55,11 +55,53 @@ export default function Home() {
     },
   };
 
+  const projects = [
+    {
+      title: "Heimat App",
+      image: "/images/heimatapp.png",
+      description:
+        "We developed a mobile application called Heimat for Gjestvang Eiendom to improve the student housing experience. Through surveys, interviews, and market research, we identified loneliness and lack of social belonging as key issues among students. Using design thinking methodology, we built personas, conducted user testing, and iterated on low- and high-fidelity prototypes. The final product is a Progressive Web App (PWA) built with SvelteKit, using JavaScript, HTML/CSS, and Firebase for user authentication, Firestore database, and hosting. The app features real-time chat, an event calendar, announcement feeds, and structured pages for building-specific information. It uses a modular component-based architecture with route-based file structure (+page.svelte, +layout.svelte) and dynamic routing for handling user-generated content. Data flow and UI states are managed using reactive Svelte stores, and the app includes service workers for offline support and fast load times. Hosting is handled via Firebase Hosting with secure TLS encryption.",
+      tech: [
+        "#SvelteKit",
+        "#Firebase",
+        "#JavaScript",
+        "#HTML",
+        "#CSS",
+        "#UXUI",
+      ],
+      link: "https://appheimat.netlify.app/", // tom hvis ingen link
+    },
+    {
+      title: "Flower Power – Cosmo & Wanda",
+      image: "/images/cosmowanda.png",
+      description:
+        "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation. Although several planned features like temperature sensors and app integration were not fully implemented, the prototype successfully demonstrated a scalable, user-centered IoT solution for smart plant care.",
+      tech: [
+        "#Microbit",
+        "#Figma",
+        "#IoT",
+        "#SensorTechnology",
+        "#OLEDdisplay",
+        "#Automation",
+        "#UXDesign",
+      ],
+      link: "https://github.com/bruker/portfolio",
+    },
+    {
+      title: "AI Mood Journal",
+      image: "/images/mood-journal.png",
+      description:
+        "An AI-powered journal to track and analyze emotional patterns.",
+      tech: ["React", "OpenAI API", "MongoDB"],
+      link: "https://github.com/bruker/ai-journal",
+    },
+  ];
   // ...
 
   const aboutRef = useRef(null);
   const dogsRef = useRef(null);
   const educationRef = useRef(null); // ✅ NY DEL
+  const projectsRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -133,6 +175,26 @@ export default function Home() {
     return () => {
       if (educationRef.current) {
         observerEducation.unobserve(educationRef.current);
+      }
+    };
+  }, []);
+  useEffect(() => {
+    const observerProjects = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowProjects(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (projectsRef.current) {
+      observerProjects.observe(projectsRef.current);
+    }
+
+    return () => {
+      if (projectsRef.current) {
+        observerProjects.unobserve(projectsRef.current);
       }
     };
   }, []);
@@ -499,8 +561,41 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="projects" className={styles.section}>
-          <div>Projects</div>
+        <section
+          id="projects"
+          className={`${styles.section} ${showProjects ? styles.show : ""}`}
+          ref={projectsRef}
+        >
+          <h2 className={styles.sectionTitle}>Projects</h2>
+          <div
+            className={`${styles.projectsGrid} ${
+              showProjects ? styles.show : ""
+            }`}
+          >
+            {projects.map((proj, idx) => (
+              <div key={idx} className={styles.projectCard}>
+                <img
+                  src={proj.image}
+                  alt={proj.title}
+                  className={styles.projectImage}
+                />
+                <h3>{proj.title}</h3>
+                <p>{proj.description}</p>
+                <div className={styles.techList}>
+                  {proj.tech.map((t, i) => (
+                    <span key={i} className={styles.techTag}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                {proj.link && (
+                  <a href={proj.link} target="_blank" rel="noopener noreferrer">
+                    View Project
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
         </section>
         <section id="courses" className={styles.section}>
           <div>Courses and Certifications</div>

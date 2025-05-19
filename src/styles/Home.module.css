@@ -475,6 +475,7 @@
     opacity: 0;
     transform: translateY(-100px) scale(1.5) rotate(20deg);
   }
+  /**EDUCATION SECTION*/
 }
 .educationTimeline {
   position: relative;
@@ -564,6 +565,8 @@
 }
 .bulletList li {
   font-weight: normal; /* 🔧 sørger for at teksten ikke er bold */
+
+  /**JOBS SECTION*/
 }
 .jobSection {
   display: flex;
@@ -638,4 +641,100 @@
   font-size: 1rem;
   color: #cd8f6d;
   margin-bottom: 0.5rem;
+}
+/**PROJECT SECTION*/
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 80%;
+  margin-left: 220px;
+  margin-top: 2rem;
+  align-items: start; /* 👈 viktig! sørger for lik vertikal plassering */
+}
+
+.projectCard {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* fyll hele grid-raden */
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+.projectCard:nth-child(3) {
+  grid-column: 1 / span 2;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.projectImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.projectCard h3 {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  color: #f2e9e4;
+  font-family: "RoseSally", sans-serif;
+}
+
+.projectCard p {
+  font-size: 1rem;
+  color: #bfbfbf;
+  margin: 0.5rem 0 1rem 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #bfbfbf;
+  font-family: "American", sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.techTag {
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.projectCard a {
+  color: #cd8f6d;
+  text-decoration: underline;
+  font-family: "American", sans-serif;
+  font-size: 0.9rem;
+}
+.projectsGrid {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.projectsGrid.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (min-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
