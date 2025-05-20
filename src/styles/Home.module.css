@@ -742,6 +742,14 @@
 
 /*course section*/
 
+.section[id="courses"] {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .coursesGrid {
   display: flex;
   flex-wrap: wrap;
@@ -756,15 +764,16 @@
   overflow: hidden;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
+  margin-left: 300px; /* behold denne alene */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .courseCard {
-  flex: 0 0 100%;
-  max-width: 500%;
+  flex: 0 0 auto;
+  max-width: 400px;
+  width: 100%;
   margin: 0 auto;
   background: #1a1a1a;
   padding: 1.5rem;
@@ -804,12 +813,7 @@
   line-height: 1.4;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.courseSlider {
-  overflow: hidden;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-}
+
 .courseTrack {
   display: flex;
   transition: transform 0.6s ease;
