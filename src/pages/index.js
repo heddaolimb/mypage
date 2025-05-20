@@ -12,6 +12,12 @@ export default function Home() {
   const [showProjects, setShowProjects] = useState(false);
   const [selectedJob, setSelectedJob] = useState("job1");
   const [currentCourse, setCurrentCourse] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState("");
   // ✅ Endret: description er nå array
   const jobs = {
     job1: {
@@ -257,6 +263,33 @@ export default function Home() {
   const handleSayHi = () => {
     setShowHearts(true);
     setTimeout(() => setShowHearts(false), 2000);
+  };
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("Sender...");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setFormStatus("Meldingen ble sendt!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setFormStatus("Noe gikk galt. Prøv igjen.");
+      }
+    } catch (err) {
+      setFormStatus("Feil ved sending.");
+    }
   };
 
   return (
@@ -716,9 +749,36 @@ export default function Home() {
             I'm currently open to new opportunities, collaborations, or just a
             chat. Feel free to reach out!
           </p>
-          <a href="mailto:hedda@example.com" className={styles.contactButton}>
-            Say Hello
-          </a>
+
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+            />
+            <button type="submit" className={styles.contactButton}>
+              Send Message
+            </button>
+            <p>{formStatus}</p>
+          </form>
         </section>
       </div>
     </>
