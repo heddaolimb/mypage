@@ -867,3 +867,32 @@
 .courseDot.active {
   background: #cd8f6d;
 }
+
+/*contact ssection*/
+.contactText {
+  font-size: 1.2rem;
+  color: #bfbfbf;
+  max-width: 700px;
+  margin-left: 380px;
+  margin-bottom: 2rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.contactButton {
+  display: inline-block;
+  background: none;
+  border: 2px solid #f2e9e4;
+  color: #f2e9e4;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-left: 380px;
+}
+
+.contactButton:hover {
+  background: #f2e9e4;
+  color: #17111f;
+  transform: scale(1.05);
+}

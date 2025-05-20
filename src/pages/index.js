@@ -711,7 +711,14 @@ export default function Home() {
           </div>
         </section>
         <section id="contact" className={styles.section}>
-          <div>Contact</div>
+          <h2 className={styles.sectionTitle}>Contact</h2>
+          <p className={styles.contactText}>
+            I'm currently open to new opportunities, collaborations, or just a
+            chat. Feel free to reach out!
+          </p>
+          <a href="mailto:hedda@example.com" className={styles.contactButton}>
+            Say Hello
+          </a>
         </section>
       </div>
     </>
