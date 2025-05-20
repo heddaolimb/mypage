@@ -73,7 +73,7 @@ export default function Home() {
     },
     {
       title: "Flower Power – Cosmo & Wanda",
-      image: "/images/cosmowanda.png",
+      image: "/images/cosmowanda.jpg",
       description:
         "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation. Although several planned features like temperature sensors and app integration were not fully implemented, the prototype successfully demonstrated a scalable, user-centered IoT solution for smart plant care. Note: The prototype shows selected parts of the design flow. Not all screens are linked, but the core concept is demonstrated.",
       tech: [
@@ -133,11 +133,15 @@ export default function Home() {
   // legg til flere kurs senere
 
   const handlePrev = () => {
-    setCurrentCourse((prev) => (prev - 1 + courses.length) % courses.length);
+    const newIndex =
+      currentCourse === 0 ? courses.length - 1 : currentCourse - 1;
+    setCurrentCourse(newIndex);
   };
 
   const handleNext = () => {
-    setCurrentCourse((prev) => (prev + 1) % courses.length);
+    const newIndex =
+      currentCourse === courses.length - 1 ? 0 : currentCourse + 1;
+    setCurrentCourse(newIndex);
   };
   // ...
 
@@ -225,6 +229,7 @@ export default function Home() {
     const observerProjects = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          console.log("Projects section is visible");
           setShowProjects(true);
         }
       },
@@ -604,13 +609,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section
-          id="projects"
-          className={`${styles.section} ${showProjects ? styles.show : ""}`}
-          ref={projectsRef}
-        >
+        <section id="projects" className={styles.section}>
           <h2 className={styles.sectionTitle}>Projects</h2>
           <div
+            ref={projectsRef}
             className={`${styles.projectsGrid} ${
               showProjects ? styles.show : ""
             }`}
@@ -665,6 +667,11 @@ export default function Home() {
                   className={`${styles.courseCard} ${
                     idx === currentCourse ? styles.active : ""
                   }`}
+                  style={{
+                    flex: "0 0 100%",
+                    maxWidth: "100%",
+                    transition: "transform 0.5s ease",
+                  }}
                 >
                   <img
                     src={course.image}
