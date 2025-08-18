@@ -38,8 +38,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -3; /* alltid bak */
+  z-index: 0;
   overflow: hidden;
+  pointer-events: none; /* viktig */
 }
 
 .wave-scroll {
@@ -63,8 +64,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -4; /* bak wave */
+  z-index: 1;
   overflow: hidden;
+  pointer-events: none; /* viktig */
 }
 
 .star {
