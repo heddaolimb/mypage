@@ -6,9 +6,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showAboutItems, setShowAboutItems] = useState(false);
-  const [showDogs, setShowDogs] = useState(false);
-  const [showHearts, setShowHearts] = useState(false);
-  const [showEducation, setShowEducation] = useState(false); // ✅ NY DEL
+  const [showEducation, setShowEducation] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [selectedJob, setSelectedJob] = useState("job1");
   const [currentCourse, setCurrentCourse] = useState(0);
@@ -18,7 +16,14 @@ export default function Home() {
     message: "",
   });
   const [formStatus, setFormStatus] = useState("");
-  // ✅ Endret: description er nå array
+  const [toast, setToast] = useState({ message: "", type: "" });
+
+  const showToast = (message, type) => {
+    setToast({ message, type });
+    setTimeout(() => setToast({ message: "", type: "" }), 3000); // forsvinner etter 3s
+  };
+
+  // ✅ description som array
   const jobs = {
     job1: {
       title: "Health care assistant",
@@ -75,13 +80,13 @@ export default function Home() {
         "#CSS",
         "#UXUI",
       ],
-      link: "https://appheimat.netlify.app/", // tom hvis ingen link
+      link: "https://appheimat.netlify.app/",
     },
     {
       title: "Flower Power – Cosmo & Wanda",
       image: "/images/cosmowanda.jpg",
       description:
-        "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation. Although several planned features like temperature sensors and app integration were not fully implemented, the prototype successfully demonstrated a scalable, user-centered IoT solution for smart plant care. Note: The prototype shows selected parts of the design flow. Not all screens are linked, but the core concept is demonstrated.",
+        "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation.",
       tech: [
         "#Microbit",
         "#Figma",
@@ -91,13 +96,13 @@ export default function Home() {
         "#Automation",
         "#UXDesign",
       ],
-      link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power?node-id=160-134&t=z5g2qbMi22hYaXM6-1&scaling=scale-down&content-scaling=fixed&page-id=157%3A117&starting-point-node-id=160%3A134&show-proto-sidebar=1",
+      link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
     },
     {
       title: "My page",
       image: "/images/code.png",
       description:
-        "I designed and developed a fully responsive, animated portfolio website using Next.js, React Hooks, and CSS Modules to present my education, experience, and projects in a dynamic and user-friendly way. The site features scroll-based animations with IntersectionObserver, interactive job tabs with stateful display logic, and dynamic project rendering using structured data objects. The layout includes sections such as About Me, Education, Work, Projects, and Contact, each enhanced with smooth transitions and custom styling.Styling is handled with vanilla CSS and CSS animations, including a typing effect for the hero section and animated hearts for interactive elements. All content is modular and component-based, designed for easy updates and extension. The portfolio emphasizes clean UI/UX, attention to detail, and highlights both technical skills and personal interests – such as my love for dogs.",
+        "I designed and developed a fully responsive, animated portfolio website using Next.js, React Hooks, and CSS Modules to present my education, experience, and projects in a dynamic and user-friendly way. The site features scroll-based animations with IntersectionObserver, interactive job tabs with stateful display logic, and dynamic project rendering using structured data objects. The layout includes sections such as About Me, Education, Work, Projects, and Contact, each enhanced with smooth transitions and custom styling.",
       tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
       link: "https://github.com/heddaolimb/mypage.git",
     },
@@ -119,24 +124,7 @@ export default function Home() {
       why: "I'm curious about AI and how it's used in real-world applications.",
       learned: "Machine learning basics, ethical use, and practical AI tools.",
     },
-    {
-      title: "Intro to AI",
-      image: "/images/ai-course.png",
-      link: "https://example.com/ai-course",
-      why: "I'm curious about AI and how it's used in real-world applications.",
-      learned: "Machine learning basics, ethical use, and practical AI tools.",
-    },
-    {
-      title: "Intro to AI",
-      image: "/images/ai-course.png",
-      link: "https://example.com/ai-course",
-      why: "I'm curious about AI and how it's used in real-world applications.",
-      learned: "Machine learning basics, ethical use, and practical AI tools.",
-    },
-    // legg til flere kurs her
   ];
-
-  // legg til flere kurs senere
 
   const handlePrev = () => {
     const newIndex =
@@ -149,11 +137,9 @@ export default function Home() {
       currentCourse === courses.length - 1 ? 0 : currentCourse + 1;
     setCurrentCourse(newIndex);
   };
-  // ...
 
   const aboutRef = useRef(null);
-  const dogsRef = useRef(null);
-  const educationRef = useRef(null); // ✅ NY DEL
+  const educationRef = useRef(null);
   const projectsRef = useRef(null);
 
   useEffect(() => {
@@ -191,27 +177,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const observerDogs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowDogs(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (dogsRef.current) {
-      observerDogs.observe(dogsRef.current);
-    }
-
-    return () => {
-      if (dogsRef.current) {
-        observerDogs.unobserve(dogsRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
     const observerEducation = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -231,11 +196,11 @@ export default function Home() {
       }
     };
   }, []);
+
   useEffect(() => {
     const observerProjects = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log("Projects section is visible");
           setShowProjects(true);
         }
       },
@@ -260,10 +225,6 @@ export default function Home() {
     }
   };
 
-  const handleSayHi = () => {
-    setShowHearts(true);
-    setTimeout(() => setShowHearts(false), 2000);
-  };
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -282,13 +243,15 @@ export default function Home() {
       });
 
       if (res.ok) {
-        setFormStatus("Meldingen ble sendt!");
+        showToast("Meldingen ble sendt!", "success");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setFormStatus("Noe gikk galt. Prøv igjen.");
+        showToast("Noe gikk galt. Prøv igjen.", "error");
       }
     } catch (err) {
-      setFormStatus("Feil ved sending.");
+      showToast("Feil ved sending.", "error");
+    } finally {
+      setFormStatus("");
     }
   };
 
@@ -301,7 +264,7 @@ export default function Home() {
       {/* NAVBAR */}
       <header className={styles.navbar}>
         <div className={styles.logo}>HO</div>
-        <nav className={styles.navLinks}>
+        <nav className={styles.navLinks} role="navigation">
           <span onClick={() => scrollToSection("about")}>About</span>
           <span onClick={() => scrollToSection("education")}>Education</span>
           <span onClick={() => scrollToSection("work")}>Work</span>
@@ -312,10 +275,10 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <div className={styles.container}>
+      <section className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>Hi, I'm Hedda.</h1>
-          <p className={styles.subtitle}>Welcome to my website!</p>
+          <h2 className={styles.subtitle}>Welcome to my website!</h2>
           <button
             className={styles.exploreBtn}
             onClick={() => scrollToSection("about")}
@@ -323,11 +286,11 @@ export default function Home() {
             Explore
           </button>
         </div>
-      </div>
+      </section>
 
       {/* SIDEBAR */}
       {showSidebar && (
-        <div className={styles.sidebar}>
+        <aside className={styles.sidebar}>
           <img
             src="/images/meg.jpg"
             alt="Hedda Olimb"
@@ -348,12 +311,12 @@ export default function Home() {
               </a>
             </p>
           </div>
-        </div>
+        </aside>
       )}
 
       {/* MAIN */}
-      <div className={styles.mainContent}>
-        {/* About Me beholdes urørt */}
+      <main className={styles.mainContent}>
+        {/* About Me */}
         <section id="about" className={styles.section}>
           <h2 className={styles.sectionTitle}>About Me</h2>
           <div ref={aboutRef} className={styles.aboutBox}>
@@ -396,96 +359,15 @@ export default function Home() {
               }`}
             >
               <span className={styles.icon}>
-                <img src="/icons/dogpugface.svg" alt="PugFace" />
-              </span>
-              My biggest passion is dogs – I have six of them that you’ll get to
-              meet soon.
-            </div>
-            <div
-              className={`${styles.aboutItem} ${
-                showAboutItems ? styles.show : ""
-              }`}
-            >
-              <span className={styles.icon}>
                 <img src="/icons/game.svg" alt="Game" />
               </span>
               Curious and always eager to learn – currently exploring game
               development.
             </div>
           </div>
-
-          {/* Hundeseksjon */}
-          <div
-            ref={dogsRef}
-            className={`${styles.dogSection} ${showDogs ? styles.show : ""}`}
-          >
-            <h3 className={styles.dogTitle}>Say hi to my dogs!</h3>
-            <div className={styles.dogImgBox}>
-              <img
-                src="/images/girls-fotor-bg-remover-20250515175420.png"
-                alt="My dogs"
-                className={styles.dogImg}
-              />
-              <div
-                className={`${styles.speakBubble} ${
-                  showDogs ? styles.show : ""
-                }`}
-                onClick={handleSayHi}
-              >
-                Hi!
-              </div>
-              <span
-                className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "20%", left: "20%", transitionDelay: "0.3s" }}
-              >
-                Fido
-              </span>
-              <span
-                className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "10%", left: "55%", transitionDelay: "0.6s" }}
-              >
-                Luna
-              </span>
-              <span
-                className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "15%", left: "75%", transitionDelay: "0.9s" }}
-              >
-                Bella
-              </span>
-              <span
-                className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "60%", left: "18%", transitionDelay: "1.2s" }}
-              >
-                Max
-              </span>
-              <span
-                className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "58%", left: "50%", transitionDelay: "1.5s" }}
-              >
-                Milo
-              </span>
-              <span
-                className={`${styles.dogName} ${styles.show}`}
-                style={{ top: "62%", left: "80%", transitionDelay: "1.8s" }}
-              >
-                Nala
-              </span>
-              {showHearts && (
-                <div className={styles.hearts}>
-                  <span>❤️</span>
-                  <span>❤️</span>
-                  <span>❤️</span>
-                  <span>❤️</span>
-                  <span>❤️</span>
-                  <span>❤️</span>
-                  <span>❤️</span>
-                </div>
-              )}
-            </div>
-          </div>
         </section>
 
-        {/* Resten */}
+        {/* Education */}
         <section id="education" className={styles.section}>
           <h2 className={styles.sectionTitle}>Education</h2>
           <div
@@ -494,7 +376,7 @@ export default function Home() {
               showEducation ? styles.show : ""
             }`}
           >
-            <div
+            <article
               className={styles.educationItem}
               style={{ transitionDelay: "0.3s" }}
             >
@@ -505,11 +387,9 @@ export default function Home() {
                   <p>
                     Specialization in general studies, with subjects including:
                   </p>
-
                   <li>
-                    English and Spanish (participated in Erasmus+ project
-                    Learning through Languages and Culture in 2017 at Institut
-                    de Bruguers, Gava, Spain).
+                    English and Spanish (Erasmus+ project in 2017, Institut de
+                    Bruguers, Spain).
                   </li>
                   <li>Information Technology 1.</li>
                   <li>Marketing and Management 1 & 2.</li>
@@ -518,9 +398,9 @@ export default function Home() {
                   <li>Law 1 (Norwegian Legal Studies).</li>
                 </ul>
               </div>
-            </div>
+            </article>
 
-            <div
+            <article
               className={styles.educationItem}
               style={{ transitionDelay: "0.7s" }}
             >
@@ -540,8 +420,8 @@ export default function Home() {
                     APIs, and Postman.
                   </li>
                   <li>
-                    Used tools like Figma, Miro, GitHub, Adobe Creative Cloud
-                    (Photoshop, InDesign), and VS Code.
+                    Used tools like Figma, Miro, GitHub, Adobe Creative Cloud,
+                    and VS Code.
                   </li>
                   <li>
                     Experienced with responsive layouts, prototyping, and
@@ -576,18 +456,13 @@ export default function Home() {
                   </li>
                   <li>
                     Served as an elected representative for the Faculty of
-                    Architecture and Design in 2023. The Student Council
-                    (Studenttinget) is the highest student body at NTNU and
-                    represents all NTNU students. During council meetings,
-                    policies affecting the entire student body are discussed and
-                    decided—ranging from exchange opportunities to the
-                    psychosocial learning environment.
+                    Architecture and Design in 2023.
                   </li>
                 </ul>
               </div>
-            </div>
+            </article>
 
-            <div
+            <article
               className={styles.educationItem}
               style={{ transitionDelay: "1.1s" }}
             >
@@ -595,19 +470,17 @@ export default function Home() {
               <div className={styles.educationBox}>
                 <h3>Courses</h3>
                 <p>
-                  Completed online courses and bootcamps focused on topics
-                  related to my field of study, such as digital marketing,
-                  digital strategy, and AI. I also pursued additional courses
-                  out of personal interest, including Lean Manufacturing and
-                  Robotics in Systems, as well as Financial Markets. A more
-                  detailed overview is available under the "Courses" section.
+                  Completed online courses and bootcamps focused on digital
+                  marketing, AI, Lean Manufacturing, Robotics, and Financial
+                  Markets. A more detailed overview is available under the
+                  "Courses" section.
                 </p>
               </div>
-            </div>
+            </article>
           </div>
         </section>
 
-        {/* ✅ Endret WORK SECTION */}
+        {/* Work Experience */}
         <section id="work" className={styles.section}>
           <h2 className={styles.sectionTitle}>Work Experience</h2>
           <div
@@ -642,6 +515,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Projects */}
         <section id="projects" className={styles.section}>
           <h2 className={styles.sectionTitle}>Projects</h2>
           <div
@@ -651,7 +526,7 @@ export default function Home() {
             }`}
           >
             {projects.map((proj, idx) => (
-              <div key={idx} className={styles.projectCard}>
+              <article key={idx} className={styles.projectCard}>
                 <img
                   src={proj.image}
                   alt={proj.title}
@@ -671,10 +546,12 @@ export default function Home() {
                     View Project
                   </a>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         </section>
+
+        {/* Courses */}
         <section id="courses" className={styles.section}>
           <h2 className={styles.sectionTitle}>Courses</h2>
 
@@ -743,44 +620,60 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="contact" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Contact</h2>
-          <p className={styles.contactText}>
-            I'm currently open to new opportunities, collaborations, or just a
-            chat. Feel free to reach out!
-          </p>
 
-          <form className={styles.contactForm} onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            />
-            <button type="submit" className={styles.contactButton}>
-              Send Message
-            </button>
-            <p>{formStatus}</p>
-          </form>
+        {/* Contact */}
+        <section id="contact" className={styles.section}>
+          <div className={styles.contactSection}>
+            <h2 className={styles.sectionTitle}>Contact</h2>
+            <p className={styles.contactText}>
+              I'm currently open to new opportunities, collaborations, or just a
+              chat. Feel free to reach out!
+            </p>
+
+            <form className={styles.contactForm} onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              />
+              <button type="submit" className={styles.contactButton}>
+                Send Message
+              </button>
+              <p>{formStatus}</p>
+            </form>
+          </div>
         </section>
-      </div>
+        {toast.message && (
+          <div className={`${styles.toast} ${styles[toast.type]}`}>
+            {toast.message}
+          </div>
+        )}
+      </main>
+
+      {/* FOOTER */}
+      <footer className={styles.footer}>
+        <p>
+          &copy; {new Date().getFullYear()} Hedda Olimb. All rights reserved.
+        </p>
+      </footer>
     </>
   );
 }
