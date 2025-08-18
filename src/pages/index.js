@@ -258,7 +258,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Hedda Olimb Portfolio</title>
+        <title>Hedda Olimb </title>
       </Head>
 
       {/* NAVBAR */}
@@ -622,9 +622,10 @@ export default function Home() {
         </section>
 
         {/* Contact */}
+        {/* Contact */}
         <section id="contact" className={styles.section}>
+          <h2 className={styles.sectionTitle}>Contact</h2> {/* flyttet ut */}
           <div className={styles.contactSection}>
-            <h2 className={styles.sectionTitle}>Contact</h2>
             <p className={styles.contactText}>
               I'm currently open to new opportunities, collaborations, or just a
               chat. Feel free to reach out!
@@ -661,6 +662,7 @@ export default function Home() {
             </form>
           </div>
         </section>
+
         {toast.message && (
           <div className={`${styles.toast} ${styles[toast.type]}`}>
             {toast.message}

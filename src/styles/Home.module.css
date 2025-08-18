@@ -658,104 +658,49 @@
 }
 
 /* CONTACT */
-.contactSection {
-  background: #fff; /* hvit boks */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* soft shadow */
-  padding: 3rem;
-  max-width: 800px;
-  margin: 0 auto; /* sentrer boksen */
-}
-
-.contactSection h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #0a0a0f;
-  text-align: center;
-}
-
 .contactText {
-  text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  color: #bfbfbf;
+  max-width: 700px;
+  margin-left: 380px;
   margin-bottom: 2rem;
-  color: #333;
-  line-height: 1.6;
-}
-
-.contactForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-family: "Inter", sans-serif; /* ren, moderne font */
-}
-
-.contactForm input,
-.contactForm textarea {
-  padding: 0.9rem 1.1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  outline: none;
-  transition: border 0.3s ease;
-}
-
-.contactForm input:focus,
-.contactForm textarea:focus {
-  border-color: #cd8f6d;
 }
 
 .contactButton {
-  background: #cd8f6d;
-  border: none;
-  padding: 0.9rem;
+  display: inline-block;
+  background: none;
+  border: 2px solid #cd8f6d;
+  padding: 0.8rem 2rem;
+  color: #cd8f6d;
   border-radius: 8px;
-  color: #fff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
-
 .contactButton:hover {
-  background: #b57757;
-  transform: translateY(-2px);
-}
-.toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 500;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  animation: fadeIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  background: #cd8f6d;
+  color: #0a0a0f;
+  transform: scale(1.05);
 }
 
-.toast.success {
-  background: #28a745; /* grønn */
+.contactForm {
+  max-width: 700px;
+  margin-left: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contactForm input,
+.contactForm textarea {
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.toast.error {
-  background: #dc3545; /* rød */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+.contactForm textarea {
+  resize: vertical;
+  min-height: 120px;
 }
 
 /* FOOTER */
