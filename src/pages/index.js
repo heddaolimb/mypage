@@ -34,7 +34,7 @@ export default function Home() {
         description:
           "Website of Hedda Olimb – Web Developer. Explore projects, education, work experience, courses and contact.",
         keywords:
-          "Hedda Olimb, web developer, portfolio, projects, courses, contact, UX, UI, React, Next.js",
+          "Hedda Olimb, web developer, website, projects, courses, contact, UX, UI, React, Next.js",
       },
       skip: "Skip to content",
       nav: ["About", "Education", "Work", "Projects", "Courses", "Contact"],
@@ -225,11 +225,11 @@ export default function Home() {
 
     no: {
       meta: {
-        title: "Hedda Olimb – Portfolio",
+        title: "Hedda Olimb – Website",
         description:
-          "Portefølje for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
+          "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
         keywords:
-          "Hedda Olimb, webutvikler, portefølje, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
+          "Hedda Olimb, webutvikler, nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
       },
       skip: "Hopp til innhold",
       nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
@@ -421,11 +421,11 @@ export default function Home() {
     // --- Norwegian translation ---
     no: {
       meta: {
-        title: "Hedda Olimb – Portefølje",
+        title: "Hedda Olimb – Nettside",
         description:
-          "Portefølje for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
+          "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
         keywords:
-          "Hedda Olimb, webutvikler, portefølje, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
+          "Hedda Olimb, webutvikler, Nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
       },
       skip: "Hopp til innhold",
       nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
