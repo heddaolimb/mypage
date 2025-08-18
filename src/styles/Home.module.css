@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: rgba(23, 30, 45, 0.8); /* mer gjennomsiktig */
+  background: rgba(23, 30, 45, 0.6); /* mer gjennomsiktig */
   position: relative;
   z-index: 2;
   scroll-margin-top: 80px; /* juster til høyden på navbaren din */
