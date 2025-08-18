@@ -26,14 +26,35 @@ body {
   background: #0f172a; /* fallback */
   overflow-x: hidden;
 }
+
+.hero {
+  position: relative;
+  z-index: 1; /* gjør hero innhold foran bølge/stjerner */
+}
+
 .wave-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -3;
+  z-index: -3; /* alltid bak */
   overflow: hidden;
+}
+
+.wave-scroll {
+  width: 5760px;
+  height: 100%;
+  animation: waveMove 55s linear infinite; /* raskere enn 35s */
+}
+
+@keyframes waveMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-2880px); /* flytt én bølgelengde */
+  }
 }
 
 .stars {
