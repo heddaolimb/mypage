@@ -46,6 +46,7 @@
   color: #f2e9e4;
   position: relative;
   z-index: 2;
+  scroll-margin-top: 80px; /* juster til høyden på navbaren din */
 }
 
 .sectionTitle {
@@ -196,9 +197,9 @@
   margin-bottom: 1rem;
   white-space: nowrap;
   overflow: hidden;
-  width: 23ch;
+  width: 19ch; /* engelsk */
   display: inline-block;
-  animation: typingTitle 3s steps(24, end) forwards;
+  animation: typingTitle 3s steps(19, end) forwards;
 }
 
 .title::after {
@@ -209,7 +210,7 @@
   width: 0.12em;
   height: 100%;
   background-color: #f2e9e4;
-  animation: blink 0.8s step-end infinite, hideCursor 0s 3s forwards;
+  animation: blink 0.5s step-end infinite, hideCursor 0s 2s forwards;
 }
 
 .subtitle {
@@ -218,7 +219,7 @@
   margin-bottom: 2rem;
   white-space: nowrap;
   overflow: hidden;
-  width: 0;
+  width: 21ch; /* engelsk */
   display: inline-block;
   opacity: 0;
   animation: typingSubtitle 3s steps(21, end) forwards;
@@ -263,13 +264,25 @@
   cursor: pointer;
 }
 
+/* --- Norsk varianter --- */
+.titleNo {
+  width: 28ch; /* justert for "Hei, jeg heter Hedda." */
+  animation: typingTitleNo 3s steps(28, end) forwards;
+}
+
+.subtitleNo {
+  width: 33ch; /* justert for "Velkommen til nettsiden min!" */
+  animation: typingSubtitleNo 3s steps(33, end) forwards;
+  animation-delay: 3.5s;
+}
+
 /* KEYFRAMES */
 @keyframes typingTitle {
   from {
     width: 0ch;
   }
   to {
-    width: 20ch;
+    width: 19ch;
   }
 }
 
@@ -280,6 +293,26 @@
   }
   100% {
     width: 21ch;
+    opacity: 1;
+  }
+}
+
+@keyframes typingTitleNo {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 28ch;
+  }
+}
+
+@keyframes typingSubtitleNo {
+  0% {
+    width: 0ch;
+    opacity: 1;
+  }
+  100% {
+    width: 33ch;
     opacity: 1;
   }
 }
@@ -711,4 +744,39 @@
   padding: 1rem;
   font-size: 0.9rem;
   margin-top: 3rem;
+}
+
+/*language*/
+.langSwitch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 2rem;
+}
+
+.langBtn {
+  font-family: "American", sans-serif;
+  font-size: 1.1rem;
+  color: #b1b1b1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.langBtn:hover,
+.langBtn:focus {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+.langSep {
+  color: #b1b1b1;
+  font-weight: bold;
+}
+
+.activeLang {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
 }

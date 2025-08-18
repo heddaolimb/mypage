@@ -16,115 +16,690 @@ export default function Home() {
     message: "",
   });
   const [formStatus, setFormStatus] = useState("");
-  const [toast, setToast] = useState({ message: "", type: "" });
+  const [language, setLanguage] = useState("en"); // "en" | "no"
 
-  const showToast = (message, type) => {
-    setToast({ message, type });
-    setTimeout(() => setToast({ message: "", type: "" }), 3000); // forsvinner etter 3s
+  // --- SEO / a11y: oppdater <html lang> ---
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = language === "no" ? "no" : "en";
+    }
+  }, [language]);
+
+  // --- TRANSLATIONS: ALLT INNHOLD (EN + NO) ---
+  const translations = {
+    en: {
+      meta: {
+        title: "Hedda Olimb – Portfolio",
+        description:
+          "Portfolio of Hedda Olimb – Web Developer. Explore projects, education, work experience, courses and contact.",
+        keywords:
+          "Hedda Olimb, web developer, portfolio, projects, courses, contact, UX, UI, React, Next.js",
+      },
+      skip: "Skip to content",
+      nav: ["About", "Education", "Work", "Projects", "Courses", "Contact"],
+      heroTitle: "Hi, I'm Hedda.",
+      heroSubtitle: "Welcome to my website!",
+      explore: "Explore",
+      sidebar: {
+        name: "Hedda Olimb",
+        role: "Web Developer",
+        emailLabel: "Email",
+        phoneLabel: "Phone",
+        phoneValue: "123 45 678",
+        linkedin: "LinkedIn",
+      },
+      aboutTitle: "About Me",
+      aboutItems: [
+        "My name is Hedda, I'm a 25-year-old educated web developer from Norway.",
+        "I have a bachelor's degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
+        "Experienced in web development, UX/UI design, graphic design, and more.",
+        "Curious and always eager to learn – currently exploring game development.",
+      ],
+
+      educationTitle: "Education",
+      education: [
+        {
+          year: "2015 - 2018",
+          title: "High School – Hadeland Upper Secondary School (Norway)",
+          descLead:
+            "Specialization in general studies, with subjects including:",
+          desc: [
+            "English and Spanish (Erasmus+ project in 2017, Institut de Bruguers, Spain).",
+            "Information Technology 1.",
+            "Marketing and Management 1 & 2.",
+            "Politics and Human Rights 1 & 2.",
+            "Sociology and Social Anthropology.",
+            "Law 1 (Norwegian Legal Studies).",
+          ],
+        },
+        {
+          year: "2020 - 2023",
+          title:
+            "Bachelor in Web Development - Norwegian University of Science and Technology (NTNU)",
+          descLead: null,
+          desc: [
+            "Built static and dynamic websites using HTML, CSS, JavaScript, Node.js, PHP, and React.",
+            "Familiar with Tailwind, Express, SQL (MySQL), MongoDB, REST APIs, and Postman.",
+            "Used tools like Figma, Miro, GitHub, Adobe Creative Cloud, and VS Code.",
+            "Experienced with responsive layouts, prototyping, and mobile-first design principles.",
+            "Worked on project-based development with planning and collaboration.",
+            "Covered accessibility (WCAG), SEO (meta-tags), and usability testing.",
+            "Learned information architecture, databases, and content structuring.",
+            "Explored cloud tech, deployment, and Raspberry Pi server usage.",
+            "Studied history and protocols of the Internet and the WWW.",
+            "Understood GDPR, ethics, legal frameworks, and research methods.",
+            "All coursework in English – fluent in written and spoken English.",
+            "Served as an elected representative for the Faculty of Architecture and Design in 2023.",
+          ],
+        },
+        {
+          year: "2024 - 2025",
+          title: "Courses",
+          descLead: null,
+          desc: [
+            "Completed online courses and bootcamps focused on digital marketing, AI, Lean Manufacturing, Robotics, and Financial Markets. A more detailed overview is available under the 'Courses' section.",
+          ],
+        },
+      ],
+      workTitle: "Work Experience",
+      jobs: {
+        job1: {
+          title: "Health care assistant",
+          company: "Villa Skaar Jevnaker",
+          period: "Summers/more – 2018, 2020, 2021, 2022, 2023, 2024",
+          description: [
+            "Gained practical experience in geriatric care, infection control procedures, and basic medical knowledge related to common illnesses affecting the elderly.",
+            "Received training in safe patient handling and mobility techniques, including how to prevent injuries during heavy lifting and transfers.",
+            "Worked extensively in one-on-one care settings, which included instruction in personal safety and de-escalation techniques to manage potentially aggressive or unpredictable situations.",
+            "Also acquired knowledge in nutrition, personal hygiene, and the daily routines essential for maintaining residents' physical and mental well-being.",
+          ],
+        },
+        job2: {
+          title: "Operational Soldier",
+          company:
+            "Royal Norwegian Armed Forces (FOH - Norwegian Joint Headquarters)",
+          period: "2019",
+          description: [
+            "Served in the Norwegian Armed Forces at the Joint Operational Headquarters (FOH) as part of the Royal Norwegian Navy.",
+            "Stationed at the Surveillance Center, where I worked with real-time maritime monitoring and situational awareness across Norwegian and NATO waters.",
+            "Operated classified surveillance and command systems in a high-security environment to track, report, and assess sea activity in strategic areas such as the North Atlantic.",
+            "Supported national defense readiness and contributed to the coordination and communication of joint military operations between Norwegian and allied forces.",
+            "Gained hands-on experience with both technical and operational military systems in a maritime setting, focusing on secure information flow, mission support, and operational oversight.",
+            "Certificate in Qualified First Aid – Level 2.",
+            "Certificate in Training on Organizational Work, Meeting Management Techniques, and Health, Safety and Environment (HSE).",
+            "I was appointed as the elected representative within my shift team.",
+          ],
+        },
+        job3: {
+          title: "Health care assistant",
+          company: "JORS - Jevnaker Care and Rehabilitation Center",
+          period: "Summer 2017",
+          description: [
+            "Performed a wide range of essential care duties in a nursing home environment, focusing on hygiene routines, assistance with meals, mobility support, and observing residents' physical and mental health.",
+            "Gained insight into professional standards of elderly care, including communication with residents, documentation of care, and working as part of a multidisciplinary team.",
+            "Built upon previous knowledge in infection control, nutrition, and basic medical care, while adapting to the structured routines of a larger care facility.",
+            "Certificate in Training on Ethics and Attitudes, User Involvement, Use of Force and Coercion, Hygiene and Personal Care, Dementia, Mobility, and Fire Safety.",
+          ],
+        },
+      },
+
+      projectsTitle: "Projects",
+      projectLink: "View Project",
+      projects: [
+        {
+          title: "Heimat App",
+          image: "/images/heimatapp.png",
+          description:
+            "We developed a mobile application called Heimat for Gjestvang Eiendom to improve the student housing experience. Through surveys, interviews, and market research, we identified loneliness and lack of social belonging as key issues among students. Using design thinking methodology, we built personas, conducted user testing, and iterated on low- and high-fidelity prototypes. The final product is a Progressive Web App (PWA) built with SvelteKit, using JavaScript, HTML/CSS, and Firebase for user authentication, Firestore database, and hosting. The app features real-time chat, an event calendar, announcement feeds, and structured pages for building-specific information. It uses a modular component-based architecture with route-based file structure (+page.svelte, +layout.svelte) and dynamic routing for handling user-generated content. Data flow and UI states are managed using reactive Svelte stores, and the app includes service workers for offline support and fast load times. Hosting is handled via Firebase Hosting with secure TLS encryption.",
+          tech: [
+            "#SvelteKit",
+            "#Firebase",
+            "#JavaScript",
+            "#HTML",
+            "#CSS",
+            "#UXUI",
+          ],
+          link: "https://appheimat.netlify.app/",
+        },
+        {
+          title: "Flower Power – Cosmo & Wanda",
+          image: "/images/cosmowanda.jpg",
+          description:
+            "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation.",
+          tech: [
+            "#Microbit",
+            "#Figma",
+            "#IoT",
+            "#SensorTechnology",
+            "#OLEDdisplay",
+            "#Automation",
+            "#UXDesign",
+          ],
+          link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
+        },
+        {
+          title: "My page",
+          image: "/images/code.png",
+          description:
+            "I designed and developed a fully responsive, animated portfolio website using Next.js, React Hooks, and CSS Modules to present my education, experience, and projects in a dynamic and user-friendly way. The site features scroll-based animations with IntersectionObserver, interactive job tabs with stateful display logic, and dynamic project rendering using structured data objects. The layout includes sections such as About Me, Education, Work, Projects, and Contact, each enhanced with smooth transitions and custom styling.",
+          tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
+          link: "https://github.com/heddaolimb/mypage.git",
+        },
+      ],
+      coursesTitle: "Courses",
+      courseWhy: "Why I took this course",
+      courseLearned: "What I learned in this course",
+      courses: [
+        {
+          title: "Digital Marketing Basics",
+          image: "/images/digital-marketing.png",
+          link: "https://example.com/marketing-course",
+          why: "To understand how digital marketing works and how to promote my own projects.",
+          learned:
+            "The fundamentals of SEO, paid ads, content strategy, and analytics.",
+        },
+        {
+          title: "Intro to AI",
+          image: "/images/ai-course.png",
+          link: "https://example.com/ai-course",
+          why: "I'm curious about AI and how it's used in real-world applications.",
+          learned:
+            "Machine learning basics, ethical use, and practical AI tools.",
+        },
+      ],
+      contactTitle: "Contact",
+      contactText:
+        "I'm currently open to new opportunities, collaborations, or just a chat. Feel free to reach out!",
+      form: {
+        name: "Name",
+        email: "Email",
+        message: "Message",
+        send: "Send Message",
+        sending: "Sending...",
+      },
+      footer: "All rights reserved.",
+      toastSuccess: "Message sent!",
+      toastError: "Something went wrong. Try again.",
+    },
+
+    no: {
+      meta: {
+        title: "Hedda Olimb – Portfolio",
+        description:
+          "Portefølje for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
+        keywords:
+          "Hedda Olimb, webutvikler, portefølje, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
+      },
+      skip: "Hopp til innhold",
+      nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
+      heroTitle: "Hei, jeg heter Hedda.",
+      heroSubtitle: "Velkommen til nettsiden min!",
+      explore: "Utforsk",
+      sidebar: {
+        name: "Hedda Olimb",
+        role: "Webutvikler",
+        emailLabel: "E-post",
+        phoneLabel: "Telefon",
+        phoneValue: "123 45 678",
+        linkedin: "LinkedIn",
+      },
+      aboutTitle: "Om meg",
+      aboutItems: [
+        "Jeg heter Hedda, er 25 år gammel og utdannet webutvikler fra Norge.",
+        "Jeg har en bachelor i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
+        "Erfaring innen webutvikling, UX/UI-design, grafisk design og mer.",
+        "Nysgjerrig og alltid lærevillig – utforsker for tiden spillutvikling.",
+      ],
+      educationTitle: "Utdanning",
+      education: [
+        {
+          year: "2015 - 2018",
+          title: "Videregående – Hadeland videregående skole",
+          descLead: "Studiespesialisering med fag som:",
+          desc: [
+            "Engelsk og spansk (Erasmus+ i 2017, Institut de Bruguers, Spania).",
+            "Informasjonsteknologi 1.",
+            "Markedsføring og ledelse 1 & 2.",
+            "Politikk og menneskerettigheter 1 & 2.",
+            "Sosiologi og sosialantropologi.",
+            "Rettslære 1.",
+          ],
+        },
+        {
+          year: "2020 - 2023",
+          title: "Bachelor i webutvikling – NTNU",
+          descLead: null,
+          desc: [
+            "Utviklet statiske og dynamiske nettsider med HTML, CSS, JavaScript, Node.js, PHP og React.",
+            "Kjent med Tailwind, Express, SQL (MySQL), MongoDB, REST-APIer og Postman.",
+            "Brukte verktøy som Figma, Miro, GitHub, Adobe Creative Cloud og VS Code.",
+            "Erfaring med responsive layouts, prototyping og mobile-first design.",
+            "Jobbet prosjektbasert med planlegging og samarbeid.",
+            "Dekket universell utforming (WCAG), SEO (meta-tags) og brukertesting.",
+            "Lært informasjonsarkitektur, databaser og innholdsstrukturering.",
+            "Utforsket skytjenester, utrulling og Raspberry Pi-servere.",
+            "Studert historien og protokollene bak Internett og WWW.",
+            "Forståelse av GDPR, etikk, lovverk og forskningsmetoder.",
+            "Alt kursarbeid på engelsk – flytende skriftlig og muntlig engelsk.",
+            "Valgt som tillitsvalgt for Fakultet for arkitektur og design i 2023.",
+          ],
+        },
+        {
+          year: "2024 - 2025",
+          title: "Kurs",
+          descLead: null,
+          desc: [
+            "Gjennomført nettkurs og bootcamps innen digital markedsføring, AI, Lean Manufacturing, robotikk og finansmarkeder. Mer detaljert oversikt i «Kurs»-seksjonen.",
+          ],
+        },
+      ],
+      workTitle: "Arbeidserfaring",
+      jobs: {
+        job1: {
+          title: "Helsefagarbeider",
+          company: "Villa Skaar Jevnaker",
+          period: "Somre/mer – 2018, 2020, 2021, 2022, 2023, 2024",
+          description: [
+            "Fikk praktisk erfaring innen geriatrisk omsorg, smittevernrutiner og grunnleggende medisinsk kunnskap knyttet til vanlige sykdommer hos eldre.",
+            "Opplæring i trygg pasienthåndtering og forflytningsteknikker, inkludert forebygging av skader ved tunge løft og forflytninger.",
+            "Arbeidet mye i én-til-én-situasjoner med opplæring i egen sikkerhet og de-eskalering ved potensielt utagerende situasjoner.",
+            "Tilegnet kunnskap om ernæring, personlig hygiene og daglige rutiner som ivaretar beboernes fysiske og psykiske helse.",
+          ],
+        },
+        job2: {
+          title: "Operativ soldat",
+          company: "Forsvaret (FOH – Forsvarets operative hovedkvarter)",
+          period: "2019",
+          description: [
+            "Tjenestegjorde i Sjøforsvaret ved FOH.",
+            "Stasjonert på Overvåkingssenteret med sanntids maritim overvåkning og situasjonsforståelse i norske og NATO-områder.",
+            "Opererte klassifiserte overvåknings- og kommandosystemer i et høysikkerhetsmiljø for å spore, rapportere og vurdere sjøaktivitet i strategiske farvann som Nord-Atlanteren.",
+            "Bidro til nasjonal beredskap og samhandling med allierte styrker.",
+            "Praktisk erfaring med både tekniske og operative systemer i maritimt miljø, med fokus på sikker informasjonsflyt, oppdragsstøtte og operativ oversikt.",
+            "Kurs: Kvalifisert førstehjelp nivå 2.",
+            "Kurs: Organisasjonsarbeid, møteteknikk og HMS.",
+            "Tillitsvalgt i skiftlaget.",
+          ],
+        },
+        job3: {
+          title: "Helsefagarbeider",
+          company: "JORS – Jevnaker omsorg og rehabilitering",
+          period: "Sommer 2017",
+          description: [
+            "Utførte et bredt spekter av grunnleggende oppgaver på sykehjem, med fokus på hygiene, måltider, mobilitet og observasjon av beboernes helse.",
+            "Innsikt i faglige standarder for eldreomsorg, inkludert kommunikasjon med beboere, dokumentasjon og tverrfaglig samarbeid.",
+            "Videreutviklet kunnskap om smittevern, ernæring og grunnleggende medisinsk oppfølging i en større institusjon.",
+            "Kurs: Etikk og holdninger, brukermedvirkning, tvang og makt, hygiene og personlig stell, demens, mobilitet og brannsikkerhet.",
+          ],
+        },
+      },
+      // --- Projects ---
+      projectsTitle: "Projects",
+      projectLink: "View Project",
+      projects: [
+        {
+          title: "Heimat App",
+          image: "/images/heimatapp.png",
+          description:
+            "We developed a mobile application called Heimat for Gjestvang Eiendom to improve the student housing experience. Through surveys, interviews, and market research, we identified loneliness and lack of social belonging as key issues among students. Using design thinking methodology, we built personas, conducted user testing, and iterated on prototypes. The final product is a Progressive Web App (PWA) built with SvelteKit, using Firebase for auth, Firestore database and hosting. Features: real-time chat, event calendar, announcement feeds, and structured building pages. Modular architecture with dynamic routing and reactive Svelte stores. Includes offline support with service workers and secure TLS hosting.",
+          tech: [
+            "#SvelteKit",
+            "#Firebase",
+            "#JavaScript",
+            "#HTML",
+            "#CSS",
+            "#UXUI",
+          ],
+          link: "https://appheimat.netlify.app/",
+        },
+        {
+          title: "Flower Power – Cosmo & Wanda",
+          image: "/images/cosmowanda.jpg",
+          description:
+            "Flower Power is a smart plant care prototype that helps young adults maintain indoor plants through automation and digital feedback. Using a Micro:bit with soil moisture sensor, OLED display, water pump and reservoir, the system monitors soil moisture. When below threshold, it alerts the user and waters the plant. Development included user research, personas, lo-fi/hi-fi sketches and usability testing. Built on Web of Things (WoT) principles for simplified data flow. Target group: tech-savvy but forgetful plant owners aged 18–35.",
+          tech: [
+            "#Microbit",
+            "#Figma",
+            "#IoT",
+            "#SensorTechnology",
+            "#OLEDdisplay",
+            "#Automation",
+            "#UXDesign",
+          ],
+          link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
+        },
+        {
+          title: "My page",
+          image: "/images/code.png",
+          description:
+            "A fully responsive, animated portfolio website built with Next.js, React Hooks and CSS Modules to showcase education, experience and projects. Features scroll-based animations with IntersectionObserver, interactive job tabs, and dynamic project rendering. Sections: About, Education, Work, Projects, Courses, Contact.",
+          tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
+          link: "https://github.com/heddaolimb/mypage.git",
+        },
+      ],
+
+      // --- Courses ---
+      coursesTitle: "Courses",
+      courseWhy: "Why I took this course",
+      courseLearned: "What I learned in this course",
+      courses: [
+        {
+          title: "Digital Marketing Basics",
+          image: "/images/digital-marketing.png",
+          link: "https://example.com/marketing-course",
+          why: "To understand how digital marketing works and how to promote my own projects.",
+          learned:
+            "The fundamentals of SEO, paid ads, content strategy, and analytics.",
+        },
+        {
+          title: "Intro to AI",
+          image: "/images/ai-course.png",
+          link: "https://example.com/ai-course",
+          why: "I'm curious about AI and how it's used in real-world applications.",
+          learned:
+            "Machine learning basics, ethical use, and practical AI tools.",
+        },
+      ],
+
+      // --- Contact ---
+      contactTitle: "Contact",
+      contactText:
+        "I'm currently open to new opportunities, collaborations, or just a chat. Feel free to reach out!",
+      form: {
+        name: "Name",
+        email: "Email",
+        message: "Message",
+        send: "Send Message",
+        sending: "Sending...",
+      },
+      footer: "All rights reserved.",
+      formSuccess: "Message sent!",
+      formError: "Something went wrong. Try again.",
+    },
+
+    // --- Norwegian translation ---
+    no: {
+      meta: {
+        title: "Hedda Olimb – Portefølje",
+        description:
+          "Portefølje for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
+        keywords:
+          "Hedda Olimb, webutvikler, portefølje, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
+      },
+      skip: "Hopp til innhold",
+      nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
+      heroTitle: "Hei, jeg heter Hedda.",
+      heroSubtitle: "Velkommen til nettsiden min!",
+      explore: "Utforsk",
+      sidebar: {
+        name: "Hedda Olimb",
+        role: "Webutvikler",
+        emailLabel: "E-post",
+        phoneLabel: "Telefon",
+        phoneValue: "123 45 678",
+        linkedin: "LinkedIn",
+      },
+
+      // --- About ---
+      aboutTitle: "Om meg",
+      aboutItems: [
+        "Jeg heter Hedda, er 25 år gammel og utdannet webutvikler fra Norge.",
+        "Jeg har en bachelor i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
+        "Erfaring innen webutvikling, UX/UI-design, grafisk design og mer.",
+        "Nysgjerrig og alltid lærevillig – utforsker for tiden spillutvikling.",
+      ],
+
+      // --- Education ---
+      educationTitle: "Utdanning",
+      education: [
+        {
+          year: "2015 - 2018",
+          title: "Videregående – Hadeland videregående skole",
+          descLead: "Studiespesialisering med fag som:",
+          desc: [
+            "Engelsk og spansk (Erasmus+ i 2017, Institut de Bruguers, Spania).",
+            "Informasjonsteknologi 1.",
+            "Markedsføring og ledelse 1 & 2.",
+            "Politikk og menneskerettigheter 1 & 2.",
+            "Sosiologi og sosialantropologi.",
+            "Rettslære 1.",
+          ],
+        },
+        {
+          year: "2020 - 2023",
+          title: "Bachelor i webutvikling – NTNU",
+          descLead: null,
+          desc: [
+            "Utviklet statiske og dynamiske nettsider med HTML, CSS, JavaScript, Node.js, PHP og React.",
+            "Kjent med Tailwind, Express, SQL (MySQL), MongoDB, REST-APIer og Postman.",
+            "Brukte verktøy som Figma, Miro, GitHub, Adobe Creative Cloud og VS Code.",
+            "Erfaring med responsive layouts, prototyping og mobile-first design.",
+            "Jobbet prosjektbasert med planlegging og samarbeid.",
+            "Dekket universell utforming (WCAG), SEO (meta-tags) og brukertesting.",
+            "Lært informasjonsarkitektur, databaser og innholdsstrukturering.",
+            "Utforsket skytjenester, utrulling og Raspberry Pi-servere.",
+            "Studert historien og protokollene bak Internett og WWW.",
+            "Forståelse av GDPR, etikk, lovverk og forskningsmetoder.",
+            "Alt kursarbeid på engelsk – flytende skriftlig og muntlig engelsk.",
+            "Valgt som tillitsvalgt for Fakultet for arkitektur og design i 2023.",
+          ],
+        },
+        {
+          year: "2024 - 2025",
+          title: "Kurs",
+          descLead: null,
+          desc: [
+            "Gjennomført nettkurs og bootcamps innen digital markedsføring, AI, Lean Manufacturing, robotikk og finansmarkeder. Mer detaljert oversikt i «Kurs»-seksjonen.",
+          ],
+        },
+      ],
+
+      // --- Work ---
+      workTitle: "Arbeidserfaring",
+      jobs: {
+        job1: {
+          title: "Helsefagarbeider",
+          company: "Villa Skaar Jevnaker",
+          period: "Somre/mer – 2018, 2020, 2021, 2022, 2023, 2024",
+          description: [
+            "Fikk praktisk erfaring innen geriatrisk omsorg, smittevernrutiner og grunnleggende medisinsk kunnskap knyttet til vanlige sykdommer hos eldre.",
+            "Opplæring i trygg pasienthåndtering og forflytningsteknikker, inkludert forebygging av skader ved tunge løft og forflytninger.",
+            "Arbeidet mye i én-til-én-situasjoner med opplæring i egen sikkerhet og de-eskalering ved potensielt utagerende situasjoner.",
+            "Tilegnet kunnskap om ernæring, personlig hygiene og daglige rutiner som ivaretar beboernes fysiske og psykiske helse.",
+          ],
+        },
+        job2: {
+          title: "Operativ soldat",
+          company: "Forsvaret (FOH – Forsvarets operative hovedkvarter)",
+          period: "2019",
+          description: [
+            "Tjenestegjorde i Sjøforsvaret ved FOH.",
+            "Stasjonert på Overvåkingssenteret med sanntids maritim overvåkning og situasjonsforståelse i norske og NATO-områder.",
+            "Opererte klassifiserte overvåknings- og kommandosystemer i et høysikkerhetsmiljø for å spore, rapportere og vurdere sjøaktivitet i strategiske farvann som Nord-Atlanteren.",
+            "Bidro til nasjonal beredskap og samhandling med allierte styrker.",
+            "Praktisk erfaring med både tekniske og operative systemer i maritimt miljø, med fokus på sikker informasjonsflyt, oppdragsstøtte og operativ oversikt.",
+            "Kurs: Kvalifisert førstehjelp nivå 2.",
+            "Kurs: Organisasjonsarbeid, møteteknikk og HMS.",
+            "Tillitsvalgt i skiftlaget.",
+          ],
+        },
+        job3: {
+          title: "Helsefagarbeider",
+          company: "JORS – Jevnaker omsorg og rehabilitering",
+          period: "Sommer 2017",
+          description: [
+            "Utførte et bredt spekter av grunnleggende oppgaver på sykehjem, med fokus på hygiene, måltider, mobilitet og observasjon av beboernes helse.",
+            "Innsikt i faglige standarder for eldreomsorg, inkludert kommunikasjon med beboere, dokumentasjon og tverrfaglig samarbeid.",
+            "Videreutviklet kunnskap om smittevern, ernæring og grunnleggende medisinsk oppfølging i en større institusjon.",
+            "Kurs: Etikk og holdninger, brukermedvirkning, tvang og makt, hygiene og personlig stell, demens, mobilitet og brannsikkerhet.",
+          ],
+        },
+      },
+
+      // --- Projects ---
+      projectsTitle: "Prosjekter",
+      projectLink: "Se prosjekt",
+      projects: [
+        {
+          title: "Heimat App",
+          image: "/images/heimatapp.png",
+          description:
+            "Vi utviklet Heimat for Gjestvang Eiendom for å forbedre studentboligopplevelsen. Gjennom undersøkelser og intervjuer identifiserte vi ensomhet og mangel på tilhørighet som hovedutfordringer. Med design thinking bygde vi personas, testet brukere og itererte på prototyper. Sluttproduktet er en PWA laget i SvelteKit med Firebase (auth, Firestore, hosting). Funksjoner: sanntidschat, arrangementskalender, kunngjøringer og bygg-sider. Modulær arkitektur med dynamisk ruting og reaktive stores. Inkluderer offline-støtte og sikker TLS-hosting.",
+          tech: [
+            "#SvelteKit",
+            "#Firebase",
+            "#JavaScript",
+            "#HTML",
+            "#CSS",
+            "#UXUI",
+          ],
+          link: "https://appheimat.netlify.app/",
+        },
+        {
+          title: "Flower Power – Cosmo & Wanda",
+          image: "/images/cosmowanda.jpg",
+          description:
+            "Flower Power er en smart plantepleie-prototype som hjelper unge voksne med å ta vare på inneplanter via automasjon og digital feedback. Bruker Micro:bit med jordfuktighetssensor, OLED-skjerm, vannpumpe og reservoar. Når fuktigheten synker under terskel, varsles brukeren og pumpen aktiveres. Prosessen inkluderte brukerundersøkelser, personas, lo-/hi-fi skisser og brukertesting. Basert på Web of Things (WoT)-prinsipper. Målgruppe: teknologiinteresserte, men glemsomme planteeiere (18–35).",
+          tech: [
+            "#Microbit",
+            "#Figma",
+            "#IoT",
+            "#SensorTechnology",
+            "#OLEDdisplay",
+            "#Automation",
+            "#UXDesign",
+          ],
+          link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
+        },
+        {
+          title: "Min nettside",
+          image: "/images/code.png",
+          description:
+            "Et responsivt, animert porteføljenettsted laget med Next.js, React Hooks og CSS Modules. Viser utdanning, arbeid og prosjekter. Har scroll-animasjoner med IntersectionObserver, interaktive jobb-faner og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Arbeid, Prosjekter, Kurs, Kontakt.",
+          tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
+          link: "https://github.com/heddaolimb/mypage.git",
+        },
+      ],
+
+      // --- Courses ---
+      coursesTitle: "Kurs",
+      courseWhy: "Hvorfor jeg tok dette kurset",
+      courseLearned: "Hva jeg lærte i dette kurset",
+      courses: [
+        {
+          title: "Grunnleggende digital markedsføring",
+          image: "/images/digital-marketing.png",
+          link: "https://example.com/marketing-course",
+          why: "For å forstå hvordan digital markedsføring fungerer og markedsføre egne prosjekter.",
+          learned:
+            "Grunnleggende SEO, betalt annonsering, innholdsstrategi og analyse.",
+        },
+        {
+          title: "Introduksjon til AI",
+          image: "/images/ai-course.png",
+          link: "https://example.com/ai-course",
+          why: "Jeg er nysgjerrig på AI og hvordan det brukes i praksis.",
+          learned:
+            "Grunnleggende maskinlæring, etisk bruk og praktiske AI-verktøy.",
+        },
+      ],
+
+      // --- Contact ---
+      contactTitle: "Kontakt",
+      contactText:
+        "Jeg er åpen for nye muligheter, samarbeid eller bare en prat. Ta gjerne kontakt!",
+      form: {
+        name: "Navn",
+        email: "E-post",
+        message: "Melding",
+        send: "Send melding",
+        sending: "Sender...",
+      },
+      footer: "Alle rettigheter forbeholdt.",
+      toastSuccess: "Meldingen ble sendt!",
+      toastError: "Noe gikk galt. Prøv igjen.",
+    },
   };
 
-  // ✅ description som array
-  const jobs = {
-    job1: {
-      title: "Health care assistant",
-      company: "Villa Skaar Jevnaker",
-      period: "Summers/with more- 2018, 2020, 2021, 2022, 2023, year 2024",
-      description: [
-        "Gained practical experience in geriatric care, infection control procedures, and basic medical knowledge related to common illnesses affecting the elderly. ",
-        "Received training in safe patient handling and mobility techniques, including how to prevent injuries during heavy lifting and transfers.",
-        "Worked extensively in one-on-one care settings, which included instruction in personal safety and de-escalation techniques to manage potentially aggressive or unpredictable situations.",
-        "Also acquired knowledge in nutrition, personal hygiene, and the daily routines essential for maintaining residents' physical and mental well-being.",
-      ],
-    },
-    job2: {
-      title: "Operational Soldier",
-      company:
-        "Royal Norwegian Armed Forces (FOH - Norwegian Joint Headquarters)",
-      period: "2019",
-      description: [
-        "Served in the Norwegian Armed Forces at the Joint Operational Headquarters (FOH) as part of the Royal Norwegian Navy.",
-        "Stationed at the Surveillance Center, where I worked with real-time maritime monitoring and situational awareness across Norwegian and NATO waters.",
-        "Operated classified surveillance and command systems in a high-security environment to track, report, and assess sea activity in strategic areas such as the North Atlantic.",
-        "Supported national defense readiness and contributed to the coordination and communication of joint military operations between Norwegian and allied forces.",
-        "Gained hands-on experience with both technical and operational military systems in a maritime setting, focusing on secure information flow, mission support, and operational oversight.",
-        "Certificate in Qualified First Aid – Level 2",
-        "Certificate in Training on Organizational Work, Meeting Management Techniques, and Health, Safety and Environment (HSE).",
-        "I was appointed as the elected representative within my shift team.",
-      ],
-    },
+  const t = translations[language];
 
-    job3: {
-      title: "Health care assistant",
-      company: "JORS - Jevnaker Care and Rehabilitation Center",
-      period: "Summer 2017",
-      description: [
-        "Performed a wide range of essential care duties in a nursing home environment, focusing on hygiene routines, assistance with meals, mobility support, and observing residents' physical and mental health.",
-        "Gained insight into professional standards of elderly care, including communication with residents, documentation of care, and working as part of a multidisciplinary team. ",
-        "Built upon previous knowledge in infection control, nutrition, and basic medical care, while adapting to the structured routines of a larger care facility.",
-        "Certificate in Training on Ethics and Attitudes, User Involvement, Use of Force and Coercion, Hygiene and Personal Care, Dementia, Mobility, and Fire Safety",
-      ],
-    },
+  // --- Hooks og observers (beholder logikken din) ---
+  const aboutRef = useRef(null);
+  const educationRef = useRef(null);
+  const projectsRef = useRef(null);
+  const jobsRef = useRef(null);
+  const coursesRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const sectionRefs = [
+    aboutRef,
+    educationRef,
+    projectsRef,
+    jobsRef,
+    coursesRef,
+    contactRef,
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      if (window.scrollY >= window.innerHeight) setShowSidebar(true);
+      else setShowSidebar(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShowAboutItems(true),
+      { threshold: 0.3 }
+    );
+    if (aboutRef.current) ob.observe(aboutRef.current);
+    return () => aboutRef.current && ob.unobserve(aboutRef.current);
+  }, []);
+
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShowEducation(true),
+      { threshold: 0 }
+    );
+    if (educationRef.current) ob.observe(educationRef.current);
+    return () => educationRef.current && ob.unobserve(educationRef.current);
+  }, []);
+
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShowProjects(true),
+      { threshold: 0 }
+    );
+    if (projectsRef.current) ob.observe(projectsRef.current);
+    return () => projectsRef.current && ob.unobserve(projectsRef.current);
+  }, []);
+  // --- Navigasjon ---
+  const sectionIds = [
+    "about",
+    "education",
+    "work",
+    "projects",
+    "courses",
+    "contact",
+  ];
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  };
+  const onNavKey = (e, id) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      scrollToSection(id);
+    }
   };
 
-  const projects = [
-    {
-      title: "Heimat App",
-      image: "/images/heimatapp.png",
-      description:
-        "We developed a mobile application called Heimat for Gjestvang Eiendom to improve the student housing experience. Through surveys, interviews, and market research, we identified loneliness and lack of social belonging as key issues among students. Using design thinking methodology, we built personas, conducted user testing, and iterated on low- and high-fidelity prototypes. The final product is a Progressive Web App (PWA) built with SvelteKit, using JavaScript, HTML/CSS, and Firebase for user authentication, Firestore database, and hosting. The app features real-time chat, an event calendar, announcement feeds, and structured pages for building-specific information. It uses a modular component-based architecture with route-based file structure (+page.svelte, +layout.svelte) and dynamic routing for handling user-generated content. Data flow and UI states are managed using reactive Svelte stores, and the app includes service workers for offline support and fast load times. Hosting is handled via Firebase Hosting with secure TLS encryption.",
-      tech: [
-        "#SvelteKit",
-        "#Firebase",
-        "#JavaScript",
-        "#HTML",
-        "#CSS",
-        "#UXUI",
-      ],
-      link: "https://appheimat.netlify.app/",
-    },
-    {
-      title: "Flower Power – Cosmo & Wanda",
-      image: "/images/cosmowanda.jpg",
-      description:
-        "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation.",
-      tech: [
-        "#Microbit",
-        "#Figma",
-        "#IoT",
-        "#SensorTechnology",
-        "#OLEDdisplay",
-        "#Automation",
-        "#UXDesign",
-      ],
-      link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
-    },
-    {
-      title: "My page",
-      image: "/images/code.png",
-      description:
-        "I designed and developed a fully responsive, animated portfolio website using Next.js, React Hooks, and CSS Modules to present my education, experience, and projects in a dynamic and user-friendly way. The site features scroll-based animations with IntersectionObserver, interactive job tabs with stateful display logic, and dynamic project rendering using structured data objects. The layout includes sections such as About Me, Education, Work, Projects, and Contact, each enhanced with smooth transitions and custom styling.",
-      tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
-      link: "https://github.com/heddaolimb/mypage.git",
-    },
-  ];
-
-  const courses = [
-    {
-      title: "Digital Marketing Basics",
-      image: "/images/digital-marketing.png",
-      link: "https://example.com/marketing-course",
-      why: "To understand how digital marketing works and how to promote my own projects.",
-      learned:
-        "The fundamentals of SEO, paid ads, content strategy, and analytics.",
-    },
-    {
-      title: "Intro to AI",
-      image: "/images/ai-course.png",
-      link: "https://example.com/ai-course",
-      why: "I'm curious about AI and how it's used in real-world applications.",
-      learned: "Machine learning basics, ethical use, and practical AI tools.",
-    },
-  ];
+  // --- Data for språk (jobs, projects, courses) ---
+  const jobs = t.jobs;
+  const projects = t.projects;
+  const courses = t.courses;
 
   const handlePrev = () => {
     const newIndex =
@@ -138,176 +713,196 @@ export default function Home() {
     setCurrentCourse(newIndex);
   };
 
-  const aboutRef = useRef(null);
-  const educationRef = useRef(null);
-  const projectsRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      if (window.scrollY >= window.innerHeight) {
-        setShowSidebar(true);
-      } else {
-        setShowSidebar(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowAboutItems(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
-
-    return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const observerEducation = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowEducation(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (educationRef.current) {
-      observerEducation.observe(educationRef.current);
-    }
-
-    return () => {
-      if (educationRef.current) {
-        observerEducation.unobserve(educationRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const observerProjects = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowProjects(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (projectsRef.current) {
-      observerProjects.observe(projectsRef.current);
-    }
-
-    return () => {
-      if (projectsRef.current) {
-        observerProjects.unobserve(projectsRef.current);
-      }
-    };
-  }, []);
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus("Sender...");
+    setFormStatus(t.form.sending);
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (res.ok) {
-        showToast("Meldingen ble sendt!", "success");
+        setFormStatus(t.toastSuccess);
         setFormData({ name: "", email: "", message: "" });
       } else {
-        showToast("Noe gikk galt. Prøv igjen.", "error");
+        setFormStatus(t.toastError);
       }
     } catch (err) {
-      showToast("Feil ved sending.", "error");
+      setFormStatus(t.toastError);
     } finally {
-      setFormStatus("");
+      // fjern meldingen etter 4 sekunder
+      setTimeout(() => setFormStatus(""), 4000);
     }
   };
 
   return (
     <>
       <Head>
-        <title>Hedda Olimb </title>
+        {/* SEO base */}
+        <title>{t.meta.title}</title>
+        <meta name="description" content={t.meta.description} />
+        <meta name="keywords" content={t.meta.keywords} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="language" content={language === "no" ? "no" : "en"} />
+
+        {/* Open Graph */}
+        <meta property="og:title" content={t.meta.title} />
+        <meta property="og:description" content={t.meta.description} />
+        <meta property="og:type" content="website" />
+        {/* Sett riktig URL og et faktisk bilde hvis du har */}
+        <meta property="og:url" content="https://dittdomene.no/" />
+        <meta
+          property="og:image"
+          content="https://dittdomene.no/og-image.jpg"
+        />
+
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t.meta.title} />
+        <meta name="twitter:description" content={t.meta.description} />
+        <meta
+          name="twitter:image"
+          content="https://dittdomene.no/og-image.jpg"
+        />
+
+        {/* Canonical (oppdater domenet) */}
+        <link rel="canonical" href="https://dittdomene.no/" />
+
+        {/* Strukturerte data (Schema.org – Person) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Hedda Olimb",
+              jobTitle: language === "no" ? "Webutvikler" : "Web Developer",
+              url: "https://dittdomene.no/",
+              image: "https://dittdomene.no/images/meg.jpg",
+              sameAs: ["https://www.linkedin.com/in/din-profil/"],
+            }),
+          }}
+        />
       </Head>
 
+      {/* Skip-link for tastaturbrukere */}
+      <a href="#main" className={styles.skipLink}>
+        {t.skip}
+      </a>
+
       {/* NAVBAR */}
-      <header className={styles.navbar}>
+      {/* NAVBAR */}
+      <header className={styles.navbar} role="banner" aria-label="Site header">
         <div className={styles.logo}>HO</div>
-        <nav className={styles.navLinks} role="navigation">
-          <span onClick={() => scrollToSection("about")}>About</span>
-          <span onClick={() => scrollToSection("education")}>Education</span>
-          <span onClick={() => scrollToSection("work")}>Work</span>
-          <span onClick={() => scrollToSection("projects")}>Projects</span>
-          <span onClick={() => scrollToSection("courses")}>Courses</span>
-          <span onClick={() => scrollToSection("contact")}>Contact</span>
+
+        <nav
+          className={styles.navLinks}
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          {t.nav.map((label, i) => (
+            <span
+              key={sectionIds[i]}
+              role="link"
+              tabIndex={0}
+              aria-label={label}
+              onClick={() => scrollToSection(sectionIds[i])}
+              onKeyDown={(e) => onNavKey(e, sectionIds[i])}
+              className={styles.navItem}
+            >
+              {label}
+            </span>
+          ))}
         </nav>
+
+        {/* Språkvelger på navbaren (høyre side) */}
+        <div className={styles.langSwitch} aria-label="Language switcher">
+          <button
+            type="button"
+            onClick={() => setLanguage("en")}
+            className={`${styles.langBtn} ${
+              language === "en" ? styles.activeLang : ""
+            }`}
+            aria-pressed={language === "en"}
+            aria-current={language === "en" ? "true" : undefined}
+            aria-label="Switch to English"
+            title="English"
+          >
+            EN
+          </button>
+          <span aria-hidden="true" className={styles.langSep}>
+            |
+          </span>
+          <button
+            type="button"
+            onClick={() => setLanguage("no")}
+            className={`${styles.langBtn} ${
+              language === "no" ? styles.activeLang : ""
+            }`}
+            aria-pressed={language === "no"}
+            aria-current={language === "no" ? "true" : undefined}
+            aria-label="Bytt til norsk"
+            title="Norsk"
+          >
+            NO
+          </button>
+        </div>
       </header>
 
       {/* HERO */}
       <section className={styles.container}>
         <div className={styles.content}>
-          <h1 className={styles.title}>Hi, I'm Hedda.</h1>
-          <h2 className={styles.subtitle}>Welcome to my website!</h2>
+          <h1
+            className={`${styles.title} ${
+              language === "no" ? styles.titleNo : ""
+            }`}
+          >
+            {t.heroTitle}
+          </h1>
+          <h2
+            className={`${styles.subtitle} ${
+              language === "no" ? styles.subtitleNo : ""
+            }`}
+          >
+            {t.heroSubtitle}
+          </h2>
           <button
             className={styles.exploreBtn}
             onClick={() => scrollToSection("about")}
           >
-            Explore
+            {t.explore}
           </button>
         </div>
       </section>
 
-      {/* SIDEBAR */}
+      {/* SIDEBAR (uendret layout, bare tekster oversatt) */}
       {showSidebar && (
-        <aside className={styles.sidebar}>
+        <aside className={styles.sidebar} aria-label="Profile sidebar">
           <img
             src="/images/meg.jpg"
             alt="Hedda Olimb"
             className={styles.sidebarImg}
           />
           <div className={styles.sidebarInfo}>
-            <h2>Hedda Olimb</h2>
-            <p>Web Developer</p>
-            <p>Email: hedda@example.com</p>
-            <p>Tlf: 123 45 678</p>
+            <h2>{t.sidebar.name}</h2>
+            <p>{t.sidebar.role}</p>
+            <p>{t.sidebar.emailLabel}: hedda@example.com</p>
+            <p>
+              {t.sidebar.phoneLabel}: {t.sidebar.phoneValue}
+            </p>
             <p>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn
+                {t.sidebar.linkedin}
               </a>
             </p>
           </div>
@@ -315,193 +910,124 @@ export default function Home() {
       )}
 
       {/* MAIN */}
-      <main className={styles.mainContent}>
-        {/* About Me */}
-        <section id="about" className={styles.section}>
-          <h2 className={styles.sectionTitle}>About Me</h2>
+      <main id="main" className={styles.mainContent} role="main">
+        {/* About */}
+        <section
+          id="about"
+          className={styles.section}
+          aria-labelledby="about-title"
+        >
+          <h2 id="about-title" className={styles.sectionTitle}>
+            {t.aboutTitle}
+          </h2>
           <div ref={aboutRef} className={styles.aboutBox}>
-            <div
-              className={`${styles.aboutItem} ${
-                showAboutItems ? styles.show : ""
-              }`}
-            >
-              <span className={styles.icon}>
-                <img src="/icons/norway.svg" alt="Norway" />
-              </span>
-              My name is Hedda, I'm a 25-year-old educated web developer from
-              Norway.
-            </div>
-            <div
-              className={`${styles.aboutItem} ${
-                showAboutItems ? styles.show : ""
-              }`}
-            >
-              <span className={styles.icon}>
-                <img src="/icons/webdev.svg" alt="WebDev" />
-              </span>
-              I have a bachelor's degree in Web Development from NTNU – the
-              Norwegian University of Science and Technology.
-            </div>
-            <div
-              className={`${styles.aboutItem} ${
-                showAboutItems ? styles.show : ""
-              }`}
-            >
-              <span className={styles.icon}>
-                <img src="/icons/drawing.svg" alt="Drawing" />
-              </span>
-              Experienced in web development, UX/UI design, graphic design, and
-              more.
-            </div>
-            <div
-              className={`${styles.aboutItem} ${
-                showAboutItems ? styles.show : ""
-              }`}
-            >
-              <span className={styles.icon}>
-                <img src="/icons/game.svg" alt="Game" />
-              </span>
-              Curious and always eager to learn – currently exploring game
-              development.
-            </div>
+            {t.aboutItems.map((text, i) => (
+              <div
+                key={i}
+                className={`${styles.aboutItem} ${
+                  showAboutItems ? styles.show : ""
+                }`}
+              >
+                {/* beholdt ikonene dine i samme rekkefølge */}
+                {i === 0 && (
+                  <span className={styles.icon}>
+                    <img src="/icons/norway.svg" alt="" aria-hidden="true" />
+                  </span>
+                )}
+                {i === 1 && (
+                  <span className={styles.icon}>
+                    <img src="/icons/webdev.svg" alt="" aria-hidden="true" />
+                  </span>
+                )}
+                {i === 2 && (
+                  <span className={styles.icon}>
+                    <img src="/icons/drawing.svg" alt="" aria-hidden="true" />
+                  </span>
+                )}
+                {i === 3 && (
+                  <span className={styles.icon}>
+                    <img src="/icons/game.svg" alt="" aria-hidden="true" />
+                  </span>
+                )}
+                {text}
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Education */}
-        <section id="education" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Education</h2>
+        <section
+          id="education"
+          className={styles.section}
+          aria-labelledby="education-title"
+        >
+          <h2 id="education-title" className={styles.sectionTitle}>
+            {t.educationTitle}
+          </h2>
           <div
             ref={educationRef}
             className={`${styles.educationTimeline} ${
               showEducation ? styles.show : ""
             }`}
           >
-            <article
-              className={styles.educationItem}
-              style={{ transitionDelay: "0.3s" }}
-            >
-              <span className={styles.educationYear}>2015 - 2018</span>
-              <div className={styles.educationBox}>
-                <h3>High School – Hadeland Upper Secondary School (Norway)</h3>
-                <ul className={styles.bulletList}>
-                  <p>
-                    Specialization in general studies, with subjects including:
-                  </p>
-                  <li>
-                    English and Spanish (Erasmus+ project in 2017, Institut de
-                    Bruguers, Spain).
-                  </li>
-                  <li>Information Technology 1.</li>
-                  <li>Marketing and Management 1 & 2.</li>
-                  <li>Politics and Human Rights 1 & 2.</li>
-                  <li>Sociology and Social Anthropology.</li>
-                  <li>Law 1 (Norwegian Legal Studies).</li>
-                </ul>
-              </div>
-            </article>
-
-            <article
-              className={styles.educationItem}
-              style={{ transitionDelay: "0.7s" }}
-            >
-              <span className={styles.educationYear}>2020 - 2023</span>
-              <div className={styles.educationBox}>
-                <h3>
-                  Bachelor in Web Development - Norwegian University of Science
-                  and Technology (NTNU)
-                </h3>
-                <ul className={styles.bulletList}>
-                  <li>
-                    Built static and dynamic websites using HTML, CSS,
-                    JavaScript, Node.js, PHP, and React.
-                  </li>
-                  <li>
-                    Familiar with Tailwind, Express, SQL (MySQL), MongoDB, REST
-                    APIs, and Postman.
-                  </li>
-                  <li>
-                    Used tools like Figma, Miro, GitHub, Adobe Creative Cloud,
-                    and VS Code.
-                  </li>
-                  <li>
-                    Experienced with responsive layouts, prototyping, and
-                    mobile-first design principles.
-                  </li>
-                  <li>
-                    Worked on project-based development with planning and
-                    collaboration.
-                  </li>
-                  <li>
-                    Covered accessibility (WCAG), SEO (meta-tags), and usability
-                    testing.
-                  </li>
-                  <li>
-                    Learned information architecture, databases, and content
-                    structuring.
-                  </li>
-                  <li>
-                    Explored cloud tech, deployment, and Raspberry Pi server
-                    usage.
-                  </li>
-                  <li>
-                    Studied history and protocols of the Internet and the WWW.
-                  </li>
-                  <li>
-                    Understood GDPR, ethics, legal frameworks, and research
-                    methods.
-                  </li>
-                  <li>
-                    All coursework in English – fluent in written and spoken
-                    English.
-                  </li>
-                  <li>
-                    Served as an elected representative for the Faculty of
-                    Architecture and Design in 2023.
-                  </li>
-                </ul>
-              </div>
-            </article>
-
-            <article
-              className={styles.educationItem}
-              style={{ transitionDelay: "1.1s" }}
-            >
-              <span className={styles.educationYear}>2024 - 2025</span>
-              <div className={styles.educationBox}>
-                <h3>Courses</h3>
-                <p>
-                  Completed online courses and bootcamps focused on digital
-                  marketing, AI, Lean Manufacturing, Robotics, and Financial
-                  Markets. A more detailed overview is available under the
-                  "Courses" section.
-                </p>
-              </div>
-            </article>
+            {t.education.map((edu, idx) => (
+              <article
+                key={idx}
+                className={styles.educationItem}
+                style={{ transitionDelay: `${0.3 + idx * 0.4}s` }}
+                aria-label={edu.title}
+              >
+                <span className={styles.educationYear}>{edu.year}</span>
+                <div className={styles.educationBox}>
+                  <h3>{edu.title}</h3>
+                  <ul className={styles.bulletList}>
+                    {edu.descLead && <p>{edu.descLead}</p>}
+                    {edu.desc.map((d, i) => (
+                      <li key={i}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
         {/* Work Experience */}
-        <section id="work" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Work Experience</h2>
+        <section
+          id="work"
+          className={styles.section}
+          aria-labelledby="work-title"
+        >
+          <h2 id="work-title" className={styles.sectionTitle}>
+            {t.workTitle}
+          </h2>
           <div
             className={`${styles.jobSection} ${
               showEducation ? styles.show : ""
             }`}
           >
-            <div className={styles.jobTabs}>
+            <div className={styles.jobTabs} role="tablist" aria-label="Jobs">
               {Object.keys(jobs).map((jobKey) => (
                 <div
                   key={jobKey}
                   className={`${styles.jobTab} ${
                     selectedJob === jobKey ? styles.active : ""
                   }`}
+                  role="tab"
+                  aria-selected={selectedJob === jobKey}
+                  tabIndex={0}
                   onClick={() => setSelectedJob(jobKey)}
+                  onKeyDown={(e) =>
+                    (e.key === "Enter" || e.key === " ") &&
+                    setSelectedJob(jobKey)
+                  }
                 >
                   {jobs[jobKey].company}
                 </div>
               ))}
             </div>
-            <div className={styles.jobContent}>
+
+            <div className={styles.jobContent} role="tabpanel">
               <h3>{jobs[selectedJob].title}</h3>
               <div className={styles.jobCompany}>
                 {jobs[selectedJob].company}
@@ -517,8 +1043,14 @@ export default function Home() {
         </section>
 
         {/* Projects */}
-        <section id="projects" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Projects</h2>
+        <section
+          id="projects"
+          className={styles.section}
+          aria-labelledby="projects-title"
+        >
+          <h2 id="projects-title" className={styles.sectionTitle}>
+            {t.projectsTitle}
+          </h2>
           <div
             ref={projectsRef}
             className={`${styles.projectsGrid} ${
@@ -535,15 +1067,15 @@ export default function Home() {
                 <h3>{proj.title}</h3>
                 <p>{proj.description}</p>
                 <div className={styles.techList}>
-                  {proj.tech.map((t, i) => (
+                  {proj.tech.map((tag, i) => (
                     <span key={i} className={styles.techTag}>
-                      {t}
+                      {tag}
                     </span>
                   ))}
                 </div>
                 {proj.link && (
                   <a href={proj.link} target="_blank" rel="noopener noreferrer">
-                    View Project
+                    {t.projectLink}
                   </a>
                 )}
               </article>
@@ -552,24 +1084,36 @@ export default function Home() {
         </section>
 
         {/* Courses */}
-        <section id="courses" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Courses</h2>
+        <section
+          id="courses"
+          className={styles.section}
+          aria-labelledby="courses-title"
+        >
+          <h2 id="courses-title" className={styles.sectionTitle}>
+            {t.coursesTitle}
+          </h2>
 
           <div className={styles.courseSlider}>
             <div className={styles.courseNavButtons}>
-              <button className={styles.navButton} onClick={handlePrev}>
+              <button
+                className={styles.navButton}
+                onClick={handlePrev}
+                aria-label="Previous course"
+              >
                 &#8592;
               </button>
-              <button className={styles.navButton} onClick={handleNext}>
+              <button
+                className={styles.navButton}
+                onClick={handleNext}
+                aria-label="Next course"
+              >
                 &#8594;
               </button>
             </div>
 
             <div
               className={styles.courseTrack}
-              style={{
-                transform: `translateX(-${currentCourse * 100}%)`,
-              }}
+              style={{ transform: `translateX(-${currentCourse * 100}%)` }}
             >
               {courses.map((course, idx) => (
                 <div
@@ -596,19 +1140,15 @@ export default function Home() {
                   >
                     {course.title}
                   </a>
-                  <h4 className={styles.courseSubtitle}>
-                    Why I took this course
-                  </h4>
+                  <h4 className={styles.courseSubtitle}>{t.courseWhy}</h4>
                   <p className={styles.courseText}>{course.why}</p>
-                  <h4 className={styles.courseSubtitle}>
-                    What I learned in this course
-                  </h4>
+                  <h4 className={styles.courseSubtitle}>{t.courseLearned}</h4>
                   <p className={styles.courseText}>{course.learned}</p>
                 </div>
               ))}
             </div>
 
-            <div className={styles.courseDots}>
+            <div className={styles.courseDots} aria-hidden="true">
               {courses.map((_, idx) => (
                 <div
                   key={idx}
@@ -622,20 +1162,28 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        {/* Contact */}
-        <section id="contact" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Contact</h2> {/* flyttet ut */}
-          <div className={styles.contactSection}>
-            <p className={styles.contactText}>
-              I'm currently open to new opportunities, collaborations, or just a
-              chat. Feel free to reach out!
-            </p>
+        <section
+          id="contact"
+          className={styles.section}
+          aria-labelledby="contact-title"
+        >
+          <h2 id="contact-title" className={styles.sectionTitle}>
+            {t.contactTitle}
+          </h2>
 
-            <form className={styles.contactForm} onSubmit={handleSubmit}>
+          {/* wrapper beholdes selv om CSS-en din ikke styler den spesielt */}
+          <div className={styles.contactSection}>
+            <p className={styles.contactText}>{t.contactText}</p>
+
+            <form
+              className={styles.contactForm}
+              onSubmit={handleSubmit}
+              aria-label="Contact form"
+            >
               <input
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder={t.form.name}
                 value={formData.name}
                 onChange={handleInputChange}
                 required
@@ -643,37 +1191,31 @@ export default function Home() {
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder={t.form.email}
                 value={formData.email}
                 onChange={handleInputChange}
                 required
               />
               <textarea
                 name="message"
-                placeholder="Message"
+                placeholder={t.form.message}
                 value={formData.message}
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className={styles.contactButton}>
-                Send Message
+              <button type="submit" className={styles.submitBtn}>
+                {t.form.send}
               </button>
-              <p>{formStatus}</p>
+              {formStatus && <p className={styles.formStatus}>{formStatus}</p>}
             </form>
           </div>
         </section>
-
-        {toast.message && (
-          <div className={`${styles.toast} ${styles[toast.type]}`}>
-            {toast.message}
-          </div>
-        )}
       </main>
 
       {/* FOOTER */}
-      <footer className={styles.footer}>
+      <footer className={styles.footer} role="contentinfo">
         <p>
-          &copy; {new Date().getFullYear()} Hedda Olimb. All rights reserved.
+          &copy; {new Date().getFullYear()} Hedda Olimb. {t.footer}
         </p>
       </footer>
     </>
