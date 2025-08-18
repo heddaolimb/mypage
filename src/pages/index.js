@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect, useRef } from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,15 +30,15 @@ export default function Home() {
   const translations = {
     en: {
       meta: {
-        title: "Hedda Olimb – Portfolio",
+        title: "Hedda Olimb – Website",
         description:
-          "Portfolio of Hedda Olimb – Web Developer. Explore projects, education, work experience, courses and contact.",
+          "Website of Hedda Olimb – Web Developer. Explore projects, education, work experience, courses and contact.",
         keywords:
           "Hedda Olimb, web developer, portfolio, projects, courses, contact, UX, UI, React, Next.js",
       },
       skip: "Skip to content",
       nav: ["About", "Education", "Work", "Projects", "Courses", "Contact"],
-      heroTitle: "Hi, I'm Hedda.",
+      heroTitle: "Hi, I'm",
       heroSubtitle: "Welcome to my website!",
       explore: "Explore",
       sidebar: {
@@ -428,7 +429,7 @@ export default function Home() {
       },
       skip: "Hopp til innhold",
       nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
-      heroTitle: "Hei, jeg heter Hedda.",
+      heroTitle: "Hei, jeg heter",
       heroSubtitle: "Velkommen til nettsiden min!",
       explore: "Utforsk",
       sidebar: {
@@ -797,7 +798,6 @@ export default function Home() {
       </a>
 
       {/* NAVBAR */}
-      {/* NAVBAR */}
       <header className={styles.navbar} role="banner" aria-label="Site header">
         <div className={styles.logo}>HO</div>
 
@@ -856,58 +856,101 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className={styles.container}>
-        <div className={styles.content}>
-          <h1
-            className={`${styles.title} ${
-              language === "no" ? styles.titleNo : ""
-            }`}
+      <section className="relative flex items-center min-h-screen overflow-hidden">
+        {/* SVG bakgrunn */}
+        <div className="absolute inset-0">
+          <svg
+            className="w-full h-full opacity-30"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            viewBox="0 0 800 800"
           >
-            {t.heroTitle}
+            <circle cx="400" cy="400" r="300" fill="url(#grad1)" />
+            <defs>
+              <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Tekst-blokk */}
+        <div className="relative z-10 flex-1 max-w-xl pl-35 pr-6 text-left">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+            {t.heroTitle} <span className="text-indigo-400">Hedda Olimb</span>
           </h1>
-          <h2
-            className={`${styles.subtitle} ${
-              language === "no" ? styles.subtitleNo : ""
-            }`}
-          >
+          <h2 className="text-3xl md:text-5xl text-gray-300 mb-6">
             {t.heroSubtitle}
           </h2>
+          <p className="text-xl md:text-2xl text-gray-400 mb-6">
+            <Typewriter
+              words={[
+                language === "no" ? "Webutvikler" : "Web Developer",
+                language === "no" ? "Designer" : "Designer",
+                language === "no" ? "Problemløser" : "Problem Solver",
+              ]}
+              loop
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </p>
+
           <button
-            className={styles.exploreBtn}
             onClick={() => scrollToSection("about")}
+            className="px-10 py-4 rounded-full bg-indigo-500 text-white font-medium shadow-lg hover:bg-indigo-600 transition"
           >
             {t.explore}
           </button>
+
+          <div className="flex gap-4 mt-6">
+            <a
+              href="https://github.com/"
+              target="_blank"
+              className="p-3 bg-white/10 rounded-full hover:bg-indigo-500 transition"
+            >
+              <i className="fab fa-github text-white text-xl"></i>
+            </a>
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              className="p-3 bg-white/10 rounded-full hover:bg-indigo-500 transition"
+            >
+              <i className="fab fa-linkedin text-white text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        {/* Transparent bilde til høyre */}
+        <div
+          className="absolute right-20 bottom-0 
+             w-[180px] md:w-[450px] lg:w-[470px] 
+             opacity-90 pointer-events-none select-none"
+        >
+          <img
+            src="/images/meg1.png"
+            alt="Hedda Olimb"
+            className="w-full h-auto"
+          />
+        </div>
+        {/* Enkel divider mellom hero og about */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+          <svg
+            className="relative block w-full h-[80px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M321.39,56.44C198.59,84.14,75.39,100.29,0,109.22V120H1200V0C1076.67,22.13,954.07,49.29,831.39,66.56,718.27,82.68,609.92,91.2,501.39,91.2,437.93,91.2,379.63,82.2,321.39,56.44Z"
+              fill="#0f172a"
+            ></path>
+          </svg>
         </div>
       </section>
-
-      {/* SIDEBAR (uendret layout, bare tekster oversatt) */}
-      {showSidebar && (
-        <aside className={styles.sidebar} aria-label="Profile sidebar">
-          <img
-            src="/images/meg.jpg"
-            alt="Hedda Olimb"
-            className={styles.sidebarImg}
-          />
-          <div className={styles.sidebarInfo}>
-            <h2>{t.sidebar.name}</h2>
-            <p>{t.sidebar.role}</p>
-            <p>{t.sidebar.emailLabel}: hedda@example.com</p>
-            <p>
-              {t.sidebar.phoneLabel}: {t.sidebar.phoneValue}
-            </p>
-            <p>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t.sidebar.linkedin}
-              </a>
-            </p>
-          </div>
-        </aside>
-      )}
 
       {/* MAIN */}
       <main id="main" className={styles.mainContent} role="main">

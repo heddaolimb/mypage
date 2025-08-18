@@ -21,23 +21,54 @@
   font-family: "American";
   src: url("/fonts/AmericanPurpose.ttf") format("truetype");
 }
-
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
   font-family: "RoseSally", sans-serif;
-  background: url("/animations/minimal_dark_waves.svg") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
+  background: #0f172a; /* fallback */
+  overflow-x: hidden;
+}
+.wave-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -4; /* bak wave */
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite alternate;
+}
+
+/* gjør at stjernene blinker litt forskjellig */
+.star:nth-child(odd) {
+  animation-duration: 3s;
+}
+.star:nth-child(even) {
+  animation-duration: 5s;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
   }
 }
