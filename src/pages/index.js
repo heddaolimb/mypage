@@ -799,7 +799,14 @@ export default function Home() {
 
       {/* NAVBAR */}
       <header className={styles.navbar} role="banner" aria-label="Site header">
-        <div className={styles.logo}>HO</div>
+        <div
+          className={styles.logo}
+          onClick={() => scrollToSection("hero")}
+          role="link"
+          tabIndex={0}
+        >
+          HO
+        </div>
 
         <nav
           className={styles.navLinks}
@@ -856,7 +863,10 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="hero relative flex items-center min-h-screen overflow-hidden">
+      <section
+        id="hero"
+        className="hero relative flex items-center min-h-screen overflow-hidden"
+      >
         {/* SVG bakgrunn */}
         <div className="absolute inset-0">
           <svg
@@ -877,7 +887,7 @@ export default function Home() {
 
         {/* Tekst-blokk */}
         <div className="relative z-10 flex-1 max-w-xl pl-35 pr-6 text-left">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+          <h1 className="text-5xl md:text-7xl text-white mb-4">
             {t.heroTitle} <span className="text-indigo-400">Hedda Olimb</span>
           </h1>
           <h2 className="text-3xl md:text-5xl text-gray-300 mb-6">
@@ -899,81 +909,84 @@ export default function Home() {
             />
           </p>
 
-          {/* Explore-knappen */}
-          <button
-            onClick={() => scrollToSection("about")}
-            className={styles.heroExploreBtn}
-          >
-            {t.explore}
-          </button>
-
-          {/* Ikoner */}
-          <div className={styles.heroSocialIcons}>
-            <a
-              href="https://github.com/heddaolimb"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.heroIconLink}
+          {/* Wrapper rundt knapp + ikoner */}
+          <div className="mt-6 flex flex-col items-start">
+            {/* Explore-knappen */}
+            <button
+              onClick={() => scrollToSection("about")}
+              className={styles.heroExploreBtn}
             >
-              {/* GitHub SVG */}
-              <svg
-                className={styles.heroIcon}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 .297c-6.63 0-12 5.373-12 12 
-            0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 
-            0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61 
-            -.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 
-            1.205.084 1.838 1.236 1.838 1.236 1.07 1.834 2.809 1.304 
-            3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 
-            0-1.31.465-2.381 1.235-3.221-.135-.303-.54-1.523.105-3.176 
-            0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 
-            1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23 
-            .645 1.653.24 2.873.12 3.176.765.84 1.23 1.911 1.23 3.221 
-            0 4.61-2.805 5.625-5.475 5.92.43.372.81 1.102.81 2.222 
-            0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57 
-            C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                />
-              </svg>
-            </a>
+              {t.explore}
+            </button>
 
-            <a
-              href="https://www.linkedin.com/in/heddaolimb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.heroIconLink}
-            >
-              {/* LinkedIn SVG */}
-              <svg
-                className={styles.heroIcon}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
+            {/* Ikoner */}
+            <div className={styles.heroSocialIcons}>
+              <a
+                href="https://github.com/heddaolimb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.heroIconLink}
               >
-                <path
-                  d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-            23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 
-            22.271V1.729C24 .774 23.2 0 22.222 0h.003zM7.09 
-            20.452H3.548V9h3.541v11.452zM5.319 7.578c-1.137 
-            0-2.059-.93-2.059-2.078 0-1.148.922-2.078 
-            2.059-2.078s2.059.93 2.059 2.078c0 
-            1.148-.922 2.078-2.059 2.078zm15.133 
-            12.874h-3.541v-5.569c0-1.328-.025-3.037-1.852-3.037-1.853 
-            0-2.137 1.445-2.137 2.939v5.667h-3.541V9h3.396v1.561h.048c.473-.9 
-            1.631-1.852 3.356-1.852 3.59 0 4.253 2.363 
-            4.253 5.437v6.306z"
-                />
-              </svg>
-            </a>
+                {/* GitHub SVG */}
+                <svg
+                  className={styles.heroIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 
+              0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 
+              0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61 
+              -.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 
+              1.205.084 1.838 1.236 1.838 1.236 1.07 1.834 2.809 1.304 
+              3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 
+              0-1.31.465-2.381 1.235-3.221-.135-.303-.54-1.523.105-3.176 
+              0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 
+              1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23 
+              .645 1.653.24 2.873.12 3.176.765.84 1.23 1.911 1.23 3.221 
+              0 4.61-2.805 5.625-5.475 5.92.43.372.81 1.102.81 2.222 
+              0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57 
+              C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/heddaolimb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.heroIconLink}
+              >
+                {/* LinkedIn SVG */}
+                <svg
+                  className={styles.heroIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+              23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 
+              22.271V1.729C24 .774 23.2 0 22.222 0h.003zM7.09 
+              20.452H3.548V9h3.541v11.452zM5.319 7.578c-1.137 
+              0-2.059-.93-2.059-2.078 0-1.148.922-2.078 
+              2.059-2.078s2.059.93 2.059 2.078c0 
+              1.148-.922 2.078-2.059 2.078zm15.133 
+              12.874h-3.541v-5.569c0-1.328-.025-3.037-1.852-3.037-1.853 
+              0-2.137 1.445-2.137 2.939v5.667h-3.541V9h3.396v1.561h.048c.473-.9 
+              1.631-1.852 3.356-1.852 3.59 0 4.253 2.363 
+              4.253 5.437v6.306z"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Transparent bilde til høyre */}
         <div
           className="absolute right-20 bottom-0 
-       w-[180px] md:w-[450px] lg:w-[470px] 
-       opacity-90 pointer-events-none select-none"
+      w-[180px] md:w-[450px] lg:w-[470px] 
+      opacity-90 pointer-events-none select-none"
         >
           <img
             src="/images/meg1.png"
