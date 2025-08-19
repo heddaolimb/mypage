@@ -105,34 +105,35 @@
 }
 
 .sectionTitle {
-  background: #09080f;
+  background: #0a0917;
   padding: 1rem 15rem;
   border-radius: 15px;
   font-size: 3rem;
   color: #f2e9e4;
-  text-align: left;
-  margin-bottom: 2rem;
-  margin-left: 380px;
   max-width: 1000px;
   font-family: "RoseSally", sans-serif;
-  display: inline-block;
+  display: block; /* gjør at den kan bruke margin auto */
+  text-align: center; /* teksten inni blir midtstilt */
+  margin: 0 auto 2rem auto; /* hele boksen havner i midten */
 }
 
 /* ABOUT SECTION */
 .aboutBox {
-  background: #0a0a0f;
-  padding: 3rem 1.2rem;
+  background: #0b0a17;
+  padding: 1rem 2rem;
   border-radius: 20px;
-  max-width: 900px;
+  max-width: 100%;
   width: calc(100% - 450px);
-  margin-left: 330px;
+  margin: 0 auto; /* midtstiller boksene */
+  text-align: left; /* gjør innholdet inni boksene midtstilt */
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .aboutItem {
+  font-family: "Inter", sans-serif; /* legg inn eller bruk en du har */
   display: flex;
-  align-items: center;
-  font-size: 1.2rem;
+  align-items: flex-start;
+  font-size: 1.1rem;
   color: #f2e9e4;
   margin-bottom: 1rem;
   opacity: 0;
@@ -159,6 +160,35 @@
 }
 .aboutItem:nth-child(5).show {
   transition-delay: 2s;
+}
+.icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.75rem;
+  flex-shrink: 0; /* hindrer at ikonet krymper */
+}
+
+.glitter {
+  width: 18px;
+  height: 18px;
+  margin-top: 7px; /* bittelitt ned fra toppen */
+  filter: drop-shadow(0 0 6px white); /* glød rundt */
+  animation: sparkle 2s infinite ease-in-out; /* raskere og jevnere */
+}
+
+/* Animasjon: blink/lysglimt */
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgb(255, 250, 151));
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2); /* gjør at den “pulserer” litt */
+    filter: drop-shadow(0 0 5px rgb(247, 255, 102)); /* sterkere glow midt i */
+  }
 }
 
 /* SIDEBAR */
@@ -470,6 +500,7 @@
   width: 500px;
   max-width: 100%;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 0 auto; /* midtstiller boksene */
 }
 
 .educationBox h3 {

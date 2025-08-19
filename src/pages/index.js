@@ -51,10 +51,10 @@ export default function Home() {
       },
       aboutTitle: "About Me",
       aboutItems: [
-        "My name is Hedda, I'm a 25-year-old educated web developer from Norway.",
-        "I have a bachelor's degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
-        "Experienced in web development, UX/UI design, graphic design, and more.",
-        "Curious and always eager to learn – currently exploring game development.",
+        "My name is Hedda, a 26-year-old web developer from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
+        "I’m passionate about creating engaging and user-friendly digital experiences, with a background in web development, some UX/UI design, and some graphic design. I enjoy combining creativity and technology to bring ideas to life, whether it’s building sleek or fun websites, designing intuitive interfaces, or experimenting with new ideas.",
+        "Outside of this, I love drawing and painting, music, traveling, watching movies and series, and reading books – especially fantasy and sci-fi. And above all, I’m a huge dog lover.",
+        "My goal is to keep challenging myself while contributing to meaningful projects where design and development come together to make a difference.",
       ],
 
       educationTitle: "Education",
@@ -244,13 +244,6 @@ export default function Home() {
         phoneValue: "123 45 678",
         linkedin: "LinkedIn",
       },
-      aboutTitle: "Om meg",
-      aboutItems: [
-        "Jeg heter Hedda, er 25 år gammel og utdannet webutvikler fra Norge.",
-        "Jeg har en bachelor i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
-        "Erfaring innen webutvikling, UX/UI-design, grafisk design og mer.",
-        "Nysgjerrig og alltid lærevillig – utforsker for tiden spillutvikling.",
-      ],
       educationTitle: "Utdanning",
       education: [
         {
@@ -444,10 +437,10 @@ export default function Home() {
       // --- About ---
       aboutTitle: "Om meg",
       aboutItems: [
-        "Jeg heter Hedda, er 25 år gammel og utdannet webutvikler fra Norge.",
-        "Jeg har en bachelor i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
-        "Erfaring innen webutvikling, UX/UI-design, grafisk design og mer.",
-        "Nysgjerrig og alltid lærevillig – utforsker for tiden spillutvikling.",
+        "Jeg heter Hedda, er en 26 år gammel webutvikler fra Norge med en bachelorgrad i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
+        "Jeg brenner for å skape engasjerende og brukervennlige digitale opplevelser, med bakgrunn innen webutvikling, litt UX/UI-design og litt grafisk design. Jeg liker å kombinere kreativitet og teknologi for å gjøre ideer til virkelighet – enten det er å bygge moderne eller morsomme nettsider, designe intuitive grensesnitt eller eksperimentere med nye løsninger.",
+        "Utenom dette liker jeg å tegne og male, høre på musikk, reise, se filmer og serier, samt lese bøker – spesielt innen fantasy og sci-fi. Og aller mest elsker jeg hunder",
+        "Målet mitt er å fortsette å utfordre meg selv, samtidig som jeg bidrar til meningsfulle prosjekter der design og utvikling møtes for å skape noe som virkelig betyr noe.",
       ],
 
       // --- Education ---
@@ -1051,29 +1044,15 @@ export default function Home() {
                   showAboutItems ? styles.show : ""
                 }`}
               >
-                {/* --- Ikoner kommentert ut --- */}
-                {/*
-          {i === 0 && (
-            <span className={styles.icon}>
-              <img src="/icons/norway.svg" alt="" aria-hidden="true" />
-            </span>
-          )}
-          {i === 1 && (
-            <span className={styles.icon}>
-              <img src="/icons/webdev.svg" alt="" aria-hidden="true" />
-            </span>
-          )}
-          {i === 2 && (
-            <span className={styles.icon}>
-              <img src="/icons/drawing.svg" alt="" aria-hidden="true" />
-            </span>
-          )}
-          {i === 3 && (
-            <span className={styles.icon}>
-              <img src="/icons/game.svg" alt="" aria-hidden="true" />
-            </span>
-          )}
-          */}
+                <span className={styles.icon}>
+                  <img
+                    src="/icons/glitter.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.glitter}
+                    style={{ animationDelay: `${i * 0.3}s` }}
+                  />
+                </span>
                 {text}
               </div>
             ))}
