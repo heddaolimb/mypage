@@ -841,6 +841,11 @@ export default function Home() {
             aria-label="Switch to English"
             title="English"
           >
+            <img
+              src="/icons/flag-gb.svg"
+              alt="English flag"
+              className={styles.flagIcon}
+            />
             EN
           </button>
           <span aria-hidden="true" className={styles.langSep}>
@@ -857,6 +862,11 @@ export default function Home() {
             aria-label="Bytt til norsk"
             title="Norsk"
           >
+            <img
+              src="/icons/flag-no.svg"
+              alt="Norsk flagg"
+              className={styles.flagIcon}
+            />
             NO
           </button>
         </div>
@@ -887,10 +897,10 @@ export default function Home() {
 
         {/* Tekst-blokk */}
         <div className="relative z-10 flex-1 max-w-xl pl-35 pr-6 text-left">
-          <h1 className="text-5xl md:text-7xl text-white mb-4">
+          <h1 className="text-5xl md:text-7xl text-white mb-2">
             {t.heroTitle} <span className="text-indigo-400">Hedda Olimb</span>
           </h1>
-          <h2 className="text-3xl md:text-5xl text-gray-300 mb-6">
+          <h2 className="text-3xl md:text-5xl text-gray-300 mb-8">
             {t.heroSubtitle}
           </h2>
           <p className={styles.subtitle}>
@@ -910,7 +920,7 @@ export default function Home() {
           </p>
 
           {/* Wrapper rundt knapp + ikoner */}
-          <div className="mt-6 flex flex-col items-start">
+          <div className="mt-3 flex flex-col items-start">
             {/* Explore-knappen */}
             <button
               onClick={() => scrollToSection("about")}
@@ -984,8 +994,8 @@ export default function Home() {
 
         {/* Transparent bilde til høyre */}
         <div
-          className="absolute right-20 bottom-0 
-      w-[180px] md:w-[450px] lg:w-[470px] 
+          className="absolute right-30 bottom-0 
+      w-[180px] md:w-[450px] lg:w-[420px] 
       opacity-90 pointer-events-none select-none"
         >
           <img

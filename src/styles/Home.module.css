@@ -20,10 +20,48 @@
   font-family: "RoseSally", sans-serif;
   cursor: pointer;
 }
+.langSwitch {
+  display: flex;
+  align-items: center;
+}
+
+.langBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 700; /* Bold */
+  text-transform: uppercase;
+  font-size: 0.7rem !important;
+  color: #6d6d6d !important;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.langBtn:hover {
+  color: #ffffff !important;
+}
+
+.activeLang {
+  color: #ffffff !important;
+}
+
+.flagIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.langSep {
+  margin: 0 0.5rem;
+  color: #666;
+}
 
 .navLinks {
   display: flex;
-  gap: 1.5rem; /* jevn spacing uten margin-hack */
+  gap: 1.9rem; /* jevn spacing uten margin-hack */
+  margin-left: 5rem;
 }
 
 .navItem {
