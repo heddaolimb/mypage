@@ -126,11 +126,11 @@
   width: calc(100% - 450px);
   margin: 0 auto; /* midtstiller boksene */
   text-align: left; /* gjør innholdet inni boksene midtstilt */
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .aboutItem {
   font-family: "Inter", sans-serif; /* legg inn eller bruk en du har */
+  font-weight: 400;
   display: flex;
   align-items: flex-start;
   font-size: 1.1rem;
