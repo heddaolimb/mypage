@@ -204,16 +204,19 @@
 }
 
 .subtitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 800; /* Semi-bold */
   position: relative;
-  font-size: 4rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   white-space: nowrap;
   overflow: hidden;
-  width: 21ch; /* engelsk */
+  width: 16ch; /* engelsk */
   display: inline-block;
   opacity: 0;
   animation: typingSubtitle 3s steps(21, end) forwards;
   animation-delay: 3.5s;
+  color: #616685;
 }
 
 .subtitle::after {

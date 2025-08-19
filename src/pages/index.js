@@ -883,12 +883,12 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl text-gray-300 mb-6">
             {t.heroSubtitle}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-400 mb-6">
+          <p className={styles.subtitle}>
             <Typewriter
               words={[
-                language === "no" ? "Webutvikler" : "Web Developer",
-                language === "no" ? "Designer" : "Designer",
-                language === "no" ? "Problemløser" : "Problem Solver",
+                language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
+                language === "no" ? "DESIGNER" : "DESIGNER",
+                language === "no" ? "PROBLEMLØSER" : "PROBLEM SOLVER",
               ]}
               loop
               cursor
@@ -991,7 +991,7 @@ export default function Home() {
             preserveAspectRatio="none"
           >
             <path
-              fill="#725b87ff"
+              fill="#544b94ff"
               d="M0,100 C400,95 800,85 1200,60 L1200,120 L0,120Z"
             >
               <animate

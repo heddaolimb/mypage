@@ -16,6 +16,10 @@
   font-family: "RoseSally";
   src: url("/fonts/RoseSally.otf") format("opentype");
 }
+@font-face {
+  font-family: "Milker";
+  src: url("/fonts/Milker.otf") format("opentype");
+}
 
 @font-face {
   font-family: "American";
