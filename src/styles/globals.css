@@ -29,7 +29,7 @@ body {
 
 .hero {
   position: relative;
-  z-index: 1; /* gjør hero innhold foran bølge/stjerner */
+  z-index: 10; /* gjør hero innhold foran bølge/stjerner */
 }
 
 .wave-bg {
@@ -64,7 +64,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 5;
   overflow: hidden;
   pointer-events: none; /* viktig */
 }

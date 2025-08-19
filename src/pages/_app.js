@@ -5,7 +5,7 @@ export default function App({ Component, pageProps }) {
     <>
       {/* Stjernehimmel */}
       <div className="stars">
-        {Array.from({ length: 50 }).map((_, i) => (
+        {Array.from({ length: 100 }).map((_, i) => (
           <span
             key={i}
             className="star"
