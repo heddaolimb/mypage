@@ -5,7 +5,6 @@ import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-  const [showSidebar, setShowSidebar] = useState(false);
   const [showAboutItems, setShowAboutItems] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
@@ -261,8 +260,19 @@ export default function Home() {
         {
           title: "My page",
           image: "/images/code.png",
-          description:
-            "A fully responsive, animated portfolio website built with Next.js, React Hooks and CSS Modules to showcase education, experience and projects. Features scroll-based animations with IntersectionObserver, interactive job tabs, and dynamic project rendering. Sections: About, Education, Work, Projects, Courses, Contact.",
+          description: (
+            <>
+              I designed and developed a fully responsive, animated portfolio
+              website using Next.js, React Hooks, and CSS Modules to present my
+              education, experience, and projects in a dynamic and user-friendly
+              way. The site features scroll-based animations with
+              IntersectionObserver, interactive job tabs with stateful display
+              logic, and dynamic project rendering using structured data
+              objects. The layout includes sections such as About Me, Education,
+              Work, Projects, and Contact, each enhanced with smooth transitions
+              and custom styling.
+            </>
+          ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
           link: "https://github.com/heddaolimb/mypage.git",
         },
@@ -524,16 +534,6 @@ export default function Home() {
     coursesRef,
     contactRef,
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      if (window.scrollY >= window.innerHeight) setShowSidebar(true);
-      else setShowSidebar(false);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const ob = new IntersectionObserver(
