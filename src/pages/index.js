@@ -1259,7 +1259,7 @@ export default function Home() {
           </h2>
 
           {/* wrapper beholdes selv om CSS-en din ikke styler den spesielt */}
-          <div className={styles.contactSection}>
+          <div className={styles.contactBox}>
             <p className={styles.contactText}>{t.contactText}</p>
 
             <form
