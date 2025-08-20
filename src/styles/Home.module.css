@@ -89,7 +89,7 @@
 
 .mainContent {
   position: relative;
-  z-index: 2;
+  z-index: 10; /* foran stjerner */
 }
 
 .section {
@@ -126,12 +126,14 @@
   width: calc(100% - 450px);
   margin: 0 auto; /* midtstiller boksene */
   text-align: left; /* gjør innholdet inni boksene midtstilt */
+  position: relative; /* nødvendig for at z-index skal gjelde */
 }
 
 .aboutItem {
   font-family: "Inter", sans-serif; /* legg inn eller bruk en du har */
   font-weight: 400;
   display: flex;
+  padding: 0.2rem 0.3rem; /* mer luft til sidene, mindre “klump” */
   align-items: flex-start;
   font-size: 1.1rem;
   color: #f2e9e4;
@@ -458,33 +460,38 @@
 /* EDUCATION SECTION */
 .educationTimeline {
   position: relative;
-  margin-left: 500px;
-  padding-left: 20px;
-  border-left: 3px solid #f2e9e4;
+  margin-left: 350px; /* mer til venstre */
+  padding-left: 40px;
+  border-left: 3px solid #818181; /* behold streken */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
 }
+
 .educationTimeline.show {
   opacity: 1;
   transform: translateY(0);
 }
 
 .educationItem {
-  margin-bottom: 2rem;
   position: relative;
+  margin-bottom: 2.5rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  padding-left: 2.5rem; /* lager plass til linja */
 }
-
-.educationYear {
-  position: relative;
-  left: -150px;
-  top: 0;
-  font-size: 1.2rem;
-  color: #f2e9e4;
-  font-family: "American", sans-serif;
+.educationItem::before {
+  content: "";
+  position: absolute;
+  left: -59px; /* plasser på linja */
+  top: 2rem; /* høyde på stjerna */
+  width: 35px;
+  height: 35px;
+  background: url("/icons/glitter.svg") no-repeat center center;
+  background-size: contain;
+  filter: drop-shadow(0 0 6px white);
+  animation: sparkle 2s infinite ease-in-out;
 }
 
 .educationTimeline.show .educationItem {
@@ -492,49 +499,55 @@
   transform: translateY(0);
 }
 
+.educationYear {
+  position: absolute;
+  left: -155px; /* til venstre for linja */
+  top: 2rem; /* flytter årstallet ned */
+  font-size: 1.2rem;
+  color: #f2e9e4;
+  font-family: "American", sans-serif;
+  white-space: nowrap;
+}
+
 .educationBox {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
   width: 500px;
   max-width: 100%;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  margin: 0 auto; /* midtstiller boksene */
+  margin: 0 auto;
 }
-
-.educationBox h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: #f2e9e4;
-  font-family: "RoseSally", sans-serif;
-}
-
 .educationBox p {
-  color: #bfbfbf;
+  color: #ffffff;
   font-size: 1rem;
   line-height: 1.6;
+  font-family: "Inter", sans-serif; /* samme som brødtekst */
+  margin-bottom: 1rem;
+}
+.educationBox h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #a1a1a1;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800; /* bold */
+  text-transform: uppercase; /* store bokstaver */
+  letter-spacing: 2px; /* mer space mellom bokstavene */
 }
 
-.educationItem::before {
-  content: "";
-  position: absolute;
-  left: -30px;
-  top: 90px;
-  width: 15px;
-  height: 15px;
-  background: #de1fce;
-  border-radius: 50%;
-  border: 3px solid #fff;
-}
-
-.bulletList {
+.educationBox ul,
+.educationBox li {
   margin-top: 1rem;
-  padding-left: 1.5rem;
-  list-style-type: disc;
-  color: #bfbfbf;
+  padding-left: 1.5rem; /* plass til bullets */
+  list-style-type: disc; /* vanlige prikker */
+  color: #ffffff;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.6; /* mer luft */
+  font-family: "Inter", sans-serif;
+}
+
+.educationBox li {
+  margin-bottom: 1rem; /* ekstra luft mellom punktene */
 }
 
 /* JOBS SECTION */

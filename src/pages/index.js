@@ -1068,6 +1068,7 @@ export default function Home() {
           <h2 id="education-title" className={styles.sectionTitle}>
             {t.educationTitle}
           </h2>
+
           <div
             ref={educationRef}
             className={`${styles.educationTimeline} ${
@@ -1081,11 +1082,16 @@ export default function Home() {
                 style={{ transitionDelay: `${0.3 + idx * 0.4}s` }}
                 aria-label={edu.title}
               >
-                <span className={styles.educationYear}>{edu.year}</span>
+                {/* ⭐ + Årstall i en egen flex-rad */}
+                <div className={styles.educationYear}>{edu.year}</div>
+
+                {/* Selve boksen */}
                 <div className={styles.educationBox}>
                   <h3>{edu.title}</h3>
-                  <ul className={styles.bulletList}>
-                    {edu.descLead && <p>{edu.descLead}</p>}
+
+                  {edu.descLead && <p>{edu.descLead}</p>}
+
+                  <ul>
                     {edu.desc.map((d, i) => (
                       <li key={i}>{d}</li>
                     ))}
