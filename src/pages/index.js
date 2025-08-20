@@ -241,7 +241,9 @@ export default function Home() {
               between sensors and users for better decision-making. The project
               targeted tech-savvy but forgetful plant owners aged 18–35 and
               emphasized ease of use,{" "}
-              <span className={styles.highlight}>nformation accessibility</span>
+              <span className={styles.highlight}>
+                information accessibility
+              </span>
               , and
               <span className={styles.highlight}>automation</span>.
             </>
@@ -429,8 +431,55 @@ export default function Home() {
         {
           title: "Heimat App",
           image: "/images/heimatapp.png",
-          description:
-            "Vi utviklet en mobilapplikasjon kalt Heimat for Gjestvang Eiendom for å forbedre studentboligopplevelsen. Gjennom spørreundersøkelser, intervjuer og markedsundersøkelser identifiserte vi ensomhet og mangel på sosial tilhørighet som nøkkelutfordringer blant studenter. Med design thinking-metodikk bygde vi personas, gjennomførte brukertester og itererte på prototyper. Sluttproduktet ble en Progressive Web App (PWA) bygget med SvelteKit, med Firebase for autentisering, Firestore database og hosting. Funksjoner: sanntidschat, arrangementskalender, kunngjøringsstrømmer og strukturerte bygningssider. Modulær arkitektur med dynamiske ruter og reaktive Svelte-stores. Inkluderer offline-støtte via service workers og sikker TLS-hosting.",
+          description: (
+            <>
+              Vi utviklet en{" "}
+              <span className={styles.highlight}>mobilapplikasjon</span> kalt
+              Heimat for Gjestvang Eiendom for å forbedre
+              studentboligopplevelsen. Gjennom{" "}
+              <span className={styles.highlight}>
+                spørreundersøkelser, intervjuer og markedsundersøkelser
+              </span>{" "}
+              identifiserte vi ensomhet og mangel på sosial tilhørighet som
+              nøkkelutfordringer blant studenter. Med{" "}
+              <span className={styles.highlight}>design thinking-metodikk</span>{" "}
+              bygde vi{" "}
+              <span className={styles.highlight}>
+                personas, gjennomførte brukertester
+              </span>{" "}
+              og itererte på{" "}
+              <span className={styles.highlight}>
+                lav- og høyoppløselige prototyper
+              </span>
+              . Sluttproduktet ble en{" "}
+              <span className={styles.highlight}>
+                Progressive Web App (PWA)
+              </span>{" "}
+              bygget med <span className={styles.highlight}>SvelteKit</span>,
+              ved bruk av <span className={styles.highlight}>JavaScript</span>,{" "}
+              <span className={styles.highlight}>HTML/CSS</span> og{" "}
+              <span className={styles.highlight}>Firebase</span> for
+              autentisering,{" "}
+              <span className={styles.highlight}>Firestore database</span> og
+              hosting. Funksjoner: sanntidschat, arrangementskalender,
+              kunngjøringsstrømmer og strukturerte bygningssider. Løsningen
+              bruker en{" "}
+              <span className={styles.highlight}>
+                modulær, komponentbasert arkitektur
+              </span>{" "}
+              med{" "}
+              <span className={styles.highlight}>route-basert filstruktur</span>{" "}
+              (+page.svelte, +layout.svelte) og{" "}
+              <span className={styles.highlight}>dynamiske ruter</span> for
+              håndtering av brukergenerert innhold. Dataflyt og UI-stater styres
+              ved hjelp av{" "}
+              <span className={styles.highlight}>reaktive Svelte stores</span>,
+              og appen inkluderer service workers for offline-støtte og raske
+              lastetider. Hosting håndteres via{" "}
+              <span className={styles.highlight}>Firebase Hosting</span> med
+              sikker <span className={styles.highlight}>TLS-kryptering</span>.
+            </>
+          ),
           tech: [
             "#SvelteKit",
             "#Firebase",
@@ -444,8 +493,39 @@ export default function Home() {
         {
           title: "Flower Power – Cosmo & Wanda",
           image: "/images/cosmowanda.jpg",
-          description:
-            "Flower Power er en smart plantepleieprototyp laget for å hjelpe unge voksne med å holde liv i inneplanter gjennom automatisering og digital tilbakemelding. Med en Micro:bit og jordfuktighetssensor, OLED-skjerm, vannpumpe og reservoar overvåker systemet jordfuktighet. Når den går under terskelverdi, varsles brukeren og planten vannes. Utviklingen inkluderte brukerundersøkelser, personas, lo-fi/hi-fi skisser og brukertester. Bygget på Web of Things (WoT)-prinsipper for enklere dataflyt. Målgruppe: teknologivante, men glemske planteeiere i alderen 18–35 år.",
+          description: (
+            <>
+              Flower Power er en smart plantepleieprototyp laget for å hjelpe
+              unge voksne med å holde liv i inneplanter gjennom automatisering
+              og digital tilbakemelding. Løsningen bruker en{" "}
+              <span className={styles.highlight}>
+                Micro:bit-mikrokontroller
+              </span>{" "}
+              sammen med en{" "}
+              <span className={styles.highlight}>jordfuktighetssensor</span>,{" "}
+              <span className={styles.highlight}>OLED-skjerm</span>,{" "}
+              <span className={styles.highlight}>vannpumpe</span> og et
+              vannreservoar for å overvåke og opprettholde jordfuktighetsnivåer.
+              Når nivået går under terskelverdien, varsles brukeren og pumpen
+              aktiveres for å vanne planten. Utviklingsprosessen inkluderte{" "}
+              <span className={styles.highlight}>brukerundersøkelser</span>,{" "}
+              <span className={styles.highlight}>personas</span>,{" "}
+              <span className={styles.highlight}>lo-fi og hi-fi skisser</span>{" "}
+              samt <span className={styles.highlight}>brukertester</span> for å
+              validere brukeropplevelsen. Systemet bygger på{" "}
+              <span className={styles.highlight}>
+                Web of Things (WoT)-prinsipper
+              </span>{" "}
+              med en kommunikasjonsmodell som forenkler dataflyt mellom sensorer
+              og brukere for bedre beslutningsgrunnlag. Prosjektet rettet seg
+              mot teknologivante, men glemske planteeiere i alderen 18–35 år og
+              la vekt på brukervennlighet,{" "}
+              <span className={styles.highlight}>
+                tilgjengelighet av informasjon
+              </span>{" "}
+              og <span className={styles.highlight}>automatisering</span>.
+            </>
+          ),
           tech: [
             "#Microbit",
             "#Figma",
