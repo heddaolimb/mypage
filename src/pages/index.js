@@ -41,14 +41,7 @@ export default function Home() {
       heroTitle: "Hi, I'm",
       heroSubtitle: "Welcome to my website!",
       explore: "Explore",
-      sidebar: {
-        name: "Hedda Olimb",
-        role: "Web Developer",
-        emailLabel: "Email",
-        phoneLabel: "Phone",
-        phoneValue: "123 45 678",
-        linkedin: "LinkedIn",
-      },
+
       aboutTitle: "About Me",
       aboutItems: [
         "My name is Hedda, a 26-year-old web developer from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
@@ -102,6 +95,7 @@ export default function Home() {
           ],
         },
       ],
+
       workTitle: "Work Experience",
       jobs: {
         job1: {
@@ -150,192 +144,62 @@ export default function Home() {
         {
           title: "Heimat App",
           image: "/images/heimatapp.png",
-          description:
-            "We developed a mobile application called Heimat for Gjestvang Eiendom to improve the student housing experience. Through surveys, interviews, and market research, we identified loneliness and lack of social belonging as key issues among students. Using design thinking methodology, we built personas, conducted user testing, and iterated on low- and high-fidelity prototypes. The final product is a Progressive Web App (PWA) built with SvelteKit, using JavaScript, HTML/CSS, and Firebase for user authentication, Firestore database, and hosting. The app features real-time chat, an event calendar, announcement feeds, and structured pages for building-specific information. It uses a modular component-based architecture with route-based file structure (+page.svelte, +layout.svelte) and dynamic routing for handling user-generated content. Data flow and UI states are managed using reactive Svelte stores, and the app includes service workers for offline support and fast load times. Hosting is handled via Firebase Hosting with secure TLS encryption.",
-          tech: [
-            "#SvelteKit",
-            "#Firebase",
-            "#JavaScript",
-            "#HTML",
-            "#CSS",
-            "#UXUI",
-          ],
-          link: "https://appheimat.netlify.app/",
-        },
-        {
-          title: "Flower Power – Cosmo & Wanda",
-          image: "/images/cosmowanda.jpg",
-          description:
-            "We developed Flower Power, a smart plant care prototype designed to help young adults maintain their indoor plants through automation and digital feedback. The solution uses a Micro:bit microcontroller paired with a soil moisture sensor, OLED display, water pump, and water reservoir to monitor and maintain soil moisture levels. When the moisture drops below a threshold, the system alerts the user and activates the pump to water the plant. Our development process included user research, personas, lo-fi and hi-fi sketches, as well as usability testing to validate the user experience. The system follows Web of Things (WoT) principles, with a communication model aimed at simplifying data flow between sensors and users for better decision-making. The project targeted tech-savvy but forgetful plant owners aged 18–35 and emphasized ease of use, information accessibility, and automation.",
-          tech: [
-            "#Microbit",
-            "#Figma",
-            "#IoT",
-            "#SensorTechnology",
-            "#OLEDdisplay",
-            "#Automation",
-            "#UXDesign",
-          ],
-          link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
-        },
-        {
-          title: "My page",
-          image: "/images/code.png",
-          description:
-            "I designed and developed a fully responsive, animated portfolio website using Next.js, React Hooks, and CSS Modules to present my education, experience, and projects in a dynamic and user-friendly way. The site features scroll-based animations with IntersectionObserver, interactive job tabs with stateful display logic, and dynamic project rendering using structured data objects. The layout includes sections such as About Me, Education, Work, Projects, and Contact, each enhanced with smooth transitions and custom styling.",
-          tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
-          link: "https://github.com/heddaolimb/mypage.git",
-        },
-      ],
-      coursesTitle: "Courses",
-      courseWhy: "Why I took this course",
-      courseLearned: "What I learned in this course",
-      courses: [
-        {
-          title: "Digital Marketing Basics",
-          image: "/images/digital-marketing.png",
-          link: "https://example.com/marketing-course",
-          why: "To understand how digital marketing works and how to promote my own projects.",
-          learned:
-            "The fundamentals of SEO, paid ads, content strategy, and analytics.",
-        },
-        {
-          title: "Intro to AI",
-          image: "/images/ai-course.png",
-          link: "https://example.com/ai-course",
-          why: "I'm curious about AI and how it's used in real-world applications.",
-          learned:
-            "Machine learning basics, ethical use, and practical AI tools.",
-        },
-      ],
-      contactTitle: "Contact",
-      contactText:
-        "I'm currently open to new opportunities, collaborations, or just a chat. Feel free to reach out!",
-      form: {
-        name: "Name",
-        email: "Email",
-        message: "Message",
-        send: "Send Message",
-        sending: "Sending...",
-      },
-      footer: "All rights reserved.",
-      toastSuccess: "Message sent!",
-      toastError: "Something went wrong. Try again.",
-    },
+          description: (
+            <>
+              We developed a{" "}
+              <span className={styles.highlight}>mobile application</span>{" "}
+              called Heimat for Gjestvang Eiendom to improve the student housing
+              experience. Through{" "}
+              <span className={styles.highlight}>
+                surveys, interviews, and market research
+              </span>
+              , we identified loneliness and lack of social belonging as key
+              issues among students. Using{" "}
+              <span className={styles.highlight}>
+                design thinking methodology
+              </span>
+              , we built{" "}
+              <span className={styles.highlight}>
+                personas, conducted user testing,
+              </span>{" "}
+              and iterated on{" "}
+              <span className={styles.highlight}>
+                low- and high-fidelity prototypes.
+              </span>{" "}
+              The final product is a{" "}
+              <span className={styles.highlight}>
+                Progressive Web App (PWA)
+              </span>{" "}
+              built with
+              <span className={styles.highlight}>SvelteKit</span>, using
+              <span className={styles.highlight}>JavaScript</span>,
+              <span className={styles.highlight}>HTML/CSS</span>, and
+              <span className={styles.highlight}>Firebase</span> for user
+              authentication,
+              <span className={styles.highlight}>Firestore database</span>, and
+              hosting. The app features real-time chat, an event calendar,
+              announcement feeds, and structured pages for building-specific
+              information. It uses a
+              <span className={styles.highlight}>
+                modular component-based architecture
+              </span>{" "}
+              with
+              <span className={styles.highlight}>
+                route-based file structure
+              </span>{" "}
+              (+page.svelte, +layout.svelte) and
+              <span className={styles.highlight}>dynamic routing</span> for
+              handling user-generated content. Data flow and UI states are
+              managed using
+              <span className={styles.highlight}>reactive Svelte stores</span>,
+              and the app includes service workers for offline support and fast
+              load times. Hosting is handled via
+              <span className={styles.highlight}>Firebase Hosting</span> with
+              secure
+              <span className={styles.highlight}>TLS encryption</span>.
+            </>
+          ),
 
-    no: {
-      meta: {
-        title: "Hedda Olimb – Website",
-        description:
-          "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
-        keywords:
-          "Hedda Olimb, webutvikler, nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
-      },
-      skip: "Hopp til innhold",
-      nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
-      heroTitle: "Hei, jeg heter Hedda.",
-      heroSubtitle: "Velkommen til nettsiden min!",
-      explore: "Utforsk",
-      sidebar: {
-        name: "Hedda Olimb",
-        role: "Webutvikler",
-        emailLabel: "E-post",
-        phoneLabel: "Telefon",
-        phoneValue: "123 45 678",
-        linkedin: "LinkedIn",
-      },
-      educationTitle: "Utdanning",
-      education: [
-        {
-          year: "2015 - 2018",
-          title: "Videregående – Hadeland videregående skole",
-          descLead: "Studiespesialisering med fag som:",
-          desc: [
-            "Engelsk og spansk (Erasmus+ i 2017, Institut de Bruguers, Spania).",
-            "Informasjonsteknologi 1.",
-            "Markedsføring og ledelse 1 & 2.",
-            "Politikk og menneskerettigheter 1 & 2.",
-            "Sosiologi og sosialantropologi.",
-            "Rettslære 1.",
-          ],
-        },
-        {
-          year: "2020 - 2023",
-          title: "Bachelor i webutvikling – NTNU",
-          descLead: null,
-          desc: [
-            "Utviklet statiske og dynamiske nettsider med HTML, CSS, JavaScript, Node.js, PHP og React.",
-            "Kjent med Tailwind, Express, SQL (MySQL), MongoDB, REST-APIer og Postman.",
-            "Brukte verktøy som Figma, Miro, GitHub, Adobe Creative Cloud og VS Code.",
-            "Erfaring med responsive layouts, prototyping og mobile-first design.",
-            "Jobbet prosjektbasert med planlegging og samarbeid.",
-            "Dekket universell utforming (WCAG), SEO (meta-tags) og brukertesting.",
-            "Lært informasjonsarkitektur, databaser og innholdsstrukturering.",
-            "Utforsket skytjenester, utrulling og Raspberry Pi-servere.",
-            "Studert historien og protokollene bak Internett og WWW.",
-            "Forståelse av GDPR, etikk, lovverk og forskningsmetoder.",
-            "Alt kursarbeid på engelsk – flytende skriftlig og muntlig engelsk.",
-            "Valgt som tillitsvalgt for Fakultet for arkitektur og design i 2023.",
-          ],
-        },
-        {
-          year: "2024 - 2025",
-          title: "Kurs",
-          descLead: null,
-          desc: [
-            "Gjennomført nettkurs og bootcamps innen digital markedsføring, AI, Lean Manufacturing, robotikk og finansmarkeder. Mer detaljert oversikt i «Kurs»-seksjonen.",
-          ],
-        },
-      ],
-      workTitle: "Arbeidserfaring",
-      jobs: {
-        job1: {
-          title: "Helsefagarbeider",
-          company: "Villa Skaar Jevnaker",
-          period: "Somre/mer – 2018, 2020, 2021, 2022, 2023, 2024",
-          description: [
-            "Fikk praktisk erfaring innen geriatrisk omsorg, smittevernrutiner og grunnleggende medisinsk kunnskap knyttet til vanlige sykdommer hos eldre.",
-            "Opplæring i trygg pasienthåndtering og forflytningsteknikker, inkludert forebygging av skader ved tunge løft og forflytninger.",
-            "Arbeidet mye i én-til-én-situasjoner med opplæring i egen sikkerhet og de-eskalering ved potensielt utagerende situasjoner.",
-            "Tilegnet kunnskap om ernæring, personlig hygiene og daglige rutiner som ivaretar beboernes fysiske og psykiske helse.",
-          ],
-        },
-        job2: {
-          title: "Operativ soldat",
-          company: "Forsvaret (FOH – Forsvarets operative hovedkvarter)",
-          period: "2019",
-          description: [
-            "Tjenestegjorde i Sjøforsvaret ved FOH.",
-            "Stasjonert på Overvåkingssenteret med sanntids maritim overvåkning og situasjonsforståelse i norske og NATO-områder.",
-            "Opererte klassifiserte overvåknings- og kommandosystemer i et høysikkerhetsmiljø for å spore, rapportere og vurdere sjøaktivitet i strategiske farvann som Nord-Atlanteren.",
-            "Bidro til nasjonal beredskap og samhandling med allierte styrker.",
-            "Praktisk erfaring med både tekniske og operative systemer i maritimt miljø, med fokus på sikker informasjonsflyt, oppdragsstøtte og operativ oversikt.",
-            "Kurs: Kvalifisert førstehjelp nivå 2.",
-            "Kurs: Organisasjonsarbeid, møteteknikk og HMS.",
-            "Tillitsvalgt i skiftlaget.",
-          ],
-        },
-        job3: {
-          title: "Helsefagarbeider",
-          company: "JORS – Jevnaker omsorg og rehabilitering",
-          period: "Sommer 2017",
-          description: [
-            "Utførte et bredt spekter av grunnleggende oppgaver på sykehjem, med fokus på hygiene, måltider, mobilitet og observasjon av beboernes helse.",
-            "Innsikt i faglige standarder for eldreomsorg, inkludert kommunikasjon med beboere, dokumentasjon og tverrfaglig samarbeid.",
-            "Videreutviklet kunnskap om smittevern, ernæring og grunnleggende medisinsk oppfølging i en større institusjon.",
-            "Kurs: Etikk og holdninger, brukermedvirkning, tvang og makt, hygiene og personlig stell, demens, mobilitet og brannsikkerhet.",
-          ],
-        },
-      },
-      // --- Projects ---
-      projectsTitle: "Projects",
-      projectLink: "View Project",
-      projects: [
-        {
-          title: "Heimat App",
-          image: "/images/heimatapp.png",
-          description:
-            "We developed a mobile application called Heimat for Gjestvang Eiendom to improve the student housing experience. Through surveys, interviews, and market research, we identified loneliness and lack of social belonging as key issues among students. Using design thinking methodology, we built personas, conducted user testing, and iterated on prototypes. The final product is a Progressive Web App (PWA) built with SvelteKit, using Firebase for auth, Firestore database and hosting. Features: real-time chat, event calendar, announcement feeds, and structured building pages. Modular architecture with dynamic routing and reactive Svelte stores. Includes offline support with service workers and secure TLS hosting.",
           tech: [
             "#SvelteKit",
             "#Firebase",
@@ -349,8 +213,40 @@ export default function Home() {
         {
           title: "Flower Power – Cosmo & Wanda",
           image: "/images/cosmowanda.jpg",
-          description:
-            "Flower Power is a smart plant care prototype that helps young adults maintain indoor plants through automation and digital feedback. Using a Micro:bit with soil moisture sensor, OLED display, water pump and reservoir, the system monitors soil moisture. When below threshold, it alerts the user and waters the plant. Development included user research, personas, lo-fi/hi-fi sketches and usability testing. Built on Web of Things (WoT) principles for simplified data flow. Target group: tech-savvy but forgetful plant owners aged 18–35.",
+          description: (
+            <>
+              We developed Flower Power, a smart plant care prototype designed
+              to help young adults maintain their indoor plants through
+              automation and digital feedback. The solution uses a
+              <span className={styles.highlight}>
+                Micro:bit microcontroller
+              </span>{" "}
+              paired with a
+              <span className={styles.highlight}>soil moisture sensor</span>,
+              <span className={styles.highlight}>OLED display</span>,
+              <span className={styles.highlight}>water pump</span>, and water
+              reservoir to monitor and maintain soil moisture levels. When the
+              moisture drops below a threshold, the system alerts the user and
+              activates the pump to water the plant. Our development process
+              included
+              <span className={styles.highlight}>user research</span>,
+              <span className={styles.highlight}>personas</span>,
+              <span className={styles.highlight}>lo-fi and hi-fi sketches</span>
+              , as well as
+              <span className={styles.highlight}>usability testing</span> to
+              validate the user experience. The system follows
+              <span className={styles.highlight}>
+                Web of Things (WoT) principles
+              </span>
+              , with a communication model aimed at simplifying data flow
+              between sensors and users for better decision-making. The project
+              targeted tech-savvy but forgetful plant owners aged 18–35 and
+              emphasized ease of use,{" "}
+              <span className={styles.highlight}>nformation accessibility</span>
+              , and
+              <span className={styles.highlight}>automation</span>.
+            </>
+          ),
           tech: [
             "#Microbit",
             "#Figma",
@@ -372,7 +268,6 @@ export default function Home() {
         },
       ],
 
-      // --- Courses ---
       coursesTitle: "Courses",
       courseWhy: "Why I took this course",
       courseLearned: "What I learned in this course",
@@ -395,7 +290,6 @@ export default function Home() {
         },
       ],
 
-      // --- Contact ---
       contactTitle: "Contact",
       contactText:
         "I'm currently open to new opportunities, collaborations, or just a chat. Feel free to reach out!",
@@ -407,43 +301,33 @@ export default function Home() {
         sending: "Sending...",
       },
       footer: "All rights reserved.",
-      formSuccess: "Message sent!",
-      formError: "Something went wrong. Try again.",
+      toastSuccess: "Message sent!",
+      toastError: "Something went wrong. Try again.",
     },
 
-    // --- Norwegian translation ---
+    // NORSK OVERSETTELSE
     no: {
       meta: {
         title: "Hedda Olimb – Nettside",
         description:
           "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
         keywords:
-          "Hedda Olimb, webutvikler, Nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
+          "Hedda Olimb, webutvikler, nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
       },
       skip: "Hopp til innhold",
       nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
       heroTitle: "Hei, jeg heter",
       heroSubtitle: "Velkommen til nettsiden min!",
       explore: "Utforsk",
-      sidebar: {
-        name: "Hedda Olimb",
-        role: "Webutvikler",
-        emailLabel: "E-post",
-        phoneLabel: "Telefon",
-        phoneValue: "123 45 678",
-        linkedin: "LinkedIn",
-      },
 
-      // --- About ---
       aboutTitle: "Om meg",
       aboutItems: [
         "Jeg heter Hedda, er en 26 år gammel webutvikler fra Norge med en bachelorgrad i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
         "Jeg brenner for å skape engasjerende og brukervennlige digitale opplevelser, med bakgrunn innen webutvikling, litt UX/UI-design og litt grafisk design. Jeg liker å kombinere kreativitet og teknologi for å gjøre ideer til virkelighet – enten det er å bygge moderne eller morsomme nettsider, designe intuitive grensesnitt eller eksperimentere med nye løsninger.",
-        "Utenom dette liker jeg å tegne og male, høre på musikk, reise, se filmer og serier, samt lese bøker – spesielt innen fantasy og sci-fi. Og aller mest elsker jeg hunder",
+        "Utenom dette liker jeg å tegne og male, høre på musikk, reise, se filmer og serier, samt lese bøker – spesielt innen fantasy og sci-fi. Og aller mest elsker jeg hunder.",
         "Målet mitt er å fortsette å utfordre meg selv, samtidig som jeg bidrar til meningsfulle prosjekter der design og utvikling møtes for å skape noe som virkelig betyr noe.",
       ],
 
-      // --- Education ---
       educationTitle: "Utdanning",
       education: [
         {
@@ -488,7 +372,6 @@ export default function Home() {
         },
       ],
 
-      // --- Work ---
       workTitle: "Arbeidserfaring",
       jobs: {
         job1: {
@@ -522,15 +405,14 @@ export default function Home() {
           company: "JORS – Jevnaker omsorg og rehabilitering",
           period: "Sommer 2017",
           description: [
-            "Utførte et bredt spekter av grunnleggende oppgaver på sykehjem, med fokus på hygiene, måltider, mobilitet og observasjon av beboernes helse.",
-            "Innsikt i faglige standarder for eldreomsorg, inkludert kommunikasjon med beboere, dokumentasjon og tverrfaglig samarbeid.",
-            "Videreutviklet kunnskap om smittevern, ernæring og grunnleggende medisinsk oppfølging i en større institusjon.",
-            "Kurs: Etikk og holdninger, brukermedvirkning, tvang og makt, hygiene og personlig stell, demens, mobilitet og brannsikkerhet.",
+            "Utførte et bredt spekter av pleieoppgaver i sykehjemsmiljø, med fokus på hygienerutiner, måltidshjelp, mobilitetsstøtte og observasjon av beboernes fysiske og psykiske helse.",
+            "Fikk innsikt i profesjonelle standarder for eldreomsorg, inkludert kommunikasjon med beboere, dokumentasjon av pleie og samarbeid i tverrfaglig team.",
+            "Bygde videre på kunnskap innen smittevern, ernæring og grunnleggende medisinsk pleie, tilpasset rutiner i en større omsorgsinstitusjon.",
+            "Kurs: Etikk og holdninger, brukermedvirkning, bruk av tvang og makt, hygiene og personlig stell, demens, mobilitet og brannsikkerhet.",
           ],
         },
       },
 
-      // --- Projects ---
       projectsTitle: "Prosjekter",
       projectLink: "Se prosjekt",
       projects: [
@@ -538,7 +420,7 @@ export default function Home() {
           title: "Heimat App",
           image: "/images/heimatapp.png",
           description:
-            "Vi utviklet Heimat for Gjestvang Eiendom for å forbedre studentboligopplevelsen. Gjennom undersøkelser og intervjuer identifiserte vi ensomhet og mangel på tilhørighet som hovedutfordringer. Med design thinking bygde vi personas, testet brukere og itererte på prototyper. Sluttproduktet er en PWA laget i SvelteKit med Firebase (auth, Firestore, hosting). Funksjoner: sanntidschat, arrangementskalender, kunngjøringer og bygg-sider. Modulær arkitektur med dynamisk ruting og reaktive stores. Inkluderer offline-støtte og sikker TLS-hosting.",
+            "Vi utviklet en mobilapplikasjon kalt Heimat for Gjestvang Eiendom for å forbedre studentboligopplevelsen. Gjennom spørreundersøkelser, intervjuer og markedsundersøkelser identifiserte vi ensomhet og mangel på sosial tilhørighet som nøkkelutfordringer blant studenter. Med design thinking-metodikk bygde vi personas, gjennomførte brukertester og itererte på prototyper. Sluttproduktet ble en Progressive Web App (PWA) bygget med SvelteKit, med Firebase for autentisering, Firestore database og hosting. Funksjoner: sanntidschat, arrangementskalender, kunngjøringsstrømmer og strukturerte bygningssider. Modulær arkitektur med dynamiske ruter og reaktive Svelte-stores. Inkluderer offline-støtte via service workers og sikker TLS-hosting.",
           tech: [
             "#SvelteKit",
             "#Firebase",
@@ -553,7 +435,7 @@ export default function Home() {
           title: "Flower Power – Cosmo & Wanda",
           image: "/images/cosmowanda.jpg",
           description:
-            "Flower Power er en smart plantepleie-prototype som hjelper unge voksne med å ta vare på inneplanter via automasjon og digital feedback. Bruker Micro:bit med jordfuktighetssensor, OLED-skjerm, vannpumpe og reservoar. Når fuktigheten synker under terskel, varsles brukeren og pumpen aktiveres. Prosessen inkluderte brukerundersøkelser, personas, lo-/hi-fi skisser og brukertesting. Basert på Web of Things (WoT)-prinsipper. Målgruppe: teknologiinteresserte, men glemsomme planteeiere (18–35).",
+            "Flower Power er en smart plantepleieprototyp laget for å hjelpe unge voksne med å holde liv i inneplanter gjennom automatisering og digital tilbakemelding. Med en Micro:bit og jordfuktighetssensor, OLED-skjerm, vannpumpe og reservoar overvåker systemet jordfuktighet. Når den går under terskelverdi, varsles brukeren og planten vannes. Utviklingen inkluderte brukerundersøkelser, personas, lo-fi/hi-fi skisser og brukertester. Bygget på Web of Things (WoT)-prinsipper for enklere dataflyt. Målgruppe: teknologivante, men glemske planteeiere i alderen 18–35 år.",
           tech: [
             "#Microbit",
             "#Figma",
@@ -569,13 +451,12 @@ export default function Home() {
           title: "Min nettside",
           image: "/images/code.png",
           description:
-            "Et responsivt, animert porteføljenettsted laget med Next.js, React Hooks og CSS Modules. Viser utdanning, arbeid og prosjekter. Har scroll-animasjoner med IntersectionObserver, interaktive jobb-faner og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Arbeid, Prosjekter, Kurs, Kontakt.",
+            "En fullt responsiv, animert porteføljeside bygget med Next.js, React Hooks og CSS Modules for å vise utdanning, erfaring og prosjekter. Inneholder scroll-animasjoner med IntersectionObserver, interaktive jobbtabs og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Arbeid, Prosjekter, Kurs, Kontakt.",
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
           link: "https://github.com/heddaolimb/mypage.git",
         },
       ],
 
-      // --- Courses ---
       coursesTitle: "Kurs",
       courseWhy: "Hvorfor jeg tok dette kurset",
       courseLearned: "Hva jeg lærte i dette kurset",
@@ -584,12 +465,12 @@ export default function Home() {
           title: "Grunnleggende digital markedsføring",
           image: "/images/digital-marketing.png",
           link: "https://example.com/marketing-course",
-          why: "For å forstå hvordan digital markedsføring fungerer og markedsføre egne prosjekter.",
+          why: "For å forstå hvordan digital markedsføring fungerer og hvordan jeg kan promotere egne prosjekter.",
           learned:
             "Grunnleggende SEO, betalt annonsering, innholdsstrategi og analyse.",
         },
         {
-          title: "Introduksjon til AI",
+          title: "Introduksjon til kunstig intelligens",
           image: "/images/ai-course.png",
           link: "https://example.com/ai-course",
           why: "Jeg er nysgjerrig på AI og hvordan det brukes i praksis.",
@@ -598,7 +479,6 @@ export default function Home() {
         },
       ],
 
-      // --- Contact ---
       contactTitle: "Kontakt",
       contactText:
         "Jeg er åpen for nye muligheter, samarbeid eller bare en prat. Ta gjerne kontakt!",
