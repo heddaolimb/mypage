@@ -100,3 +100,15 @@ body {
     opacity: 1;
   }
 }
+
+html,
+body {
+  height: 100%; /* Sørger for at body dekker hele skjermen */
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  min-height: 100%; /* dekker alt innhold */
+  display: block;
+}
