@@ -625,6 +625,17 @@ export default function Home() {
   const coursesRef = useRef(null);
   const contactRef = useRef(null);
 
+  const [showJobs, setShowJobs] = useState(false);
+
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShowJobs(true),
+      { threshold: 0.3 }
+    );
+    if (jobsRef.current) ob.observe(jobsRef.current);
+    return () => jobsRef.current && ob.unobserve(jobsRef.current);
+  }, []);
+
   const sectionRefs = [
     aboutRef,
     educationRef,
@@ -1105,6 +1116,7 @@ export default function Home() {
         {/* Work Experience */}
         <section
           id="work"
+          ref={jobsRef}
           className={styles.section}
           aria-labelledby="work-title"
         >
@@ -1112,9 +1124,7 @@ export default function Home() {
             {t.workTitle}
           </h2>
           <div
-            className={`${styles.jobSection} ${
-              showEducation ? styles.show : ""
-            }`}
+            className={`${styles.jobSection} ${showJobs ? styles.show : ""}`}
           >
             <div className={styles.jobTabs} role="tablist" aria-label="Jobs">
               {Object.keys(jobs).map((jobKey) => (

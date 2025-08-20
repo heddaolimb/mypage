@@ -510,10 +510,10 @@
 }
 
 .educationBox {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(1, 1, 12, 0.5);
   padding: 1.5rem 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
   width: 500px;
   max-width: 100%;
   margin: 0 auto;
@@ -552,74 +552,107 @@
 
 /* JOBS SECTION */
 .jobSection {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-left: 380px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  display: flex; /* plasserer .jobTabs og .jobContent side ved side */
+  flex-direction: row; /* rad-oppsett (tabs til venstre, innhold til høyre) */
+  align-items: flex-start; /* start alle elementene øverst */
+  gap: 0rem; /* veldig liten avstand */
+  margin-top: 2rem; /* avstand ned fra overskriften */
+  opacity: 0; /* starter usynlig (for fade-in) */
+  transform: translateY(20px); /* starter litt ned (for fade-in) */
+  transition: opacity 1s ease, transform 1s ease; /* smooth fade/slide inn */
+  margin-left: 6rem; /* 👈 flytter hele seksjonen mer til høyre */
 }
 .jobSection.show {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* blir synlig når klassen "show" trigges */
+  transform: translateY(0); /* flyttes til normal posisjon */
 }
 
 .jobTabs {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-width: 160px;
+  display: flex; /* en liste med tabs */
+  flex-direction: column; /* legg dem under hverandre */
+  gap: 1rem; /* avstand mellom hver tab */
+  min-width: 250px; /* hvor smal kolonnen minimum kan være */
+  max-width: 240px; /* hvor bred kolonnen maks kan være */
+  /* 🔧 Vil du flytte hele tab-kolonnen mer til høyre? 
+       → legg til "margin-left: XXpx;" her */
+  margin-left: 50px;
 }
 
 .jobTab {
-  padding: 0.8rem 1.2rem;
-  background: #2a2a2a;
-  color: #f2e9e4;
-  font-family: "Arial", sans-serif;
-  cursor: pointer;
-  border-left: 4px solid transparent;
-  transition: background 0.3s, border-color 0.3s;
-  unicode-bidi: plaintext;
+  padding: 0.6rem 1rem; /* innvendig padding (størrelsen på hver tab-boks) */
+  background: #2a2a2a; /* bakgrunnsfarge på tabene */
+  color: #ffffff; /* tekstfarge */
+  font-family: "Poppins", sans-serif; /* font */
+  font-weight: 700; /* bold */
+  text-transform: uppercase; /* store bokstaver */
+  cursor: pointer; /* musepekeren blir "klikkbar" */
+  border-left: 4px solid transparent; /* venstre border (viser hvilken som er aktiv) */
+  transition: background 0.3s, border-color 0.3s, transform 0.2s; /* hover-effekt */
+  unicode-bidi: plaintext; /* håndterer tekstretning riktig */
+  white-space: normal; /* ✅ lar teksten bryte over flere linjer */
+  word-wrap: break-word; /* bryt ord hvis de er for lange */
 }
 
 .jobTab:hover {
-  background: #de1fce;
-  transform: scale(1.05);
+  background: #0d0d12; /* hover bakgrunn */
+  transform: scale(1.05); /* gjør taben litt større på hover */
 }
 .active {
-  background: #de1fce;
-  border-left: 4px solid #de1fce;
+  background: #090414; /* farge på aktiv tab */
+  border-left: 4px solid #7b7b7b; /* marker aktiv tab med farget venstrekant */
 }
 
 .jobContent {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 700px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background: rgba(0, 0, 0, 0.4); /* bakgrunnsfarge på innholdsboksen */
+  padding: 2rem; /* innvendig padding */
+  border-radius: 12px; /* avrunda hjørner */
+  width: 100%; /* fyll opp tilgjengelig bredde */
+  max-width: 600px; /* men aldri bredere enn 600px */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05); /* subtil skygge */
+  font-family: "Inter", sans-serif; /* font på tekst i innhold */
+  line-height: 1.6; /* linjeavstand */
+
+  color: #ffffff; /* hvit tekst */
+  margin-left: 40px; /* 👈 fjern ekstra avstand, nå står den inntil tabs */
+  /* 🔧 Vil du flytte hele innholdsboksen mer til høyre?
+       → legg til "margin-left: XXpx;" her */
 }
 
 .jobContent h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: #f2e9e4;
-  font-family: "RoseSally", sans-serif;
+  font-size: 1.8rem; /* størrelse på tittelen */
+  margin-bottom: 0.8rem; /* avstand under tittelen */
+  color: #ffffff; /* hvit */
+  font-family: "Poppins", sans-serif; /* font */
+  font-weight: 800; /* bold */
+  text-transform: uppercase; /* store bokstaver */
 }
 
 .jobContent ul {
-  padding-left: 1.5rem;
+  padding-left: 1.5rem; /* avstand fra bullets til tekst */
+  list-style-type: disc; /* standard bullets */
+  margin-top: 1rem; /* avstand over lista */
+}
+
+.jobContent li {
+  margin-bottom: 0.75rem; /* luft mellom punktene */
+}
+.jobContent ul li {
+  padding-left: 1.5rem; /* juster avstand mellom bullet og tekst */
   list-style-type: disc;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
 }
 
 .jobCompany,
 .jobPeriod {
-  font-size: 1rem;
-  color: #cd8f6d;
-  margin-bottom: 0.5rem;
+  font-size: 1rem; /* tekststørrelse */
+  color: #ffffff; /* hvit */
+  margin-bottom: 0.5rem; /* avstand under */
+  font-family: "Inter", sans-serif;
+  font-weight: 600; /* semi-bold (litt bold, men ikke for mye) */
+  letter-spacing: 0.3px; /* litt ekstra spacing mellom bokstavene */
 }
 
 /* PROJECTS */
