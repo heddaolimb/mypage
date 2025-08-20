@@ -794,6 +794,14 @@
   width: 100%;
 }
 
+.formStatus {
+  font-size: 0.95rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+
+  color: #7d7d7d;
+}
+
 .courseNavButtons {
   width: 100%;
   max-width: 900px;
