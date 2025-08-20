@@ -731,7 +731,7 @@
   overflow: hidden;
   width: auto;
   max-width: 700px;
-  margin-left: 350px;
+  margin-left: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -742,13 +742,13 @@
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
-  background: #1a1a1a;
+  background: #110f19;
   padding: 2.5rem 1.5rem;
   border-radius: 1rem;
   text-align: left;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  color: #f2e9e4;
-  font-family: "American", sans-serif;
+  box-shadow: 0 0 5px rgba(139, 139, 139, 0.05);
+  color: #c4c4c4;
+  font-family: "Poppins", sans-serif;
   transition: transform 0.3s ease;
 }
 
@@ -756,29 +756,36 @@
   width: 100%;
   height: 140px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .courseTitle {
-  font-size: 1.4rem;
-  color: #cd8f6d;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase; /* gjør ALL CAPS */
+  font-weight: 800;
+  color: #4f4aae;
   text-decoration: underline;
   display: inline-block;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
 }
 
 .courseSubtitle {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase; /* ALL CAPS */
   font-weight: bold;
   color: #f2e9e4;
   font-size: 1.1rem;
 }
 
 .courseText {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6; /* litt luftigere */
+  letter-spacing: 0.3px;
   color: #bfbfbf;
-  line-height: 1.4;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 0.3rem;
 }
 
 .courseTrack {
@@ -802,7 +809,7 @@
   font-weight: bold;
   background: none;
   border: none;
-  color: #f2e9e4;
+  color: #d3d3d3;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -821,11 +828,11 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #777;
+  background: #6010d8;
   transition: background 0.3s ease;
 }
 .courseDot.active {
-  background: #cd8f6d;
+  background: #0f23b9;
 }
 
 /* CONTACT */

@@ -300,6 +300,13 @@ export default function Home() {
           learned:
             "Machine learning basics, ethical use, and practical AI tools.",
         },
+        {
+          title: "JavaScript Basics",
+          image: "/images/js.png",
+          link: "https://example.com",
+          why: "To understand how JavaScript works and how to build my own projects.",
+          learned: "The fundamentals of JavaScript.",
+        },
       ],
 
       contactTitle: "Contact",
