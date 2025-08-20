@@ -844,7 +844,7 @@
   padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ffffff;
+
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -874,11 +874,11 @@
 .contactForm input,
 .contactForm textarea {
   padding: 0.9rem 1rem;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 3px solid #676767;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
-  color: #333;
+  color: #010101;
   background: #e3e3e3;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
