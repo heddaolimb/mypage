@@ -68,7 +68,7 @@ export default function Home() {
 
     import("tagcloud").then(({ default: TagCloud }) => {
       sphere = TagCloud(cloudRef.current, texts, {
-        radius: 220,
+        radius: 270,
         maxSpeed: "normal",
         initSpeed: "slow",
         direction: 90,
@@ -97,7 +97,7 @@ export default function Home() {
       },
       skip: "Skip to content",
       nav: ["About", "Education", "Work", "Projects", "Courses", "Contact"],
-      heroTitle: "Hi, I'm",
+      heroTitle: "Hi, Im",
       heroSubtitle: "Welcome to my website!",
       explore: "Explore",
 
@@ -894,34 +894,54 @@ export default function Home() {
           <h1
             className="text-white mb-2 font-[VemanemX]"
             style={{
-              fontSize: "clamp(2.75rem,5vw,4.5rem)",
-              letterSpacing: "0.06em",
-              lineHeight: 1.05,
+              fontSize: "2.3rem",
+              textAlign: "left",
+              textTransform: "uppercase", // capitalize, lowercase
+              color: "#b0b0b0ff",
+              fontWeight: 700,
+              letterSpacing: "0.03em",
+              lineHeight: 1,
+              transform: "scaleX(1.15)", // 👈 strekker teksten 15% bredere
+              display: "inline-block", // viktig for at transform kun påvirker h1
             }}
           >
-            {t.heroTitle} <span className="text-indigo-400">Hedda Olimb</span>
+            {t.heroTitle}{" "}
+            <span className="bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">
+              Hedda Olimb
+            </span>
           </h1>
 
           <h2
             className="text-gray-300 mb-8 font-[VemanemX]"
             style={{
-              fontSize: "clamp(1.75rem,3.8vw,3rem)",
-              letterSpacing: "0.08em",
+              fontSize: "1.8rem",
+
+              textTransform: "uppercase", // capitalize, lowercase
+              color: "#b0b0b0ff",
+              fontWeight: 700,
+              letterSpacing: "0.03em",
+              lineHeight: 1,
+              transform: "scaleX(1.15)", // 👈 strekker teksten 15% bredere
+              display: "inline-block", // viktig for at transform kun påvirker h1
             }}
           >
-            {language === "no" ? "Frontend-utvikler" : "Frontend Developer"}
+            {language === "no"
+              ? "Velkommen til min side"
+              : "Welcome to my site"}
           </h2>
 
           <p className="mb-6">
+            {" "}
             <span
-              className="font-[American]"
               style={{
-                fontWeight: 800,
+                fontFamily: "Poppins, sans-serif", // 👈
+                fontWeight: 700,
                 letterSpacing: "0.18em",
-                color: "#cbd5e1",
+                color: "#8f99a6ff",
                 fontSize: "1.25rem",
               }}
             >
+              {" "}
               <Typewriter
                 words={[
                   language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
@@ -934,8 +954,8 @@ export default function Home() {
                 typeSpeed={70}
                 deleteSpeed={50}
                 delaySpeed={1500}
-              />
-            </span>
+              />{" "}
+            </span>{" "}
           </p>
 
           <div className="mt-3 flex flex-col items-start">

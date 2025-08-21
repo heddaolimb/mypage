@@ -52,6 +52,27 @@ body {
 .tagcloud {
   position: relative;
   user-select: none;
+  color: #000000; /* lyseblå tone */
+  font-size: clamp(1.3rem, 1.2vw + 0.5rem, 1.6rem);
+  left: -60px; /* + høyre, - venstre */
+  top: -25px; /* - opp, + ned */
+}
+/* Basisfarge på alle ord */
+.tagcloud a,
+.tagcloud span,
+.tagcloud .tagcloud--item {
+  color: #aa0dff; /* Lilla */
+  text-shadow: 0 0 8px rgba(64, 109, 255, 0.35);
+  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* Hover-farge */
+.tagcloud a:hover,
+.tagcloud span:hover,
+.tagcloud .tagcloud--item:hover {
+  color: #ffffff; /* Lys rød/rosa */
+  text-shadow: 0 0 10px rgba(159, 132, 255, 0.6);
+  transform: scale(1.06);
 }
 
 @keyframes float {
