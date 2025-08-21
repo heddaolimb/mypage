@@ -41,7 +41,7 @@
 }
 body {
   font-family: "RoseSally", sans-serif;
-  background: #0f172a; /* fallback */
+  background: #0d0c1f; /* fallback */
   overflow-x: hidden;
 }
 
@@ -49,6 +49,11 @@ body {
   position: relative;
   z-index: 10; /* gjør hero innhold foran bølge/stjerner */
 }
+.tagcloud {
+  position: relative;
+  user-select: none;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);

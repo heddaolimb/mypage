@@ -887,71 +887,103 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero"
-        className="hero relative flex items-center justify-between min-h-screen overflow-hidden px-8"
+        className="relative min-h-screen overflow-hidden px-8 flex items-center justify-between"
       >
-        <div className="relative z-10 flex-1 max-w-xl text-left">
-          <h1 className="text-5xl md:text-7xl text-white mb-2 font-[VemanemX]">
+        {/* LEFT: text (just a tiny nudge from the left edge) */}
+        <div className="relative z-10 max-w-2xl pl-[3vw]">
+          <h1
+            className="text-white mb-2 font-[VemanemX]"
+            style={{
+              fontSize: "clamp(2.75rem,5vw,4.5rem)",
+              letterSpacing: "0.06em",
+              lineHeight: 1.05,
+            }}
+          >
             {t.heroTitle} <span className="text-indigo-400">Hedda Olimb</span>
           </h1>
-          <h2 className="text-3xl md:text-5xl text-gray-300 mb-8 font-[VemanemX]">
+
+          <h2
+            className="text-gray-300 mb-8 font-[VemanemX]"
+            style={{
+              fontSize: "clamp(1.75rem,3.8vw,3rem)",
+              letterSpacing: "0.08em",
+            }}
+          >
             {language === "no" ? "Frontend-utvikler" : "Frontend Developer"}
           </h2>
-          <p className="text-xl text-gray-400 mb-6">
-            <Typewriter
-              words={[
-                language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
-                language === "no" ? "DESIGNER" : "DESIGNER",
-                language === "no" ? "PROBLEMLØSER" : "PROBLEM SOLVER",
-              ]}
-              loop
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
-            />
+
+          <p className="mb-6">
+            <span
+              className="font-[American]"
+              style={{
+                fontWeight: 800,
+                letterSpacing: "0.18em",
+                color: "#cbd5e1",
+                fontSize: "1.25rem",
+              }}
+            >
+              <Typewriter
+                words={[
+                  language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
+                  language === "no" ? "DESIGNER" : "DESIGNER",
+                  language === "no" ? "PROBLEMLØSER" : "PROBLEM SOLVER",
+                ]}
+                loop
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1500}
+              />
+            </span>
           </p>
+
           <div className="mt-3 flex flex-col items-start">
             <button
               onClick={() => scrollToSection("about")}
-              className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-500 transition"
+              className={styles.heroExploreBtn}
             >
               {t.explore}
             </button>
-            <div className="flex space-x-4 mt-4">
+
+            <div className={styles.heroSocialIcons}>
               <a
                 href="https://github.com/heddaolimb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition"
+                className={styles.heroIconLink}
+                aria-label="GitHub"
+                title="GitHub"
               >
-                <img src="/icons/github.svg" alt="GitHub" className="w-6 h-6" />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.98 0-1.32.47-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.66-2.81 5.68-5.49 5.98.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
+                </svg>
               </a>
               <a
                 href="https://linkedin.com/in/heddaolimb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition"
+                className={styles.heroIconLink}
+                aria-label="LinkedIn"
+                title="LinkedIn"
               >
-                <img
-                  src="/icons/linkedin.svg"
-                  alt="LinkedIn"
-                  className="w-6 h-6"
-                />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5zM3.5 9h3v12h-3zM9 9h2.88v1.64h.04c.4-.76 1.37-1.64 2.82-1.64 3.02 0 3.58 1.99 3.58 4.58V21h-3v-5.37c0-1.28-.02-2.93-1.79-2.93-1.8 0-2.07 1.4-2.07 2.84V21H9z" />
+                </svg>
               </a>
             </div>
           </div>
         </div>
 
-        {/* TagCloud container */}
-        <div className="relative flex-1 flex items-center justify-center">
+        {/* HØYRE: fast boks til cluster (kan ikke krympe bort) */}
+        <div className="relative flex-none w-[420px] h-[420px] mr-[3vw] flex items-center justify-center z-10">
           <div
             ref={cloudRef}
-            className="tagcloud text-2xl font-[VemanemX] text-indigo-300"
-          ></div>
+            className="tagcloud text-2xl font-[VemanemX]"
+            style={{ width: "100%", height: "100%" }}
+          />
         </div>
       </section>
-
       {/* MAIN */}
       <main id="main" className={styles.mainContent} role="main">
         {/* About */}
