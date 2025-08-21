@@ -26,6 +26,19 @@
   font-family: "American";
   src: url("/fonts/AmericanPurpose.ttf") format("truetype");
 }
+@font-face {
+  font-family: "VemanemX";
+  src: url("/fonts/VemanemX-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VemanemX";
+  src: url("/fonts/VemanemX-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
 body {
   font-family: "RoseSally", sans-serif;
   background: #0f172a; /* fallback */
@@ -35,6 +48,34 @@ body {
 .hero {
   position: relative;
   z-index: 10; /* gjør hero innhold foran bølge/stjerner */
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 60s linear infinite;
 }
 
 .wave-bg {

@@ -18,13 +18,73 @@ export default function Home() {
   const [formStatus, setFormStatus] = useState("");
   const [language, setLanguage] = useState("en"); // "en" | "no"
 
-  // --- SEO / a11y: oppdater <html lang> ---
+  // Refs
+  const cloudRef = useRef(null);
+  const aboutRef = useRef(null);
+  const educationRef = useRef(null);
+  const projectsRef = useRef(null);
+  const jobsRef = useRef(null);
+  const coursesRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const [showJobs, setShowJobs] = useState(false);
+
+  // --- Oppdater <html lang> ---
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.lang = language === "no" ? "no" : "en";
     }
   }, [language]);
 
+  // --- TagCloud init ---
+  useEffect(() => {
+    let sphere = null;
+
+    if (typeof window === "undefined" || !cloudRef.current) return;
+
+    const texts = [
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Firebase",
+      "UX",
+      "UI",
+      "Figma",
+      "Node.js",
+      "SvelteKit",
+      "HTML",
+      "CSS",
+      "PHP",
+      "SQL",
+      "MongoDB",
+      "GitHub",
+      "Prototyping",
+      "Wireframes",
+      "Responsive",
+      "Accessibility",
+      "SEO",
+    ];
+
+    import("tagcloud").then(({ default: TagCloud }) => {
+      sphere = TagCloud(cloudRef.current, texts, {
+        radius: 220,
+        maxSpeed: "normal",
+        initSpeed: "slow",
+        direction: 90,
+        keep: true,
+      });
+    });
+
+    return () => {
+      if (sphere && typeof sphere.destroy === "function") {
+        sphere.destroy();
+      }
+      if (cloudRef.current) {
+        cloudRef.current.innerHTML = "";
+      }
+    };
+  }, []);
   // --- TRANSLATIONS: ALLT INNHOLD (EN + NO) ---
   const translations = {
     en: {
@@ -595,14 +655,6 @@ export default function Home() {
   const t = translations[language];
 
   // --- Hooks og observers (beholder logikken din) ---
-  const aboutRef = useRef(null);
-  const educationRef = useRef(null);
-  const projectsRef = useRef(null);
-  const jobsRef = useRef(null);
-  const coursesRef = useRef(null);
-  const contactRef = useRef(null);
-
-  const [showJobs, setShowJobs] = useState(false);
 
   useEffect(() => {
     const ob = new IntersectionObserver(
@@ -612,15 +664,6 @@ export default function Home() {
     if (jobsRef.current) ob.observe(jobsRef.current);
     return () => jobsRef.current && ob.unobserve(jobsRef.current);
   }, []);
-
-  const sectionRefs = [
-    aboutRef,
-    educationRef,
-    projectsRef,
-    jobsRef,
-    coursesRef,
-    contactRef,
-  ];
 
   useEffect(() => {
     const ob = new IntersectionObserver(
@@ -667,7 +710,6 @@ export default function Home() {
       scrollToSection(id);
     }
   };
-
   // --- Data for språk (jobs, projects, courses) ---
   const jobs = t.jobs;
   const projects = t.projects;
@@ -708,7 +750,6 @@ export default function Home() {
     } catch (err) {
       setFormStatus(t.toastError);
     } finally {
-      // fjern meldingen etter 4 sekunder
       setTimeout(() => setFormStatus(""), 4000);
     }
   };
@@ -846,35 +887,16 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero"
-        className="hero relative flex items-center min-h-screen overflow-hidden"
+        className="hero relative flex items-center justify-between min-h-screen overflow-hidden px-8"
       >
-        {/* SVG bakgrunn */}
-        <div className="absolute inset-0">
-          <svg
-            className="w-full h-full opacity-30"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            viewBox="0 0 800 800"
-          >
-            <circle cx="400" cy="400" r="300" fill="url(#grad1)" />
-            <defs>
-              <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-          </svg>
-        </div>
-
-        {/* Tekst-blokk */}
-        <div className="relative z-10 flex-1 max-w-xl pl-35 pr-6 text-left">
-          <h1 className="text-5xl md:text-7xl text-white mb-2">
+        <div className="relative z-10 flex-1 max-w-xl text-left">
+          <h1 className="text-5xl md:text-7xl text-white mb-2 font-[VemanemX]">
             {t.heroTitle} <span className="text-indigo-400">Hedda Olimb</span>
           </h1>
-          <h2 className="text-3xl md:text-5xl text-gray-300 mb-8">
-            {t.heroSubtitle}
+          <h2 className="text-3xl md:text-5xl text-gray-300 mb-8 font-[VemanemX]">
+            {language === "no" ? "Frontend-utvikler" : "Frontend Developer"}
           </h2>
-          <p className={styles.subtitle}>
+          <p className="text-xl text-gray-400 mb-6">
             <Typewriter
               words={[
                 language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
@@ -889,117 +911,44 @@ export default function Home() {
               delaySpeed={1500}
             />
           </p>
-
-          {/* Wrapper rundt knapp + ikoner */}
           <div className="mt-3 flex flex-col items-start">
-            {/* Explore-knappen */}
             <button
               onClick={() => scrollToSection("about")}
-              className={styles.heroExploreBtn}
+              className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-500 transition"
             >
               {t.explore}
             </button>
-
-            {/* Ikoner */}
-            <div className={styles.heroSocialIcons}>
+            <div className="flex space-x-4 mt-4">
               <a
                 href="https://github.com/heddaolimb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.heroIconLink}
+                className="text-gray-400 hover:text-white transition"
               >
-                {/* GitHub SVG */}
-                <svg
-                  className={styles.heroIcon}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 .297c-6.63 0-12 5.373-12 12 
-              0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 
-              0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61 
-              -.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 
-              1.205.084 1.838 1.236 1.838 1.236 1.07 1.834 2.809 1.304 
-              3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 
-              0-1.31.465-2.381 1.235-3.221-.135-.303-.54-1.523.105-3.176 
-              0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 
-              1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23 
-              .645 1.653.24 2.873.12 3.176.765.84 1.23 1.911 1.23 3.221 
-              0 4.61-2.805 5.625-5.475 5.92.43.372.81 1.102.81 2.222 
-              0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57 
-              C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                  />
-                </svg>
+                <img src="/icons/github.svg" alt="GitHub" className="w-6 h-6" />
               </a>
-
               <a
-                href="https://www.linkedin.com/in/heddaolimb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                href="https://linkedin.com/in/heddaolimb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.heroIconLink}
+                className="text-gray-400 hover:text-white transition"
               >
-                {/* LinkedIn SVG */}
-                <svg
-                  className={styles.heroIcon}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-              23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 
-              22.271V1.729C24 .774 23.2 0 22.222 0h.003zM7.09 
-              20.452H3.548V9h3.541v11.452zM5.319 7.578c-1.137 
-              0-2.059-.93-2.059-2.078 0-1.148.922-2.078 
-              2.059-2.078s2.059.93 2.059 2.078c0 
-              1.148-.922 2.078-2.059 2.078zm15.133 
-              12.874h-3.541v-5.569c0-1.328-.025-3.037-1.852-3.037-1.853 
-              0-2.137 1.445-2.137 2.939v5.667h-3.541V9h3.396v1.561h.048c.473-.9 
-              1.631-1.852 3.356-1.852 3.59 0 4.253 2.363 
-              4.253 5.437v6.306z"
-                  />
-                </svg>
+                <img
+                  src="/icons/linkedin.svg"
+                  alt="LinkedIn"
+                  className="w-6 h-6"
+                />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Transparent bilde til høyre */}
-        <div
-          className="absolute right-30 bottom-0 
-      w-[180px] md:w-[450px] lg:w-[420px] 
-      opacity-90 pointer-events-none select-none"
-        >
-          <img
-            src="/images/meg1.png"
-            alt="Hedda Olimb"
-            className="w-full h-auto"
-          />
-        </div>
-
-        {/* Enkel divider mellom hero og about */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-          <svg
-            className="relative block w-full h-[100px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="#544b94ff"
-              d="M0,100 C400,95 800,85 1200,60 L1200,120 L0,120Z"
-            >
-              <animate
-                attributeName="d"
-                dur="8s"
-                repeatCount="indefinite"
-                values="
-            M0,100 C400,95 800,85 1200,60 L1200,120 L0,120Z;
-            M0,100 C400,105 800,75 1200,70 L1200,120 L0,120Z;
-            M0,100 C400,95 800,85 1200,60 L1200,120 L0,120Z
-          "
-              />
-            </path>
-          </svg>
+        {/* TagCloud container */}
+        <div className="relative flex-1 flex items-center justify-center">
+          <div
+            ref={cloudRef}
+            className="tagcloud text-2xl font-[VemanemX] text-indigo-300"
+          ></div>
         </div>
       </section>
 

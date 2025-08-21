@@ -119,6 +119,13 @@
   text-align: center; /* teksten inni blir midtstilt */
   margin: 0 auto 2rem auto; /* hele boksen havner i midten */
 }
+.hero h1 {
+  font-family: "VemanemX", sans-serif;
+}
+
+.cluster-words span {
+  font-family: "VemanemX", sans-serif;
+}
 
 /* ABOUT SECTION */
 .aboutBox {
