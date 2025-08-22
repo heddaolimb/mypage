@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect, useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import TagCloud from "TagCloud";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,9 +38,8 @@ export default function Home() {
   }, [language]);
 
   // --- TagCloud init ---
+  // --- TagCloud init ---
   useEffect(() => {
-    let sphere = null;
-
     if (typeof window === "undefined" || !cloudRef.current) return;
 
     const texts = [
@@ -66,14 +66,13 @@ export default function Home() {
       "SEO",
     ];
 
-    import("tagcloud").then(({ default: TagCloud }) => {
-      sphere = TagCloud(cloudRef.current, texts, {
-        radius: 270,
-        maxSpeed: "normal",
-        initSpeed: "slow",
-        direction: 90,
-        keep: true,
-      });
+    // ✅ Bruker riktig pakke: "TagCloud" (stor T, stor C)
+    const sphere = TagCloud(cloudRef.current, texts, {
+      radius: 270,
+      maxSpeed: "normal",
+      initSpeed: "slow",
+      direction: 90,
+      keep: true,
     });
 
     return () => {
@@ -85,6 +84,7 @@ export default function Home() {
       }
     };
   }, []);
+
   // --- TRANSLATIONS: ALLT INNHOLD (EN + NO) ---
   const translations = {
     en: {
@@ -1004,37 +1004,47 @@ export default function Home() {
           />
         </div>
       </section>
+
       {/* MAIN */}
       <main id="main" className={styles.mainContent} role="main">
         {/* About */}
         <section
           id="about"
-          className={styles.section}
+          className={styles.aboutSection}
           aria-labelledby="about-title"
         >
-          <h2 id="about-title" className={styles.sectionTitle}>
-            {t.aboutTitle}
-          </h2>
-          <div ref={aboutRef} className={styles.aboutBox}>
-            {t.aboutItems.map((text, i) => (
-              <div
-                key={i}
-                className={`${styles.aboutItem} ${
-                  showAboutItems ? styles.show : ""
-                }`}
-              >
-                <span className={styles.icon}>
-                  <img
-                    src="/icons/glitter.svg"
-                    alt=""
-                    aria-hidden="true"
-                    className={styles.glitter}
-                    style={{ animationDelay: `${i * 0.3}s` }}
-                  />
-                </span>
-                {text}
-              </div>
-            ))}
+          <div ref={aboutRef} className={styles.aboutWrapper}>
+            {/* Venstre side: bilde */}
+            <div className={styles.aboutImage}>
+              <img src="/images/meg1.png" alt="Hedda Olimb" />
+              <div className={styles.imageLine}></div>
+            </div>
+
+            {/* Høyre side: tekstpunkter */}
+            <div className={styles.aboutContent}>
+              <h2 id="about-title" className={styles.aboutTitle}>
+                {t.aboutTitle}
+              </h2>
+              {t.aboutItems.map((text, i) => (
+                <div
+                  key={i}
+                  className={`${styles.aboutItem} ${
+                    showAboutItems ? styles.show : ""
+                  }`}
+                >
+                  <span className={styles.icon}>
+                    <img
+                      src="/icons/glitter.svg"
+                      alt=""
+                      aria-hidden="true"
+                      className={styles.glitter}
+                      style={{ animationDelay: `${i * 0.3}s` }}
+                    />
+                  </span>
+                  {text}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

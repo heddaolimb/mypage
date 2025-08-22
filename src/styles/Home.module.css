@@ -130,26 +130,65 @@
 }
 
 /* ABOUT SECTION */
-.aboutBox {
-  background: #0b0a17;
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  max-width: 100%;
-  width: calc(100% - 450px);
-  margin: 0 auto; /* midtstiller boksene */
-  text-align: left; /* gjør innholdet inni boksene midtstilt */
-  position: relative; /* nødvendig for at z-index skal gjelde */
+.aboutSection {
+  width: 100%;
+  background: #12111d;
+  padding: 0; /* ingen luft rundt */
+  margin-top: 4rem; /* 👈 gir avstand ned fra Hero */
+}
+
+.aboutWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  padding: 4rem 6rem;
+  padding: 5rem 3rem; /* 👈 mindre luft, ser tynnere ut */
+}
+
+.aboutImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutImage img {
+  max-width: 320px;
+  height: auto;
+}
+
+.imageLine {
+  width: 100%;
+  height: 7px;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.aboutContent {
+  flex: 1;
+}
+
+.aboutTitle {
+  font-size: 3rem;
+  color: #f2e9e4;
+  font-family: "VemanemX", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
 .aboutItem {
-  font-family: "Inter", sans-serif; /* legg inn eller bruk en du har */
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   display: flex;
-  padding: 0.2rem 0.3rem; /* mer luft til sidene, mindre “klump” */
   align-items: flex-start;
   font-size: 1.1rem;
   color: #f2e9e4;
-  margin-bottom: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  line-height: 1.4; /* 👈 juster line-spacing */
+  letter-spacing: 0.4px; /* 👈 avstand mellom bokstaver */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -158,6 +197,10 @@
 .aboutItem.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.aboutItem:last-child {
+  border-bottom: none;
 }
 
 .aboutItem:nth-child(1).show {
@@ -175,19 +218,20 @@
 .aboutItem:nth-child(5).show {
   transition-delay: 2s;
 }
+
 .icon {
   display: inline-flex;
   align-items: center;
   margin-right: 0.75rem;
-  flex-shrink: 0; /* hindrer at ikonet krymper */
+  flex-shrink: 0;
 }
 
 .glitter {
   width: 18px;
   height: 18px;
-  margin-top: 7px; /* bittelitt ned fra toppen */
-  filter: drop-shadow(0 0 6px white); /* glød rundt */
-  animation: sparkle 2s infinite ease-in-out; /* raskere og jevnere */
+  margin-top: 7px;
+  filter: drop-shadow(0 0 6px white);
+  animation: sparkle 2s infinite ease-in-out;
 }
 
 /* Animasjon: blink/lysglimt */
@@ -200,8 +244,8 @@
   }
   50% {
     opacity: 0.6;
-    transform: scale(1.2); /* gjør at den “pulserer” litt */
-    filter: drop-shadow(0 0 5px rgb(247, 255, 102)); /* sterkere glow midt i */
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px rgb(247, 255, 102));
   }
 }
 
