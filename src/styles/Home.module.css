@@ -88,8 +88,6 @@
 }
 
 .mainContent {
-  background: rgba(24, 27, 35, 0.9); /* samme bakgrunn som seksjonene */
-
   min-height: 100%; /* dekker hele main */
   display: block;
   position: relative;
@@ -131,40 +129,148 @@
 
 /* ABOUT SECTION */
 .aboutSection {
+  /* 👉 Endre størrelser/farger her (1/2) */
+  --photo-w: 260px; /* bredde på bildet ditt */
+  --ufo-size: 190px; /* størrelse på UFO */
+  --ufo-top: -90px; /* høyde over bildet */
+  --ufo-hold-ms: 4600ms; /* total anim varighet */
+  --beam-c1: rgba(0, 255, 200, 0.65); /* beam farge innerst */
+  --beam-c2: rgba(0, 255, 200, 0.3); /* beam farge midt */
+  --beam-blur: 1px; /* beam blur */
+  --beam-extra: 140px; /* hvor mye beam går under bildet */
+
   width: 100%;
   background: #12111d;
-  padding: 0; /* ingen luft rundt */
-  margin-top: 4rem; /* 👈 gir avstand ned fra Hero */
+  padding: 0;
+  margin-top: 4rem;
+  overflow: visible; /* la UFO fly ut */
 }
-
 .aboutWrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 300px 1fr; /* venstre = bildet, høyre = tekst */
+  align-items: start;
   gap: 3rem;
   width: 100%;
-  padding: 4rem 6rem;
-  padding: 5rem 3rem; /* 👈 mindre luft, ser tynnere ut */
+  padding: 5rem 4rem;
+  overflow: visible; /* la UFO fly ut */
 }
 
+/* VENSTRE: bilde + UFO (alt inni følger samme container) */
 .aboutImage {
+  position: relative; /* UFO posisjonerer seg over bildet */
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
+  margin-top: 7rem; /* 👈 flytt bildet + UFO lenger ned */
+  overflow: visible; /* viktig for å se UFO utenfor */
 }
 
-.aboutImage img {
-  max-width: 320px;
+/* Bildet (transparent PNG) – avsløres fra hode→ned ved clip-path */
+.aboutPhoto {
+  width: 250px;
   height: auto;
+  clip-path: inset(0 0 100% 0); /* skjult (bare toppen) */
+  transition: clip-path 1.8s ease-in 0.9s; /* start litt etter at UFO har stoppet */
+  will-change: clip-path;
 }
 
-.imageLine {
+/* Når About er i view (styres av ufoPlayed via .ufoActive) */
+.ufoActive .aboutPhoto {
+  clip-path: inset(0 0 0 0); /* avslør hele bildet */
+}
+
+/* UFO – større, kommer inn fra venstre, holder, så ut helt til høyre */
+.ufo {
+  position: absolute;
+  top: -90px; /* høyde over bildet */
+  left: -30%; /* starter godt til venstre */
+  width: 180px; /* 👈 større UFO */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ufoActive .ufo {
+  animation: ufoPath 4.4s ease-in-out forwards; /* 👈 litt lengre total */
+}
+
+@keyframes ufoPath {
+  0% {
+    left: -30%;
+    top: -90px;
+    opacity: 0;
+    transform: translateX(0);
+  }
+  35% {
+    left: 50%;
+    top: -90px;
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+  72% {
+    left: 50%;
+    top: -90px;
+    opacity: 1;
+    transform: translateX(-50%);
+  } /* holder over bildet */
+  100% {
+    left: 160%;
+    top: -100px;
+    opacity: 0;
+    transform: translateX(0);
+  } /* 👈 flyr helt ut til høyre */
+}
+
+.ufo img {
   width: 100%;
-  height: 7px;
-
-  background: rgba(255, 255, 255, 0.25);
+  height: auto;
+  display: block;
 }
 
+/* Beam – glødende ellipse som vokser, holder, og fader ut */
+.beam {
+  position: absolute;
+  top: 72%; /* under UFO */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(250px + 60px); /* matcher bildebredden + litt */
+  height: 0;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(0, 255, 200, 0.55),
+    rgba(0, 255, 200, 0.25) 40%,
+    transparent 75%
+  );
+  filter: blur(1px);
+}
+
+.ufoActive .beam {
+  /* beamGrow starter når UFO har stoppet, varer lenger; beamFade etterpå */
+  animation: beamGrow 2s ease-in 0.8s forwards,
+    beamFade 0.6s linear 3.6s forwards; /* 0.8s + 2s + ~0.8s hold ≈ 3.6s */
+}
+
+@keyframes beamGrow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: calc(250px + 120px);
+    opacity: 1;
+  } /* dekker hele bildet + litt */
+}
+@keyframes beamFade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* HØYRE: tittel + punkter */
 .aboutContent {
   flex: 1;
 }
@@ -183,12 +289,12 @@
   font-weight: 400;
   display: flex;
   align-items: flex-start;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #f2e9e4;
-  padding: 1rem 0;
+  padding: 1rem 2.5rem; /* luft rundt teksten */
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  line-height: 1.4; /* 👈 juster line-spacing */
-  letter-spacing: 0.4px; /* 👈 avstand mellom bokstaver */
+  line-height: 1.5;
+  letter-spacing: 0.4px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -198,7 +304,6 @@
   opacity: 1;
   transform: translateY(0);
 }
-
 .aboutItem:last-child {
   border-bottom: none;
 }
@@ -219,13 +324,13 @@
   transition-delay: 2s;
 }
 
+/* Stjerne-ikon foran punkter */
 .icon {
   display: inline-flex;
   align-items: center;
   margin-right: 0.75rem;
   flex-shrink: 0;
 }
-
 .glitter {
   width: 18px;
   height: 18px;
@@ -234,7 +339,7 @@
   animation: sparkle 2s infinite ease-in-out;
 }
 
-/* Animasjon: blink/lysglimt */
+/* Glitter-animasjon */
 @keyframes sparkle {
   0%,
   100% {

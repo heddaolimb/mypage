@@ -7,6 +7,7 @@ import TagCloud from "TagCloud";
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showAboutItems, setShowAboutItems] = useState(false);
+  const [ufoPlayed, setUfoPlayed] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [selectedJob, setSelectedJob] = useState("job1");
@@ -691,6 +692,21 @@ export default function Home() {
     if (projectsRef.current) ob.observe(projectsRef.current);
     return () => projectsRef.current && ob.unobserve(projectsRef.current);
   }, []);
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowAboutItems(true);
+          if (!ufoPlayed) setUfoPlayed(true); // trigger UFO kun én gang
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    const node = aboutRef.current;
+    if (node) ob.observe(node);
+    return () => node && ob.unobserve(node);
+  }, [ufoPlayed]);
   // --- Navigasjon ---
   const sectionIds = [
     "about",
@@ -1014,17 +1030,31 @@ export default function Home() {
           aria-labelledby="about-title"
         >
           <div ref={aboutRef} className={styles.aboutWrapper}>
-            {/* Venstre side: bilde */}
-            <div className={styles.aboutImage}>
-              <img src="/images/meg1.png" alt="Hedda Olimb" />
-              <div className={styles.imageLine}></div>
+            {/* Venstre: bilde + UFO */}
+            <div
+              className={`${styles.aboutImage} ${
+                ufoPlayed ? styles.ufoActive : ""
+              }`}
+            >
+              <div className={styles.ufo} aria-hidden="true">
+                <img src="/animations/alien.svg" alt="" />
+                <div className={styles.beam}></div>
+              </div>
+
+              {/* Bildet med transparent bakgrunn */}
+              <img
+                src="/images/meg1.png"
+                alt="Hedda Olimb"
+                className={styles.aboutPhoto}
+              />
             </div>
 
-            {/* Høyre side: tekstpunkter */}
+            {/* Høyre: tittel + punkter */}
             <div className={styles.aboutContent}>
               <h2 id="about-title" className={styles.aboutTitle}>
                 {t.aboutTitle}
               </h2>
+
               {t.aboutItems.map((text, i) => (
                 <div
                   key={i}
