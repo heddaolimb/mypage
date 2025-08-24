@@ -4,13 +4,19 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
+  // 👇 logger hvilken backend-URL som brukes
+  console.log(
+    "🌟 TEST BACKEND URL:",
+    process.env.NEXT_PUBLIC_BACKEND_URL || "NOT FOUND"
+  );
+
   const sendMessage = async () => {
     if (!input.trim()) return;
 
     setMessages((prev) => [...prev, { sender: "user", text: input }]);
 
     try {
-      const res = await fetch("http://localhost:5000/chat", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
