@@ -688,6 +688,27 @@
   font-weight: 600; /* semi-bold (litt bold, men ikke for mye) */
   letter-spacing: 0.3px; /* litt ekstra spacing mellom bokstavene */
 }
+.workOuter {
+  background: #12111d; /* samme som about og education */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%); /* gjør boksen fullbredde */
+  border-radius: 0;
+  padding: 5rem 4rem; /* samme padding som de andre */
+  position: relative;
+  z-index: 5; /* stjerner bak */
+}
+
+.workOuter .sectionTitle {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 3rem;
+  color: #f2e9e4;
+  font-family: "VemanemX", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
 
 /* PROJECTS */
 .projectsGrid {

@@ -1123,48 +1123,53 @@ export default function Home() {
         {/* Work Experience */}
         <section
           id="work"
-          ref={jobsRef}
           className={styles.section}
           aria-labelledby="work-title"
         >
-          <h2 id="work-title" className={styles.sectionTitle}>
-            {t.workTitle}
-          </h2>
-          <div
-            className={`${styles.jobSection} ${showJobs ? styles.show : ""}`}
-          >
-            <div className={styles.jobTabs} role="tablist" aria-label="Jobs">
-              {Object.keys(jobs).map((jobKey) => (
-                <div
-                  key={jobKey}
-                  className={`${styles.jobTab} ${
-                    selectedJob === jobKey ? styles.active : ""
-                  }`}
-                  role="tab"
-                  aria-selected={selectedJob === jobKey}
-                  tabIndex={0}
-                  onClick={() => setSelectedJob(jobKey)}
-                  onKeyDown={(e) =>
-                    (e.key === "Enter" || e.key === " ") &&
-                    setSelectedJob(jobKey)
-                  }
-                >
-                  {jobs[jobKey].company}
-                </div>
-              ))}
-            </div>
+          <div className={styles.workOuter}>
+            <h2 id="work-title" className={styles.sectionTitle}>
+              {t.workTitle}
+            </h2>
 
-            <div className={styles.jobContent} role="tabpanel">
-              <h3>{jobs[selectedJob].title}</h3>
-              <div className={styles.jobCompany}>
-                {jobs[selectedJob].company}
-              </div>
-              <div className={styles.jobPeriod}>{jobs[selectedJob].period}</div>
-              <ul>
-                {jobs[selectedJob].description.map((item, index) => (
-                  <li key={index}>{item}</li>
+            <div
+              ref={jobsRef} // 👈 fiksen: nå observerer IntersectionObserver denne
+              className={`${styles.jobSection} ${showJobs ? styles.show : ""}`}
+            >
+              <div className={styles.jobTabs} role="tablist" aria-label="Jobs">
+                {Object.keys(jobs).map((jobKey) => (
+                  <div
+                    key={jobKey}
+                    className={`${styles.jobTab} ${
+                      selectedJob === jobKey ? styles.active : ""
+                    }`}
+                    role="tab"
+                    aria-selected={selectedJob === jobKey}
+                    tabIndex={0}
+                    onClick={() => setSelectedJob(jobKey)}
+                    onKeyDown={(e) =>
+                      (e.key === "Enter" || e.key === " ") &&
+                      setSelectedJob(jobKey)
+                    }
+                  >
+                    {jobs[jobKey].company}
+                  </div>
                 ))}
-              </ul>
+              </div>
+
+              <div className={styles.jobContent} role="tabpanel">
+                <h3>{jobs[selectedJob].title}</h3>
+                <div className={styles.jobCompany}>
+                  {jobs[selectedJob].company}
+                </div>
+                <div className={styles.jobPeriod}>
+                  {jobs[selectedJob].period}
+                </div>
+                <ul>
+                  {jobs[selectedJob].description.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
