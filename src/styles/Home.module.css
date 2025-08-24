@@ -462,97 +462,126 @@
   }
 }
 
-/* EDUCATION SECTION */
-.educationTimeline {
+/* Ytre Education-boks – samme look som About */
+.educationOuter {
+  background: #12111d; /* samme som aboutSection */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+  padding: 5rem 4rem; /* samme padding som .aboutWrapper */
   position: relative;
-  margin-left: 350px; /* mer til venstre */
-  padding-left: 40px;
-  border-left: 3px solid #818181; /* behold streken */
+  z-index: 5; /* så stjerner ligger bak */
+}
+
+/* Grid */
+.educationTimeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
 }
-
 .educationTimeline.show {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Kort (hele artikkelen) */
 .educationItem {
-  position: relative;
-  margin-bottom: 2.5rem;
+  background: rgba(1, 1, 12, 0.5);
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  padding-left: 2.5rem; /* lager plass til linja */
 }
-.educationItem::before {
-  content: "";
-  position: absolute;
-  left: -59px; /* plasser på linja */
-  top: 2rem; /* høyde på stjerna */
-  width: 35px;
-  height: 35px;
-  background: url("/icons/glitter.svg") no-repeat center center;
-  background-size: contain;
-  filter: drop-shadow(0 0 6px white);
-  animation: sparkle 2s infinite ease-in-out;
-}
-
 .educationTimeline.show .educationItem {
   opacity: 1;
   transform: translateY(0);
 }
 
-.educationYear {
-  position: absolute;
-  left: -155px; /* til venstre for linja */
-  top: 2rem; /* flytter årstallet ned */
+/* Forside (synlig alltid) */
+.educationFront {
+  pointer-events: none; /* så det alltid er hele kortet som klikker */
+}
+.educationFront h3 {
   font-size: 1.2rem;
-  color: #f2e9e4;
-  font-family: "American", sans-serif;
-  white-space: nowrap;
+  margin-bottom: 0.3rem;
+  color: #a1a1a1;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.educationFront p {
+  font-size: 0.95rem;
+  font-family: "Inter", sans-serif;
+  color: #d3d3d3;
 }
 
-.educationBox {
-  background: rgba(1, 1, 12, 0.5);
-  padding: 1.5rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
-  width: 500px;
-  max-width: 100%;
-  margin: 0 auto;
+/* Årstall-badge */
+.educationYear {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  color: #c7d2fe;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
 }
-.educationBox p {
+
+/* Bakside (detaljer) */
+.educationBack {
+  margin-top: 1rem;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+.educationItem.active .educationBack {
+  opacity: 1;
+  max-height: 2000px; /* nok til all tekst */
+}
+
+.educationBack p {
   color: #ffffff;
   font-size: 1rem;
   line-height: 1.6;
-  font-family: "Inter", sans-serif; /* samme som brødtekst */
+  font-family: "Inter", sans-serif;
   margin-bottom: 1rem;
 }
-.educationBox h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #a1a1a1;
-  font-family: "Poppins", sans-serif;
-  font-weight: 800; /* bold */
-  text-transform: uppercase; /* store bokstaver */
-  letter-spacing: 2px; /* mer space mellom bokstavene */
-}
-
-.educationBox ul,
-.educationBox li {
-  margin-top: 1rem;
-  padding-left: 1.5rem; /* plass til bullets */
-  list-style-type: disc; /* vanlige prikker */
+.educationBack ul,
+.educationBack li {
+  margin-top: 0.2rem;
+  padding-left: 1.2rem;
+  list-style-type: disc;
   color: #ffffff;
-  font-size: 1rem;
-  line-height: 1.6; /* mer luft */
+  font-size: 0.95rem;
+  line-height: 1.5;
   font-family: "Inter", sans-serif;
 }
+.educationBack li {
+  margin-bottom: 0.4rem;
+}
 
-.educationBox li {
-  margin-bottom: 1rem; /* ekstra luft mellom punktene */
+/* Gjelder bare i Education */
+.educationOuter .sectionTitle {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 3rem;
+  color: #f2e9e4;
+  font-family: "VemanemX", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
 /* JOBS SECTION */

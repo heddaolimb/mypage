@@ -12,6 +12,7 @@ export default function Home() {
   const [showProjects, setShowProjects] = useState(false);
   const [selectedJob, setSelectedJob] = useState("job1");
   const [currentCourse, setCurrentCourse] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -1074,40 +1075,48 @@ export default function Home() {
           className={styles.section}
           aria-labelledby="education-title"
         >
-          <h2 id="education-title" className={styles.sectionTitle}>
-            {t.educationTitle}
-          </h2>
+          <div className={styles.educationOuter}>
+            <h2 id="education-title" className={styles.sectionTitle}>
+              {t.educationTitle}
+            </h2>
 
-          <div
-            ref={educationRef}
-            className={`${styles.educationTimeline} ${
-              showEducation ? styles.show : ""
-            }`}
-          >
-            {t.education.map((edu, idx) => (
-              <article
-                key={idx}
-                className={styles.educationItem}
-                style={{ transitionDelay: `${0.3 + idx * 0.4}s` }}
-                aria-label={edu.title}
-              >
-                {/* ⭐ + Årstall i en egen flex-rad */}
-                <div className={styles.educationYear}>{edu.year}</div>
+            <div
+              ref={educationRef}
+              className={`${styles.educationTimeline} ${
+                showEducation ? styles.show : ""
+              }`}
+            >
+              {t.education.map((edu, idx) => (
+                <article
+                  key={idx}
+                  className={`${styles.educationItem} ${
+                    activeIndex === idx ? styles.active : ""
+                  }`}
+                  style={{ transitionDelay: `${0.3 + idx * 0.4}s` }}
+                  aria-label={edu.title}
+                  onClick={() =>
+                    setActiveIndex(activeIndex === idx ? null : idx)
+                  }
+                >
+                  {/* Forside (synlig alltid) */}
+                  <div className={styles.educationFront}>
+                    <div className={styles.educationYear}>{edu.year}</div>
+                    <h3>{edu.title}</h3>
+                    {edu.school && <p>{edu.school}</p>}
+                  </div>
 
-                {/* Selve boksen */}
-                <div className={styles.educationBox}>
-                  <h3>{edu.title}</h3>
-
-                  {edu.descLead && <p>{edu.descLead}</p>}
-
-                  <ul>
-                    {edu.desc.map((d, i) => (
-                      <li key={i}>{d}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+                  {/* Baksiden / detaljene */}
+                  <div className={styles.educationBack}>
+                    {edu.descLead && <p>{edu.descLead}</p>}
+                    <ul>
+                      {edu.desc.map((d, i) => (
+                        <li key={i}>{d}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
