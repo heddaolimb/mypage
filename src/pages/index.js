@@ -694,6 +694,16 @@ export default function Home() {
     if (projectsRef.current) ob.observe(projectsRef.current);
     return () => projectsRef.current && ob.unobserve(projectsRef.current);
   }, []);
+
+  // Lås scroll når takeover er åpen
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden"; // lås scrolling
+    } else {
+      document.body.style.overflow = ""; // gjenopprett
+    }
+  }, [selectedProject]);
+
   useEffect(() => {
     const ob = new IntersectionObserver(
       ([entry]) => {

@@ -715,19 +715,17 @@
   margin-bottom: 2rem;
 }
 
-/* PROJECTS */
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  width: 80%;
-  margin-left: 120px; /* flytt mer til venstre */
-  margin-top: 2rem;
-  align-items: start;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+/* === PROJECTS GRID & CARDS === */
+.projectsOuter {
+  background: #12111d; /* samme bakgrunn som About/Work/Education */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%); /* fullbredde-boks */
+  border-radius: 0;
+  padding: 5rem 4rem; /* samme padding som de andre */
+  position: relative;
+  z-index: 5;
 }
+
 .projectsOuter .sectionTitle {
   background: none;
   padding: 0;
@@ -739,14 +737,18 @@
   text-transform: uppercase;
   margin-bottom: 2rem;
 }
-.projectsOuter {
-  background: #12111d; /* samme bakgrunn som About/Work/Education */
-  width: 100vw;
-  margin-left: calc(-50vw + 50%); /* fullbredde-boks */
-  border-radius: 0;
-  padding: 5rem 4rem; /* samme padding som de andre */
-  position: relative;
-  z-index: 5;
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 80%;
+  margin-left: 120px;
+  margin-top: 2rem;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .projectsGrid.show {
@@ -765,6 +767,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  cursor: pointer;
 }
 
 .projectCard:hover {
@@ -786,24 +789,24 @@
   margin-bottom: 1rem;
 }
 
-/* TITTEL */
+/* TITTEL I GRID */
 .projectCard h3 {
   margin-top: 0.5rem;
   font-size: 1.1rem;
   color: #c6c6c6;
   font-family: "Poppins", sans-serif;
-  font-weight: 800; /* Bold */
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-/* BESKRIVELSE */
+/* TEKST I GRID */
 .projectCard p {
   font-size: 1.1rem;
   color: #d7d7d7;
   margin: 0.5rem 0 1rem 0;
   font-family: "Inter", sans-serif;
-  letter-spacing: 0.3px; /* litt spacing */
+  letter-spacing: 0.3px;
   line-height: 1.6;
 }
 
@@ -812,8 +815,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin-top: 2rem;
-  margin-bottom: 0.8rem; /* 👈 legger luft mellom tags og link */
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem; /* luft mellom tags og link */
 }
 
 .techTag {
@@ -828,7 +831,7 @@
   letter-spacing: 0.5px;
 }
 
-/* LENKE (VIEW / SE MER) */
+/* LENKE I GRID */
 .projectCard a {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -836,45 +839,46 @@
   color: #cd8f6d;
   text-decoration: underline;
   font-size: 0.85rem;
-  margin-top: 1rem;
   align-self: flex-start;
   letter-spacing: 0.5px;
   margin-top: 2rem;
 }
 
-/* MARKERINGSTUSJ-EFFEKT */
-.highlight {
-  background: linear-gradient(
-    -2deg,
-    transparent 0%,
-    rgba(251, 255, 37, 0.55) 40%,
-    rgba(163, 163, 0, 0.55) 85%,
-    transparent 100%
-  );
-  padding: 0 0.25em;
-}
+/* === PROJECT TAKEOVER === */
 .projectTakeover {
   position: fixed;
   inset: 0;
   background: rgba(10, 9, 23, 0.98);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* 👈 legg boksen øverst, ikke midt */
+  align-items: flex-start; /* legg boksen øverst */
   z-index: 2147483647;
-  overflow-y: auto; /* 👈 scroll hvis innholdet blir høyere enn skjermen */
-  padding: 1rem 2rem; /* luft på toppen */
+  overflow-y: auto; /* scroll hvis innholdet blir høyt */
+  padding: 4rem 2rem; /* luft rundt */
+  pointer-events: auto;
+  isolation: isolate; /* 👈 tvinger alt inni til eget stacking context */
 }
 
 .projectDetails {
   max-width: 800px;
   background: #161624;
-  padding: 3rem 2rem; /* 👈 øk padding så du får mer luft */
+  padding: 3rem 2rem;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   color: #f2e9e4;
   font-family: "Inter", sans-serif;
-  margin-top: 3rem; /* 👈 ekstra luft fra toppen */
+  margin: 0 auto 3rem auto; /* luft under */
+  position: relative;
 }
+
+.projectImageLarge {
+  width: 100%;
+  height: auto; /* behold proporsjoner */
+  object-fit: contain; /* vis hele bildet */
+  border-radius: 8px;
+  margin: 2rem 0; /* luft over og under */
+}
+
 .projectDetails h3 {
   font-size: 2rem;
   color: #ffffff;
@@ -899,30 +903,32 @@
   color: #ffffff;
 }
 
-.projectImageLarge {
-  width: 100%;
-  height: auto; /* 👈 alltid behold proporsjoner */
-  max-height: none; /* 👈 fjern høyde-begrensning */
-  object-fit: contain; /* 👈 vis hele bildet */
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
-
 .closeBtn {
   position: absolute;
-  top: 1.5rem;
-  right: 2rem;
+  top: 1.2rem;
+  right: 1.5rem;
   background: none;
   border: none;
   font-size: 2rem;
   color: #f2e9e4;
   cursor: pointer;
   transition: transform 0.2s ease;
-  z-index: 2147483647; /* også helt øverst */
+  z-index: 2147483647;
 }
-
 .closeBtn:hover {
   transform: scale(1.2);
+}
+
+/* === HIGHLIGHT EFFECT === */
+.highlight {
+  background: linear-gradient(
+    -2deg,
+    transparent 0%,
+    rgba(251, 255, 37, 0.55) 40%,
+    rgba(163, 163, 0, 0.55) 85%,
+    transparent 100%
+  );
+  padding: 0 0.25em;
 }
 
 /* COURSES */
