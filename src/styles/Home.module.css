@@ -12,6 +12,11 @@
   backdrop-filter: blur(8px);
   z-index: 9999;
 }
+.navbar.hidden {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0 !important;
+}
 
 .logo {
   font-size: 1.5rem;
@@ -73,7 +78,7 @@
   font-size: 0.9rem;
   transition: color 0.3s ease, transform 0.3s ease;
   position: relative;
-  z-index: 99999;
+  /* z-index: 99999;  ⛔️ fjernet – dette var grunnen til at navlenkene la seg over alt */
 }
 
 .navItem:hover {
@@ -723,6 +728,26 @@
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
 }
+.projectsOuter .sectionTitle {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 3rem;
+  color: #f2e9e4;
+  font-family: "VemanemX", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.projectsOuter {
+  background: #12111d; /* samme bakgrunn som About/Work/Education */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%); /* fullbredde-boks */
+  border-radius: 0;
+  padding: 5rem 4rem; /* samme padding som de andre */
+  position: relative;
+  z-index: 5;
+}
 
 .projectsGrid.show {
   opacity: 1;
@@ -787,7 +812,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem; /* 👈 legger luft mellom tags og link */
 }
 
 .techTag {
@@ -826,6 +852,77 @@
     transparent 100%
   );
   padding: 0 0.25em;
+}
+.projectTakeover {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 9, 23, 0.98);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 👈 legg boksen øverst, ikke midt */
+  z-index: 2147483647;
+  overflow-y: auto; /* 👈 scroll hvis innholdet blir høyere enn skjermen */
+  padding: 1rem 2rem; /* luft på toppen */
+}
+
+.projectDetails {
+  max-width: 800px;
+  background: #161624;
+  padding: 3rem 2rem; /* 👈 øk padding så du får mer luft */
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  color: #f2e9e4;
+  font-family: "Inter", sans-serif;
+  margin-top: 3rem; /* 👈 ekstra luft fra toppen */
+}
+.projectDetails h3 {
+  font-size: 2rem;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.projectDetails a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #cd8f6d;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+.projectDetails a:hover {
+  color: #ffffff;
+}
+
+.projectImageLarge {
+  width: 100%;
+  height: auto; /* 👈 alltid behold proporsjoner */
+  max-height: none; /* 👈 fjern høyde-begrensning */
+  object-fit: contain; /* 👈 vis hele bildet */
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #f2e9e4;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 2147483647; /* også helt øverst */
+}
+
+.closeBtn:hover {
+  transform: scale(1.2);
 }
 
 /* COURSES */

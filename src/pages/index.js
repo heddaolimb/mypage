@@ -10,6 +10,7 @@ export default function Home() {
   const [ufoPlayed, setUfoPlayed] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [selectedJob, setSelectedJob] = useState("job1");
   const [currentCourse, setCurrentCourse] = useState(0);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -827,7 +828,11 @@ export default function Home() {
       </a>
 
       {/* NAVBAR */}
-      <header className={styles.navbar} role="banner" aria-label="Site header">
+      <header
+        className={`${styles.navbar} ${selectedProject ? styles.hidden : ""}`}
+        role="banner"
+        aria-label="Site header"
+      >
         <div
           className={styles.logo}
           onClick={() => scrollToSection("hero")}
@@ -1180,38 +1185,78 @@ export default function Home() {
           className={styles.section}
           aria-labelledby="projects-title"
         >
-          <h2 id="projects-title" className={styles.sectionTitle}>
-            {t.projectsTitle}
-          </h2>
-          <div
-            ref={projectsRef}
-            className={`${styles.projectsGrid} ${
-              showProjects ? styles.show : ""
-            }`}
-          >
-            {projects.map((proj, idx) => (
-              <article key={idx} className={styles.projectCard}>
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className={styles.projectImage}
-                />
-                <h3>{proj.title}</h3>
-                <p>{proj.description}</p>
-                <div className={styles.techList}>
-                  {proj.tech.map((tag, i) => (
-                    <span key={i} className={styles.techTag}>
-                      {tag}
-                    </span>
-                  ))}
+          <div className={styles.projectsOuter}>
+            <h2 id="projects-title" className={styles.sectionTitle}>
+              {t.projectsTitle}
+            </h2>
+
+            <div
+              ref={projectsRef}
+              className={`${styles.projectsGrid} ${
+                showProjects ? styles.show : ""
+              }`}
+            >
+              {projects.map((proj, idx) => (
+                <article
+                  key={idx}
+                  className={styles.projectCard}
+                  onClick={() => setSelectedProject(proj)}
+                >
+                  <img
+                    src={proj.image}
+                    alt={proj.title}
+                    className={styles.projectImage}
+                  />
+                  <h3>{proj.title}</h3>
+                </article>
+              ))}
+            </div>
+
+            {/* Fullscreen takeover */}
+            {selectedProject && (
+              <div
+                className={styles.projectTakeover}
+                onClick={() => setSelectedProject(null)} // 👈 lukker når man klikker utenfor
+              >
+                <div
+                  className={styles.projectDetails}
+                  onClick={(e) => e.stopPropagation()} // 👈 hindrer at klikk inni boksen lukker
+                >
+                  <button
+                    className={styles.closeBtn}
+                    onClick={() => setSelectedProject(null)}
+                    aria-label="Close project details"
+                  >
+                    ✕
+                  </button>
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className={styles.projectImageLarge}
+                  />
+                  <h3>{selectedProject.title}</h3>
+                  <div className={styles.projectDescription}>
+                    {selectedProject.description}
+                  </div>
+                  <div className={styles.techList}>
+                    {selectedProject.tech.map((tag, i) => (
+                      <span key={i} className={styles.techTag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  {selectedProject.link && (
+                    <a
+                      href={selectedProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t.projectLink}
+                    </a>
+                  )}
                 </div>
-                {proj.link && (
-                  <a href={proj.link} target="_blank" rel="noopener noreferrer">
-                    {t.projectLink}
-                  </a>
-                )}
-              </article>
-            ))}
+              </div>
+            )}
           </div>
         </section>
 
