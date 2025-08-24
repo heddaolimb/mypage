@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import random
 
 app = Flask(__name__)
+CORS(app)  # 👈 gir frontend (localhost:3000) lov til å snakke med backend
 
 jokes = [
     "Why don’t scientists trust atoms? Because they make up everything!",
