@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { useState, useEffect, useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import TagCloud from "TagCloud";
+import Chatbot from "./Chatbot";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -271,6 +272,8 @@ export default function Home() {
             "#UXUI",
           ],
           link: "https://appheimat.netlify.app/",
+          extraLink:
+            "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
         {
           title: "Flower Power – Cosmo & Wanda",
@@ -323,7 +326,7 @@ export default function Home() {
           link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
         },
         {
-          title: "My page",
+          title: "My Website",
           image: "/images/code.png",
           description: (
             <>
@@ -340,6 +343,23 @@ export default function Home() {
           ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
           link: "https://github.com/heddaolimb/mypage.git",
+        },
+        {
+          title: "Python Joke Chatbot",
+          image: "/images/chatbot.png", // finn eller lag et ikon
+          description: (
+            <>
+              A small <span className={styles.highlight}>Python Flask API</span>{" "}
+              that replies with random jokes. Integrated directly into this
+              website to demonstrate{" "}
+              <span className={styles.highlight}>Python</span>,{" "}
+              <span className={styles.highlight}>API integration</span>, and{" "}
+              <span className={styles.highlight}>frontend + backend</span>{" "}
+              communication.
+            </>
+          ),
+          tech: ["#Python", "#Flask", "#API", "#FrontendIntegration"],
+          link: null,
         },
       ],
 
@@ -559,6 +579,8 @@ export default function Home() {
             "#UXUI",
           ],
           link: "https://appheimat.netlify.app/",
+          extraLink:
+            "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
         {
           title: "Flower Power – Cosmo & Wanda",
@@ -614,6 +636,23 @@ export default function Home() {
             "En fullt responsiv, animert porteføljeside bygget med Next.js, React Hooks og CSS Modules for å vise utdanning, erfaring og prosjekter. Inneholder scroll-animasjoner med IntersectionObserver, interaktive jobbtabs og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Arbeid, Prosjekter, Kurs, Kontakt.",
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
           link: "https://github.com/heddaolimb/mypage.git",
+        },
+        {
+          title: "Python-vitschatbot",
+          image: "/images/chatbot.png",
+          description: (
+            <>
+              En liten{" "}
+              <span className={styles.highlight}>Python Flask-API</span> som
+              svarer med tilfeldige vitser. Integrert direkte i denne nettsiden
+              for å vise <span className={styles.highlight}>Python</span>,{" "}
+              <span className={styles.highlight}>API-integrasjon</span> og{" "}
+              <span className={styles.highlight}>frontend + backend</span>{" "}
+              kommunikasjon.
+            </>
+          ),
+          tech: ["#Python", "#Flask", "#API", "#FrontendIntegrasjon"],
+          link: null,
         },
       ],
 
@@ -1226,11 +1265,11 @@ export default function Home() {
             {selectedProject && (
               <div
                 className={styles.projectTakeover}
-                onClick={() => setSelectedProject(null)} // 👈 lukker når man klikker utenfor
+                onClick={() => setSelectedProject(null)} // lukker når man klikker utenfor
               >
                 <div
                   className={styles.projectDetails}
-                  onClick={(e) => e.stopPropagation()} // 👈 hindrer at klikk inni boksen lukker
+                  onClick={(e) => e.stopPropagation()} // hindrer at klikk inni boksen lukker
                 >
                   <button
                     className={styles.closeBtn}
@@ -1255,6 +1294,12 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+
+                  {/* 👇 Chatbot vises bare for det prosjektet */}
+                  {selectedProject.title === "Python Joke Chatbot" && (
+                    <Chatbot />
+                  )}
+
                   {selectedProject.link && (
                     <a
                       href={selectedProject.link}
@@ -1262,6 +1307,18 @@ export default function Home() {
                       rel="noopener noreferrer"
                     >
                       {t.projectLink}
+                    </a>
+                  )}
+                  {selectedProject.extraLink && (
+                    <a
+                      href={selectedProject.extraLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ marginLeft: "1.5rem" }}
+                    >
+                      {language === "no"
+                        ? "Les bacheloroppgaven"
+                        : "Read the bachelor thesis"}
                     </a>
                   )}
                 </div>
