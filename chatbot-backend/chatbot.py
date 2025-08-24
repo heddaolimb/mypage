@@ -3,7 +3,7 @@ from flask_cors import CORS
 import random
 
 app = Flask(__name__)
-CORS(app)  # 👈 gir frontend (localhost:3000) lov til å snakke med backend
+CORS(app)  # 👈 lar frontend snakke med backend
 
 jokes = [
     "Why don’t scientists trust atoms? Because they make up everything!",
@@ -13,11 +13,20 @@ jokes = [
     "I told my computer I needed a break, and it said: 'No problem – I’ll go to sleep!'"
 ]
 
+last_joke = None  # 👈 lagrer forrige vits så vi unngår repetisjon
+
 @app.route("/chat", methods=["POST"])
 def chat():
+    global last_joke
     user_input = request.json.get("message", "")
-    response = random.choice(jokes)
-    return jsonify({"reply": response})
+
+    # trekk tilfeldig, men aldri samme som sist
+    joke = random.choice(jokes)
+    while joke == last_joke:
+        joke = random.choice(jokes)
+
+    last_joke = joke
+    return jsonify({"reply": joke})
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

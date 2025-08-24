@@ -7,15 +7,16 @@ export default function Chatbot() {
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    // legg til brukerens melding
     setMessages((prev) => [...prev, { sender: "user", text: input }]);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/chat", {
+      const res = await fetch("http://localhost:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
       });
+
+      if (!res.ok) throw new Error("Network response was not ok");
 
       const data = await res.json();
       setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
@@ -62,6 +63,7 @@ export default function Chatbot() {
           </div>
         ))}
       </div>
+
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -76,6 +78,7 @@ export default function Chatbot() {
           color: "white",
         }}
       />
+
       <button
         onClick={sendMessage}
         style={{
