@@ -1030,18 +1030,8 @@ export default function Home() {
           aria-labelledby="about-title"
         >
           <div ref={aboutRef} className={styles.aboutWrapper}>
-            {/* Venstre: bilde + UFO */}
-            <div
-              className={`${styles.aboutImage} ${
-                ufoPlayed ? styles.ufoActive : ""
-              }`}
-            >
-              <div className={styles.ufo} aria-hidden="true">
-                <img src="/animations/alien.svg" alt="" />
-                <div className={styles.beam}></div>
-              </div>
-
-              {/* Bildet med transparent bakgrunn */}
+            {/* Venstre: kun bilde */}
+            <div className={styles.aboutImage}>
               <img
                 src="/images/meg1.png"
                 alt="Hedda Olimb"
