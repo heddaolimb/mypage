@@ -346,7 +346,7 @@ export default function Home() {
         },
         {
           title: "Python Joke Chatbot",
-          image: "/images/chatbot.png", // finn eller lag et ikon
+          image: "/icons/python.svg", // finn eller lag et ikon
           description: (
             <>
               A small <span className={styles.highlight}>Python Flask API</span>{" "}
@@ -639,7 +639,7 @@ export default function Home() {
         },
         {
           title: "Python-vitschatbot",
-          image: "/images/chatbot.png",
+          image: "/icons/python.svg",
           description: (
             <>
               En liten{" "}
