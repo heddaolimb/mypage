@@ -205,6 +205,7 @@ export default function Home() {
       projectLink: "View Project",
       projects: [
         {
+          id: "heimat-app",
           title: "Heimat App",
           image: "/images/heimatapp.png",
           description: (
@@ -276,6 +277,7 @@ export default function Home() {
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
         {
+          id: "flower-power",
           title: "Flower Power – Cosmo & Wanda",
           image: "/images/cosmowanda.jpg",
           description: (
@@ -326,6 +328,7 @@ export default function Home() {
           link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
         },
         {
+          id: "portfolio-site",
           title: "My Website",
           image: "/images/code.png",
           description: (
@@ -345,17 +348,23 @@ export default function Home() {
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
-          title: "Python Joke Chatbot",
+          id: "python-chatbot", // 👈 samme id i NO
+          title: "Python Chatbot",
           image: "/icons/python.svg", // finn eller lag et ikon
           description: (
             <>
-              A small <span className={styles.highlight}>Python Flask API</span>{" "}
+              A small{" "}
+              <span className={styles.highlight}>
+                Python Flask API (Flask + Gunicorn)
+              </span>{" "}
               that replies with random jokes. Integrated directly into this
               website to demonstrate{" "}
               <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>API integration</span>, and{" "}
               <span className={styles.highlight}>frontend + backend</span>{" "}
-              communication.
+              communication. Ask it to tell you a joke! Tested and validated
+              with <span className={styles.highlight}>Postman</span> during
+              development.
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegration"],
@@ -519,6 +528,7 @@ export default function Home() {
       projectLink: "Se prosjekt",
       projects: [
         {
+          id: "heimat-app",
           title: "Heimat App",
           image: "/images/heimatapp.png",
           description: (
@@ -583,6 +593,7 @@ export default function Home() {
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
         {
+          id: "flower-power",
           title: "Flower Power – Cosmo & Wanda",
           image: "/images/cosmowanda.jpg",
           description: (
@@ -630,6 +641,7 @@ export default function Home() {
           link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
         },
         {
+          id: "portfolio-site",
           title: "Min nettside",
           image: "/images/code.png",
           description:
@@ -638,17 +650,23 @@ export default function Home() {
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
-          title: "Python-vitschatbot",
+          id: "python-chatbot", // 👈 samme id
+          title: "Python chatbot",
           image: "/icons/python.svg",
           description: (
             <>
               En liten{" "}
-              <span className={styles.highlight}>Python Flask-API</span> som
-              svarer med tilfeldige vitser. Integrert direkte i denne nettsiden
-              for å vise <span className={styles.highlight}>Python</span>,{" "}
+              <span className={styles.highlight}>
+                Python Flask-API (Flask + Gunicorn)
+              </span>{" "}
+              som svarer med tilfeldige vitser. Integrert direkte i denne
+              nettsiden for å vise{" "}
+              <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>API-integrasjon</span> og{" "}
               <span className={styles.highlight}>frontend + backend</span>{" "}
-              kommunikasjon.
+              kommunikasjon. Spør den om å fortelle en vits! Testet og validert
+              med <span className={styles.highlight}>Postman</span> under
+              utvikling.
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegrasjon"],
@@ -1245,16 +1263,20 @@ export default function Home() {
                 showProjects ? styles.show : ""
               }`}
             >
-              {projects.map((proj, idx) => (
+              {projects.map((proj) => (
                 <article
-                  key={idx}
+                  key={proj.id}
                   className={styles.projectCard}
                   onClick={() => setSelectedProject(proj)}
                 >
                   <img
                     src={proj.image}
                     alt={proj.title}
-                    className={styles.projectImage}
+                    className={`${styles.projectImage} ${
+                      proj.id === "python-chatbot"
+                        ? styles.smallProjectImage
+                        : ""
+                    }`}
                   />
                   <h3>{proj.title}</h3>
                 </article>
@@ -1265,11 +1287,11 @@ export default function Home() {
             {selectedProject && (
               <div
                 className={styles.projectTakeover}
-                onClick={() => setSelectedProject(null)} // lukker når man klikker utenfor
+                onClick={() => setSelectedProject(null)}
               >
                 <div
                   className={styles.projectDetails}
-                  onClick={(e) => e.stopPropagation()} // hindrer at klikk inni boksen lukker
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <button
                     className={styles.closeBtn}
@@ -1278,11 +1300,16 @@ export default function Home() {
                   >
                     ✕
                   </button>
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className={styles.projectImageLarge}
-                  />
+
+                  {/* 👇 skjul stort bilde for Python */}
+                  {selectedProject.id !== "python-chatbot" && (
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className={styles.projectImageLarge}
+                    />
+                  )}
+
                   <h3>{selectedProject.title}</h3>
                   <div className={styles.projectDescription}>
                     {selectedProject.description}
@@ -1295,10 +1322,8 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* 👇 Chatbot vises bare for det prosjektet */}
-                  {selectedProject.title === "Python Joke Chatbot" && (
-                    <Chatbot />
-                  )}
+                  {/* 👇 Chatbot kun på python-prosjektet */}
+                  {selectedProject.id === "python-chatbot" && <Chatbot />}
 
                   {selectedProject.link && (
                     <a

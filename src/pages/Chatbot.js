@@ -1,7 +1,13 @@
 import { useState } from "react";
 
 export default function Chatbot() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      sender: "bot",
+      text: "⚠️The backend is deployed on Render’s free plan. It may take up to 20-30s to respond the first time as the server wakes up. After that, the bot works normally. This is not a bug. All jokes are in English.",
+    },
+  ]);
+
   const [input, setInput] = useState("");
 
   // 👇 logger hvilken backend-URL som brukes
@@ -51,7 +57,7 @@ export default function Chatbot() {
           maxHeight: "200px",
           overflowY: "auto",
           marginBottom: "1rem",
-          border: "1px solid #333",
+          border: "3px solid #bcbcbcff",
           borderRadius: "8px",
           padding: "0.5rem",
         }}
@@ -75,7 +81,7 @@ export default function Chatbot() {
         onChange={(e) => setInput(e.target.value)}
         placeholder="Write a message..."
         style={{
-          width: "70%",
+          width: "80%",
           marginRight: "0.5rem",
           padding: "0.5rem",
           borderRadius: "6px",
@@ -90,7 +96,7 @@ export default function Chatbot() {
         style={{
           padding: "0.5rem 1rem",
           borderRadius: "6px",
-          background: "#cd8f6d",
+          background: "#ff6e20ff",
           color: "white",
           border: "none",
           cursor: "pointer",
