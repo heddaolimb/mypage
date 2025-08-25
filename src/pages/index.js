@@ -426,6 +426,34 @@ export default function Home() {
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegration"],
           link: null,
         },
+        {
+          id: "nlp-sentiment",
+          title: "AI Sentiment Analysis",
+          image: "/icons/ai.svg", // finn eller lag et lite ikon
+          description: (
+            <>
+              A small <span className={styles.highlight}>AI demo</span> that
+              integrates with the{" "}
+              <span className={styles.highlight}>
+                HuggingFace Sentiment Model
+              </span>
+              . Enter a sentence and the system will analyze it using{" "}
+              <span className={styles.highlight}>
+                Natural Language Processing (NLP)
+              </span>{" "}
+              to classify the text as positive, neutral, or negative.
+              <br />
+              <br />
+              Demonstrates{" "}
+              <span className={styles.highlight}>AI integration</span>,{" "}
+              <span className={styles.highlight}>NLP</span>, and{" "}
+              <span className={styles.highlight}>JSON handling</span> in a
+              frontend + backend setup.
+            </>
+          ),
+          tech: ["#NextJS", "#API", "#AI", "#NLP", "#FrontendIntegration"],
+          link: null,
+        },
       ],
 
       coursesTitle: "Courses",
@@ -779,6 +807,34 @@ export default function Home() {
             </>
           ),
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegrasjon"],
+          link: null,
+        },
+        {
+          id: "nlp-sentiment",
+          title: "AI Sentimentanalyse",
+          image: "/icons/ai.svg", // finn eller lag et lite ikon
+          description: (
+            <>
+              En liten <span className={styles.highlight}>AI-demo</span> som
+              integrerer med{" "}
+              <span className={styles.highlight}>
+                HuggingFace sin sentiment-modell
+              </span>
+              . Skriv inn en setning, og systemet vil analysere den ved hjelp av{" "}
+              <span className={styles.highlight}>
+                Natural Language Processing (NLP)
+              </span>{" "}
+              og klassifisere teksten som positiv, nøytral eller negativ.
+              <br />
+              <br />
+              Demonstrerer{" "}
+              <span className={styles.highlight}>AI-integrasjon</span>,{" "}
+              <span className={styles.highlight}>NLP</span> og{" "}
+              <span className={styles.highlight}>JSON-håndtering</span> i et
+              frontend + backend-oppsett.
+            </>
+          ),
+          tech: ["#NextJS", "#API", "#AI", "#NLP", "#FrontendIntegrasjon"],
           link: null,
         },
       ],
@@ -1388,6 +1444,8 @@ export default function Home() {
                         ? styles.smallProjectImage // 👈 Chatbot lite ikon
                         : proj.id === "nasa-api"
                         ? styles.nasaImage // 👈 NASA ikon egen klasse
+                        : proj.id === "nlp-sentiment"
+                        ? styles.aiImage // 👈 AI ikon egen klasse
                         : styles.projectImage // 👈 alle andre
                     }
                   />
@@ -1417,7 +1475,8 @@ export default function Home() {
                   {/* 👇 Ikke vis stort bilde for Chatbot, Feedback eller NASA */}
                   {selectedProject.id !== "python-chatbot" &&
                     selectedProject.id !== "feedback-board" &&
-                    selectedProject.id !== "nasa-api" && (
+                    selectedProject.id !== "nasa-api" &&
+                    selectedProject.id !== "nlp-sentiment" && (
                       <img
                         src={selectedProject.image}
                         alt={selectedProject.title}

@@ -1059,6 +1059,11 @@
   color: #aaa;
 }
 
+.aiImage {
+  height: 240px;
+  object-fit: contain;
+}
+
 /* COURSES */
 .section[id="courses"] {
   min-height: 100vh;
