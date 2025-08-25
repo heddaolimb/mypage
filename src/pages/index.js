@@ -379,12 +379,15 @@ export default function Home() {
           description: (
             <>
               A small <span className={styles.highlight}>fullstack demo</span>{" "}
-              where visitors can leave anonymous feedback on this website. Built
+              where visitors can leave anonymous feedback on this website.
+              Please note: while all feedback is displayed here and visible to
+              both me and other visitors, it remains completely anonymous. Built
               with <span className={styles.highlight}>Next.js API routes</span>{" "}
-              and <span className={styles.highlight}>MongoDB</span> for data
+              and
+              <span className={styles.highlight}>MongoDB</span> for data
               storage. Shows how to connect{" "}
-              <span className={styles.highlight}>frontend</span>,{" "}
-              <span className={styles.highlight}>backend</span> and{" "}
+              <span className={styles.highlight}>frontend</span>,
+              <span className={styles.highlight}>backend</span> and
               <span className={styles.highlight}>database</span>.
             </>
           ),
@@ -700,13 +703,15 @@ export default function Home() {
           description: (
             <>
               En liten <span className={styles.highlight}>fullstack-demo</span>{" "}
-              der besøkende kan legge igjen anonym tilbakemelding på nettsiden.
-              Bygget med{" "}
-              <span className={styles.highlight}>Next.js API routes</span> og{" "}
+              der besøkende kan legge igjen anonym tilbakemelding på denne
+              nettsiden. Vennligst merk: selv om alle tilbakemeldinger vises her
+              og er synlige for både meg og andre besøkende, forblir de helt
+              anonyme. Bygget med{" "}
+              <span className={styles.highlight}>Next.js API-ruter</span> og
               <span className={styles.highlight}>MongoDB</span> for datalagring.
               Viser koblingen mellom{" "}
-              <span className={styles.highlight}>frontend</span>,{" "}
-              <span className={styles.highlight}>backend</span> og{" "}
+              <span className={styles.highlight}>frontend</span>,
+              <span className={styles.highlight}>backend</span> og
               <span className={styles.highlight}>database</span>.
             </>
           ),
