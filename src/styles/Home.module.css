@@ -936,6 +936,79 @@
   object-fit: contain; /* holder ikonet riktig */
 }
 
+.mongoDbImage {
+  height: 200px;
+  object-fit: contain;
+}
+
+/* === FEEDBACK BOARD === */
+.feedbackBoard {
+  background: #1b1b29;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+.feedbackTitle {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #f2e9e4;
+}
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedbackTextarea {
+  resize: vertical;
+  min-height: 80px;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #2a2a3d;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.feedbackButton {
+  background: #6c63ff;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.feedbackButton:hover {
+  background: #5146d8;
+}
+
+.feedbackList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.feedbackItem {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.feedbackEmpty {
+  color: #aaa;
+  font-style: italic;
+}
+
 /* COURSES */
 .section[id="courses"] {
   min-height: 100vh;

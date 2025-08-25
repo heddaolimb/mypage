@@ -4,7 +4,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "⚠️The backend is deployed on Render’s free plan. It may take up to 20-30s to respond the first time as the server wakes up. After that, the bot works normally. This is not a bug. All jokes are in English.",
+      text: "⚠️The backend is deployed on Render’s free plan. It may take up to 20-30s to respond the first time as the server wakes up. After that, the bot works normally. This is not a bug.",
     },
   ]);
 

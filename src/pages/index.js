@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import TagCloud from "TagCloud";
 import Chatbot from "./Chatbot";
+import FeedbackBoard from "../components/FeedbackBoard";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -362,13 +363,33 @@ export default function Home() {
               <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>API integration</span>, and{" "}
               <span className={styles.highlight}>frontend + backend</span>{" "}
-              communication. Ask it to tell you a joke! Tested and validated
-              with <span className={styles.highlight}>Postman</span> during
+              communication. Ask it to tell you a joke! All jokes are in
+              English. Tested and validated with{" "}
+              <span className={styles.highlight}>Postman</span> during
               development.
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegration"],
           link: null,
+        },
+        {
+          id: "feedback-board", // 👈 unikt id
+          title: "Feedback Board",
+          image: "/icons/mongodb.svg", // lag et ikon/bilde eller placeholder
+          description: (
+            <>
+              A small <span className={styles.highlight}>fullstack demo</span>{" "}
+              where visitors can leave anonymous feedback on this website. Built
+              with <span className={styles.highlight}>Next.js API routes</span>{" "}
+              and <span className={styles.highlight}>MongoDB</span> for data
+              storage. Shows how to connect{" "}
+              <span className={styles.highlight}>frontend</span>,{" "}
+              <span className={styles.highlight}>backend</span> and{" "}
+              <span className={styles.highlight}>database</span>.
+            </>
+          ),
+          tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
+          link: null, // ingen ekstern lenke
         },
       ],
 
@@ -664,12 +685,32 @@ export default function Home() {
               <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>API-integrasjon</span> og{" "}
               <span className={styles.highlight}>frontend + backend</span>{" "}
-              kommunikasjon. Spør den om å fortelle en vits! Testet og validert
-              med <span className={styles.highlight}>Postman</span> under
-              utvikling.
+              kommunikasjon. Spør den om å fortelle en vits! Alle vitser er på
+              engelsk. Testet og validert med{" "}
+              <span className={styles.highlight}>Postman</span> under utvikling.
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegrasjon"],
+          link: null,
+        },
+        {
+          id: "feedback-board",
+          title: "Feedback Board",
+          image: "/icons/mongodb.svg",
+          description: (
+            <>
+              En liten <span className={styles.highlight}>fullstack-demo</span>{" "}
+              der besøkende kan legge igjen anonym tilbakemelding på nettsiden.
+              Bygget med{" "}
+              <span className={styles.highlight}>Next.js API routes</span> og{" "}
+              <span className={styles.highlight}>MongoDB</span> for datalagring.
+              Viser koblingen mellom{" "}
+              <span className={styles.highlight}>frontend</span>,{" "}
+              <span className={styles.highlight}>backend</span> og{" "}
+              <span className={styles.highlight}>database</span>.
+            </>
+          ),
+          tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
           link: null,
         },
       ],
@@ -1272,11 +1313,13 @@ export default function Home() {
                   <img
                     src={proj.image}
                     alt={proj.title}
-                    className={`${styles.projectImage} ${
-                      proj.id === "python-chatbot"
-                        ? styles.smallProjectImage
-                        : ""
-                    }`}
+                    className={
+                      proj.id === "feedback-board"
+                        ? styles.mongoDbImage // 👈 Feedback Board lite ikon
+                        : proj.id === "python-chatbot"
+                        ? styles.smallProjectImage // 👈 Chatbot lite ikon
+                        : styles.projectImage // 👈 alle andre
+                    }
                   />
                   <h3>{proj.title}</h3>
                 </article>
@@ -1301,14 +1344,15 @@ export default function Home() {
                     ✕
                   </button>
 
-                  {/* 👇 skjul stort bilde for Python */}
-                  {selectedProject.id !== "python-chatbot" && (
-                    <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      className={styles.projectImageLarge}
-                    />
-                  )}
+                  {/* 👇 Ikke vis stort bilde for Chatbot eller Feedback */}
+                  {selectedProject.id !== "python-chatbot" &&
+                    selectedProject.id !== "feedback-board" && (
+                      <img
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        className={styles.projectImageLarge}
+                      />
+                    )}
 
                   <h3>{selectedProject.title}</h3>
                   <div className={styles.projectDescription}>
@@ -1322,8 +1366,9 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* 👇 Chatbot kun på python-prosjektet */}
+                  {/* 👇 Komponenter inni prosjektene */}
                   {selectedProject.id === "python-chatbot" && <Chatbot />}
+                  {selectedProject.id === "feedback-board" && <FeedbackBoard />}
 
                   {selectedProject.link && (
                     <a
