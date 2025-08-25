@@ -5,6 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 import TagCloud from "TagCloud";
 import Chatbot from "./Chatbot";
 import FeedbackBoard from "../components/FeedbackBoard";
+import NasaProject from "../components/NasaProject";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -394,6 +395,31 @@ export default function Home() {
           tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
           link: null, // ingen ekstern lenke
         },
+        {
+          id: "nasa-api",
+          title: "NASA API Integration",
+          image: "/icons/nasa.svg", // lag/bruk et NASA-ikon eller placeholder
+          description: (
+            <>
+              A small{" "}
+              <span className={styles.highlight}>API integration demo</span>{" "}
+              that fetches data from the{" "}
+              <span className={styles.highlight}>NASA Open API</span>. It
+              displays the{" "}
+              <span className={styles.highlight}>
+                Astronomy Picture of the Day
+              </span>{" "}
+              with its title, explanation, and image. Built with{" "}
+              <span className={styles.highlight}>Next.js API routes</span> and{" "}
+              <span className={styles.highlight}>fetch</span>. Demonstrates{" "}
+              <span className={styles.highlight}>JSON parsing</span>,{" "}
+              <span className={styles.highlight}>frontend integration</span>,
+              and <span className={styles.highlight}>error handling</span>.
+            </>
+          ),
+          tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegration"],
+          link: null,
+        },
       ],
 
       coursesTitle: "Courses",
@@ -716,6 +742,30 @@ export default function Home() {
             </>
           ),
           tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
+          link: null,
+        },
+        {
+          id: "nasa-api",
+          title: "NASA API-integrasjon",
+          image: "/icons/nasa.svg", // lag/bruk et NASA-ikon eller placeholder
+          description: (
+            <>
+              En liten{" "}
+              <span className={styles.highlight}>API-integrasjonsdemo</span> som
+              henter data fra{" "}
+              <span className={styles.highlight}>NASA Open API</span>. Viser{" "}
+              <span className={styles.highlight}>
+                Astronomy Picture of the Day
+              </span>{" "}
+              med tittel, forklaring og bilde. Bygget med{" "}
+              <span className={styles.highlight}>Next.js API-ruter</span> og{" "}
+              <span className={styles.highlight}>fetch</span>. Demonstrerer{" "}
+              <span className={styles.highlight}>JSON-parsing</span>,{" "}
+              <span className={styles.highlight}>frontend-integrasjon</span> og{" "}
+              <span className={styles.highlight}>feilhåndtering</span>.
+            </>
+          ),
+          tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegrasjon"],
           link: null,
         },
       ],
@@ -1061,8 +1111,8 @@ export default function Home() {
             }}
           >
             {language === "no"
-              ? "Velkommen til min side"
-              : "Welcome to my site"}
+              ? "Velkommen til min nettside"
+              : "Welcome to my website"}
           </h2>
 
           <p className="mb-6">
@@ -1323,6 +1373,8 @@ export default function Home() {
                         ? styles.mongoDbImage // 👈 Feedback Board lite ikon
                         : proj.id === "python-chatbot"
                         ? styles.smallProjectImage // 👈 Chatbot lite ikon
+                        : proj.id === "nasa-api"
+                        ? styles.nasaImage // 👈 NASA ikon egen klasse
                         : styles.projectImage // 👈 alle andre
                     }
                   />
@@ -1349,15 +1401,7 @@ export default function Home() {
                     ✕
                   </button>
 
-                  {/* 👇 Ikke vis stort bilde for Chatbot eller Feedback */}
-                  {selectedProject.id !== "python-chatbot" &&
-                    selectedProject.id !== "feedback-board" && (
-                      <img
-                        src={selectedProject.image}
-                        alt={selectedProject.title}
-                        className={styles.projectImageLarge}
-                      />
-                    )}
+                  {/* ❌ Fjernet visning av stort bilde */}
 
                   <h3>{selectedProject.title}</h3>
                   <div className={styles.projectDescription}>
@@ -1374,6 +1418,7 @@ export default function Home() {
                   {/* 👇 Komponenter inni prosjektene */}
                   {selectedProject.id === "python-chatbot" && <Chatbot />}
                   {selectedProject.id === "feedback-board" && <FeedbackBoard />}
+                  {selectedProject.id === "nasa-api" && <NasaProject />}
 
                   {selectedProject.link && (
                     <a
