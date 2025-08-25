@@ -364,10 +364,12 @@ export default function Home() {
               <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>API integration</span>, and{" "}
               <span className={styles.highlight}>frontend + backend</span>{" "}
-              communication. Ask it to tell you a joke! All jokes are in
-              English. Tested and validated with{" "}
+              communication. Tested and validated with{" "}
               <span className={styles.highlight}>Postman</span> during
               development.
+              <br />
+              <br />
+              Ask it to tell you a joke! All jokes are in English.
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegration"],
@@ -382,9 +384,11 @@ export default function Home() {
               A small <span className={styles.highlight}>fullstack demo</span>{" "}
               where visitors can leave anonymous feedback on this website.
               Please note: while all feedback is displayed here and visible to
-              both me and other visitors, it remains completely anonymous. Built
-              with <span className={styles.highlight}>Next.js API routes</span>{" "}
-              and
+              both me and other visitors, it remains completely anonymous.
+              <br />
+              <br />
+              Built with{" "}
+              <span className={styles.highlight}>Next.js API routes</span> and
               <span className={styles.highlight}>MongoDB</span> for data
               storage. Shows how to connect{" "}
               <span className={styles.highlight}>frontend</span>,
@@ -398,23 +402,25 @@ export default function Home() {
         {
           id: "nasa-api",
           title: "NASA API Integration",
-          image: "/icons/nasa.svg", // lag/bruk et NASA-ikon eller placeholder
+          image: "/icons/nasa.svg",
           description: (
             <>
               A small{" "}
               <span className={styles.highlight}>API integration demo</span>{" "}
               that fetches data from the{" "}
               <span className={styles.highlight}>NASA Open API</span>. It
-              displays the{" "}
-              <span className={styles.highlight}>
-                Astronomy Picture of the Day
-              </span>{" "}
-              with its title, explanation, and image. Built with{" "}
+              displays the "Astronomy Picture of the Day" with its title,
+              explanation, and image. Built with{" "}
               <span className={styles.highlight}>Next.js API routes</span> and{" "}
               <span className={styles.highlight}>fetch</span>. Demonstrates{" "}
               <span className={styles.highlight}>JSON parsing</span>,{" "}
               <span className={styles.highlight}>frontend integration</span>,
               and <span className={styles.highlight}>error handling</span>.
+              <br />
+              <br />
+              The raw JSON response is also shown below for demonstration
+              purposes - to prove that the data above actually comes directly
+              from NASA's API.
             </>
           ),
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegration"],
@@ -714,9 +720,11 @@ export default function Home() {
               <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>API-integrasjon</span> og{" "}
               <span className={styles.highlight}>frontend + backend</span>{" "}
-              kommunikasjon. Spør den om å fortelle en vits! Alle vitser er på
-              engelsk. Testet og validert med{" "}
+              kommunikasjon. Testet og validert med{" "}
               <span className={styles.highlight}>Postman</span> under utvikling.
+              <br />
+              <br />
+              Spør den om å fortelle en vits! Alle vitser er på engelsk.
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegrasjon"],
@@ -732,7 +740,10 @@ export default function Home() {
               der besøkende kan legge igjen anonym tilbakemelding på denne
               nettsiden. Vennligst merk: selv om alle tilbakemeldinger vises her
               og er synlige for både meg og andre besøkende, forblir de helt
-              anonyme. Bygget med{" "}
+              anonyme.
+              <br />
+              <br />
+              Bygget med{" "}
               <span className={styles.highlight}>Next.js API-ruter</span> og
               <span className={styles.highlight}>MongoDB</span> for datalagring.
               Viser koblingen mellom{" "}
@@ -747,22 +758,24 @@ export default function Home() {
         {
           id: "nasa-api",
           title: "NASA API-integrasjon",
-          image: "/icons/nasa.svg", // lag/bruk et NASA-ikon eller placeholder
+          image: "/icons/nasa.svg",
           description: (
             <>
               En liten{" "}
               <span className={styles.highlight}>API-integrasjonsdemo</span> som
               henter data fra{" "}
-              <span className={styles.highlight}>NASA Open API</span>. Viser{" "}
-              <span className={styles.highlight}>
-                Astronomy Picture of the Day
-              </span>{" "}
-              med tittel, forklaring og bilde. Bygget med{" "}
+              <span className={styles.highlight}>NASA Open API</span>. Viser
+              "Astronomy Picture of the Day" med tittel, forklaring og bilde.
+              Bygget med{" "}
               <span className={styles.highlight}>Next.js API-ruter</span> og{" "}
               <span className={styles.highlight}>fetch</span>. Demonstrerer{" "}
               <span className={styles.highlight}>JSON-parsing</span>,{" "}
               <span className={styles.highlight}>frontend-integrasjon</span> og{" "}
               <span className={styles.highlight}>feilhåndtering</span>.
+              <br />
+              <br />
+              Rå JSON-respons vises også nederst som en demonstrasjon - for å
+              bevise at dataen over faktisk hentes direkte fra NASA sitt API.
             </>
           ),
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegrasjon"],
@@ -1401,7 +1414,16 @@ export default function Home() {
                     ✕
                   </button>
 
-                  {/* ❌ Fjernet visning av stort bilde */}
+                  {/* 👇 Ikke vis stort bilde for Chatbot, Feedback eller NASA */}
+                  {selectedProject.id !== "python-chatbot" &&
+                    selectedProject.id !== "feedback-board" &&
+                    selectedProject.id !== "nasa-api" && (
+                      <img
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        className={styles.projectImageLarge}
+                      />
+                    )}
 
                   <h3>{selectedProject.title}</h3>
                   <div className={styles.projectDescription}>

@@ -37,6 +37,21 @@ export default function NasaProject() {
       )}
       <p>{data.explanation}</p>
       <small>{data.date}</small>
+
+      {/* 👇 Rå JSON-visning for demo */}
+      <pre
+        style={{
+          background: "#111",
+          color: "#0f0",
+          padding: "0.5rem",
+          fontSize: "0.75rem",
+          overflowX: "auto",
+          marginTop: "1rem",
+          borderRadius: "6px",
+        }}
+      >
+        {JSON.stringify(data, null, 2)}
+      </pre>
     </div>
   );
 }
