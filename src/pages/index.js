@@ -429,7 +429,7 @@ export default function Home() {
         },
         {
           id: "nlp-sentiment",
-          title: "AI Sentiment Analysis",
+          title: "AI Named Entity Recognition (NER)",
           image: "/icons/ai.svg", // finn eller lag et lite ikon
           description: (
             <>
@@ -456,28 +456,35 @@ export default function Home() {
               <br />
               For example, typing:
               <code>
-                "Barack Obama was born in Hawaii and worked at the White House."
+                "Emma Watson starred in Harry Potter, which was filmed in
+                London."
               </code>
-              will extract: - <strong>Barack Obama (PER)</strong>-{" "}
-              <strong>Hawaii (LOC)</strong>- <strong>White House (ORG)</strong>
+              will extract: <strong>- Emma Watson (PER) - 100%</strong>{" "}
+              <strong>- Harry Potter (MISC) - 90.1%</strong>-{" "}
+              <strong>London (LOC) - 99.9%</strong>
               <br />
               <br />
-              The system highlights entities with color coding: -{" "}
+              The system highlights entities with color coding:{" "}
               <span style={{ color: "#4caf50", fontWeight: "bold" }}>
                 Green = Person (PER)
-              </span>
-              -{" "}
+              </span>{" "}
               <span style={{ color: "#2196f3", fontWeight: "bold" }}>
                 Blue = Organization (ORG)
-              </span>
-              -{" "}
+              </span>{" "}
               <span style={{ color: "#ff9800", fontWeight: "bold" }}>
                 Orange = Location (LOC)
-              </span>
-              -{" "}
+              </span>{" "}
               <span style={{ color: "#9c27b0", fontWeight: "bold" }}>
                 Purple = Miscellaneous (MISC)
               </span>
+              <br />
+              <br />
+              <strong>Note:</strong> The NER model is trained on a limited
+              dataset, so entity classifications are not always perfect. For
+              example, the model correctly tags *Harry Potter* as{" "}
+              <strong>MISC</strong>, but confidence scores and labels can vary
+              depending on context. The model is primarily trained on English,
+              but can sometimes generalize to other languages such as Norwegian.
               <br />
               <br />
               Demonstrates{" "}
@@ -487,7 +494,15 @@ export default function Home() {
               frontend + backend setup.
             </>
           ),
-          tech: ["#NextJS", "#API", "#AI", "#NLP", "#FrontendIntegration"],
+          tech: [
+            "#NextJS",
+            "#API",
+            "#AI",
+            "#NLP",
+            "#NER",
+            "#FrontendIntegration",
+          ],
+
           link: null,
         },
       ],
@@ -847,30 +862,77 @@ export default function Home() {
         },
         {
           id: "nlp-sentiment",
-          title: "AI Sentimentanalyse",
+          title: "AI Entitetsgjenkjenning (NER)",
           image: "/icons/ai.svg", // finn eller lag et lite ikon
           description: (
             <>
               En liten <span className={styles.highlight}>AI-demo</span> som
-              integrerer med{" "}
+              integrerer med en
               <span className={styles.highlight}>
-                HuggingFace sin sentiment-modell
+                {" "}
+                HuggingFace Named Entity Recognition (NER)-modell
               </span>
-              . Skriv inn en setning, og systemet vil analysere den ved hjelp av{" "}
+              . Skriv inn en setning på engelsk, og systemet analyserer den ved
+              hjelp av
               <span className={styles.highlight}>
                 Natural Language Processing (NLP)
               </span>{" "}
-              og klassifisere teksten som positiv, nøytral eller negativ.
+              for å trekke ut navngitte entiteter som{" "}
+              <span className={styles.highlight}>personer (PER)</span>,
+              <span className={styles.highlight}>steder (LOC)</span>,
+              <span className={styles.highlight}>organisasjoner (ORG)</span> og
+              <span className={styles.highlight}>andre entiteter (MISC)</span>.
+              <br />
+              <br />
+              For eksempel, hvis du skriver:
+              <code>
+                "Emma Watson starred in Harry Potter, which was filmed in
+                London."
+              </code>
+              vil systemet finne: <strong>- Emma Watson (PER) - 100%</strong>{" "}
+              <strong>- Harry Potter (MISC) - 90.1%</strong>{" "}
+              <strong>- London (LOC) - 99.9%</strong>
+              <br />
+              <br />
+              Systemet markerer entitetene med fargekoder:{" "}
+              <span style={{ color: "#4caf50", fontWeight: "bold" }}>
+                Grønn = Person (PER)
+              </span>{" "}
+              <span style={{ color: "#2196f3", fontWeight: "bold" }}>
+                Blå = Organisasjon (ORG)
+              </span>{" "}
+              <span style={{ color: "#ff9800", fontWeight: "bold" }}>
+                Oransje = Sted (LOC)
+              </span>{" "}
+              <span style={{ color: "#9c27b0", fontWeight: "bold" }}>
+                Lilla = Annet (MISC)
+              </span>
+              <br />
+              <br />
+              <strong>Merk:</strong> NER-modellen er trent på et begrenset
+              datasett, så klassifiseringene er ikke alltid perfekte. For
+              eksempel merkes *Harry Potter* korrekt som <strong>MISC</strong>,
+              men sikkerhetsscorene og etikettene kan variere avhengig av
+              konteksten. Modellen er primært trent på engelsk, men kan noen
+              ganger generalisere til andre språk som norsk.
               <br />
               <br />
               Demonstrerer{" "}
-              <span className={styles.highlight}>AI-integrasjon</span>,{" "}
-              <span className={styles.highlight}>NLP</span> og{" "}
+              <span className={styles.highlight}>AI-integrasjon</span>,
+              <span className={styles.highlight}>NLP</span> og
               <span className={styles.highlight}>JSON-håndtering</span> i et
               frontend + backend-oppsett.
             </>
           ),
-          tech: ["#NextJS", "#API", "#AI", "#NLP", "#FrontendIntegrasjon"],
+          tech: [
+            "#NextJS",
+            "#API",
+            "#AI",
+            "#NLP",
+            "#NER",
+            "#FrontendIntegrasjon",
+          ],
+
           link: null,
         },
       ],

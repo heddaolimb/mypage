@@ -92,9 +92,11 @@ export default function SentimentProject() {
                   margin: "0 0.2rem",
                   borderRadius: "0.3rem",
                   fontWeight: "bold",
+                  display: "inline-block",
                 }}
               >
-                {ent.word} ({ent.entity_group})
+                {ent.word} ({ent.entity_group}) – {(ent.score * 100).toFixed(1)}
+                %
               </span>
             ))}
           </p>
