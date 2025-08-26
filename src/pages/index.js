@@ -6,6 +6,7 @@ import TagCloud from "TagCloud";
 import Chatbot from "./Chatbot";
 import FeedbackBoard from "../components/FeedbackBoard";
 import NasaProject from "../components/NasaProject";
+import SentimentProject from "../components/SentimentProject";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -433,20 +434,55 @@ export default function Home() {
           description: (
             <>
               A small <span className={styles.highlight}>AI demo</span> that
-              integrates with the{" "}
+              integrates with a
               <span className={styles.highlight}>
-                HuggingFace Sentiment Model
+                {" "}
+                HuggingFace Named Entity Recognition (NER) model
               </span>
-              . Enter a sentence and the system will analyze it using{" "}
+              . Enter a sentence in English, and the system will analyze it
+              using
               <span className={styles.highlight}>
                 Natural Language Processing (NLP)
               </span>{" "}
-              to classify the text as positive, neutral, or negative.
+              to extract named entities such as{" "}
+              <span className={styles.highlight}>persons (PER)</span>,
+              <span className={styles.highlight}>locations (LOC)</span>,
+              <span className={styles.highlight}>organizations (ORG)</span>, and
+              <span className={styles.highlight}>
+                miscellaneous entities (MISC)
+              </span>
+              .
+              <br />
+              <br />
+              For example, typing:
+              <code>
+                "Barack Obama was born in Hawaii and worked at the White House."
+              </code>
+              will extract: - <strong>Barack Obama (PER)</strong>-{" "}
+              <strong>Hawaii (LOC)</strong>- <strong>White House (ORG)</strong>
+              <br />
+              <br />
+              The system highlights entities with color coding: -{" "}
+              <span style={{ color: "#4caf50", fontWeight: "bold" }}>
+                Green = Person (PER)
+              </span>
+              -{" "}
+              <span style={{ color: "#2196f3", fontWeight: "bold" }}>
+                Blue = Organization (ORG)
+              </span>
+              -{" "}
+              <span style={{ color: "#ff9800", fontWeight: "bold" }}>
+                Orange = Location (LOC)
+              </span>
+              -{" "}
+              <span style={{ color: "#9c27b0", fontWeight: "bold" }}>
+                Purple = Miscellaneous (MISC)
+              </span>
               <br />
               <br />
               Demonstrates{" "}
-              <span className={styles.highlight}>AI integration</span>,{" "}
-              <span className={styles.highlight}>NLP</span>, and{" "}
+              <span className={styles.highlight}>AI integration</span>,
+              <span className={styles.highlight}>NLP</span>, and
               <span className={styles.highlight}>JSON handling</span> in a
               frontend + backend setup.
             </>
@@ -1500,6 +1536,9 @@ export default function Home() {
                   {selectedProject.id === "python-chatbot" && <Chatbot />}
                   {selectedProject.id === "feedback-board" && <FeedbackBoard />}
                   {selectedProject.id === "nasa-api" && <NasaProject />}
+                  {selectedProject.id === "nlp-sentiment" && (
+                    <SentimentProject />
+                  )}
 
                   {selectedProject.link && (
                     <a

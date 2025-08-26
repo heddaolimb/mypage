@@ -1058,10 +1058,61 @@
   font-size: 0.8rem;
   color: #aaa;
 }
-
+/* AI-project*/
 .aiImage {
   height: 240px;
   object-fit: contain;
+}
+.sentimentBox {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sentimentInput {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.8rem;
+  border: 1px solid #444;
+  border-radius: 0.5rem;
+  background: #1e1e1e;
+  color: #eee;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.sentimentBtn {
+  background: #6a5acd;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.sentimentBtn:hover {
+  background: #836fff;
+}
+
+.sentimentResult {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.progressBarWrapper {
+  background: #333;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  height: 12px;
+  margin: 0.5rem 0;
+}
+
+.progressBar {
+  height: 100%;
+  transition: width 0.5s ease;
 }
 
 /* COURSES */
