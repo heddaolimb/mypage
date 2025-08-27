@@ -1230,6 +1230,21 @@
   color: #ff1a1a;
 }
 
+.projectImages {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.projectImages img {
+  width: 25%;
+  height: auto; /* eller auto hvis du vil */
+  object-fit: contain; /* viser hele bildet */
+  border-radius: 8px;
+  border: 3px solid #333;
+  background: #131313; /* legger til mørk bakgrunn så tomrom ikke ser stygt ut */
+}
+
 /* client project */
 .cliImage {
   height: 240px;

@@ -375,6 +375,10 @@ export default function Home() {
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegration"],
+          extraImages: [
+            "/images/chatbot_postman.png",
+            "/images/chatbot_code.png",
+          ], // 👈 nye bilder
           link: null,
         },
         {
@@ -399,6 +403,10 @@ export default function Home() {
             </>
           ),
           tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
+          extraImages: [
+            "/images/feedback_postman.png",
+            "/images/feedback_code.png",
+          ], //
           link: null, // ingen ekstern lenke
         },
         {
@@ -525,20 +533,21 @@ export default function Home() {
               <span className={styles.highlight}>
                 separate backend deployed to Render
               </span>
-              . Since it’s on the{" "}
+              . Since it's on the{" "}
               <span className={styles.highlight}>free Render plan</span>, the
-              server may “sleep” — it can take 20–30 seconds to wake up the
+              server may “sleep” - it can take 20-30 seconds to wake up the
               first time you use it, but after that it runs normally.
               <br />
               <br />
               Demonstrates{" "}
               <span className={styles.highlight}>CRUD functionality</span>,{" "}
               <span className={styles.highlight}>database integration</span> and{" "}
-              <span className={styles.highlight}>system design</span> – showing
+              <span className={styles.highlight}>system design</span> - showing
               how real-world applications are structured.
             </>
           ),
           tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
+          extraImages: ["/images/taskmanager.png", "/images/taskpostman.png"], // 👈 nye bilder
           link: null,
         },
         {
@@ -864,6 +873,10 @@ export default function Home() {
             </>
           ),
           tech: ["#Python", "#Flask", "#API", "#FrontendIntegrasjon"],
+          extraImages: [
+            "/images/chatbot_postman.png",
+            "/images/chatbot_code.png",
+          ], // 👈 nye bilder
           link: null,
         },
         {
@@ -889,6 +902,10 @@ export default function Home() {
             </>
           ),
           tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
+          extraImages: [
+            "/images/feedback_postman.png",
+            "/images/feedback_code.png",
+          ], //
           link: null,
         },
         {
@@ -1012,7 +1029,7 @@ export default function Home() {
               </span>
               . Siden det kjører på{" "}
               <span className={styles.highlight}>gratisplanen til Render</span>{" "}
-              kan serveren “sove” — det kan ta 20–30 sekunder å starte første
+              kan serveren “sove” - det kan ta 20-30 sekunder å starte første
               gang, men etter det fungerer den som normalt.
               <br />
               <br />
@@ -1021,11 +1038,12 @@ export default function Home() {
                 CRUD-funksjonalitet
               </span>,{" "}
               <span className={styles.highlight}>database-integrasjon</span> og{" "}
-              <span className={styles.highlight}>systemdesign</span> – den typen
+              <span className={styles.highlight}>systemdesign</span> - den typen
               struktur ekte applikasjoner bygger på.
             </>
           ),
           tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
+          extraImages: ["/images/taskmanager.png", "/images/taskpostman.png"], // 👈 nye bilder
           link: null,
         },
         {
@@ -1706,6 +1724,19 @@ export default function Home() {
                   <div className={styles.projectDescription}>
                     {selectedProject.description}
                   </div>
+
+                  {/* 👇 Viser små ekstra bilder for prosjekter som har dem */}
+                  {(selectedProject.id === "python-chatbot" ||
+                    selectedProject.id === "feedback-board" ||
+                    selectedProject.id === "task-manager") &&
+                    selectedProject.extraImages && (
+                      <div className={styles.projectImages}>
+                        {selectedProject.extraImages.map((img, i) => (
+                          <img key={i} src={img} alt="Project screenshot" />
+                        ))}
+                      </div>
+                    )}
+
                   <div className={styles.techList}>
                     {selectedProject.tech.map((tag, i) => (
                       <span key={i} className={styles.techTag}>
