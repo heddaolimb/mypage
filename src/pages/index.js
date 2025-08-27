@@ -7,6 +7,7 @@ import Chatbot from "./Chatbot";
 import FeedbackBoard from "../components/FeedbackBoard";
 import NasaProject from "../components/NasaProject";
 import SentimentProject from "../components/SentimentProject";
+import TaskManager from "../components/TaskManager";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -505,6 +506,48 @@ export default function Home() {
 
           link: null,
         },
+        {
+          id: "task-manager",
+          title: "Mini Task Manager",
+          image: "/icons/taskmanager.svg", // legg et ikon i /public/icons/
+          description: (
+            <>
+              A simple{" "}
+              <span className={styles.highlight}>fullstack project</span> where
+              users can create, update and delete tasks. Built with{" "}
+              <span className={styles.highlight}>Node.js/Express</span>,{" "}
+              <span className={styles.highlight}>React</span> and{" "}
+              <span className={styles.highlight}>MongoDB</span>. Demonstrates{" "}
+              <span className={styles.highlight}>CRUD functionality</span>,{" "}
+              <span className={styles.highlight}>database integration</span> and{" "}
+              <span className={styles.highlight}>system design</span> – the kind
+              of structure real-world applications rely on.
+            </>
+          ),
+          tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
+          link: null,
+        },
+        {
+          id: "weather-cli",
+          title: "Weather CLI",
+          image: "/icons/terminal.svg", // legg et ikon i /public/icons/
+          description: (
+            <>
+              A lightweight <span className={styles.highlight}>Python</span>{" "}
+              command-line tool that fetches{" "}
+              <span className={styles.highlight}>live weather data</span> from
+              an API. Shows how to build{" "}
+              <span className={styles.highlight}>
+                software outside the browser
+              </span>
+              , integrate{" "}
+              <span className={styles.highlight}>external APIs</span> and
+              package simple developer utilities.
+            </>
+          ),
+          tech: ["#Python", "#CLI", "#API", "#SoftwareDev"],
+          link: null,
+        },
       ],
 
       coursesTitle: "Courses",
@@ -933,6 +976,48 @@ export default function Home() {
             "#FrontendIntegrasjon",
           ],
 
+          link: null,
+        },
+        {
+          id: "task-manager",
+          title: "Mini Task Manager",
+          image: "/icons/taskmanager.svg",
+          description: (
+            <>
+              Et enkelt{" "}
+              <span className={styles.highlight}>fullstack-prosjekt</span> der
+              brukere kan opprette, oppdatere og slette oppgaver. Bygget med{" "}
+              <span className={styles.highlight}>Node.js/Express</span>,{" "}
+              <span className={styles.highlight}>React</span> og{" "}
+              <span className={styles.highlight}>MongoDB</span>. Viser{" "}
+              <span className={styles.highlight}>CRUD-funksjonalitet</span>,{" "}
+              <span className={styles.highlight}>database-integrasjon</span> og{" "}
+              <span className={styles.highlight}>systemdesign</span> – den typen
+              struktur ekte applikasjoner bygger på.
+            </>
+          ),
+          tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
+          link: null,
+        },
+        {
+          id: "weather-cli",
+          title: "Weather CLI",
+          image: "/icons/terminal.svg",
+          description: (
+            <>
+              Et lettvekts <span className={styles.highlight}>Python</span>{" "}
+              kommandolinje-verktøy som henter{" "}
+              <span className={styles.highlight}>sanntids værdata</span> fra et
+              API. Viser hvordan man kan lage{" "}
+              <span className={styles.highlight}>
+                programvare utenfor nettleseren
+              </span>
+              , integrere{" "}
+              <span className={styles.highlight}>eksterne APIer</span> og lage
+              enkle utvikler-verktøy.
+            </>
+          ),
+          tech: ["#Python", "#CLI", "#API", "#SoftwareDev"],
           link: null,
         },
       ],
@@ -1537,14 +1622,18 @@ export default function Home() {
                     alt={proj.title}
                     className={
                       proj.id === "feedback-board"
-                        ? styles.mongoDbImage // 👈 Feedback Board lite ikon
+                        ? styles.mongoDbImage
                         : proj.id === "python-chatbot"
-                        ? styles.smallProjectImage // 👈 Chatbot lite ikon
+                        ? styles.smallProjectImage
                         : proj.id === "nasa-api"
-                        ? styles.nasaImage // 👈 NASA ikon egen klasse
+                        ? styles.nasaImage
                         : proj.id === "nlp-sentiment"
-                        ? styles.aiImage // 👈 AI ikon egen klasse
-                        : styles.projectImage // 👈 alle andre
+                        ? styles.aiImage
+                        : proj.id === "task-manager"
+                        ? styles.taskManagerImage
+                        : proj.id === "weather-cli"
+                        ? styles.cliImage
+                        : styles.projectImage
                     }
                   />
                   <h3>{proj.title}</h3>
@@ -1574,7 +1663,9 @@ export default function Home() {
                   {selectedProject.id !== "python-chatbot" &&
                     selectedProject.id !== "feedback-board" &&
                     selectedProject.id !== "nasa-api" &&
-                    selectedProject.id !== "nlp-sentiment" && (
+                    selectedProject.id !== "nlp-sentiment" &&
+                    selectedProject.id !== "task-manager" &&
+                    selectedProject.id !== "weather-cli" && (
                       <img
                         src={selectedProject.image}
                         alt={selectedProject.title}
@@ -1601,6 +1692,7 @@ export default function Home() {
                   {selectedProject.id === "nlp-sentiment" && (
                     <SentimentProject />
                   )}
+                  {selectedProject.id === "task-manager" && <TaskManager />}
 
                   {selectedProject.link && (
                     <a

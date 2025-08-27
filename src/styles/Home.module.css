@@ -1144,6 +1144,18 @@
   transition: width 0.5s ease;
 }
 
+/* task manager project */
+.taskManagerImage {
+  height: 220px;
+  object-fit: contain;
+}
+
+/* client project */
+.cliImage {
+  height: 240px;
+  object-fit: contain;
+}
+
 /* COURSES */
 .section[id="courses"] {
   min-height: 100vh;
