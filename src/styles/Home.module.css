@@ -1237,7 +1237,7 @@
 }
 
 .projectImages img {
-  width: 25%;
+  width: 35%;
   height: auto; /* eller auto hvis du vil */
   object-fit: contain; /* viser hele bildet */
   border-radius: 8px;
