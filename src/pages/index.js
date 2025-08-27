@@ -512,16 +512,30 @@ export default function Home() {
           image: "/icons/taskmanager.svg", // legg et ikon i /public/icons/
           description: (
             <>
-              A simple{" "}
-              <span className={styles.highlight}>fullstack project</span> where
-              users can create, update and delete tasks. Built with{" "}
+              A small <span className={styles.highlight}>fullstack demo</span>{" "}
+              where users can create, update and delete tasks. Built with{" "}
               <span className={styles.highlight}>Node.js/Express</span>,{" "}
               <span className={styles.highlight}>React</span> and{" "}
-              <span className={styles.highlight}>MongoDB</span>. Demonstrates{" "}
+              <span className={styles.highlight}>MongoDB</span>.
+              <br />
+              <br />
+              Unlike the{" "}
+              <span className={styles.highlight}>Feedback Board</span> (which
+              uses Next.js API routes), this project runs on a{" "}
+              <span className={styles.highlight}>
+                separate backend deployed to Render
+              </span>
+              . Since it’s on the{" "}
+              <span className={styles.highlight}>free Render plan</span>, the
+              server may “sleep” — it can take 20–30 seconds to wake up the
+              first time you use it, but after that it runs normally.
+              <br />
+              <br />
+              Demonstrates{" "}
               <span className={styles.highlight}>CRUD functionality</span>,{" "}
               <span className={styles.highlight}>database integration</span> and{" "}
-              <span className={styles.highlight}>system design</span> – the kind
-              of structure real-world applications rely on.
+              <span className={styles.highlight}>system design</span> – showing
+              how real-world applications are structured.
             </>
           ),
           tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
@@ -984,13 +998,28 @@ export default function Home() {
           image: "/icons/taskmanager.svg",
           description: (
             <>
-              Et enkelt{" "}
-              <span className={styles.highlight}>fullstack-prosjekt</span> der
-              brukere kan opprette, oppdatere og slette oppgaver. Bygget med{" "}
+              En liten <span className={styles.highlight}>fullstack-demo</span>{" "}
+              der brukere kan opprette, oppdatere og slette oppgaver. Bygget med{" "}
               <span className={styles.highlight}>Node.js/Express</span>,{" "}
               <span className={styles.highlight}>React</span> og{" "}
-              <span className={styles.highlight}>MongoDB</span>. Viser{" "}
-              <span className={styles.highlight}>CRUD-funksjonalitet</span>,{" "}
+              <span className={styles.highlight}>MongoDB</span>.
+              <br />
+              <br />I motsetning til{" "}
+              <span className={styles.highlight}>Feedback Board</span> (som
+              bruker Next.js API-ruter), kjører dette prosjektet på en{" "}
+              <span className={styles.highlight}>
+                separat backend deployert på Render
+              </span>
+              . Siden det kjører på{" "}
+              <span className={styles.highlight}>gratisplanen til Render</span>{" "}
+              kan serveren “sove” — det kan ta 20–30 sekunder å starte første
+              gang, men etter det fungerer den som normalt.
+              <br />
+              <br />
+              Demonstrerer{" "}
+              <span className={styles.highlight}>
+                CRUD-funksjonalitet
+              </span>,{" "}
               <span className={styles.highlight}>database-integrasjon</span> og{" "}
               <span className={styles.highlight}>systemdesign</span> – den typen
               struktur ekte applikasjoner bygger på.
