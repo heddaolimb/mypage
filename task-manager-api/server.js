@@ -6,47 +6,52 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB kobling (bytt connection string til din)
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// Mongoose modell
-const Task = mongoose.model("Task", {
-  title: String,
+// Modell for Task
+const TaskSchema = new mongoose.Schema({
+  title: { type: String, required: true },
   completed: { type: Boolean, default: false },
 });
 
-// --- CRUD ENDPOINTS ---
+const Task = mongoose.model("Task", TaskSchema);
 
-// 1. Hent alle tasks
+// Routes (CRUD)
 app.get("/api/tasks", async (req, res) => {
   const tasks = await Task.find();
   res.json(tasks);
 });
 
-// 2. Opprett ny task
 app.post("/api/tasks", async (req, res) => {
-  const task = new Task({ title: req.body.title });
-  await task.save();
-  res.json(task);
+  const newTask = new Task(req.body);
+  await newTask.save();
+  res.json(newTask);
 });
 
-// 3. Oppdater task (f.eks. fullført)
 app.put("/api/tasks/:id", async (req, res) => {
-  const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  res.json(task);
+  res.json(updatedTask);
 });
 
-// 4. Slett task
 app.delete("/api/tasks/:id", async (req, res) => {
   await Task.findByIdAndDelete(req.params.id);
   res.json({ success: true });
 });
 
-// Start server
+// 🚀 Connect til MongoDB Atlas
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Task Manager API running on port ${PORT}`));
+
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("✅ MongoDB connected");
+    app.listen(PORT, () =>
+      console.log(`🚀 Task Manager API running on port ${PORT}`)
+    );
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+  });
