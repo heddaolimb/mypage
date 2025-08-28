@@ -8,6 +8,7 @@ import FeedbackBoard from "../components/FeedbackBoard";
 import NasaProject from "../components/NasaProject";
 import SentimentProject from "../components/SentimentProject";
 import TaskManager from "../components/TaskManager";
+import WeatherWidget from "../components/WeatherWidget";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -569,6 +570,10 @@ export default function Home() {
             </>
           ),
           tech: ["#Python", "#CLI", "#API", "#SoftwareDev"],
+          extraImages: [
+            "/images/weather_code.png",
+            "/images/weather_python.png",
+          ], // 👈 nye bilder
           link: null,
         },
       ],
@@ -1065,6 +1070,10 @@ export default function Home() {
             </>
           ),
           tech: ["#Python", "#CLI", "#API", "#SoftwareDev"],
+          extraImages: [
+            "/images/weather_code.png",
+            "/images/weather_python.png",
+          ], // 👈 nye bilder
           link: null,
         },
       ],
@@ -1728,7 +1737,8 @@ export default function Home() {
                   {/* 👇 Viser små ekstra bilder for prosjekter som har dem */}
                   {(selectedProject.id === "python-chatbot" ||
                     selectedProject.id === "feedback-board" ||
-                    selectedProject.id === "task-manager") &&
+                    selectedProject.id === "task-manager" ||
+                    selectedProject.id === "weather-cli") && // 👈 lagt til her
                     selectedProject.extraImages && (
                       <div className={styles.projectImages}>
                         {selectedProject.extraImages.map((img, i) => (
@@ -1753,6 +1763,7 @@ export default function Home() {
                     <SentimentProject />
                   )}
                   {selectedProject.id === "task-manager" && <TaskManager />}
+                  {selectedProject.id === "weather-cli" && <WeatherWidget />}
 
                   {selectedProject.link && (
                     <a
