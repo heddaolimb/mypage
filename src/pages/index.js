@@ -566,7 +566,15 @@ export default function Home() {
               </span>
               , make <span className={styles.highlight}>API requests</span>, and
               handle <span className={styles.highlight}>fallbacks</span> when
-              one service is unavailable.
+              one service is unavailable. A simple{" "}
+              <span className={styles.highlight}>frontend integration</span> is
+              also included so visitors can interact with the project directly
+              on this website and see the{" "}
+              <span className={styles.highlight}>raw JSON response</span> below
+              the results. <br />
+              <br />
+              <strong>Note:</strong> Please search for city names (e.g. London,
+              Paris, Oslo), not countries.
             </>
           ),
           tech: [
@@ -1073,7 +1081,15 @@ export default function Home() {
               </span>
               , gjøre <span className={styles.highlight}>API-kall</span> og
               håndtere <span className={styles.highlight}>fallbacks</span> når
-              en tjeneste ikke er tilgjengelig.
+              en tjeneste er utilgjengelig. En enkel{" "}
+              <span className={styles.highlight}>frontend-integrasjon</span> er
+              også lagt til slik at besøkende kan teste prosjektet direkte på
+              denne nettsiden og se den{" "}
+              <span className={styles.highlight}>rå JSON-responsen</span> under
+              resultatene. <br />
+              <br />
+              <strong>Merk:</strong> Du må søke på bynavn (f.eks. London, Paris,
+              Oslo), ikke land.
             </>
           ),
           tech: [
