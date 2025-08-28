@@ -1800,78 +1800,105 @@ export default function Home() {
                     ✕
                   </button>
 
-                  {/* 👇 Ikke vis stort bilde for Chatbot, Feedback eller NASA */}
-                  {selectedProject.id !== "python-chatbot" &&
-                    selectedProject.id !== "feedback-board" &&
-                    selectedProject.id !== "nasa-api" &&
-                    selectedProject.id !== "nlp-sentiment" &&
-                    selectedProject.id !== "task-manager" &&
-                    selectedProject.id !== "weather-cli" &&
-                    selectedProject.id !== "space-shooter" && (
-                      <img
-                        src={selectedProject.image}
-                        alt={selectedProject.title}
-                        className={styles.projectImageLarge}
-                      />
-                    )}
+                  {/* 👇 Unntak for SpaceShooter */}
+                  {selectedProject.id === "space-shooter" ? (
+                    <>
+                      <h3>{selectedProject.title}</h3>
+                      <div className={styles.projectDescription}>
+                        {selectedProject.description}
+                      </div>
 
-                  <h3>{selectedProject.title}</h3>
-                  <div className={styles.projectDescription}>
-                    {selectedProject.description}
-                  </div>
+                      <div className={styles.spaceShooterWrapper}>
+                        <SpaceShooter />
+                      </div>
 
-                  {/* 👇 Viser små ekstra bilder for prosjekter som har dem */}
-                  {(selectedProject.id === "python-chatbot" ||
-                    selectedProject.id === "feedback-board" ||
-                    selectedProject.id === "task-manager" ||
-                    selectedProject.id === "weather-cli") && // 👈 lagt til her
-                    selectedProject.extraImages && (
-                      <div className={styles.projectImages}>
-                        {selectedProject.extraImages.map((img, i) => (
-                          <img key={i} src={img} alt="Project screenshot" />
+                      <div className={styles.techList}>
+                        {selectedProject.tech.map((tag, i) => (
+                          <span key={i} className={styles.techTag}>
+                            {tag}
+                          </span>
                         ))}
                       </div>
-                    )}
+                    </>
+                  ) : (
+                    <>
+                      {/* 👇 Ikke vis stort bilde for Chatbot, Feedback eller NASA */}
+                      {selectedProject.id !== "python-chatbot" &&
+                        selectedProject.id !== "feedback-board" &&
+                        selectedProject.id !== "nasa-api" &&
+                        selectedProject.id !== "nlp-sentiment" &&
+                        selectedProject.id !== "task-manager" &&
+                        selectedProject.id !== "weather-cli" &&
+                        selectedProject.id !== "space-shooter" && (
+                          <img
+                            src={selectedProject.image}
+                            alt={selectedProject.title}
+                            className={styles.projectImageLarge}
+                          />
+                        )}
 
-                  <div className={styles.techList}>
-                    {selectedProject.tech.map((tag, i) => (
-                      <span key={i} className={styles.techTag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                      <h3>{selectedProject.title}</h3>
+                      <div className={styles.projectDescription}>
+                        {selectedProject.description}
+                      </div>
 
-                  {/* 👇 Komponenter inni prosjektene */}
-                  {selectedProject.id === "python-chatbot" && <Chatbot />}
-                  {selectedProject.id === "feedback-board" && <FeedbackBoard />}
-                  {selectedProject.id === "nasa-api" && <NasaProject />}
-                  {selectedProject.id === "nlp-sentiment" && (
-                    <SentimentProject />
-                  )}
-                  {selectedProject.id === "task-manager" && <TaskManager />}
-                  {selectedProject.id === "weather-cli" && <WeatherWidget />}
-                  {selectedProject.id === "space-shooter" && <SpaceShooter />}
+                      {/* 👇 Viser små ekstra bilder for prosjekter som har dem */}
+                      {(selectedProject.id === "python-chatbot" ||
+                        selectedProject.id === "feedback-board" ||
+                        selectedProject.id === "task-manager" ||
+                        selectedProject.id === "weather-cli") &&
+                        selectedProject.extraImages && (
+                          <div className={styles.projectImages}>
+                            {selectedProject.extraImages.map((img, i) => (
+                              <img key={i} src={img} alt="Project screenshot" />
+                            ))}
+                          </div>
+                        )}
 
-                  {selectedProject.link && (
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t.projectLink}
-                    </a>
-                  )}
-                  {selectedProject.extraLink && (
-                    <a
-                      href={selectedProject.extraLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ marginLeft: "1.5rem" }}
-                    >
-                      {language === "no"
-                        ? "Les bacheloroppgaven"
-                        : "Read the bachelor thesis"}
-                    </a>
+                      <div className={styles.techList}>
+                        {selectedProject.tech.map((tag, i) => (
+                          <span key={i} className={styles.techTag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* 👇 Komponenter inni prosjektene */}
+                      {selectedProject.id === "python-chatbot" && <Chatbot />}
+                      {selectedProject.id === "feedback-board" && (
+                        <FeedbackBoard />
+                      )}
+                      {selectedProject.id === "nasa-api" && <NasaProject />}
+                      {selectedProject.id === "nlp-sentiment" && (
+                        <SentimentProject />
+                      )}
+                      {selectedProject.id === "task-manager" && <TaskManager />}
+                      {selectedProject.id === "weather-cli" && (
+                        <WeatherWidget />
+                      )}
+
+                      {selectedProject.link && (
+                        <a
+                          href={selectedProject.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t.projectLink}
+                        </a>
+                      )}
+                      {selectedProject.extraLink && (
+                        <a
+                          href={selectedProject.extraLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ marginLeft: "1.5rem" }}
+                        >
+                          {language === "no"
+                            ? "Les bacheloroppgaven"
+                            : "Read the bachelor thesis"}
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

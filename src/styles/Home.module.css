@@ -1303,6 +1303,12 @@
   height: 220px;
   object-fit: contain;
 }
+.spaceShooterWrapper {
+  width: 100%;
+  height: 500px; /* eller hva som passer */
+  background: #000;
+  margin: 2rem 0;
+}
 
 /* COURSES */
 .section[id="courses"] {
