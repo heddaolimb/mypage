@@ -16,6 +16,7 @@ export default function Home() {
   const [showAboutItems, setShowAboutItems] = useState(false);
   const [ufoPlayed, setUfoPlayed] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
+
   const [showProjects, setShowProjects] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedJob, setSelectedJob] = useState("job1");
@@ -1222,8 +1223,13 @@ export default function Home() {
 
   useEffect(() => {
     const ob = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setShowEducation(true),
-      { threshold: 0 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowEducation(true);
+          ob.disconnect(); // 👈 så den ikke toggler fram og tilbake
+        }
+      },
+      { threshold: 0.2 } // trigges når 20% av seksjonen er synlig
     );
     if (educationRef.current) ob.observe(educationRef.current);
     return () => educationRef.current && ob.unobserve(educationRef.current);
