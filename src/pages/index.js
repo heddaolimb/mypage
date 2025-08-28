@@ -9,6 +9,7 @@ import NasaProject from "../components/NasaProject";
 import SentimentProject from "../components/SentimentProject";
 import TaskManager from "../components/TaskManager";
 import WeatherWidget from "../components/WeatherWidget";
+import SpaceShooter from "../components/SpaceShooter";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -591,6 +592,31 @@ export default function Home() {
           ], // 👈 nye bilder
           link: null,
         },
+        {
+          id: "space-shooter",
+          title: "Space Shooter",
+          image: "/icons/space.svg", // legg et ikon i /public/icons/
+          description: (
+            <>
+              A small{" "}
+              <span className={styles.highlight}>retro arcade game</span> built
+              with <span className={styles.highlight}>Phaser.js</span>.
+              Demonstrates how to create a{" "}
+              <span className={styles.highlight}>game loop</span>, handle{" "}
+              <span className={styles.highlight}>collision detection</span>, and
+              implement a <span className={styles.highlight}>score system</span>
+              . Shows creativity and interactive programming directly in the
+              browser.
+            </>
+          ),
+          tech: [
+            "#PhaserJS",
+            "#JavaScript",
+            "#GameDev",
+            "#FrontendIntegration",
+          ],
+          link: null,
+        },
       ],
 
       coursesTitle: "Courses",
@@ -1104,6 +1130,32 @@ export default function Home() {
             "/images/weather_code.png",
             "/images/weather_python.png",
           ], // 👈 nye bilder
+          link: null,
+        },
+        {
+          id: "space-shooter",
+          title: "Space Shooter",
+          image: "/icons/space.svg", // legg et ikon i /public/icons/
+          description: (
+            <>
+              Et lite{" "}
+              <span className={styles.highlight}>retro arkadespill</span> laget
+              med <span className={styles.highlight}>Phaser.js</span>. Viser
+              hvordan man lager en{" "}
+              <span className={styles.highlight}>game loop</span>, håndterer{" "}
+              <span className={styles.highlight}>collision detection</span>
+              og implementerer et{" "}
+              <span className={styles.highlight}>poengsystem</span>.
+              Demonstrerer kreativitet og interaktiv programmering direkte i
+              nettleseren.
+            </>
+          ),
+          tech: [
+            "#PhaserJS",
+            "#JavaScript",
+            "#Spillutvikling",
+            "#FrontendIntegrasjon",
+          ],
           link: null,
         },
       ],
@@ -1719,9 +1771,12 @@ export default function Home() {
                         ? styles.taskManagerImage
                         : proj.id === "weather-cli"
                         ? styles.cliImage
+                        : proj.id === "space-shooter"
+                        ? styles.spaceShooterImage // 👈 nytt
                         : styles.projectImage
                     }
                   />
+
                   <h3>{proj.title}</h3>
                 </article>
               ))}
@@ -1751,7 +1806,8 @@ export default function Home() {
                     selectedProject.id !== "nasa-api" &&
                     selectedProject.id !== "nlp-sentiment" &&
                     selectedProject.id !== "task-manager" &&
-                    selectedProject.id !== "weather-cli" && (
+                    selectedProject.id !== "weather-cli" &&
+                    selectedProject.id !== "space-shooter" && (
                       <img
                         src={selectedProject.image}
                         alt={selectedProject.title}
@@ -1794,6 +1850,7 @@ export default function Home() {
                   )}
                   {selectedProject.id === "task-manager" && <TaskManager />}
                   {selectedProject.id === "weather-cli" && <WeatherWidget />}
+                  {selectedProject.id === "space-shooter" && <SpaceShooter />}
 
                   {selectedProject.link && (
                     <a

@@ -1298,6 +1298,11 @@
   color: #ddd;
   font-size: 1rem;
 }
+/* SpaceShooter*/
+.spaceShooterImage {
+  height: 220px;
+  object-fit: contain;
+}
 
 /* COURSES */
 .section[id="courses"] {
