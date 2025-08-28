@@ -560,16 +560,23 @@ export default function Home() {
               A lightweight <span className={styles.highlight}>Python</span>{" "}
               command-line tool that fetches{" "}
               <span className={styles.highlight}>live weather data</span> from
-              an API. Shows how to build{" "}
+              public APIs. Demonstrates how to build{" "}
               <span className={styles.highlight}>
                 software outside the browser
               </span>
-              , integrate{" "}
-              <span className={styles.highlight}>external APIs</span> and
-              package simple developer utilities.
+              , make <span className={styles.highlight}>API requests</span>, and
+              handle <span className={styles.highlight}>fallbacks</span> when
+              one service is unavailable.
             </>
           ),
-          tech: ["#Python", "#CLI", "#API", "#SoftwareDev"],
+          tech: [
+            "#Python",
+            "#CLI",
+            "#API",
+            "#Requests",
+            "#FallbackHandling",
+            "#SoftwareDev",
+          ],
           extraImages: [
             "/images/weather_code.png",
             "/images/weather_python.png",
@@ -1059,17 +1066,24 @@ export default function Home() {
             <>
               Et lettvekts <span className={styles.highlight}>Python</span>{" "}
               kommandolinje-verktøy som henter{" "}
-              <span className={styles.highlight}>sanntids værdata</span> fra et
-              API. Viser hvordan man kan lage{" "}
+              <span className={styles.highlight}>sanntids værdata</span> fra
+              offentlige API-er. Viser hvordan man kan bygge{" "}
               <span className={styles.highlight}>
                 programvare utenfor nettleseren
               </span>
-              , integrere{" "}
-              <span className={styles.highlight}>eksterne APIer</span> og lage
-              enkle utvikler-verktøy.
+              , gjøre <span className={styles.highlight}>API-kall</span> og
+              håndtere <span className={styles.highlight}>fallbacks</span> når
+              en tjeneste ikke er tilgjengelig.
             </>
           ),
-          tech: ["#Python", "#CLI", "#API", "#SoftwareDev"],
+          tech: [
+            "#Python",
+            "#CLI",
+            "#API",
+            "#Requests",
+            "#Fallback",
+            "#Programvareutvikling",
+          ],
           extraImages: [
             "/images/weather_code.png",
             "/images/weather_python.png",
