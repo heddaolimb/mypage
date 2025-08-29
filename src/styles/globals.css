@@ -40,8 +40,8 @@
   font-style: italic;
 }
 body {
-  font-family: "RoseSally", sans-serif;
-  background: #0d0c1f; /* fallback */
+  font-family: "Poppins", sans-serif;
+  background: #02020f; /* fallback */
   overflow-x: hidden;
 }
 
@@ -52,7 +52,7 @@ body {
 .tagcloud {
   position: relative;
   user-select: none;
-  color: #000000; /* lyseblå tone */
+  color: #ffffff; /* lyseblå tone */
   font-size: clamp(1.3rem, 1.2vw + 0.5rem, 1.6rem);
   left: -60px; /* + høyre, - venstre */
   top: -25px; /* - opp, + ned */
@@ -61,8 +61,8 @@ body {
 .tagcloud a,
 .tagcloud span,
 .tagcloud .tagcloud--item {
-  color: #aa0dff; /* Lilla */
-  text-shadow: 0 0 8px rgba(64, 109, 255, 0.35);
+  color: #717171; /* Lilla */
+  text-shadow: 0 0 8px rgba(129, 66, 255, 0.35);
   transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
 }
 
@@ -71,7 +71,7 @@ body {
 .tagcloud span:hover,
 .tagcloud .tagcloud--item:hover {
   color: #ffffff; /* Lys rød/rosa */
-  text-shadow: 0 0 10px rgba(159, 132, 255, 0.6);
+  text-shadow: 0 0 10px rgba(140, 86, 255, 0.6);
   transform: scale(1.06);
 }
 

@@ -135,7 +135,7 @@
 /* ABOUT SECTION */
 .aboutSection {
   width: 100%;
-  background: #12111d;
+  background: #070514;
   padding: 0;
   margin-top: 4rem;
 }
@@ -151,25 +151,42 @@
 
 /* VENSTRE: kun bildet */
 .aboutImage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
+  position: relative;
+  display: inline-block;
 }
 
-.aboutPhoto {
-  width: 350px;
-  height: auto;
+.aboutImage::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 650px;
+  height: 380px;
+  background: radial-gradient(circle at center, #615cf6 0%, transparent 60%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
 }
 .aboutImage::after {
   content: "";
-  display: block;
-  width: 300px;
-  height: 8px;
-  border-radius: 10px;
+  position: absolute;
+  bottom: -1px; /* flytt litt ned */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 13px;
+  background: linear-gradient(to right, #000000, #0c0630);
+  border-radius: 2px;
+  opacity: 1;
+  z-index: 5;
+}
 
-  background: linear-gradient(90deg, #6d28d9, #4ade80, #3b82f6);
-  box-shadow: 0 0 12px rgba(93, 245, 255, 0.7);
+.aboutPhoto {
+  position: relative;
+  z-index: 1; /* så bildet er foran glowen */
+  border-radius: 12px;
 }
 
 /* HØYRE: tittel + punkter */

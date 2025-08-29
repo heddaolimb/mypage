@@ -26,8 +26,8 @@ export default function App({ Component, pageProps }) {
         >
           {/* Bølge nr 1 */}
           <path
-            fill="#1c192cff"
-            fillOpacity="0.3"
+            fill="#000000ff"
+            fillOpacity="0.4"
             d="
         M0,450 
         C240,220, 480,420, 720,320
@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }) {
           />
           {/* Bølge nr 2 (kopi, flyttet til høyre) */}
           <path
-            fill="#1b1828ff"
+            fill="#040407ff"
             fillOpacity="0.3"
             d="
         M2880,450 
