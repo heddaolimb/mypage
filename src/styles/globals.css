@@ -39,9 +39,10 @@
   font-weight: normal;
   font-style: italic;
 }
+
 body {
   font-family: "Poppins", sans-serif;
-  background: #02020f; /* fallback */
+  background: #020210; /* fallback */
   overflow-x: hidden;
 }
 
