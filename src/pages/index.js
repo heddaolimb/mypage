@@ -15,6 +15,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showAboutItems, setShowAboutItems] = useState(false);
   const [ufoPlayed, setUfoPlayed] = useState(false);
+  const [showServices, setShowServices] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
 
   const [showProjects, setShowProjects] = useState(false);
@@ -33,6 +34,7 @@ export default function Home() {
   // Refs
   const cloudRef = useRef(null);
   const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
   const educationRef = useRef(null);
   const projectsRef = useRef(null);
   const jobsRef = useRef(null);
@@ -107,7 +109,15 @@ export default function Home() {
           "Hedda Olimb, web developer, website, projects, courses, contact, UX, UI, React, Next.js",
       },
       skip: "Skip to content",
-      nav: ["About", "Education", "Work", "Projects", "Courses", "Contact"],
+      nav: [
+        "About",
+        "What I Can Do",
+        "Education",
+        "Work",
+        "Projects",
+        "Courses",
+        "Contact",
+      ],
       heroTitle: "Hi, Im",
       heroSubtitle: "Welcome to my website!",
       explore: "Explore",
@@ -674,7 +684,15 @@ export default function Home() {
           "Hedda Olimb, webutvikler, nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
       },
       skip: "Hopp til innhold",
-      nav: ["Om meg", "Utdanning", "Arbeid", "Prosjekter", "Kurs", "Kontakt"],
+      nav: [
+        "Om meg",
+        "Hva jeg kan",
+        "Utdanning",
+        "Arbeid",
+        "Prosjekter",
+        "Kurs",
+        "Kontakt",
+      ],
       heroTitle: "Hei, jeg heter",
       heroSubtitle: "Velkommen til nettsiden min!",
       explore: "Utforsk",
@@ -1271,6 +1289,7 @@ export default function Home() {
   // --- Navigasjon ---
   const sectionIds = [
     "about",
+    "services",
     "education",
     "work",
     "projects",
@@ -1287,6 +1306,21 @@ export default function Home() {
       scrollToSection(id);
     }
   };
+
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowServices(true);
+          ob.disconnect(); // 👈 kjører bare én gang
+        }
+      },
+      { threshold: 0.2 } // 20% av seksjonen synlig
+    );
+    if (servicesRef.current) ob.observe(servicesRef.current);
+    return () => servicesRef.current && ob.unobserve(servicesRef.current);
+  }, []);
+
   // --- Data for språk (jobs, projects, courses) ---
   const jobs = t.jobs;
   const projects = t.projects;
@@ -1629,6 +1663,115 @@ export default function Home() {
                   {text}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHAT I CAN DO + MY SKILLS */}
+        <section id="services" className={styles.section}>
+          <div ref={servicesRef} className={styles.servicesOuter}>
+            <h2 className={styles.sectionTitle}>What I Can Do and My Skills</h2>
+
+            <div className={styles.servicesGrid}>
+              {/* Row 1 - What I Can Do */}
+              <div
+                className={`${styles.serviceCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "0.2s" }}
+              >
+                <div className={styles.iconPlaceholder}>💻</div>
+                <h3>Web Development</h3>
+                <p>
+                  Building modern, responsive websites with React & Next.js.
+                </p>
+              </div>
+
+              <div
+                className={`${styles.serviceCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "0.4s" }}
+              >
+                <div className={styles.iconPlaceholder}>🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>
+                  Creating intuitive user interfaces, wireframes, and
+                  prototypes.
+                </p>
+              </div>
+
+              <div
+                className={`${styles.serviceCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "0.6s" }}
+              >
+                <div className={styles.iconPlaceholder}>🔗</div>
+                <h3>API Integrations</h3>
+                <p>
+                  Connecting external APIs like NASA, weather data, or AI
+                  models.
+                </p>
+              </div>
+
+              <div
+                className={`${styles.serviceCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "0.8s" }}
+              >
+                <div className={styles.iconPlaceholder}>⚡</div>
+                <h3>SEO & Optimization</h3>
+                <p>
+                  Optimizing for performance, accessibility (WCAG), and SEO.
+                </p>
+              </div>
+
+              {/* Row 2 - My Skills */}
+              <div
+                className={`${styles.skillCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "1s" }}
+              >
+                <div className={styles.iconPlaceholder}>🚀</div>
+                <h3>Fast</h3>
+                <p>Delivering quick, effective solutions.</p>
+              </div>
+
+              <div
+                className={`${styles.skillCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "1.2s" }}
+              >
+                <div className={styles.iconPlaceholder}>📱</div>
+                <h3>Responsive</h3>
+                <p>Designs that adapt to mobile, tablet, and desktop.</p>
+              </div>
+
+              <div
+                className={`${styles.skillCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "1.4s" }}
+              >
+                <div className={styles.iconPlaceholder}>✨</div>
+                <h3>Intuitive</h3>
+                <p>Putting the user at the center of design and development.</p>
+              </div>
+
+              <div
+                className={`${styles.skillCard} ${
+                  showServices ? styles.show : ""
+                }`}
+                style={{ transitionDelay: "1.6s" }}
+              >
+                <div className={styles.iconPlaceholder}>🌍</div>
+                <h3>Dynamic</h3>
+                <p>Exploring new tech like AI, game dev, and IoT.</p>
+              </div>
             </div>
           </div>
         </section>

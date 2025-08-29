@@ -467,7 +467,101 @@
   }
 }
 
-/* Ytre Education-boks – samme look som About */
+/* What i can do and skills */
+/* Outer boks */
+.servicesOuter {
+  background: #12111d; /* samme som Education */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 5rem 4rem;
+  border-radius: 0;
+  position: relative;
+  z-index: 5;
+}
+
+/* Grid – 4 på rad, blir 2 rader med 8 kort */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* Kort – fade-in separat */
+.serviceCard,
+.skillCard {
+  background: rgba(1, 1, 12, 0.5);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* startposisjon */
+  opacity: 0;
+  transform: translateY(20px);
+
+  /* 👇 fade-in skal kun gjelde opacity */
+  transition: opacity 0.6s ease;
+}
+
+.serviceCard.show,
+.skillCard.show {
+  opacity: 1;
+  transform: translateY(0); /* hopper opp uten delay */
+}
+
+/* hover – helt separat */
+.serviceCard:hover,
+.skillCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(138, 43, 226, 0.4);
+
+  /* 👇 kun hover-animasjoner, rask */
+  transition: transform 0.1s linear, box-shadow 0.1s linear !important;
+}
+
+/* Ikon */
+.iconPlaceholder {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Tittel på kort */
+.serviceCard h3,
+.skillCard h3 {
+  font-size: 1.1rem;
+  color: #d4d4d4;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Tekst på kort */
+.serviceCard p,
+.skillCard p {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+}
+
+/* Seksjonstittel */
+.servicesOuter .sectionTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #f2e9e4;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-family: "VemanemX", sans-serif;
+  white-space: nowrap; /* 👈 hindrer linjeskift på desktop */
+  background: none; /* ingen bakgrunn */
+  padding: 0; /* fjerner evt. padding */
+  border-radius: 0; /* ingen rund boks */
+}
+
+/* EDUCATION SECTION */
 .educationOuter {
   background: #12111d; /* samme som aboutSection */
   width: 100vw;
