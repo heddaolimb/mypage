@@ -1411,18 +1411,45 @@
   display: flex;
   flex-direction: column;
 }
+.coursesOuter {
+  background: #12111d; /* samme som about, education, work, projects */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+  padding: 5rem 4rem;
+  position: relative;
+  z-index: 5;
+}
+.coursesOuter .sectionTitle {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 3rem;
+  color: #f2e9e4;
+  font-family: "VemanemX", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+}
 
 .courseSlider {
   position: relative;
   overflow: hidden;
   width: auto;
   max-width: 700px;
-  margin-left: 250px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
-
+.showCourses .courseSlider {
+  opacity: 1;
+  transform: translateY(0);
+}
 .courseCard {
   flex: 0 0 auto;
   max-width: 400px;
@@ -1533,8 +1560,8 @@
 /* Hele boksen */
 .contactBox {
   max-width: 700px;
-  margin: 2rem auto 0 auto; /* auto = sentrer horisontalt */
-  background: #161624;
+  margin: 0 auto; /* sentrer horisontalt */
+  background: rgba(1, 1, 12, 0.5);
   padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -1542,6 +1569,37 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.showContact .contactBox {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contactOuter {
+  background: #12111d; /* samme stil som de andre boksene */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+  padding: 5rem 4rem;
+  position: relative;
+  z-index: 5;
+}
+.contactOuter .sectionTitle {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 3rem;
+  color: #f2e9e4;
+  font-family: "VemanemX", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 /* Teksten inni boksen */
@@ -1618,6 +1676,7 @@
   padding: 1rem;
   font-size: 0.9rem;
   margin-top: 3rem;
+  font-family: "Poppins", sans-serif;
 }
 
 /*language*/
@@ -1629,7 +1688,7 @@
 }
 
 .langBtn {
-  font-family: "American", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.1rem;
   color: #b1b1b1;
   background: transparent;

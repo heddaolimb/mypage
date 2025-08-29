@@ -22,6 +22,8 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedJob, setSelectedJob] = useState("job1");
   const [currentCourse, setCurrentCourse] = useState(0);
+  const [showCourses, setShowCourses] = useState(false);
+  const [showContact, setShowContact] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -1320,6 +1322,24 @@ export default function Home() {
     if (servicesRef.current) ob.observe(servicesRef.current);
     return () => servicesRef.current && ob.unobserve(servicesRef.current);
   }, []);
+  // --- For contact og courses ---
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShowCourses(true),
+      { threshold: 0.2 }
+    );
+    if (coursesRef.current) ob.observe(coursesRef.current);
+    return () => coursesRef.current && ob.unobserve(coursesRef.current);
+  }, []);
+
+  useEffect(() => {
+    const ob = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShowContact(true),
+      { threshold: 0.2 }
+    );
+    if (contactRef.current) ob.observe(contactRef.current);
+    return () => contactRef.current && ob.unobserve(contactRef.current);
+  }, []);
 
   // --- Data for språk (jobs, projects, courses) ---
   const jobs = t.jobs;
@@ -1414,12 +1434,10 @@ export default function Home() {
           }}
         />
       </Head>
-
       {/* Skip-link for tastaturbrukere */}
       <a href="#main" className={styles.skipLink}>
         {t.skip}
       </a>
-
       {/* NAVBAR */}
       <header
         className={`${styles.navbar} ${selectedProject ? styles.hidden : ""}`}
@@ -1498,7 +1516,6 @@ export default function Home() {
           </button>
         </div>
       </header>
-
       {/* HERO */}
       <section
         id="hero"
@@ -1619,7 +1636,6 @@ export default function Home() {
           />
         </div>
       </section>
-
       {/* MAIN */}
       <main id="main" className={styles.mainContent} role="main">
         {/* About */}
@@ -2061,74 +2077,82 @@ export default function Home() {
           className={styles.section}
           aria-labelledby="courses-title"
         >
-          <h2 id="courses-title" className={styles.sectionTitle}>
-            {t.coursesTitle}
-          </h2>
+          <div
+            ref={coursesRef}
+            className={`${styles.coursesOuter} ${
+              showCourses ? styles.showCourses : ""
+            }`}
+          >
+            <h2 id="courses-title" className={styles.sectionTitle}>
+              {t.coursesTitle}
+            </h2>
 
-          <div className={styles.courseSlider}>
-            <div className={styles.courseNavButtons}>
-              <button
-                className={styles.navButton}
-                onClick={handlePrev}
-                aria-label="Previous course"
-              >
-                &#8592;
-              </button>
-              <button
-                className={styles.navButton}
-                onClick={handleNext}
-                aria-label="Next course"
-              >
-                &#8594;
-              </button>
-            </div>
-
-            <div
-              className={styles.courseTrack}
-              style={{ transform: `translateX(-${currentCourse * 100}%)` }}
-            >
-              {courses.map((course, idx) => (
-                <div
-                  key={idx}
-                  className={`${styles.courseCard} ${
-                    idx === currentCourse ? styles.active : ""
-                  }`}
-                  style={{
-                    flex: "0 0 100%",
-                    maxWidth: "100%",
-                    transition: "transform 0.5s ease",
-                  }}
+            {/* Alt ditt originale slider-innhold beholdes her */}
+            <div className={styles.courseSlider}>
+              <div className={styles.courseNavButtons}>
+                <button
+                  className={styles.navButton}
+                  onClick={handlePrev}
+                  aria-label="Previous course"
                 >
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className={styles.courseImage}
-                  />
-                  <a
-                    href={course.link}
-                    className={styles.courseTitle}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {course.title}
-                  </a>
-                  <h4 className={styles.courseSubtitle}>{t.courseWhy}</h4>
-                  <p className={styles.courseText}>{course.why}</p>
-                  <h4 className={styles.courseSubtitle}>{t.courseLearned}</h4>
-                  <p className={styles.courseText}>{course.learned}</p>
-                </div>
-              ))}
-            </div>
+                  &#8592;
+                </button>
+                <button
+                  className={styles.navButton}
+                  onClick={handleNext}
+                  aria-label="Next course"
+                >
+                  &#8594;
+                </button>
+              </div>
 
-            <div className={styles.courseDots} aria-hidden="true">
-              {courses.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`${styles.courseDot} ${
-                    idx === currentCourse ? styles.active : ""
-                  }`}
-                />
-              ))}
+              <div
+                className={styles.courseTrack}
+                style={{ transform: `translateX(-${currentCourse * 100}%)` }}
+              >
+                {courses.map((course, idx) => (
+                  <div
+                    key={idx}
+                    className={`${styles.courseCard} ${
+                      idx === currentCourse ? styles.active : ""
+                    }`}
+                    style={{
+                      flex: "0 0 100%",
+                      maxWidth: "100%",
+                      transition: "transform 0.5s ease",
+                    }}
+                  >
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className={styles.courseImage}
+                    />
+                    <a
+                      href={course.link}
+                      className={styles.courseTitle}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {course.title}
+                    </a>
+                    <h4 className={styles.courseSubtitle}>{t.courseWhy}</h4>
+                    <p className={styles.courseText}>{course.why}</p>
+                    <h4 className={styles.courseSubtitle}>{t.courseLearned}</h4>
+                    <p className={styles.courseText}>{course.learned}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className={styles.courseDots} aria-hidden="true">
+                {courses.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`${styles.courseDot} ${
+                      idx === currentCourse ? styles.active : ""
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -2139,51 +2163,59 @@ export default function Home() {
           className={styles.section}
           aria-labelledby="contact-title"
         >
-          <h2 id="contact-title" className={styles.sectionTitle}>
-            {t.contactTitle}
-          </h2>
+          <div
+            ref={contactRef}
+            className={`${styles.contactOuter} ${
+              showContact ? styles.showContact : ""
+            }`}
+          >
+            <h2 id="contact-title" className={styles.sectionTitle}>
+              {t.contactTitle}
+            </h2>
 
-          {/* wrapper beholdes selv om CSS-en din ikke styler den spesielt */}
-          <div className={styles.contactBox}>
-            <p className={styles.contactText}>{t.contactText}</p>
+            <div className={styles.contactBox}>
+              <p className={styles.contactText}>{t.contactText}</p>
 
-            <form
-              className={styles.contactForm}
-              onSubmit={handleSubmit}
-              aria-label="Contact form"
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder={t.form.name}
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder={t.form.email}
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder={t.form.message}
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-              />
-              <button type="submit" className={styles.submitBtn}>
-                {t.form.send}
-              </button>
-              {formStatus && <p className={styles.formStatus}>{formStatus}</p>}
-            </form>
+              <form
+                className={styles.contactForm}
+                onSubmit={handleSubmit}
+                aria-label="Contact form"
+              >
+                <input
+                  type="text"
+                  name="name"
+                  placeholder={t.form.name}
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder={t.form.email}
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+                <textarea
+                  name="message"
+                  placeholder={t.form.message}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                />
+                <button type="submit" className={styles.submitBtn}>
+                  {t.form.send}
+                </button>
+                {formStatus && (
+                  <p className={styles.formStatus}>{formStatus}</p>
+                )}
+              </form>
+            </div>
           </div>
         </section>
-      </main>
-
+      </main>{" "}
+      {/* 👈 main lukkes her */}
       {/* FOOTER */}
       <footer className={styles.footer} role="contentinfo">
         <p>
