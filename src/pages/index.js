@@ -344,7 +344,6 @@ export default function Home() {
             "#Automation",
             "#UXDesign",
           ],
-          link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
         },
         {
           id: "portfolio-site",
@@ -663,7 +662,7 @@ export default function Home() {
 
       contactTitle: "Contact",
       contactText:
-        "I'm currently open to new opportunities, collaborations, or just a chat. Feel free to reach out!",
+        "I'm currently open to new opportunities, collaborations, or just a chat. Feel free to reach out! My email: heddaolimb134@gmail.com - or use the contact form below.",
       form: {
         name: "Name",
         email: "Email",
@@ -906,7 +905,6 @@ export default function Home() {
             "#Automation",
             "#UXDesign",
           ],
-          link: "https://www.figma.com/proto/5R4qdV9HUuQtrAhhxCTgXf/Flower-Power",
         },
         {
           id: "portfolio-site",
@@ -1205,7 +1203,7 @@ export default function Home() {
 
       contactTitle: "Kontakt",
       contactText:
-        "Jeg er åpen for nye muligheter, samarbeid eller bare en prat. Ta gjerne kontakt!",
+        "Jeg er åpen for nye muligheter, samarbeid eller bare en prat. Ta gjerne kontakt! Min email: heddaolimb134@gmail.com - eller bruk kontaktskjemaet under.",
       form: {
         name: "Navn",
         email: "E-post",
@@ -1621,6 +1619,41 @@ export default function Home() {
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5zM3.5 9h3v12h-3zM9 9h2.88v1.64h.04c.4-.76 1.37-1.64 2.82-1.64 3.02 0 3.58 1.99 3.58 4.58V21h-3v-5.37c0-1.28-.02-2.93-1.79-2.93-1.8 0-2.07 1.4-2.07 2.84V21H9z" />
+                </svg>
+              </a>
+              <a
+                href="mailto:heddaolimb134@gmail.com"
+                className={styles.heroIconLink}
+                aria-label="Email"
+                title="Email"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 
+             1.1.9 2 2 2h16c1.1 0 2-.9 
+             2-2V6c0-1.1-.9-2-2-2zm0 
+             4-8 5-8-5V6l8 5 8-5v2z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="tel:+4747376579"
+                className={styles.heroIconLink}
+                aria-label="Phone"
+                title="Phone"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M6.62 10.79a15.05 15.05 0 006.59 
+             6.59l2.2-2.2a1 1 0 011.11-.21 
+             11.36 11.36 0 003.9.73 1 1 0 
+             011 1v3.5a1 1 0 01-1 1C10.07 
+             22 2 13.93 2 4a1 1 0 
+             011-1h3.5a1 1 0 011 
+             1c0 1.37.25 2.7.73 
+             3.9a1 1 0 01-.21 1.11l-2.4 
+             2.78z"
+                  />
                 </svg>
               </a>
             </div>

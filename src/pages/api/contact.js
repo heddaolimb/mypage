@@ -38,17 +38,17 @@ export default async function handler(req, res) {
     const confirm = await transporter.sendMail({
       from: `"Hedda Olimb" <${process.env.EMAIL_USER}>`, // ✅ ser ut som vanlig mail fra deg
       to: email,
-      subject: "Takk for at du tok kontakt",
+      subject: "Thank you for contacting me",
       html: `
-        <h2>Hei ${name},</h2>
-        <p>Takk for at du kontaktet meg. Jeg har mottatt meldingen din og kommer tilbake til deg så snart jeg kan.</p>
+        <h2>Hello ${name},</h2>
+        <p>Thank you for contacting me. I have received your message and will get back to you as soon as I can.</p>
         
-        <p><strong>Kopi av meldingen din:</strong></p>
+        <p><strong>Copy of your message:</strong></p>
         <blockquote style="border-left: 4px solid #ddd; margin: 1em 0; padding-left: 1em; color: #555;">
           ${message}
         </blockquote>
         
-        <p>Vennlig hilsen,<br/>Hedda Olimb</p>
+        <p>Kind regards,<br/>Hedda Olimb</p>
       `,
     });
 

@@ -21,7 +21,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #f2e9e4;
+  color: #b4b4b4;
   font-family: "RoseSally", sans-serif;
   cursor: pointer;
 }
@@ -71,7 +71,7 @@
 
 .navItem {
   cursor: pointer;
-  color: #969696;
+  color: #787878;
   font-family: "Poppins", sans-serif;
   font-weight: 800; /* Bold */
   text-transform: uppercase;
@@ -135,7 +135,7 @@
 /* ABOUT SECTION */
 .aboutSection {
   width: 100%;
-  background: #080818;
+  background: #020210;
   padding: 0;
   margin-top: 4rem;
 }
@@ -371,7 +371,6 @@
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
-  margin-left: 1.2rem;
 }
 
 /* --- Lenker rundt ikonene --- */
@@ -487,7 +486,7 @@
 /* What i can do and skills */
 /* Outer boks */
 .servicesOuter {
-  background: #070514;
+  background: #020210;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   padding: 5rem 4rem;
@@ -507,11 +506,11 @@
 /* Kort – fade-in separat */
 .serviceCard,
 .skillCard {
-  background: rgba(6, 6, 6, 0.5);
+  background: rgba(56, 56, 56, 0.5);
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(187, 109, 255, 0.08);
 
   /* startposisjon */
   opacity: 0;
@@ -580,7 +579,7 @@
 
 /* EDUCATION SECTION */
 .educationOuter {
-  background: #12111d; /* samme som aboutSection */
+  background: #020210; /* samme som aboutSection */
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   border-radius: 0;
@@ -606,9 +605,9 @@
 
 /* Kort (hele artikkelen) */
 .educationItem {
-  background: rgba(1, 1, 12, 0.5);
+  background: rgba(56, 56, 56, 0.5);
   border-radius: 1rem;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 5px rgba(193, 93, 255, 0.05);
   padding: 1.5rem 2rem;
   cursor: pointer;
   overflow: hidden;
@@ -628,7 +627,7 @@
 .educationFront h3 {
   font-size: 1.2rem;
   margin-bottom: 0.3rem;
-  color: #a1a1a1;
+  color: #b8b8b8;
   font-family: "Poppins", sans-serif;
   font-weight: 800;
   text-transform: uppercase;
@@ -647,7 +646,7 @@
   font-size: 0.9rem;
   font-family: "Inter", sans-serif;
   color: #c7d2fe;
-  background: rgba(139, 92, 246, 0.15);
+  background: rgba(211, 193, 255, 0.15);
   border: 1px solid rgba(139, 92, 246, 0.3);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
@@ -730,7 +729,7 @@
 
 .jobTab {
   padding: 0.6rem 1rem; /* innvendig padding (størrelsen på hver tab-boks) */
-  background: #2a2a2a; /* bakgrunnsfarge på tabene */
+  background: rgba(56, 56, 56, 0.5);
   color: #ffffff; /* tekstfarge */
   font-family: "Poppins", sans-serif; /* font */
   font-weight: 700; /* bold */
@@ -744,16 +743,16 @@
 }
 
 .jobTab:hover {
-  background: #0d0d12; /* hover bakgrunn */
+  background: #3d3d3d; /* hover bakgrunn */
   transform: scale(1.05); /* gjør taben litt større på hover */
 }
 .active {
-  background: #090414; /* farge på aktiv tab */
+  background: #3d3d3d; /* farge på aktiv tab */
   border-left: 4px solid #7b7b7b; /* marker aktiv tab med farget venstrekant */
 }
 
 .jobContent {
-  background: rgba(0, 0, 0, 0.4); /* bakgrunnsfarge på innholdsboksen */
+  background: rgba(56, 56, 56, 0.5); /* bakgrunnsfarge på innholdsboksen */
   padding: 2rem; /* innvendig padding */
   border-radius: 12px; /* avrunda hjørner */
   width: 100%; /* fyll opp tilgjengelig bredde */
@@ -805,7 +804,7 @@
   letter-spacing: 0.3px; /* litt ekstra spacing mellom bokstavene */
 }
 .workOuter {
-  background: #12111d; /* samme som about og education */
+  background: #020210; /* samme som about og education */
   width: 100vw;
   margin-left: calc(-50vw + 50%); /* gjør boksen fullbredde */
   border-radius: 0;
@@ -828,7 +827,7 @@
 
 /* === PROJECTS GRID & CARDS === */
 .projectsOuter {
-  background: #12111d; /* samme bakgrunn som About/Work/Education */
+  background: #020210; /* samme bakgrunn som About/Work/Education */
   width: 100vw;
   margin-left: calc(-50vw + 50%); /* fullbredde-boks */
   border-radius: 0;
@@ -868,12 +867,12 @@
 }
 
 .projectCard {
-  background: rgba(0, 0, 0, 0.4);
+  background: #0f0f24;
   border-radius: 12px;
   padding: 2rem;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(186, 125, 255, 0.05);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -883,7 +882,7 @@
 
 .projectCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(183, 100, 255, 0.1);
 }
 
 /* .projectCard:nth-child(3) {
@@ -1429,7 +1428,7 @@
   flex-direction: column;
 }
 .coursesOuter {
-  background: #12111d; /* samme som about, education, work, projects */
+  background: #020210; /* samme som about, education, work, projects */
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   border-radius: 0;
@@ -1598,7 +1597,7 @@
 }
 
 .contactOuter {
-  background: #12111d; /* samme stil som de andre boksene */
+  background: #020210; /* samme stil som de andre boksene */
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   border-radius: 0;
@@ -1626,9 +1625,9 @@
   color: #b2b2b2;
   line-height: 1.6;
   margin: 0; /* fjerner default margin */
-  text-align: center; /* midtstill teksten */
-  text-transform: uppercase;
-  font-weight: 600; /* semi-bold */
+  text-align: left; /* midtstill teksten */
+
+  font-weight: 500; /* semi-bold */
   letter-spacing: 0.5px; /* litt spacing mellom bokstavene */
 }
 
@@ -1687,8 +1686,8 @@
 
 /* FOOTER */
 .footer {
-  background: rgba(23, 30, 45, 0.9);
-  color: #f2e9e4;
+  background: rgba(0, 0, 0, 0.9);
+  color: #969696;
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
