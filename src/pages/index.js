@@ -17,21 +17,22 @@ export default function Home() {
   const [ufoPlayed, setUfoPlayed] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
-
   const [showProjects, setShowProjects] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedJob, setSelectedJob] = useState("job1");
   const [showContact, setShowContact] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [showJobs, setShowJobs] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
   const [formStatus, setFormStatus] = useState("");
-  const [language, setLanguage] = useState("en"); // "en" | "no"
 
-  // Refs
+  const [language, setLanguage] = useState("en");
+
   const cloudRef = useRef(null);
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
@@ -40,16 +41,11 @@ export default function Home() {
   const jobsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const [showJobs, setShowJobs] = useState(false);
-
-  // --- Oppdater <html lang> ---
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.lang = language === "no" ? "no" : "en";
     }
   }, [language]);
-
-  // --- TagCloud init ---
 
   useEffect(() => {
     if (typeof window === "undefined" || !cloudRef.current) return;
@@ -78,7 +74,6 @@ export default function Home() {
       "SEO",
     ];
 
-    // ✅ Bruker riktig pakke: "TagCloud" (stor T, stor C)
     const sphere = TagCloud(cloudRef.current, texts, {
       radius: 270,
       maxSpeed: "normal",
@@ -97,7 +92,6 @@ export default function Home() {
     };
   }, []);
 
-  // --- TRANSLATIONS: (EN + NO) ---
   const translations = {
     en: {
       meta: {
@@ -116,14 +110,14 @@ export default function Home() {
         "Projects",
         "Contact",
       ],
-      heroTitle: "Hi, Im",
+      heroTitle: "Hi, I'm",
       heroSubtitle: "Welcome to my website!",
       explore: "Explore",
 
       aboutTitle: "About Me",
       aboutItems: [
-        "My name is Hedda, a 26-year-old web developer from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
-        "I’m passionate about creating engaging and user-friendly digital experiences, with a background in web development, some UX/UI design, and some graphic design. I enjoy combining creativity and technology to bring ideas to life, whether it’s building sleek or fun websites, designing intuitive interfaces, or experimenting with new ideas.",
+        "My name is Hedda, a 26-year-old Web Developer from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
+        "I’m passionate about creating engaging and user-friendly digital experiences, with a background in web development, UX/UI design, and graphic design. I enjoy combining creativity and technology to bring ideas to life, whether it’s building sleek or fun websites, designing intuitive interfaces, or experimenting with new ideas.",
         "Outside of this, I love drawing and painting, music, traveling, watching movies and series, and reading books – especially fantasy and sci-fi. And above all, I’m a huge dog lover.",
         "My goal is to keep challenging myself while contributing to meaningful projects where design and development come together to make a difference.",
       ],
@@ -131,7 +125,7 @@ export default function Home() {
       educationTitle: "Education",
       education: [
         {
-          year: "2015 - 2018",
+          year: "2015–2018",
           title: "High School – Hadeland Upper Secondary School (Norway)",
           descLead:
             "Specialization in general studies, with subjects including:",
@@ -145,9 +139,9 @@ export default function Home() {
           ],
         },
         {
-          year: "2020 - 2023",
+          year: "2020–2023",
           title:
-            "Bachelor in Web Development - Norwegian University of Science and Technology (NTNU)",
+            "Bachelor in Web Development – Norwegian University of Science and Technology (NTNU)",
           descLead: null,
           desc: [
             "Built static and dynamic websites using HTML, CSS, JavaScript, Node.js, PHP, and React.",
@@ -157,10 +151,10 @@ export default function Home() {
             "Worked on project-based development with planning and collaboration.",
             "Covered accessibility (WCAG), SEO (meta-tags), and usability testing.",
             "Learned information architecture, databases, and content structuring.",
-            "Explored cloud tech, deployment, and Raspberry Pi server usage.",
-            "Studied history and protocols of the Internet and the WWW.",
+            "Explored cloud technology, deployment, and Raspberry Pi server usage.",
+            "Studied the history and protocols of the Internet and the World Wide Web.",
             "Understood GDPR, ethics, legal frameworks, and research methods.",
-            "All coursework in English – fluent in written and spoken English.",
+            "All coursework conducted in English.",
             "Served as an elected representative for the Faculty of Architecture and Design in 2023.",
           ],
         },
@@ -169,41 +163,40 @@ export default function Home() {
       workTitle: "Work Experience",
       jobs: {
         job1: {
-          title: "Health care assistant",
+          title: "Health Care Assistant",
           company: "Villa Skaar Jevnaker",
-          period: "Summers/more – 2018, 2020, 2021, 2022, 2023, 2024",
+          period: "Seasonal (summers), 2018–2024",
           description: [
             "Gained practical experience in geriatric care, infection control procedures, and basic medical knowledge related to common illnesses affecting the elderly.",
             "Received training in safe patient handling and mobility techniques, including how to prevent injuries during heavy lifting and transfers.",
-            "Worked extensively in one-on-one care settings, which included instruction in personal safety and de-escalation techniques to manage potentially aggressive or unpredictable situations.",
-            "Also acquired knowledge in nutrition, personal hygiene, and the daily routines essential for maintaining residents' physical and mental well-being.",
+            "Worked extensively in one-on-one care settings, including instruction in personal safety and de-escalation techniques.",
+            "Also acquired knowledge in nutrition, personal hygiene, and daily routines essential for maintaining residents' physical and mental well-being.",
           ],
         },
         job2: {
           title: "Operational Soldier",
           company:
-            "Royal Norwegian Armed Forces (FOH - Norwegian Joint Headquarters)",
+            "Royal Norwegian Armed Forces (FOH – Norwegian Joint Headquarters)",
           period: "2019",
           description: [
             "Served in the Norwegian Armed Forces at the Joint Operational Headquarters (FOH) as part of the Royal Norwegian Navy.",
-            "Stationed at the Surveillance Center, where I worked with real-time maritime monitoring and situational awareness across Norwegian and NATO waters.",
-            "Operated classified surveillance and command systems in a high-security environment to track, report, and assess sea activity in strategic areas such as the North Atlantic.",
-            "Supported national defense readiness and contributed to the coordination and communication of joint military operations between Norwegian and allied forces.",
-            "Gained hands-on experience with both technical and operational military systems in a maritime setting, focusing on secure information flow, mission support, and operational oversight.",
+            "Stationed at the Surveillance Center, working with real-time maritime monitoring and situational awareness across Norwegian and NATO waters.",
+            "Operated classified surveillance and command systems in a high-security environment.",
+            "Supported national defense readiness and contributed to coordination and communication of joint military operations.",
             "Certificate in Qualified First Aid – Level 2.",
             "Certificate in Training on Organizational Work, Meeting Management Techniques, and Health, Safety and Environment (HSE).",
-            "I was appointed as the elected representative within my shift team.",
+            "Appointed as elected representative within the shift team.",
           ],
         },
         job3: {
-          title: "Health care assistant",
-          company: "JORS - Jevnaker Care and Rehabilitation Center",
+          title: "Health Care Assistant",
+          company: "JORS – Jevnaker Care and Rehabilitation Center",
           period: "Summer 2017",
           description: [
-            "Performed a wide range of essential care duties in a nursing home environment, focusing on hygiene routines, assistance with meals, mobility support, and observing residents' physical and mental health.",
-            "Gained insight into professional standards of elderly care, including communication with residents, documentation of care, and working as part of a multidisciplinary team.",
-            "Built upon previous knowledge in infection control, nutrition, and basic medical care, while adapting to the structured routines of a larger care facility.",
-            "Certificate in Training on Ethics and Attitudes, User Involvement, Use of Force and Coercion, Hygiene and Personal Care, Dementia, Mobility, and Fire Safety.",
+            "Performed a wide range of essential care duties in a nursing home environment.",
+            "Gained insight into professional standards of elderly care, communication, and documentation.",
+            "Built upon previous knowledge in infection control, nutrition, and basic medical care.",
+            "Certificate in training on ethics, user involvement, use of force and coercion, hygiene, dementia, mobility, and fire safety.",
           ],
         },
       },
@@ -241,36 +234,12 @@ export default function Home() {
               <span className={styles.highlight}>
                 Progressive Web App (PWA)
               </span>{" "}
-              built with
-              <span className={styles.highlight}>SvelteKit</span>, using
-              <span className={styles.highlight}>JavaScript</span>,
-              <span className={styles.highlight}>HTML/CSS</span>, and
-              <span className={styles.highlight}>Firebase</span> for user
-              authentication,
-              <span className={styles.highlight}>Firestore database</span>, and
-              hosting. The app features real-time chat, an event calendar,
-              announcement feeds, and structured pages for building-specific
-              information. It uses a
-              <span className={styles.highlight}>
-                modular component-based architecture
-              </span>{" "}
-              with
-              <span className={styles.highlight}>
-                route-based file structure
-              </span>{" "}
-              (+page.svelte, +layout.svelte) and
-              <span className={styles.highlight}>dynamic routing</span> for
-              handling user-generated content. Data flow and UI states are
-              managed using
-              <span className={styles.highlight}>reactive Svelte stores</span>,
-              and the app includes service workers for offline support and fast
-              load times. Hosting is handled via
-              <span className={styles.highlight}>Firebase Hosting</span> with
-              secure
-              <span className={styles.highlight}>TLS encryption</span>.
+              built with <span className={styles.highlight}>SvelteKit</span>,
+              using <span className={styles.highlight}>JavaScript</span>,{" "}
+              <span className={styles.highlight}>HTML/CSS</span>, and{" "}
+              <span className={styles.highlight}>Firebase</span>.
             </>
           ),
-
           tech: [
             "#SvelteKit",
             "#Firebase",
@@ -283,6 +252,7 @@ export default function Home() {
           extraLink:
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
+
         {
           id: "flower-power",
           title: "Flower Power – Cosmo & Wanda",
@@ -291,36 +261,28 @@ export default function Home() {
             <>
               We developed Flower Power, a smart plant care prototype designed
               to help young adults maintain their indoor plants through
-              automation and digital feedback. The solution uses a
+              automation and digital feedback. The solution uses a{" "}
               <span className={styles.highlight}>
                 Micro:bit microcontroller
               </span>{" "}
-              paired with a
-              <span className={styles.highlight}>soil moisture sensor</span>,
-              <span className={styles.highlight}>OLED display</span>,
+              paired with a{" "}
+              <span className={styles.highlight}>soil moisture sensor</span>,{" "}
+              <span className={styles.highlight}>OLED display</span>,{" "}
               <span className={styles.highlight}>water pump</span>, and water
               reservoir to monitor and maintain soil moisture levels. When the
               moisture drops below a threshold, the system alerts the user and
               activates the pump to water the plant. Our development process
-              included
-              <span className={styles.highlight}>user research</span>,
-              <span className={styles.highlight}>personas</span>,
+              included <span className={styles.highlight}>user research</span>,{" "}
+              <span className={styles.highlight}>personas</span>,{" "}
               <span className={styles.highlight}>lo-fi and hi-fi sketches</span>
-              , as well as
+              , as well as{" "}
               <span className={styles.highlight}>usability testing</span> to
-              validate the user experience. The system follows
+              validate the user experience. The system follows{" "}
               <span className={styles.highlight}>
                 Web of Things (WoT) principles
               </span>
               , with a communication model aimed at simplifying data flow
-              between sensors and users for better decision-making. The project
-              targeted tech-savvy but forgetful plant owners aged 18–35 and
-              emphasized ease of use,{" "}
-              <span className={styles.highlight}>
-                information accessibility
-              </span>
-              , and
-              <span className={styles.highlight}>automation</span>.
+              between sensors and users for better decision-making.
             </>
           ),
           tech: [
@@ -345,18 +307,16 @@ export default function Home() {
               way. The site features scroll-based animations with
               IntersectionObserver, interactive job tabs with stateful display
               logic, and dynamic project rendering using structured data
-              objects. The layout includes sections such as About Me, Education,
-              Work, Projects, and Contact, each enhanced with smooth transitions
-              and custom styling.
+              objects.
             </>
           ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
-          id: "python-chatbot", // 👈 samme id i NO
+          id: "python-chatbot",
           title: "Python Chatbot",
-          image: "/icons/python.svg", // finn eller lag et ikon
+          image: "/icons/python.svg",
           description: (
             <>
               A small{" "}
@@ -380,36 +340,32 @@ export default function Home() {
           extraImages: [
             "/images/chatbot_postman.png",
             "/images/chatbot_code.png",
-          ], // 👈 nye bilder
+          ],
           link: null,
         },
         {
-          id: "feedback-board", // 👈 unikt id
+          id: "feedback-board",
           title: "Feedback Board",
-          image: "/icons/mongodb.svg", // lag et ikon/bilde eller placeholder
+          image: "/icons/mongodb.svg",
           description: (
             <>
-              A small <span className={styles.highlight}>fullstack demo</span>{" "}
+              A small <span className={styles.highlight}>full-stack demo</span>{" "}
               where visitors can leave anonymous feedback on this website.
-              Please note: while all feedback is displayed here and visible to
-              both me and other visitors, it remains completely anonymous.
               <br />
               <br />
               Built with{" "}
-              <span className={styles.highlight}>Next.js API routes</span> and
-              <span className={styles.highlight}>MongoDB</span> for data
-              storage. Shows how to connect{" "}
-              <span className={styles.highlight}>frontend</span>,
-              <span className={styles.highlight}>backend</span> and
-              <span className={styles.highlight}>database</span>.
+              <span className={styles.highlight}>
+                Next.js API Routes
+              </span> and <span className={styles.highlight}>MongoDB</span> for
+              data storage.
             </>
           ),
           tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
           extraImages: [
             "/images/feedback_postman.png",
             "/images/feedback_code.png",
-          ], //
-          link: null, // ingen ekstern lenke
+          ],
+          link: null,
         },
         {
           id: "nasa-api",
@@ -420,19 +376,9 @@ export default function Home() {
               A small{" "}
               <span className={styles.highlight}>API integration demo</span>{" "}
               that fetches data from the{" "}
-              <span className={styles.highlight}>NASA Open API</span>. It
-              displays the "Astronomy Picture of the Day" with its title,
-              explanation, and image. Built with{" "}
-              <span className={styles.highlight}>Next.js API routes</span> and{" "}
-              <span className={styles.highlight}>fetch</span>. Demonstrates{" "}
-              <span className={styles.highlight}>JSON parsing</span>,{" "}
-              <span className={styles.highlight}>frontend integration</span>,
-              and <span className={styles.highlight}>error handling</span>.
-              <br />
-              <br />
-              The raw JSON response is also shown below for demonstration
-              purposes - to prove that the data above actually comes directly
-              from NASA's API.
+              <span className={styles.highlight}>NASA Open API</span> and
+              displays the Astronomy Picture of the Day with metadata and raw
+              JSON output.
             </>
           ),
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegration"],
@@ -441,68 +387,16 @@ export default function Home() {
         {
           id: "nlp-sentiment",
           title: "AI Named Entity Recognition (NER)",
-          image: "/icons/ai.svg", // finn eller lag et lite ikon
+          image: "/icons/ai.svg",
           description: (
             <>
               A small <span className={styles.highlight}>AI demo</span> that
-              integrates with a
-              <span className={styles.highlight}>
-                {" "}
-                HuggingFace Named Entity Recognition (NER) model
-              </span>
-              . Enter a sentence in English, and the system will analyze it
-              using
+              integrates with a HuggingFace Named Entity Recognition (NER)
+              model. The system analyzes English text using{" "}
               <span className={styles.highlight}>
                 Natural Language Processing (NLP)
               </span>{" "}
-              to extract named entities such as{" "}
-              <span className={styles.highlight}>persons (PER)</span>,
-              <span className={styles.highlight}>locations (LOC)</span>,
-              <span className={styles.highlight}>organizations (ORG)</span>, and
-              <span className={styles.highlight}>
-                miscellaneous entities (MISC)
-              </span>
-              .
-              <br />
-              <br />
-              For example, typing:
-              <code>
-                "Emma Watson starred in Harry Potter, which was filmed in
-                London."
-              </code>
-              will extract: <strong>- Emma Watson (PER) - 100%</strong>{" "}
-              <strong>- Harry Potter (MISC) - 90.1%</strong>-{" "}
-              <strong>London (LOC) - 99.9%</strong>
-              <br />
-              <br />
-              The system highlights entities with color coding:{" "}
-              <span style={{ color: "#4caf50", fontWeight: "bold" }}>
-                Green = Person (PER)
-              </span>{" "}
-              <span style={{ color: "#2196f3", fontWeight: "bold" }}>
-                Blue = Organization (ORG)
-              </span>{" "}
-              <span style={{ color: "#ff9800", fontWeight: "bold" }}>
-                Orange = Location (LOC)
-              </span>{" "}
-              <span style={{ color: "#9c27b0", fontWeight: "bold" }}>
-                Purple = Miscellaneous (MISC)
-              </span>
-              <br />
-              <br />
-              <strong>Note:</strong> The NER model is trained on a limited
-              dataset, so entity classifications are not always perfect. For
-              example, the model correctly tags *Harry Potter* as{" "}
-              <strong>MISC</strong>, but confidence scores and labels can vary
-              depending on context. The model is primarily trained on English,
-              but can sometimes generalize to other languages such as Norwegian.
-              <br />
-              <br />
-              Demonstrates{" "}
-              <span className={styles.highlight}>AI integration</span>,
-              <span className={styles.highlight}>NLP</span>, and
-              <span className={styles.highlight}>JSON handling</span> in a
-              frontend + backend setup.
+              and highlights extracted entities.
             </>
           ),
           tech: [
@@ -513,69 +407,35 @@ export default function Home() {
             "#NER",
             "#FrontendIntegration",
           ],
-
           link: null,
         },
         {
           id: "task-manager",
           title: "Mini Task Manager",
-          image: "/icons/taskmanager.svg", // legg et ikon i /public/icons/
+          image: "/icons/taskmanager.svg",
           description: (
             <>
-              A small <span className={styles.highlight}>fullstack demo</span>{" "}
-              where users can create, update and delete tasks. Built with{" "}
-              <span className={styles.highlight}>Node.js/Express</span>,{" "}
-              <span className={styles.highlight}>React</span> and{" "}
+              A small <span className={styles.highlight}>full-stack demo</span>{" "}
+              where users can create, update, and delete tasks. Built with{" "}
+              <span className={styles.highlight}>Node.js</span>,{" "}
+              <span className={styles.highlight}>React</span>, and{" "}
               <span className={styles.highlight}>MongoDB</span>.
-              <br />
-              <br />
-              Unlike the{" "}
-              <span className={styles.highlight}>Feedback Board</span> (which
-              uses Next.js API routes), this project runs on a{" "}
-              <span className={styles.highlight}>
-                separate backend deployed to Render
-              </span>
-              . Since it's on the{" "}
-              <span className={styles.highlight}>free Render plan</span>, the
-              server may “sleep” - it can take 20-30 seconds to wake up the
-              first time you use it, but after that it runs normally.
-              <br />
-              <br />
-              Demonstrates{" "}
-              <span className={styles.highlight}>CRUD functionality</span>,{" "}
-              <span className={styles.highlight}>database integration</span> and{" "}
-              <span className={styles.highlight}>system design</span> - showing
-              how real-world applications are structured.
             </>
           ),
           tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
-          extraImages: ["/images/taskmanager.png", "/images/taskpostman.png"], // 👈 nye bilder
+          extraImages: ["/images/taskmanager.png", "/images/taskpostman.png"],
           link: null,
         },
         {
           id: "weather-cli",
           title: "Weather CLI",
-          image: "/icons/terminal.svg", // legg et ikon i /public/icons/
+          image: "/icons/terminal.svg",
           description: (
             <>
               A lightweight <span className={styles.highlight}>Python</span>{" "}
               command-line tool that fetches{" "}
               <span className={styles.highlight}>live weather data</span> from
-              public APIs. Demonstrates how to build{" "}
-              <span className={styles.highlight}>
-                software outside the browser
-              </span>
-              , make <span className={styles.highlight}>API requests</span>, and
-              handle <span className={styles.highlight}>fallbacks</span> when
-              one service is unavailable. A simple{" "}
-              <span className={styles.highlight}>frontend integration</span> is
-              also included so visitors can interact with the project directly
-              on this website and see the{" "}
-              <span className={styles.highlight}>raw JSON response</span> below
-              the results. <br />
-              <br />
-              <strong>Note:</strong> Please search for city names (e.g. London,
-              Paris, Oslo), not countries.
+              public APIs and demonstrates API requests and fallback handling.
             </>
           ),
           tech: [
@@ -589,24 +449,20 @@ export default function Home() {
           extraImages: [
             "/images/weather_code.png",
             "/images/weather_python.png",
-          ], // 👈 nye bilder
+          ],
           link: null,
         },
         {
           id: "space-shooter",
           title: "Space Shooter",
-          image: "/icons/space.svg", // legg et ikon i /public/icons/
+          image: "/icons/space.svg",
           description: (
             <>
               A small{" "}
               <span className={styles.highlight}>retro arcade game</span> built
               with <span className={styles.highlight}>Phaser.js</span>.
-              Demonstrates how to create a{" "}
-              <span className={styles.highlight}>game loop</span>, handle{" "}
-              <span className={styles.highlight}>collision detection</span>, and
-              implement a <span className={styles.highlight}>score system</span>
-              . Shows creativity and interactive programming directly in the
-              browser.
+              Demonstrates game loops, collision detection, and scoring systems
+              in the browser.
             </>
           ),
           tech: [
@@ -639,18 +495,17 @@ export default function Home() {
       meta: {
         title: "Hedda Olimb – Nettside",
         description:
-          "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, arbeidserfaring, kurs og kontakt.",
+          "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, jobberfaring,kontakt.",
         keywords:
-          "Hedda Olimb, webutvikler, nettside, prosjekter, kurs, kontakt, UX, UI, React, Next.js",
+          "Hedda Olimb, webutvikler, nettside, prosjekter, kontakt, UX, UI, React, Next.js",
       },
       skip: "Hopp til innhold",
       nav: [
         "Om meg",
         "Hva jeg kan",
         "Utdanning",
-        "Arbeid",
+        "Jobb",
         "Prosjekter",
-        "Kurs",
         "Kontakt",
       ],
       heroTitle: "Hei, jeg heter",
@@ -699,17 +554,9 @@ export default function Home() {
             "Valgt som tillitsvalgt for Fakultet for arkitektur og design i 2023.",
           ],
         },
-        {
-          year: "2024 - 2025",
-          title: "Kurs",
-          descLead: null,
-          desc: [
-            "Gjennomført nettkurs og bootcamps innen digital markedsføring, AI, Lean Manufacturing, robotikk og finansmarkeder. Mer detaljert oversikt i «Kurs»-seksjonen.",
-          ],
-        },
       ],
 
-      workTitle: "Arbeidserfaring",
+      workTitle: "Jobberfaring",
       jobs: {
         job1: {
           title: "Helsefagarbeider",
@@ -870,7 +717,7 @@ export default function Home() {
           title: "Min nettside",
           image: "/images/code.png",
           description:
-            "En fullt responsiv, animert porteføljeside bygget med Next.js, React Hooks og CSS Modules for å vise utdanning, erfaring og prosjekter. Inneholder scroll-animasjoner med IntersectionObserver, interaktive jobbtabs og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Arbeid, Prosjekter, Kurs, Kontakt.",
+            "En fullt responsiv, animert porteføljeside bygget med Next.js, React Hooks og CSS Modules for å vise utdanning, erfaring og prosjekter. Inneholder scroll-animasjoner med IntersectionObserver, interaktive jobbtabs og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Jobb, Prosjekter, Kontakt.",
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
           link: "https://github.com/heddaolimb/mypage.git",
         },
@@ -1156,73 +1003,111 @@ export default function Home() {
 
   const t = translations[language];
 
-  // --- Hooks og observers (beholder logikken din) ---
+  // Respekter brukerens prefers-reduced-motion (WCAG)
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Jobs
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (prefersReducedMotion) {
+      setShowJobs(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowJobs(true),
       { threshold: 0.3 }
     );
-    if (jobsRef.current) ob.observe(jobsRef.current);
-    return () => jobsRef.current && ob.unobserve(jobsRef.current);
-  }, []);
 
+    if (jobsRef.current) observer.observe(jobsRef.current);
+    return () => jobsRef.current && observer.unobserve(jobsRef.current);
+  }, [prefersReducedMotion]);
+
+  // About
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (prefersReducedMotion) {
+      setShowAboutItems(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowAboutItems(true),
       { threshold: 0.3 }
     );
-    if (aboutRef.current) ob.observe(aboutRef.current);
-    return () => aboutRef.current && ob.unobserve(aboutRef.current);
-  }, []);
 
+    if (aboutRef.current) observer.observe(aboutRef.current);
+    return () => aboutRef.current && observer.unobserve(aboutRef.current);
+  }, [prefersReducedMotion]);
+
+  // Education
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (prefersReducedMotion) {
+      setShowEducation(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setShowEducation(true);
-          ob.disconnect(); // 👈 så den ikke toggler fram og tilbake
+          observer.disconnect();
         }
       },
-      { threshold: 0.2 } // trigges når 20% av seksjonen er synlig
+      { threshold: 0.2 }
     );
-    if (educationRef.current) ob.observe(educationRef.current);
-    return () => educationRef.current && ob.unobserve(educationRef.current);
-  }, []);
 
+    if (educationRef.current) observer.observe(educationRef.current);
+    return () =>
+      educationRef.current && observer.unobserve(educationRef.current);
+  }, [prefersReducedMotion]);
+
+  // Projects
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (prefersReducedMotion) {
+      setShowProjects(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowProjects(true),
       { threshold: 0 }
     );
-    if (projectsRef.current) ob.observe(projectsRef.current);
-    return () => projectsRef.current && ob.unobserve(projectsRef.current);
-  }, []);
 
-  // Lås scroll når takeover er åpen
+    if (projectsRef.current) observer.observe(projectsRef.current);
+    return () => projectsRef.current && observer.unobserve(projectsRef.current);
+  }, [prefersReducedMotion]);
+
+  // Lås scroll når prosjekt-takeover er åpen
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = "hidden"; // lås scrolling
-    } else {
-      document.body.style.overflow = ""; // gjenopprett
-    }
+    document.body.style.overflow = selectedProject ? "hidden" : "";
   }, [selectedProject]);
 
+  // About (uten UFO)
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setShowAboutItems(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setShowAboutItems(true);
-          if (!ufoPlayed) setUfoPlayed(true); // trigger UFO kun én gang
+          observer.disconnect();
         }
       },
       { threshold: 0.4 }
     );
 
     const node = aboutRef.current;
-    if (node) ob.observe(node);
-    return () => node && ob.unobserve(node);
-  }, [ufoPlayed]);
+    if (node) observer.observe(node);
+    return () => node && observer.unobserve(node);
+  }, []);
+
   // --- Navigasjon ---
   const sectionIds = [
     "about",
@@ -1232,10 +1117,15 @@ export default function Home() {
     "projects",
     "contact",
   ];
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      section.focus({ preventScroll: true });
+    }
   };
+
   const onNavKey = (e, id) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -1243,34 +1133,54 @@ export default function Home() {
     }
   };
 
+  // Services
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setShowServices(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setShowServices(true);
-          ob.disconnect(); // 👈 kjører bare én gang
+          observer.disconnect();
         }
       },
-      { threshold: 0.2 } // 20% av seksjonen synlig
+      { threshold: 0.2 }
     );
-    if (servicesRef.current) ob.observe(servicesRef.current);
-    return () => servicesRef.current && ob.unobserve(servicesRef.current);
-  }, []);
-  // --- For contact ---
 
+    if (servicesRef.current) observer.observe(servicesRef.current);
+    return () => servicesRef.current && observer.unobserve(servicesRef.current);
+  }, []);
+
+  // Contact
   useEffect(() => {
-    const ob = new IntersectionObserver(
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setShowContact(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowContact(true),
       { threshold: 0.2 }
     );
-    if (contactRef.current) ob.observe(contactRef.current);
-    return () => contactRef.current && ob.unobserve(contactRef.current);
+
+    if (contactRef.current) observer.observe(contactRef.current);
+    return () => contactRef.current && observer.unobserve(contactRef.current);
   }, []);
 
-  // --- Data for språk (jobs, projects) ---
+  // --- Data for språk ---
   const jobs = t.jobs;
   const projects = t.projects;
 
+  // --- Contact form ---
   const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -1291,7 +1201,7 @@ export default function Home() {
       } else {
         setFormStatus(t.toastError);
       }
-    } catch (err) {
+    } catch {
       setFormStatus(t.toastError);
     } finally {
       setTimeout(() => setFormStatus(""), 4000);
@@ -1301,25 +1211,21 @@ export default function Home() {
   return (
     <>
       <Head>
-        {/* SEO base */}
         <title>{t.meta.title}</title>
         <meta name="description" content={t.meta.description} />
         <meta name="keywords" content={t.meta.keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="language" content={language === "no" ? "no" : "en"} />
 
-        {/* Open Graph */}
         <meta property="og:title" content={t.meta.title} />
         <meta property="og:description" content={t.meta.description} />
         <meta property="og:type" content="website" />
-        {/* Sett riktig URL og et faktisk bilde hvis du har */}
         <meta property="og:url" content="https://dittdomene.no/" />
         <meta
           property="og:image"
           content="https://dittdomene.no/og-image.jpg"
         />
 
-        {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.meta.title} />
         <meta name="twitter:description" content={t.meta.description} />
@@ -1328,10 +1234,8 @@ export default function Home() {
           content="https://dittdomene.no/og-image.jpg"
         />
 
-        {/* Canonical (oppdater domenet) */}
         <link rel="canonical" href="https://dittdomene.no/" />
 
-        {/* Strukturerte data (Schema.org – Person) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -1347,34 +1251,29 @@ export default function Home() {
           }}
         />
       </Head>
-      {/* Skip-link for tastaturbrukere */}
       <a href="#main" className={styles.skipLink}>
         {t.skip}
       </a>
-      {/* NAVBAR */}
       <header
         className={`${styles.navbar} ${selectedProject ? styles.hidden : ""}`}
-        role="banner"
         aria-label="Site header"
       >
         <div
           className={styles.logo}
-          onClick={() => scrollToSection("hero")}
-          role="link"
+          role="button"
           tabIndex={0}
+          aria-label="Scroll to top"
+          onClick={() => scrollToSection("hero")}
+          onKeyDown={(e) => onNavKey(e, "hero")}
         >
           HO
         </div>
 
-        <nav
-          className={styles.navLinks}
-          role="navigation"
-          aria-label="Main navigation"
-        >
+        <nav className={styles.navLinks} aria-label="Main navigation">
           {t.nav.map((label, i) => (
             <span
               key={sectionIds[i]}
-              role="link"
+              role="button"
               tabIndex={0}
               aria-label={label}
               onClick={() => scrollToSection(sectionIds[i])}
@@ -1386,7 +1285,7 @@ export default function Home() {
           ))}
         </nav>
 
-        {/* Språkvelger på navbaren (høyre side) */}
+        {/* Språkvelger i navbar */}
         <div className={styles.langSwitch} aria-label="Language switcher">
           <button
             type="button"
@@ -1396,7 +1295,7 @@ export default function Home() {
             }`}
             aria-pressed={language === "en"}
             aria-current={language === "en" ? "true" : undefined}
-            aria-label="Switch to English"
+            aria-label="Switch language to English"
             title="English"
           >
             <img
@@ -1406,9 +1305,11 @@ export default function Home() {
             />
             EN
           </button>
+
           <span aria-hidden="true" className={styles.langSep}>
             |
           </span>
+
           <button
             type="button"
             onClick={() => setLanguage("no")}
@@ -1417,12 +1318,12 @@ export default function Home() {
             }`}
             aria-pressed={language === "no"}
             aria-current={language === "no" ? "true" : undefined}
-            aria-label="Bytt til norsk"
+            aria-label="Bytt språk til norsk"
             title="Norsk"
           >
             <img
               src="/icons/flag-no.svg"
-              alt="Norsk flagg"
+              alt="Norwegian flag"
               className={styles.flagIcon}
             />
             NO
@@ -1433,21 +1334,22 @@ export default function Home() {
       <section
         id="hero"
         className="relative min-h-screen overflow-hidden px-8 flex items-center justify-between"
+        aria-labelledby="hero-heading"
       >
-        {/* LEFT: text (just a tiny nudge from the left edge) */}
         <div className="relative z-10 max-w-2xl pl-[3vw]">
           <h1
+            id="hero-heading"
             className="text-white mb-2 font-[VemanemX]"
             style={{
               fontSize: "2.3rem",
               textAlign: "left",
-              textTransform: "uppercase", // capitalize, lowercase
+              textTransform: "uppercase",
               color: "#b0b0b0ff",
               fontWeight: 700,
               letterSpacing: "0.03em",
               lineHeight: 1,
-              transform: "scaleX(1.15)", // 👈 strekker teksten 15% bredere
-              display: "inline-block", // viktig for at transform kun påvirker h1
+              transform: "scaleX(1.15)",
+              display: "inline-block",
             }}
           >
             {t.heroTitle}{" "}
@@ -1457,17 +1359,17 @@ export default function Home() {
           </h1>
 
           <h2
+            id="hero-subtitle"
             className="text-gray-300 mb-8 font-[VemanemX]"
             style={{
               fontSize: "1.8rem",
-
-              textTransform: "uppercase", // capitalize, lowercase
+              textTransform: "uppercase",
               color: "#b0b0b0ff",
               fontWeight: 700,
               letterSpacing: "0.03em",
               lineHeight: 1,
-              transform: "scaleX(1.15)", // 👈 strekker teksten 15% bredere
-              display: "inline-block", // viktig for at transform kun påvirker h1
+              transform: "scaleX(1.15)",
+              display: "inline-block",
             }}
           >
             {language === "no"
@@ -1476,37 +1378,49 @@ export default function Home() {
           </h2>
 
           <p className="mb-6">
-            {" "}
             <span
               style={{
-                fontFamily: "Poppins, sans-serif", // 👈
+                fontFamily: "Poppins, sans-serif",
                 fontWeight: 700,
                 letterSpacing: "0.18em",
                 color: "#8f99a6ff",
                 fontSize: "1.25rem",
               }}
             >
-              {" "}
-              <Typewriter
-                words={[
-                  language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
-                  language === "no" ? "DESIGNER" : "DESIGNER",
-                  language === "no" ? "PROBLEMLØSER" : "PROBLEM SOLVER",
-                ]}
-                loop
-                cursor
-                cursorStyle="|"
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1500}
-              />{" "}
-            </span>{" "}
+              <span aria-hidden="true">
+                <Typewriter
+                  words={[
+                    language === "no" ? "WEBUTVIKLER" : "WEB DEVELOPER",
+                    language === "no" ? "DESIGNER" : "DESIGNER",
+                    language === "no" ? "PROBLEMLØSER" : "PROBLEM SOLVER",
+                  ]}
+                  loop
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1500}
+                />
+              </span>
+
+              <span className="sr-only">
+                {language === "no"
+                  ? "Webutvikler, designer og problemløser"
+                  : "Web developer, designer and problem solver"}
+              </span>
+            </span>
           </p>
 
           <div className="mt-3 flex flex-col items-start">
             <button
+              type="button"
               onClick={() => scrollToSection("about")}
               className={styles.heroExploreBtn}
+              aria-label={
+                language === "no"
+                  ? "Gå til Om meg-seksjonen"
+                  : "Go to About section"
+              }
             >
               {t.explore}
             </button>
@@ -1517,92 +1431,77 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.heroIconLink}
-                aria-label="GitHub"
+                aria-label="GitHub profile"
                 title="GitHub"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.98 0-1.32.47-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.66-2.81 5.68-5.49 5.98.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
                 </svg>
               </a>
+
               <a
                 href="https://linkedin.com/in/heddaolimb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.heroIconLink}
-                aria-label="LinkedIn"
+                aria-label="LinkedIn profile"
                 title="LinkedIn"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5zM3.5 9h3v12h-3zM9 9h2.88v1.64h.04c.4-.76 1.37-1.64 2.82-1.64 3.02 0 3.58 1.99 3.58 4.58V21h-3v-5.37c0-1.28-.02-2.93-1.79-2.93-1.8 0-2.07 1.4-2.07 2.84V21H9z" />
                 </svg>
               </a>
+
               <a
                 href="mailto:heddaolimb134@gmail.com"
                 className={styles.heroIconLink}
-                aria-label="Email"
+                aria-label="Send email"
                 title="Email"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 
-             1.1.9 2 2 2h16c1.1 0 2-.9 
-             2-2V6c0-1.1-.9-2-2-2zm0 
-             4-8 5-8-5V6l8 5 8-5v2z"
-                  />
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
               </a>
+
               <a
                 href="tel:+4747376579"
                 className={styles.heroIconLink}
-                aria-label="Phone"
+                aria-label="Call phone number"
                 title="Phone"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M6.62 10.79a15.05 15.05 0 006.59 
-             6.59l2.2-2.2a1 1 0 011.11-.21 
-             11.36 11.36 0 003.9.73 1 1 0 
-             011 1v3.5a1 1 0 01-1 1C10.07 
-             22 2 13.93 2 4a1 1 0 
-             011-1h3.5a1 1 0 011 
-             1c0 1.37.25 2.7.73 
-             3.9a1 1 0 01-.21 1.11l-2.4 
-             2.78z"
-                  />
+                  <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.9.73 1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.37.25 2.7.73 3.9a1 1 0 01-.21 1.11l-2.4 2.78z" />
                 </svg>
               </a>
             </div>
           </div>
         </div>
 
-        {/* HØYRE: fast boks til cluster (kan ikke krympe bort) */}
         <div className="relative flex-none w-[420px] h-[420px] mr-[3vw] flex items-center justify-center z-10">
           <div
             ref={cloudRef}
             className="tagcloud text-2xl font-[VemanemX]"
             style={{ width: "100%", height: "100%" }}
+            aria-hidden="true"
           />
         </div>
       </section>
       {/* MAIN */}
       <main id="main" className={styles.mainContent} role="main">
-        {/* About */}
         <section
           id="about"
           className={styles.aboutSection}
           aria-labelledby="about-title"
         >
           <div ref={aboutRef} className={styles.aboutWrapper}>
-            {/* Venstre: kun bilde */}
             <div className={styles.aboutImage}>
               <img
                 src="/images/meg1.png"
-                alt="Hedda Olimb"
+                alt="Portrait of Hedda Olimb"
                 className={styles.aboutPhoto}
               />
             </div>
 
-            {/* Høyre: tittel + punkter */}
             <div className={styles.aboutContent}>
               <h2 id="about-title" className={styles.aboutTitle}>
                 {t.aboutTitle}
@@ -1616,7 +1515,7 @@ export default function Home() {
                   }`}
                   style={{ "--i": i }}
                 >
-                  <span className={styles.icon}>
+                  <span className={styles.icon} aria-hidden="true">
                     <img
                       src="/icons/glitter.svg"
                       alt=""
@@ -1632,20 +1531,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* WHAT I CAN DO + MY SKILLS */}
-        <section id="services" className={styles.section}>
+        <section
+          id="services"
+          className={styles.section}
+          aria-labelledby="services-title"
+        >
           <div ref={servicesRef} className={styles.servicesOuter}>
-            <h2 className={styles.sectionTitle}>What I Can Do and My Skills</h2>
+            <h2 id="services-title" className={styles.sectionTitle}>
+              What I Can Do and My Skills
+            </h2>
 
             <div className={styles.servicesGrid}>
-              {/* Row 1 - What I Can Do */}
               <div
                 className={`${styles.serviceCard} ${
                   showServices ? styles.show : ""
                 }`}
                 style={{ transitionDelay: "0.2s" }}
               >
-                <div className={styles.iconPlaceholder}>💻</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  💻
+                </div>
                 <h3>Web Development</h3>
                 <p>
                   Building modern, responsive websites with React & Next.js.
@@ -1658,7 +1563,9 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: "0.4s" }}
               >
-                <div className={styles.iconPlaceholder}>🎨</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  🎨
+                </div>
                 <h3>UI/UX Design</h3>
                 <p>
                   Creating intuitive user interfaces, wireframes, and
@@ -1672,7 +1579,9 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: "0.6s" }}
               >
-                <div className={styles.iconPlaceholder}>🔗</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  🔗
+                </div>
                 <h3>API Integrations</h3>
                 <p>
                   Connecting external APIs like NASA, weather data, or AI
@@ -1686,21 +1595,24 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: "0.8s" }}
               >
-                <div className={styles.iconPlaceholder}>⚡</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  ⚡
+                </div>
                 <h3>SEO & Optimization</h3>
                 <p>
                   Optimizing for performance, accessibility (WCAG), and SEO.
                 </p>
               </div>
 
-              {/* Row 2 - My Skills */}
               <div
                 className={`${styles.skillCard} ${
                   showServices ? styles.show : ""
                 }`}
                 style={{ transitionDelay: "1s" }}
               >
-                <div className={styles.iconPlaceholder}>🚀</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  🚀
+                </div>
                 <h3>Fast</h3>
                 <p>Delivering quick, effective solutions.</p>
               </div>
@@ -1711,7 +1623,9 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: "1.2s" }}
               >
-                <div className={styles.iconPlaceholder}>📱</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  📱
+                </div>
                 <h3>Responsive</h3>
                 <p>Designs that adapt to mobile, tablet, and desktop.</p>
               </div>
@@ -1722,7 +1636,9 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: "1.4s" }}
               >
-                <div className={styles.iconPlaceholder}>✨</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  ✨
+                </div>
                 <h3>Intuitive</h3>
                 <p>Putting the user at the center of design and development.</p>
               </div>
@@ -1733,7 +1649,9 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: "1.6s" }}
               >
-                <div className={styles.iconPlaceholder}>🌍</div>
+                <div className={styles.iconPlaceholder} aria-hidden="true">
+                  🌍
+                </div>
                 <h3>Dynamic</h3>
                 <p>Exploring new tech like AI, game dev, and IoT.</p>
               </div>
@@ -1741,7 +1659,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Education */}
         <section
           id="education"
           className={styles.section}
@@ -1765,19 +1682,26 @@ export default function Home() {
                     activeIndex === idx ? styles.active : ""
                   }`}
                   style={{ transitionDelay: `${0.3 + idx * 0.4}s` }}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={activeIndex === idx}
                   aria-label={edu.title}
                   onClick={() =>
                     setActiveIndex(activeIndex === idx ? null : idx)
                   }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActiveIndex(activeIndex === idx ? null : idx);
+                    }
+                  }}
                 >
-                  {/* Forside (synlig alltid) */}
                   <div className={styles.educationFront}>
                     <div className={styles.educationYear}>{edu.year}</div>
                     <h3>{edu.title}</h3>
                     {edu.school && <p>{edu.school}</p>}
                   </div>
 
-                  {/* Baksiden / detaljene */}
                   <div className={styles.educationBack}>
                     {edu.descLead && <p>{edu.descLead}</p>}
                     <ul>
@@ -1792,7 +1716,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Work Experience */}
         <section
           id="work"
           className={styles.section}
@@ -1804,31 +1727,44 @@ export default function Home() {
             </h2>
 
             <div
-              ref={jobsRef} // 👈 fiksen: nå observerer IntersectionObserver denne
+              ref={jobsRef}
               className={`${styles.jobSection} ${showJobs ? styles.show : ""}`}
             >
-              <div className={styles.jobTabs} role="tablist" aria-label="Jobs">
+              <div
+                className={styles.jobTabs}
+                role="tablist"
+                aria-label="Work experience"
+              >
                 {Object.keys(jobs).map((jobKey) => (
                   <div
                     key={jobKey}
+                    id={`tab-${jobKey}`}
                     className={`${styles.jobTab} ${
                       selectedJob === jobKey ? styles.active : ""
                     }`}
                     role="tab"
                     aria-selected={selectedJob === jobKey}
+                    aria-controls={`panel-${jobKey}`}
                     tabIndex={0}
                     onClick={() => setSelectedJob(jobKey)}
-                    onKeyDown={(e) =>
-                      (e.key === "Enter" || e.key === " ") &&
-                      setSelectedJob(jobKey)
-                    }
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedJob(jobKey);
+                      }
+                    }}
                   >
                     {jobs[jobKey].company}
                   </div>
                 ))}
               </div>
 
-              <div className={styles.jobContent} role="tabpanel">
+              <div
+                className={styles.jobContent}
+                role="tabpanel"
+                id={`panel-${selectedJob}`}
+                aria-labelledby={`tab-${selectedJob}`}
+              >
                 <h3>{jobs[selectedJob].title}</h3>
                 <div className={styles.jobCompany}>
                   {jobs[selectedJob].company}
@@ -1867,11 +1803,20 @@ export default function Home() {
                 <article
                   key={proj.id}
                   className={styles.projectCard}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={proj.title}
                   onClick={() => setSelectedProject(proj)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedProject(proj);
+                    }
+                  }}
                 >
                   <img
                     src={proj.image}
-                    alt={proj.title}
+                    alt=""
                     className={
                       proj.id === "feedback-board"
                         ? styles.mongoDbImage
@@ -1886,7 +1831,7 @@ export default function Home() {
                         : proj.id === "weather-cli"
                         ? styles.cliImage
                         : proj.id === "space-shooter"
-                        ? styles.spaceShooterImage // 👈 nytt
+                        ? styles.spaceShooterImage
                         : styles.projectImage
                     }
                   />
@@ -1896,28 +1841,40 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Fullscreen takeover */}
             {selectedProject && (
               <div
                 className={styles.projectTakeover}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="project-title"
                 onClick={() => setSelectedProject(null)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setSelectedProject(null);
+                  }
+                }}
+                tabIndex={-1}
               >
                 <div
                   className={styles.projectDetails}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
+                    type="button"
                     className={styles.closeBtn}
                     onClick={() => setSelectedProject(null)}
-                    aria-label="Close project details"
+                    aria-label={
+                      language === "no"
+                        ? "Lukk prosjektdetaljer"
+                        : "Close project details"
+                    }
                   >
-                    ✕
+                    <span aria-hidden="true">✕</span>
                   </button>
 
-                  {/* 👇 Unntak for SpaceShooter */}
                   {selectedProject.id === "space-shooter" ? (
                     <>
-                      <h3>{selectedProject.title}</h3>
+                      <h3 id="project-title">{selectedProject.title}</h3>
                       <div className={styles.projectDescription}>
                         {selectedProject.description}
                       </div>
@@ -1936,7 +1893,6 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      {/* 👇 Ikke vis stort bilde for Chatbot, Feedback eller NASA */}
                       {selectedProject.id !== "python-chatbot" &&
                         selectedProject.id !== "feedback-board" &&
                         selectedProject.id !== "nasa-api" &&
@@ -1951,12 +1907,11 @@ export default function Home() {
                           />
                         )}
 
-                      <h3>{selectedProject.title}</h3>
+                      <h3 id="project-title">{selectedProject.title}</h3>
                       <div className={styles.projectDescription}>
                         {selectedProject.description}
                       </div>
 
-                      {/* 👇 Viser små ekstra bilder for prosjekter som har dem */}
                       {(selectedProject.id === "python-chatbot" ||
                         selectedProject.id === "feedback-board" ||
                         selectedProject.id === "task-manager" ||
@@ -1964,7 +1919,13 @@ export default function Home() {
                         selectedProject.extraImages && (
                           <div className={styles.projectImages}>
                             {selectedProject.extraImages.map((img, i) => (
-                              <img key={i} src={img} alt="Project screenshot" />
+                              <img
+                                key={i}
+                                src={img}
+                                alt={`${selectedProject.title} screenshot ${
+                                  i + 1
+                                }`}
+                              />
                             ))}
                           </div>
                         )}
@@ -1977,7 +1938,6 @@ export default function Home() {
                         ))}
                       </div>
 
-                      {/* 👇 Komponenter inni prosjektene */}
                       {selectedProject.id === "python-chatbot" && <Chatbot />}
                       {selectedProject.id === "feedback-board" && (
                         <FeedbackBoard />
@@ -2000,6 +1960,7 @@ export default function Home() {
                           {t.projectLink}
                         </a>
                       )}
+
                       {selectedProject.extraLink && (
                         <a
                           href={selectedProject.extraLink}
@@ -2037,14 +1998,20 @@ export default function Home() {
             </h2>
 
             <div className={styles.contactBox}>
-              <p className={styles.contactText}>{t.contactText}</p>
+              <p id="contact-description" className={styles.contactText}>
+                {t.contactText}
+              </p>
 
               <form
                 className={styles.contactForm}
                 onSubmit={handleSubmit}
-                aria-label="Contact form"
+                aria-describedby="contact-description"
               >
+                <label htmlFor="contact-name" className="sr-only">
+                  {t.form.name}
+                </label>
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
                   placeholder={t.form.name}
@@ -2052,7 +2019,12 @@ export default function Home() {
                   onChange={handleInputChange}
                   required
                 />
+
+                <label htmlFor="contact-email" className="sr-only">
+                  {t.form.email}
+                </label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
                   placeholder={t.form.email}
@@ -2060,25 +2032,35 @@ export default function Home() {
                   onChange={handleInputChange}
                   required
                 />
+
+                <label htmlFor="contact-message" className="sr-only">
+                  {t.form.message}
+                </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   placeholder={t.form.message}
                   value={formData.message}
                   onChange={handleInputChange}
                   required
                 />
+
                 <button type="submit" className={styles.submitBtn}>
                   {t.form.send}
                 </button>
-                {formStatus && (
-                  <p className={styles.formStatus}>{formStatus}</p>
-                )}
+
+                <p
+                  className={styles.formStatus}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {formStatus}
+                </p>
               </form>
             </div>
           </div>
         </section>
       </main>{" "}
-      {/* 👈 main lukkes her */}
       {/* FOOTER */}
       <footer className={styles.footer} role="contentinfo">
         <p>
