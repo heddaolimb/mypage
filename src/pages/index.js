@@ -21,8 +21,6 @@ export default function Home() {
   const [showProjects, setShowProjects] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedJob, setSelectedJob] = useState("job1");
-  const [currentCourse, setCurrentCourse] = useState(0);
-  const [showCourses, setShowCourses] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [formData, setFormData] = useState({
@@ -40,7 +38,6 @@ export default function Home() {
   const educationRef = useRef(null);
   const projectsRef = useRef(null);
   const jobsRef = useRef(null);
-  const coursesRef = useRef(null);
   const contactRef = useRef(null);
 
   const [showJobs, setShowJobs] = useState(false);
@@ -53,7 +50,7 @@ export default function Home() {
   }, [language]);
 
   // --- TagCloud init ---
-  // --- TagCloud init ---
+
   useEffect(() => {
     if (typeof window === "undefined" || !cloudRef.current) return;
 
@@ -100,15 +97,15 @@ export default function Home() {
     };
   }, []);
 
-  // --- TRANSLATIONS: ALLT INNHOLD (EN + NO) ---
+  // --- TRANSLATIONS: (EN + NO) ---
   const translations = {
     en: {
       meta: {
         title: "Hedda Olimb – Website",
         description:
-          "Website of Hedda Olimb – Web Developer. Explore projects, education, work experience, courses and contact.",
+          "Website of Hedda Olimb – Web Developer. Explore projects, education, work experience, and contact.",
         keywords:
-          "Hedda Olimb, web developer, website, projects, courses, contact, UX, UI, React, Next.js",
+          "Hedda Olimb, web developer, website, projects, contact, UX, UI, React, Next.js",
       },
       skip: "Skip to content",
       nav: [
@@ -117,7 +114,6 @@ export default function Home() {
         "Education",
         "Work",
         "Projects",
-        "Courses",
         "Contact",
       ],
       heroTitle: "Hi, Im",
@@ -166,14 +162,6 @@ export default function Home() {
             "Understood GDPR, ethics, legal frameworks, and research methods.",
             "All coursework in English – fluent in written and spoken English.",
             "Served as an elected representative for the Faculty of Architecture and Design in 2023.",
-          ],
-        },
-        {
-          year: "2024 - 2025",
-          title: "Courses",
-          descLead: null,
-          desc: [
-            "Completed online courses and bootcamps focused on digital marketing, AI, Lean Manufacturing, Robotics, and Financial Markets. A more detailed overview is available under the 'Courses' section.",
           ],
         },
       ],
@@ -628,35 +616,6 @@ export default function Home() {
             "#FrontendIntegration",
           ],
           link: null,
-        },
-      ],
-
-      coursesTitle: "Courses",
-      courseWhy: "Why I took this course",
-      courseLearned: "What I learned in this course",
-      courses: [
-        {
-          title: "Digital Marketing Basics",
-          image: "/images/digital-marketing.png",
-          link: "https://example.com/marketing-course",
-          why: "To understand how digital marketing works and how to promote my own projects.",
-          learned:
-            "The fundamentals of SEO, paid ads, content strategy, and analytics.",
-        },
-        {
-          title: "Intro to AI",
-          image: "/images/ai-course.png",
-          link: "https://example.com/ai-course",
-          why: "I'm curious about AI and how it's used in real-world applications.",
-          learned:
-            "Machine learning basics, ethical use, and practical AI tools.",
-        },
-        {
-          title: "JavaScript Basics",
-          image: "/images/js.png",
-          link: "https://example.com",
-          why: "To understand how JavaScript works and how to build my own projects.",
-          learned: "The fundamentals of JavaScript.",
         },
       ],
 
@@ -1179,28 +1138,6 @@ export default function Home() {
         },
       ],
 
-      coursesTitle: "Kurs",
-      courseWhy: "Hvorfor jeg tok dette kurset",
-      courseLearned: "Hva jeg lærte i dette kurset",
-      courses: [
-        {
-          title: "Grunnleggende digital markedsføring",
-          image: "/images/digital-marketing.png",
-          link: "https://example.com/marketing-course",
-          why: "For å forstå hvordan digital markedsføring fungerer og hvordan jeg kan promotere egne prosjekter.",
-          learned:
-            "Grunnleggende SEO, betalt annonsering, innholdsstrategi og analyse.",
-        },
-        {
-          title: "Introduksjon til kunstig intelligens",
-          image: "/images/ai-course.png",
-          link: "https://example.com/ai-course",
-          why: "Jeg er nysgjerrig på AI og hvordan det brukes i praksis.",
-          learned:
-            "Grunnleggende maskinlæring, etisk bruk og praktiske AI-verktøy.",
-        },
-      ],
-
       contactTitle: "Kontakt",
       contactText:
         "Jeg er åpen for nye muligheter, samarbeid eller bare en prat. Ta gjerne kontakt! Min email: heddaolimb134@gmail.com - eller bruk kontaktskjemaet under.",
@@ -1293,7 +1230,6 @@ export default function Home() {
     "education",
     "work",
     "projects",
-    "courses",
     "contact",
   ];
   const scrollToSection = (id) => {
@@ -1320,15 +1256,7 @@ export default function Home() {
     if (servicesRef.current) ob.observe(servicesRef.current);
     return () => servicesRef.current && ob.unobserve(servicesRef.current);
   }, []);
-  // --- For contact og courses ---
-  useEffect(() => {
-    const ob = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setShowCourses(true),
-      { threshold: 0.2 }
-    );
-    if (coursesRef.current) ob.observe(coursesRef.current);
-    return () => coursesRef.current && ob.unobserve(coursesRef.current);
-  }, []);
+  // --- For contact ---
 
   useEffect(() => {
     const ob = new IntersectionObserver(
@@ -1339,22 +1267,9 @@ export default function Home() {
     return () => contactRef.current && ob.unobserve(contactRef.current);
   }, []);
 
-  // --- Data for språk (jobs, projects, courses) ---
+  // --- Data for språk (jobs, projects) ---
   const jobs = t.jobs;
   const projects = t.projects;
-  const courses = t.courses;
-
-  const handlePrev = () => {
-    const newIndex =
-      currentCourse === 0 ? courses.length - 1 : currentCourse - 1;
-    setCurrentCourse(newIndex);
-  };
-
-  const handleNext = () => {
-    const newIndex =
-      currentCourse === courses.length - 1 ? 0 : currentCourse + 1;
-    setCurrentCourse(newIndex);
-  };
 
   const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -1699,6 +1614,7 @@ export default function Home() {
                   className={`${styles.aboutItem} ${
                     showAboutItems ? styles.show : ""
                   }`}
+                  style={{ "--i": i }}
                 >
                   <span className={styles.icon}>
                     <img
@@ -2101,92 +2017,6 @@ export default function Home() {
                 </div>
               </div>
             )}
-          </div>
-        </section>
-
-        {/* Courses */}
-        <section
-          id="courses"
-          className={styles.section}
-          aria-labelledby="courses-title"
-        >
-          <div
-            ref={coursesRef}
-            className={`${styles.coursesOuter} ${
-              showCourses ? styles.showCourses : ""
-            }`}
-          >
-            <h2 id="courses-title" className={styles.sectionTitle}>
-              {t.coursesTitle}
-            </h2>
-
-            {/* Alt ditt originale slider-innhold beholdes her */}
-            <div className={styles.courseSlider}>
-              <div className={styles.courseNavButtons}>
-                <button
-                  className={styles.navButton}
-                  onClick={handlePrev}
-                  aria-label="Previous course"
-                >
-                  &#8592;
-                </button>
-                <button
-                  className={styles.navButton}
-                  onClick={handleNext}
-                  aria-label="Next course"
-                >
-                  &#8594;
-                </button>
-              </div>
-
-              <div
-                className={styles.courseTrack}
-                style={{ transform: `translateX(-${currentCourse * 100}%)` }}
-              >
-                {courses.map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${styles.courseCard} ${
-                      idx === currentCourse ? styles.active : ""
-                    }`}
-                    style={{
-                      flex: "0 0 100%",
-                      maxWidth: "100%",
-                      transition: "transform 0.5s ease",
-                    }}
-                  >
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className={styles.courseImage}
-                    />
-                    <a
-                      href={course.link}
-                      className={styles.courseTitle}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {course.title}
-                    </a>
-                    <h4 className={styles.courseSubtitle}>{t.courseWhy}</h4>
-                    <p className={styles.courseText}>{course.why}</p>
-                    <h4 className={styles.courseSubtitle}>{t.courseLearned}</h4>
-                    <p className={styles.courseText}>{course.learned}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles.courseDots} aria-hidden="true">
-                {courses.map((_, idx) => (
-                  <div
-                    key={idx}
-                    className={`${styles.courseDot} ${
-                      idx === currentCourse ? styles.active : ""
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
