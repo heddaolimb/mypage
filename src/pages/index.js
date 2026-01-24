@@ -1333,7 +1333,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen overflow-hidden px-8 flex items-center justify-between"
+        className="relative min-h-screen overflow-hidden px-4 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between"
         aria-labelledby="hero-heading"
       >
         <div className="relative z-10 max-w-2xl pl-[3vw]">
@@ -1477,7 +1477,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative flex-none w-[420px] h-[420px] mr-[3vw] flex items-center justify-center z-10">
+        <div className="relative hidden md:flex flex-none w-[420px] h-[420px] mr-[3vw] items-center justify-center z-10">
           <div
             ref={cloudRef}
             className="tagcloud text-2xl font-[VemanemX]"
@@ -1494,6 +1494,7 @@ export default function Home() {
           aria-labelledby="about-title"
         >
           <div ref={aboutRef} className={styles.aboutWrapper}>
+            {/* Image */}
             <div className={styles.aboutImage}>
               <img
                 src="/images/meg1.png"
@@ -1502,6 +1503,7 @@ export default function Home() {
               />
             </div>
 
+            {/* Content */}
             <div className={styles.aboutContent}>
               <h2 id="about-title" className={styles.aboutTitle}>
                 {t.aboutTitle}

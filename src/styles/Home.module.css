@@ -1,6 +1,7 @@
 /* =========================================================
    NAVBAR
    ========================================================= */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -173,19 +174,6 @@
   border-radius: 50%;
 }
 
-.aboutImage::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 13px;
-  background: linear-gradient(to right, #000000, #0c0630);
-  border-radius: 2px;
-  z-index: 5;
-}
-
 .aboutPhoto {
   position: relative;
   z-index: 1;
@@ -199,7 +187,7 @@
   font-family: "VemanemX", sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .aboutItem {
@@ -1087,150 +1075,56 @@
 /* =========================
    MOBILE RESPONSIVE (≤768px)
    ========================= */
+
 @media (max-width: 768px) {
-  /* Generelt */
+  /* SECTION er det som gjør siden smal */
   .section {
-    padding: 4rem 1.2rem;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     align-items: stretch;
   }
 
-  .sectionTitle {
-    font-size: 2rem;
-    padding: 0;
-    text-align: center;
-    background: none;
+  /* Full-bleed seksjoner – riktig på mobil */
+  .servicesOuter,
+  .educationOuter,
+  .workOuter,
+  .projectsOuter,
+  .contactOuter {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  /* NAVBAR */
-  .navLinks {
-    display: none; /* skjul navbar-links på mobil */
-  }
-
-  /*HERO */
+  /* HERO */
   #hero {
     flex-direction: column;
     padding: 6rem 1.5rem 3rem;
-    text-align: left;
   }
 
-  #hero h1 {
-    font-size: 1.8rem !important;
-    transform: none !important;
-  }
-
+  #hero h1,
   #hero h2 {
-    font-size: 1.3rem !important;
+    font-size: 1.6rem !important;
     transform: none !important;
   }
 
-  .heroSocialIcons {
-    flex-wrap: wrap;
+  /* SKJUL TAGCLOUD */
+  #hero :global(.tagcloud) {
+    display: none !important;
   }
 
-  /* TagCloud */
-  .tagcloud {
-    display: none; /* skjul sphere på mobil (VIKTIG) */
-  }
-
-  /* ABOUT */
-  .aboutWrapper {
-    grid-template-columns: 1fr;
-    padding: 3rem 1.5rem;
-    gap: 2rem;
-  }
-
-  .aboutImage::before,
-  .aboutImage::after {
-    display: none;
-  }
-
-  .aboutTitle {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .aboutItem {
-    padding: 1rem 0;
-  }
-
-  /* SERVICES */
-  .servicesOuter {
-    padding: 3rem 1.5rem;
-  }
-
-  .servicesOuter .sectionTitle {
-    white-space: normal;
-    text-align: center;
-  }
-
-  /* EDUCATION */
-  .educationOuter {
-    padding: 3rem 1.5rem;
-  }
-
-  /* JOBS */
-  .jobSection {
-    flex-direction: column;
-    margin-left: 0;
-  }
-
-  .jobTabs {
-    flex-direction: row;
-    overflow-x: auto;
-    max-width: 100%;
-    margin-left: 0;
-  }
-
-  .jobTab {
-    white-space: nowrap;
-    font-size: 0.8rem;
-  }
-
-  .jobContent {
-    margin-left: 0;
-    max-width: 100%;
-  }
-
-  /* PROJECTS */
-  .projectsOuter {
-    padding: 3rem 1.5rem;
-  }
-
+  /* PROJECT GRID */
   .projectsGrid {
     grid-template-columns: 1fr;
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .projectTakeover {
-    padding: 2rem 1rem;
-  }
-
-  .projectDetails {
-    padding: 2rem 1.2rem;
-  }
-
-  /* COURSES */
-  .coursesOuter {
-    padding: 3rem 1.5rem;
-  }
-
-  .courseCard {
-    max-width: 100%;
   }
 
   /* CONTACT */
-  .contactOuter {
-    padding: 3rem 1.5rem;
-  }
-
   .contactBox {
-    padding: 2rem 1.2rem;
+    padding: 1.5rem;
   }
 
   .submitBtn {
     width: 100%;
-    text-align: center;
   }
 }
 
@@ -1238,45 +1132,19 @@
    TABLET RESPONSIVE (768–1024px)
    ========================= */
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* Generelt */
-  .section {
-    padding: 4.5rem 2.5rem;
-  }
-
-  .sectionTitle {
-    font-size: 2.4rem;
-    padding: 0;
-    background: none;
-    text-align: center;
-  }
-
-  /* NAVBAR */
-  .navLinks {
-    gap: 1.2rem;
-    margin-left: 2rem;
-  }
-
-  .navItem {
-    font-size: 0.8rem;
-  }
-
   /* HERO */
   #hero {
     padding: 7rem 3rem 4rem;
   }
 
-  #hero h1 {
-    font-size: 2.2rem !important;
-    transform: none !important;
-  }
-
+  #hero h1,
   #hero h2 {
-    font-size: 1.6rem !important;
     transform: none !important;
+    font-size: 2rem !important;
   }
 
-  /* TagCloud */
-  .tagcloud {
+  /* TAGCLOUD – korrekt CSS Modules syntax */
+  #hero :global(.tagcloud) {
     width: 320px !important;
     height: 320px !important;
   }
@@ -1284,69 +1152,15 @@
   /* ABOUT */
   .aboutWrapper {
     grid-template-columns: 220px 1fr;
-    padding: 4rem 3rem;
-    gap: 2.5rem;
-  }
-
-  .aboutTitle {
-    font-size: 2.4rem;
-  }
-
-  /* SERVICES */
-  .servicesOuter {
-    padding: 4rem 3rem;
-  }
-
-  .servicesOuter .sectionTitle {
-    white-space: normal;
-    text-align: center;
-  }
-
-  /* EDUCATION */
-  .educationOuter {
-    padding: 4rem 3rem;
-  }
-
-  /* JOBS */
-  .jobSection {
-    margin-left: 0;
-  }
-
-  .jobTabs {
-    max-width: 220px;
-    margin-left: 0;
-  }
-
-  .jobContent {
-    max-width: 100%;
-    margin-left: 2rem;
+    gap: 2rem;
   }
 
   /* PROJECTS */
-  .projectsOuter {
-    padding: 4rem 3rem;
-  }
-
   .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-    margin-left: 0;
-  }
-
-  /* COURSES */
-  .coursesOuter {
-    padding: 4rem 3rem;
-  }
-
-  .courseCard {
-    max-width: 500px;
   }
 
   /* CONTACT */
-  .contactOuter {
-    padding: 4rem 3rem;
-  }
-
   .contactBox {
     max-width: 600px;
   }
