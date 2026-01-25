@@ -58,6 +58,9 @@ body {
   font-family: "Poppins", sans-serif;
   background: #020210;
 }
+section[id] {
+  scroll-margin-top: 80px;
+}
 
 /* ================= HERO / TAGCLOUD ================= */
 

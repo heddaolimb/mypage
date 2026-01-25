@@ -114,7 +114,7 @@
 .aboutSection {
   width: 100%;
   background: #020210;
-  padding: 5rem 4rem;
+  padding: 2.5rem 4rem 5rem;
   margin-top: 4rem;
 }
 
@@ -898,19 +898,6 @@
   background: #131313;
 }
 
-/* === SpaceShooter === */
-.spaceShooterImage {
-  height: 220px;
-  object-fit: contain;
-}
-
-.spaceShooterWrapper {
-  width: 100%;
-  height: 500px;
-  background: #000;
-  margin: 2rem 0;
-}
-
 /* =========================
    CONTACT SECTION
    ========================= */
@@ -1145,13 +1132,11 @@
 }
 
 .section {
-  padding: 5rem 2rem;
+  padding: 0 2rem; /* ← FJERN TOPP-PADDING */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   position: relative;
   z-index: 2;
-  scroll-margin-top: 80px;
 }
 
 .sectionTitle {
@@ -1169,12 +1154,6 @@
 /* =========================
    ABOUT
    ========================= */
-.aboutSection {
-  width: 100%;
-  background: #020210;
-  padding: 5rem 4rem;
-  margin-top: 4rem;
-}
 
 .aboutWrapper {
   display: grid;
@@ -1194,8 +1173,7 @@
 .projectsOuter,
 .contactOuter {
   background: #020210;
-
-  padding: 5rem 4rem;
+  padding: 2.5rem 4rem 5rem;
   position: relative;
   z-index: 5;
 }
@@ -1245,11 +1223,6 @@
   .section {
     min-height: auto !important;
     padding: 4rem 1.5rem !important;
-  }
-
-  /* 3. About */
-  .aboutSection {
-    padding: 3rem 1.5rem !important;
   }
 
   .aboutWrapper {
