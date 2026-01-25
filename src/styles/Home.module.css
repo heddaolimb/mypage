@@ -106,38 +106,6 @@
 }
 
 /* =========================================================
-   BASE LAYOUT
-   ========================================================= */
-.mainContent {
-  min-height: 100%;
-  position: relative;
-  z-index: 7;
-}
-
-.section {
-  min-height: 100vh;
-  padding: 5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-  scroll-margin-top: 80px;
-}
-
-.sectionTitle {
-  background: #0a0917;
-  padding: 1rem 15rem;
-  border-radius: 15px;
-  font-size: 3rem;
-  color: #f2e9e4;
-  max-width: 1000px;
-  font-family: "RoseSally", sans-serif;
-  text-align: center;
-  margin: 0 auto 2rem;
-}
-
-/* =========================================================
    ABOUT SECTION
    ========================================================= */
 .aboutSection {
@@ -362,8 +330,7 @@
 
 .servicesOuter {
   background: #020210;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+
   padding: 5rem 4rem;
   position: relative;
   z-index: 5;
@@ -446,8 +413,7 @@
 
 .educationOuter {
   background: #020210;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+
   padding: 5rem 4rem;
   position: relative;
   z-index: 5;
@@ -567,8 +533,7 @@
 
 .workOuter {
   background: #020210;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+
   padding: 5rem 4rem;
   position: relative;
   z-index: 5;
@@ -678,8 +643,7 @@
 
 .projectsOuter {
   background: #020210;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+
   border-radius: 0;
   padding: 5rem 4rem;
   position: relative;
@@ -828,7 +792,7 @@
   position: relative;
 }
 
-.projectImageLarge {
+.nasaImageLarge {
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -948,8 +912,7 @@
 /* Wrapper */
 .contactOuter {
   background: #020210;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+
   padding: 5rem 4rem;
   position: relative;
   z-index: 5;
@@ -1164,4 +1127,300 @@
   .contactBox {
     max-width: 600px;
   }
+}
+
+/* =========================
+   BASE LAYOUT
+   ========================= */
+.mainContent {
+  min-height: 100%;
+  position: relative;
+  z-index: 7;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  scroll-margin-top: 80px;
+}
+
+.sectionTitle {
+  background: #0a0917;
+  padding: 1rem 15rem;
+  border-radius: 15px;
+  font-size: 3rem;
+  color: #f2e9e4;
+  max-width: 1000px;
+  font-family: "RoseSally", sans-serif;
+  text-align: center;
+  margin: 0 auto 2rem;
+}
+
+/* =========================
+   ABOUT
+   ========================= */
+.aboutSection {
+  width: 100%;
+  background: #020210;
+  padding: 5rem 4rem;
+  margin-top: 4rem;
+}
+
+.aboutWrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+   SERVICES / EDUCATION / WORK / PROJECTS / CONTACT
+   ========================= */
+
+.servicesOuter,
+.educationOuter,
+.workOuter,
+.projectsOuter,
+.contactOuter {
+  background: #020210;
+
+  padding: 5rem 4rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================
+   PROJECT GRID
+   ========================= */
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+}
+
+/* =========================
+   CONTACT
+   ========================= */
+
+.contactBox {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(1, 1, 12, 0.5);
+  padding: 2.5rem;
+  border-radius: 12px;
+}
+
+/* =========================================================
+   🔧 MOBILE FIX – KUN OVERRIDES (INGENTING SLETTET)
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* 1. STOPP full-bleed hack på mobil */
+  .servicesOuter,
+  .educationOuter,
+  .workOuter,
+  .projectsOuter,
+  .contactOuter {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* 2. Seksjoner må kunne scrolle */
+  .section {
+    min-height: auto !important;
+    padding: 4rem 1.5rem !important;
+  }
+
+  /* 3. About */
+  .aboutSection {
+    padding: 3rem 1.5rem !important;
+  }
+
+  .aboutWrapper {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 4. Prosjekter */
+  .projectsGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 5. Contact */
+  .contactBox {
+    padding: 1.5rem !important;
+  }
+}
+
+/* =========================================================
+   TABLET FIX (BEHOLDER DESKTOP-FØLELSEN)
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .servicesOuter,
+  .educationOuter,
+  .workOuter,
+  .projectsOuter,
+  .contactOuter {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .aboutWrapper {
+    grid-template-columns: 220px 1fr;
+  }
+}
+/* =========================================================
+   FINAL MOBILE FIX – CUT CONTENT / HEIGHT BUGS
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* 1. ALDRI lås høyde på mobil */
+  .section,
+  .servicesOuter,
+  .educationOuter,
+  .workOuter,
+  .projectsOuter,
+  .contactOuter {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* 2. HERO – teksten ble kuttet */
+  #hero {
+    min-height: auto !important;
+    padding-top: 6rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  #hero h1,
+  #hero h2 {
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word;
+  }
+
+  /* 3. SECTION TITLES (WHAT I CAN DO osv) */
+  .sectionTitle {
+    padding: 0 !important;
+    max-width: 100% !important;
+    font-size: 2rem !important;
+    white-space: normal !important;
+  }
+
+  /* 4. WORK EXPERIENCE – små bokser kuttes */
+  .jobTabs {
+    flex-wrap: wrap !important;
+  }
+
+  .jobTab {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .jobContent {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 5. NASA API – gigantisk bilde */
+  .nasaImageLarge {
+    max-height: 60vh !important;
+    object-fit: contain !important;
+  }
+
+  /* 6. SPACE SHOOTER – for høy / kuttet */
+  .spaceShooterWrapper {
+    height: auto !important;
+    max-height: 70vh !important;
+  }
+}
+
+/* =========================================================
+   TABLET JUSTERING (samme bugs, mildere)
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    min-height: auto;
+  }
+
+  .sectionTitle {
+    padding: 0;
+    max-width: 100%;
+    font-size: 2.4rem;
+  }
+
+  .spaceShooterWrapper {
+    height: 400px;
+  }
+
+  .nasaImageLarge {
+    max-height: 70vh;
+  }
+}
+@media (max-width: 768px) {
+  .sectionTitle {
+    padding: 0 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+}
+/* === FIX HERO + NAVBAR WIDTH BUG === */
+#hero {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.navbar {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* === NASA IMAGE HARD LIMIT === */
+.projectTakeover img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+  margin: 1.5rem auto;
+}
+/* === FIX STACKING: SPACE SHOOTER VS CONTACT === */
+.spaceShooterWrapper {
+  position: relative;
+  z-index: 20;
+}
+
+.contactOuter {
+  position: relative;
+  z-index: 5;
+}
+.servicesOuter,
+.educationOuter,
+.workOuter,
+.projectsOuter,
+.contactOuter {
+  width: 100%;
+}
+/* === NASA MODAL HARD CONSTRAINT === */
+.nasaBox {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.nasaImageLarge {
+  max-height: 45vh;
+  width: 100%;
+  object-fit: contain;
 }

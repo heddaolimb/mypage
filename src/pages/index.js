@@ -110,7 +110,7 @@ export default function Home() {
         "Projects",
         "Contact",
       ],
-      heroTitle: "Hi, I'm",
+      heroTitle: "Hi,Im",
       heroSubtitle: "Welcome to my website!",
       explore: "Explore",
 
@@ -508,7 +508,7 @@ export default function Home() {
         "Prosjekter",
         "Kontakt",
       ],
-      heroTitle: "Hei, jeg heter",
+      heroTitle: "Hei,jeg heter",
       heroSubtitle: "Velkommen til nettsiden min!",
       explore: "Utforsk",
 
@@ -1333,23 +1333,40 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen overflow-hidden px-4 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between"
+        className="relative min-h-screen w-full overflow-hidden
+             flex flex-col
+             items-center justify-center
+             px-4
+             md:flex-row md:items-center md:justify-between md:px-8"
         aria-labelledby="hero-heading"
       >
-        <div className="relative z-10 max-w-2xl pl-[3vw]">
+        <div
+          className="
+    relative z-10
+    w-full
+    px-4
+    flex flex-col
+    items-center
+    text-center
+    md:items-start
+    md:text-left
+    md:max-w-2xl
+    md:pl-[3vw]
+    md:px-0
+  "
+        >
           <h1
             id="hero-heading"
             className="text-white mb-2 font-[VemanemX]"
             style={{
               fontSize: "2.3rem",
-              textAlign: "left",
+
               textTransform: "uppercase",
               color: "#b0b0b0ff",
               fontWeight: 700,
               letterSpacing: "0.03em",
               lineHeight: 1,
               transform: "scaleX(1.15)",
-              display: "inline-block",
             }}
           >
             {t.heroTitle}{" "}
@@ -1369,7 +1386,6 @@ export default function Home() {
               letterSpacing: "0.03em",
               lineHeight: 1,
               transform: "scaleX(1.15)",
-              display: "inline-block",
             }}
           >
             {language === "no"
@@ -1411,7 +1427,7 @@ export default function Home() {
             </span>
           </p>
 
-          <div className="mt-3 flex flex-col items-start">
+          <div className="mt-3 flex flex-col items-center md:items-start">
             <button
               type="button"
               onClick={() => scrollToSection("about")}

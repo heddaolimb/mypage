@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
 
+/* === VIEWPORT SAFETY FIX (MOBIL) === */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -205,5 +213,20 @@ main {
   /* Skjul tagcloud på mobil (global klasse – korrekt sted) */
   .tagcloud {
     display: none !important;
+  }
+}
+canvas {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .servicesOuter,
+  .educationOuter,
+  .workOuter,
+  .projectsOuter,
+  .contactOuter {
+    width: 100% !important;
+    margin-left: 0 !important;
   }
 }
