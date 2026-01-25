@@ -1083,7 +1083,6 @@ export default function Home() {
     document.body.style.overflow = selectedProject ? "hidden" : "";
   }, [selectedProject]);
 
-  // About (uten UFO)
   useEffect(() => {
     if (
       typeof window !== "undefined" &&
