@@ -25,10 +25,25 @@ app.post("/api/tasks", async (req, res) => {
 });
 
 app.put("/api/tasks/:id", async (req, res) => {
-  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
-  res.json(updatedTask);
+  try {
+    const updatedTask = await Task.findByIdAndUpdate(
+      req.params.id,
+      {
+        title: req.body.title,
+        completed: req.body.completed,
+      },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({ error: "Task not found" });
+    }
+
+    res.json(updatedTask);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Update failed" });
+  }
 });
 
 app.delete("/api/tasks/:id", async (req, res) => {
