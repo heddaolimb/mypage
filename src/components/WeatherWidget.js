@@ -63,7 +63,7 @@ export default function WeatherWidget() {
             (source: {weather.source})
           </p>
 
-          {/* 👇 rå JSON som bevis */}
+          {/* JSON*/}
           {weather.raw && (
             <pre
               style={{

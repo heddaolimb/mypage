@@ -4,7 +4,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "⚠️The backend is deployed on Render’s free plan. It may take up to 20-30s to respond the first time as the server wakes up. After that, the bot works normally. This is not a bug.",
+      text: "⚠️The backend is deployed on Render’s free plan. It may take up to 20-30s to respond the first time as the server wakes up. After that, the bot works normally. This is not a bug. You may have to wait and refresh the page.",
     },
   ]);
 
@@ -96,7 +96,7 @@ export default function Chatbot() {
         style={{
           padding: "0.5rem 1rem",
           borderRadius: "6px",
-          background: "#ff6e20ff",
+          background: "#3c0071ff",
           color: "white",
           border: "none",
           cursor: "pointer",
