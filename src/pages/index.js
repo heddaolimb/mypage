@@ -12,9 +12,9 @@ import WeatherWidget from "../components/WeatherWidget";
 import SpaceShooter from "../components/SpaceShooter";
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showAboutItems, setShowAboutItems] = useState(false);
-  const [ufoPlayed, setUfoPlayed] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
@@ -1130,6 +1130,7 @@ export default function Home() {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       scrollToSection(id);
+      setMenuOpen(false);
     }
   };
 
@@ -1269,14 +1270,22 @@ export default function Home() {
           HO
         </div>
 
-        <nav className={styles.navLinks} aria-label="Main navigation">
+        <nav
+          className={`${styles.navLinks} ${
+            menuOpen ? styles.mobileMenuOpen : ""
+          }`}
+          aria-label="Main navigation"
+        >
           {t.nav.map((label, i) => (
             <span
               key={sectionIds[i]}
               role="button"
               tabIndex={0}
               aria-label={label}
-              onClick={() => scrollToSection(sectionIds[i])}
+              onClick={() => {
+                scrollToSection(sectionIds[i]);
+                setMenuOpen(false);
+              }}
               onKeyDown={(e) => onNavKey(e, sectionIds[i])}
               className={styles.navItem}
             >
@@ -1328,31 +1337,48 @@ export default function Home() {
             />
             NO
           </button>
+          {/* Burger menu – mobile */}
+          <button
+            className={styles.burger}
+            aria-label="Open menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
         </div>
       </header>
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen w-full overflow-hidden
-             flex flex-col
-             items-center justify-center
-             px-4
-             md:flex-row md:items-center md:justify-between md:px-8"
+        className="
+    relative
+    min-h-screen
+    w-full
+    flex
+    flex-col
+    items-center
+    justify-center
+    px-4
+
+    lg:flex-row
+    lg:items-center
+    lg:justify-between
+    lg:px-8
+  "
         aria-labelledby="hero-heading"
       >
         <div
           className="
     relative z-10
     w-full
-    px-4
     flex flex-col
     items-center
     text-center
-    md:items-start
-    md:text-left
-    md:max-w-2xl
-    md:pl-[3vw]
-    md:px-0
+
+    xl:items-start
+    xl:text-left
+    xl:max-w-2xl
+    xl:pl-[3vw]
   "
         >
           <h1
@@ -1366,7 +1392,6 @@ export default function Home() {
               fontWeight: 700,
               letterSpacing: "0.03em",
               lineHeight: 1,
-              transform: "scaleX(1.15)",
             }}
           >
             {t.heroTitle}{" "}
@@ -1385,7 +1410,6 @@ export default function Home() {
               fontWeight: 700,
               letterSpacing: "0.03em",
               lineHeight: 1,
-              transform: "scaleX(1.15)",
             }}
           >
             {language === "no"
@@ -1427,7 +1451,7 @@ export default function Home() {
             </span>
           </p>
 
-          <div className="mt-3 flex flex-col items-center md:items-start">
+          <div className="mt-3 flex flex-col items-center xl:items-start">
             <button
               type="button"
               onClick={() => scrollToSection("about")}
@@ -1493,7 +1517,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative hidden md:flex flex-none w-[420px] h-[420px] mr-[3vw] items-center justify-center z-10">
+        <div className="relative hidden xl:flex flex-none w-[420px] h-[420px] mr-[3vw] items-center justify-center z-10">
           <div
             ref={cloudRef}
             className="tagcloud text-2xl font-[VemanemX]"

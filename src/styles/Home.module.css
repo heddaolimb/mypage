@@ -37,6 +37,11 @@
   gap: 1.9rem;
   margin-left: 5rem;
 }
+@media (max-width: 1024px) {
+  .navLinks {
+    display: none;
+  }
+}
 
 .navItem {
   cursor: pointer;
@@ -1039,7 +1044,7 @@
    MOBILE RESPONSIVE (≤768px)
    ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   /* SECTION er det som gjør siden smal */
   .section {
     padding-left: 0 !important;
@@ -1223,7 +1228,7 @@
    🔧 MOBILE FIX – KUN OVERRIDES (INGENTING SLETTET)
    ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   /* 1. STOPP full-bleed hack på mobil */
   .servicesOuter,
   .educationOuter,
@@ -1284,7 +1289,7 @@
    FINAL MOBILE FIX – CUT CONTENT / HEIGHT BUGS
    ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   /* 1. ALDRI lås høyde på mobil */
   .section,
   .servicesOuter,
@@ -1369,7 +1374,7 @@
     max-height: 70vh;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .sectionTitle {
     padding: 0 !important;
     max-width: 100% !important;
@@ -1423,4 +1428,36 @@
   max-height: 45vh;
   width: 100%;
   object-fit: contain;
+}
+.burger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .burger {
+    display: block;
+  }
+}
+@media (max-width: 1024px) {
+  .navLinks {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  .mobileMenuOpen {
+    display: flex;
+  }
 }
