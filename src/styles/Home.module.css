@@ -58,11 +58,9 @@
   color: #ffffff;
   transform: scale(1.2);
 }
-
-.navItem:focus-visible {
-  outline: 2px solid #cd8f6d;
-  outline-offset: 3px;
-  border-radius: 6px;
+.navItem:active {
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
 /* Language switch */
@@ -797,14 +795,6 @@
   position: relative;
 }
 
-.nasaImageLarge {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  margin: 1.75rem 0;
-}
-
 .projectDetails h3 {
   font-size: 2rem;
   color: #ffffff;
@@ -1144,7 +1134,6 @@
 }
 
 .section {
-  min-height: 100vh;
   padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -1338,12 +1327,6 @@
     overflow: visible !important;
   }
 
-  /* 5. NASA API – gigantisk bilde */
-  .nasaImageLarge {
-    max-height: 60vh !important;
-    object-fit: contain !important;
-  }
-
   /* 6. SPACE SHOOTER – for høy / kuttet */
   .spaceShooterWrapper {
     height: auto !important;
@@ -1369,10 +1352,6 @@
   .spaceShooterWrapper {
     height: 400px;
   }
-
-  .nasaImageLarge {
-    max-height: 70vh;
-  }
 }
 @media (max-width: 1024px) {
   .sectionTitle {
@@ -1393,14 +1372,7 @@
   width: 100% !important;
   max-width: 100% !important;
 }
-/* === NASA IMAGE HARD LIMIT === */
-.projectTakeover img {
-  max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  display: block;
-  margin: 1.5rem auto;
-}
+
 /* === FIX STACKING: SPACE SHOOTER VS CONTACT === */
 .spaceShooterWrapper {
   position: relative;
@@ -1419,16 +1391,7 @@
   width: 100%;
 }
 /* === NASA MODAL HARD CONSTRAINT === */
-.nasaBox {
-  max-height: 70vh;
-  overflow-y: auto;
-}
 
-.nasaImageLarge {
-  max-height: 45vh;
-  width: 100%;
-  object-fit: contain;
-}
 .burger {
   display: none;
   font-size: 1.8rem;
@@ -1445,19 +1408,59 @@
 }
 @media (max-width: 1024px) {
   .navLinks {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 70px;
+    right: 1rem;
+
+    background: rgba(2, 2, 16, 0.98);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 0.8rem 0.6rem;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    display: none;
+    gap: 0.6rem;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   .mobileMenuOpen {
-    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+/* =========================
+   NASA – FINAL, KONTROLLERT
+   ========================= */
+
+.projectTakeover {
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+.projectDetails {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* NASA-bildet */
+.nasaImageLarge {
+  display: block;
+  width: 100%;
+  max-height: 45vh;
+  height: auto;
+  object-fit: contain;
+  margin: 1.5rem auto;
+}
+
+/* Mobil + tablet */
+@media (max-width: 1024px) {
+  .nasaImageLarge {
+    max-height: 32vh;
   }
 }

@@ -1945,7 +1945,7 @@ export default function Home() {
                           <img
                             src={selectedProject.image}
                             alt={selectedProject.title}
-                            className={styles.projectImageLarge}
+                            className={styles.nasaImageLarge}
                           />
                         )}
 
