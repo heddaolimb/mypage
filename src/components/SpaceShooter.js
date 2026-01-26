@@ -13,7 +13,8 @@ export default function SpaceShooter() {
 
       if (gameRef.current) return;
 
-      const isMobile = window.innerWidth < 768;
+      const isMobile = window.innerWidth < 1024;
+
       const width = isMobile ? Math.floor(window.innerWidth * 0.9) : 650;
       const height = isMobile ? 350 : 450;
 
@@ -87,12 +88,6 @@ export default function SpaceShooter() {
             maxSize: 30,
           });
 
-          // 🔫 Enemy bullets
-          this.enemyBullets = this.physics.add.group({
-            defaultKey: "enemyBullet",
-            maxSize: 50,
-          });
-
           // 👉 Rød bullet texture
           const graphics = this.make.graphics({ x: 0, y: 0, add: false });
           graphics.fillStyle(0xff0000, 1);
@@ -106,6 +101,11 @@ export default function SpaceShooter() {
           g2.fillRect(0, 0, 4, 12);
           g2.generateTexture("enemyBullet", 4, 12);
           g2.destroy();
+          // 🔫 Enemy bullets
+          this.enemyBullets = this.physics.add.group({
+            defaultKey: "enemyBullet",
+            maxSize: 50,
+          });
 
           // 👾 Enemies
           this.enemies = this.physics.add.group();
@@ -126,7 +126,7 @@ export default function SpaceShooter() {
 
               // 👇 fienden begynner å skyte umiddelbart
               this.time.addEvent({
-                delay: PhaserLib.Math.Between(500, 1500), // mye tidligere
+                delay: PhaserLib.Math.Between(1000, 1800),
                 callback: () => {
                   if (enemy.active && !this.gameOver)
                     this.fireEnemyBullet(enemy);
@@ -184,7 +184,8 @@ export default function SpaceShooter() {
 
           // 🔫 Skyte
           if (
-            PhaserLib.Input.Keyboard.JustDown(this.spaceKey) ||
+            (this.spaceKey &&
+              PhaserLib.Input.Keyboard.JustDown(this.spaceKey)) ||
             this.shootPressed
           ) {
             this.fireBullet();
@@ -311,6 +312,9 @@ export default function SpaceShooter() {
         backgroundColor: "#000000",
         parent: "phaser-container",
         physics: { default: "arcade" },
+        input: {
+          activePointers: 3, // 👈 touch support
+        },
         scene: [MainScene],
       };
 
