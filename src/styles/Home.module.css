@@ -1481,9 +1481,6 @@
   overflow: hidden;
 }
 /* === FIX: La Phaser få museklikk === */
-.projectTakeover {
-  pointer-events: none;
-}
 
 .projectTakeover .projectDetails {
   pointer-events: auto;

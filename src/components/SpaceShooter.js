@@ -82,6 +82,9 @@ export default function SpaceShooter() {
             PhaserLib.Input.Keyboard.KeyCodes.SPACE
           );
 
+          this.game.canvas.setAttribute("tabindex", "0");
+          this.game.canvas.focus();
+
           // 🔫 Player bullets
           this.bullets = this.physics.add.group({
             defaultKey: "bullet",
@@ -212,10 +215,20 @@ export default function SpaceShooter() {
         fireBullet() {
           const offset = this.ship.displayHeight / 2;
           const bullet = this.bullets.get(this.ship.x, this.ship.y - offset);
+
           if (bullet) {
-            bullet.setActive(true);
-            bullet.setVisible(true);
+            bullet.enableBody(
+              true,
+              this.ship.x,
+              this.ship.y - offset,
+              true,
+              true
+            );
             bullet.setVelocityY(-300);
+
+            // 👇 DETTE ER FEILEN SOM MANGLER
+            bullet.body.setSize(4, 12);
+            bullet.body.setOffset(0, 0);
           }
         }
 
@@ -335,11 +348,12 @@ export default function SpaceShooter() {
     <div
       id="phaser-container"
       style={{
-        width: "100%",
-        height: "100%",
+        width: dimensions.width,
+        height: dimensions.height,
         background: "#000",
         display: "block",
         overflow: "hidden",
+        margin: "0 auto",
       }}
     />
   );

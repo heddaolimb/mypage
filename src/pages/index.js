@@ -6,7 +6,6 @@ import TagCloud from "TagCloud";
 import Chatbot from "./Chatbot";
 import FeedbackBoard from "../components/FeedbackBoard";
 import NasaProject from "../components/NasaProject";
-import SentimentProject from "../components/SentimentProject";
 import TaskManager from "../components/TaskManager";
 import WeatherWidget from "../components/WeatherWidget";
 import SpaceShooter from "../components/SpaceShooter";
@@ -384,31 +383,7 @@ export default function Home() {
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegration"],
           link: null,
         },
-        {
-          id: "nlp-sentiment",
-          title: "AI Named Entity Recognition (NER)",
-          image: "/icons/ai.svg",
-          description: (
-            <>
-              A small <span className={styles.highlight}>AI demo</span> that
-              integrates with a HuggingFace Named Entity Recognition (NER)
-              model. The system analyzes English text using{" "}
-              <span className={styles.highlight}>
-                Natural Language Processing (NLP)
-              </span>{" "}
-              and highlights extracted entities.
-            </>
-          ),
-          tech: [
-            "#NextJS",
-            "#API",
-            "#AI",
-            "#NLP",
-            "#NER",
-            "#FrontendIntegration",
-          ],
-          link: null,
-        },
+
         {
           id: "task-manager",
           title: "Mini Task Manager",
@@ -805,81 +780,7 @@ export default function Home() {
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegrasjon"],
           link: null,
         },
-        {
-          id: "nlp-sentiment",
-          title: "AI Entitetsgjenkjenning (NER)",
-          image: "/icons/ai.svg", // finn eller lag et lite ikon
-          description: (
-            <>
-              En liten <span className={styles.highlight}>AI-demo</span> som
-              integrerer med en
-              <span className={styles.highlight}>
-                {" "}
-                HuggingFace Named Entity Recognition (NER)-modell
-              </span>
-              . Skriv inn en setning på engelsk, og systemet analyserer den ved
-              hjelp av
-              <span className={styles.highlight}>
-                Natural Language Processing (NLP)
-              </span>{" "}
-              for å trekke ut navngitte entiteter som{" "}
-              <span className={styles.highlight}>personer (PER)</span>,
-              <span className={styles.highlight}>steder (LOC)</span>,
-              <span className={styles.highlight}>organisasjoner (ORG)</span> og
-              <span className={styles.highlight}>andre entiteter (MISC)</span>.
-              <br />
-              <br />
-              For eksempel, hvis du skriver:
-              <code>
-                "Emma Watson starred in Harry Potter, which was filmed in
-                London."
-              </code>
-              vil systemet finne: <strong>- Emma Watson (PER) - 100%</strong>{" "}
-              <strong>- Harry Potter (MISC) - 90.1%</strong>{" "}
-              <strong>- London (LOC) - 99.9%</strong>
-              <br />
-              <br />
-              Systemet markerer entitetene med fargekoder:{" "}
-              <span style={{ color: "#4caf50", fontWeight: "bold" }}>
-                Grønn = Person (PER)
-              </span>{" "}
-              <span style={{ color: "#2196f3", fontWeight: "bold" }}>
-                Blå = Organisasjon (ORG)
-              </span>{" "}
-              <span style={{ color: "#ff9800", fontWeight: "bold" }}>
-                Oransje = Sted (LOC)
-              </span>{" "}
-              <span style={{ color: "#9c27b0", fontWeight: "bold" }}>
-                Lilla = Annet (MISC)
-              </span>
-              <br />
-              <br />
-              <strong>Merk:</strong> NER-modellen er trent på et begrenset
-              datasett, så klassifiseringene er ikke alltid perfekte. For
-              eksempel merkes *Harry Potter* korrekt som <strong>MISC</strong>,
-              men sikkerhetsscorene og etikettene kan variere avhengig av
-              konteksten. Modellen er primært trent på engelsk, men kan noen
-              ganger generalisere til andre språk som norsk.
-              <br />
-              <br />
-              Demonstrerer{" "}
-              <span className={styles.highlight}>AI-integrasjon</span>,
-              <span className={styles.highlight}>NLP</span> og
-              <span className={styles.highlight}>JSON-håndtering</span> i et
-              frontend + backend-oppsett.
-            </>
-          ),
-          tech: [
-            "#NextJS",
-            "#API",
-            "#AI",
-            "#NLP",
-            "#NER",
-            "#FrontendIntegrasjon",
-          ],
 
-          link: null,
-        },
         {
           id: "task-manager",
           title: "Mini Task Manager",
@@ -1864,8 +1765,6 @@ export default function Home() {
                         ? styles.smallProjectImage
                         : proj.id === "nasa-api"
                         ? styles.nasaImage
-                        : proj.id === "nlp-sentiment"
-                        ? styles.aiImage
                         : proj.id === "task-manager"
                         ? styles.taskManagerImage
                         : proj.id === "weather-cli"
@@ -1936,7 +1835,6 @@ export default function Home() {
                       {selectedProject.id !== "python-chatbot" &&
                         selectedProject.id !== "feedback-board" &&
                         selectedProject.id !== "nasa-api" &&
-                        selectedProject.id !== "nlp-sentiment" &&
                         selectedProject.id !== "task-manager" &&
                         selectedProject.id !== "weather-cli" &&
                         selectedProject.id !== "space-shooter" && (
@@ -1983,9 +1881,6 @@ export default function Home() {
                         <FeedbackBoard />
                       )}
                       {selectedProject.id === "nasa-api" && <NasaProject />}
-                      {selectedProject.id === "nlp-sentiment" && (
-                        <SentimentProject />
-                      )}
                       {selectedProject.id === "task-manager" && <TaskManager />}
                       {selectedProject.id === "weather-cli" && (
                         <WeatherWidget />
