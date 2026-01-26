@@ -2021,85 +2021,89 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact */}
-        <section
-          id="contact"
-          className={styles.section}
-          aria-labelledby="contact-title"
-        >
-          <div
-            ref={contactRef}
-            className={`${styles.contactOuter} ${
-              showContact ? styles.showContact : ""
+        <>
+          {/* Contact */}
+          <section
+            id="contact"
+            className={`${styles.section} ${
+              selectedProject ? styles.hideContact : ""
             }`}
+            aria-labelledby="contact-title"
           >
-            <h2 id="contact-title" className={styles.sectionTitle}>
-              {t.contactTitle}
-            </h2>
+            <div
+              ref={contactRef}
+              className={`${styles.contactOuter} ${
+                showContact ? styles.showContact : ""
+              }`}
+            >
+              <h2 id="contact-title" className={styles.sectionTitle}>
+                {t.contactTitle}
+              </h2>
 
-            <div className={styles.contactBox}>
-              <p id="contact-description" className={styles.contactText}>
-                {t.contactText}
-              </p>
-
-              <form
-                className={styles.contactForm}
-                onSubmit={handleSubmit}
-                aria-describedby="contact-description"
-              >
-                <label htmlFor="contact-name" className="sr-only">
-                  {t.form.name}
-                </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  placeholder={t.form.name}
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-
-                <label htmlFor="contact-email" className="sr-only">
-                  {t.form.email}
-                </label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  placeholder={t.form.email}
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-
-                <label htmlFor="contact-message" className="sr-only">
-                  {t.form.message}
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  placeholder={t.form.message}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                />
-
-                <button type="submit" className={styles.submitBtn}>
-                  {t.form.send}
-                </button>
-
-                <p
-                  className={styles.formStatus}
-                  role="status"
-                  aria-live="polite"
-                >
-                  {formStatus}
+              <div className={styles.contactBox}>
+                <p id="contact-description" className={styles.contactText}>
+                  {t.contactText}
                 </p>
-              </form>
+
+                <form
+                  className={styles.contactForm}
+                  onSubmit={handleSubmit}
+                  aria-describedby="contact-description"
+                >
+                  <label htmlFor="contact-name" className="sr-only">
+                    {t.form.name}
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    placeholder={t.form.name}
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+
+                  <label htmlFor="contact-email" className="sr-only">
+                    {t.form.email}
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    placeholder={t.form.email}
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+
+                  <label htmlFor="contact-message" className="sr-only">
+                    {t.form.message}
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder={t.form.message}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                  />
+
+                  <button type="submit" className={styles.submitBtn}>
+                    {t.form.send}
+                  </button>
+
+                  <p
+                    className={styles.formStatus}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {formStatus}
+                  </p>
+                </form>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </>
       </main>{" "}
       {/* FOOTER */}
       <footer className={styles.footer} role="contentinfo">
