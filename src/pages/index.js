@@ -2088,8 +2088,14 @@ export default function Home() {
                     required
                   />
 
-                  <button type="submit" className={styles.submitBtn}>
-                    {t.form.send}
+                  <button
+                    type="submit"
+                    className={styles.submitBtn}
+                    disabled={formStatus}
+                  >
+                    {formStatus === t.form.sending
+                      ? t.form.sending
+                      : t.form.send}
                   </button>
 
                   <p
