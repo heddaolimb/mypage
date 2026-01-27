@@ -313,6 +313,10 @@ export default function SpaceShooter() {
         input: {
           activePointers: 3,
         },
+        scale: {
+          mode: PhaserLib.Scale.FIT,
+          autoCenter: PhaserLib.Scale.CENTER_BOTH,
+        },
         scene: [MainScene],
       };
 
@@ -333,12 +337,15 @@ export default function SpaceShooter() {
     <div
       id="phaser-container"
       style={{
-        width: dimensions.width,
+        width: "100%",
+        maxWidth: dimensions.width,
         height: dimensions.height,
         background: "#000",
-        display: "block",
-        overflow: "hidden",
         margin: "0 auto",
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     />
   );
