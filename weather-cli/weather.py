@@ -1,7 +1,7 @@
 import sys
 import requests
 
-API_KEY = "e862e478cbd3791c0caf38a98f19abba"  # din OpenWeather key
+API_KEY = "e862e478cbd3791c0caf38a98f19abba" 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 def get_weather_openweather(city):
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python weather.py <city>")
     else:
-        city = " ".join(sys.argv[1:])  # støtter bynavn med mellomrom
+        city = " ".join(sys.argv[1:])  
         result = get_weather_openweather(city)
 
         if result:

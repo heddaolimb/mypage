@@ -22,10 +22,9 @@ export default async function handler(req, res) {
         wind: data.wind.speed,
         desc: data.weather[0].description,
         source: "OpenWeather",
-        raw: data, // 👈 legg med rå JSON for bevis
+        raw: data,
       });
     } else {
-      // 👇 fallback til wttr.in
       const wttr = await fetch(`http://wttr.in/${city}?format=j1`);
       const wttrData = await wttr.json();
       const current = wttrData.current_condition[0];
@@ -37,7 +36,7 @@ export default async function handler(req, res) {
         wind: current.windspeedKmph,
         desc: current.weatherDesc[0].value,
         source: "wttr.in",
-        raw: wttrData, // også med hele JSON her
+        raw: wttrData,
       });
     }
   } catch (err) {

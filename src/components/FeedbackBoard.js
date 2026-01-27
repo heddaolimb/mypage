@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import styles from "@/styles/Home.module.css"; // merk aliasen
+import styles from "@/styles/Home.module.css";
 
 export default function FeedbackBoard() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Hent eksisterende feedbacks når komponenten laster
   useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
@@ -33,7 +32,6 @@ export default function FeedbackBoard() {
       });
 
       if (res.ok) {
-        // legg til ny melding i listen uten å refetche alt
         setFeedbacks((prev) => [
           { message, createdAt: new Date().toISOString() },
           ...prev,

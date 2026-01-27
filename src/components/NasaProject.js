@@ -25,7 +25,6 @@ export default function NasaProject() {
   if (loading) return <p>Loading NASA data...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  // liten hjelpefunksjon for å sjekke om "other" faktisk er en video
   const isOtherVideo =
     data.media_type === "other" &&
     data.url &&
@@ -87,7 +86,6 @@ export default function NasaProject() {
       <p>{data.explanation}</p>
       <small>{data.date}</small>
 
-      {/* 👇 Rå JSON-visning for demo */}
       <pre
         style={{
           background: "#111",

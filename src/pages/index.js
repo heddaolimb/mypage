@@ -52,18 +52,18 @@ export default function Home() {
     const texts = [
       "JavaScript",
       "React",
-      "Next.js",
+      "NextJS",
       "Tailwind",
-      "Firebase",
+      "API",
       "UX",
       "UI",
       "Figma",
-      "Node.js",
+      "NodeJS",
       "SvelteKit",
       "HTML",
       "CSS",
       "PHP",
-      "SQL",
+      "Python",
       "MongoDB",
       "GitHub",
       "Prototyping",
@@ -115,9 +115,9 @@ export default function Home() {
 
       aboutTitle: "About Me",
       aboutItems: [
-        "My name is Hedda, a 26-year-old Web Developer from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
-        "I’m passionate about creating engaging and user-friendly digital experiences, with a background in web development, UX/UI design, and graphic design. I enjoy combining creativity and technology to bring ideas to life, whether it’s building sleek or fun websites, designing intuitive interfaces, or experimenting with new ideas.",
-        "Outside of this, I love drawing and painting, music, traveling, watching movies and series, and reading books – especially fantasy and sci-fi. And above all, I’m a huge dog lover.",
+        "My name is Hedda, 26 years old from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
+        "I’m passionate about creating engaging and user-friendly digital experiences. I enjoy combining creativity and technology to bring ideas to life, whether it’s building sleek or fun websites, designing intuitive interfaces, or experimenting with new ideas.",
+        "Outside of this, I love drawing and painting, music, traveling, dogs, movies, and reading books – especially fantasy and sci-fi genres. I’m also interested in AI, emerging technologies, and technology in general.",
         "My goal is to keep challenging myself while contributing to meaningful projects where design and development come together to make a difference.",
       ],
       servicesTitle: "What I Can Do and My Skills",
@@ -188,7 +188,7 @@ export default function Home() {
             "Explored cloud technology, deployment, and Raspberry Pi server usage.",
             "Studied the history and protocols of the Internet and the World Wide Web.",
             "Understood GDPR, ethics, legal frameworks, and research methods.",
-            "All coursework conducted in English.",
+            "All coursework conducted in English - advanced written and spoken English skills.",
             "Served as an elected representative for the Faculty of Architecture and Design in 2023.",
           ],
         },
@@ -213,13 +213,14 @@ export default function Home() {
             "Royal Norwegian Armed Forces (FOH – Norwegian Joint Headquarters)",
           period: "2019",
           description: [
-            "Served in the Norwegian Armed Forces at the Joint Operational Headquarters (FOH) as part of the Royal Norwegian Navy.",
-            "Stationed at the Surveillance Center, working with real-time maritime monitoring and situational awareness across Norwegian and NATO waters.",
-            "Operated classified surveillance and command systems in a high-security environment.",
-            "Supported national defense readiness and contributed to coordination and communication of joint military operations.",
-            "Certificate in Qualified First Aid – Level 2.",
-            "Certificate in Training on Organizational Work, Meeting Management Techniques, and Health, Safety and Environment (HSE).",
-            "Appointed as elected representative within the shift team.",
+            "Served in the Royal Norwegian Navy at the Joint Operational Headquarters (FOH).",
+            "Stationed at a surveillance and operations center, contributing to maritime situational awareness in Norwegian and NATO areas.",
+            "Worked in a high-security operational environment supporting monitoring, reporting, and assessment of maritime activity.",
+            "Contributed to national defense readiness and coordination with allied forces.",
+            "Gained practical experience with technical and operational systems in a maritime context, with a focus on secure information flow, mission support, and operational overview.",
+            "Course: Qualified First Aid – Level 2.",
+            "Course: Organizational work, meeting techniques, and Health, Safety and Environment (HSE).",
+            "Elected representative within the shift team.",
           ],
         },
         job3: {
@@ -250,28 +251,49 @@ export default function Home() {
               experience. Through{" "}
               <span className={styles.highlight}>
                 surveys, interviews, and market research
-              </span>
-              , we identified loneliness and lack of social belonging as key
-              issues among students. Using{" "}
+              </span>{" "}
+              we identified loneliness and a lack of social belonging as key
+              challenges among students. Using{" "}
               <span className={styles.highlight}>
                 design thinking methodology
-              </span>
-              , we built{" "}
+              </span>{" "}
+              we built{" "}
               <span className={styles.highlight}>
-                personas, conducted user testing,
+                personas, conducted user testing
               </span>{" "}
               and iterated on{" "}
               <span className={styles.highlight}>
-                low- and high-fidelity prototypes.
-              </span>{" "}
-              The final product is a{" "}
+                low- and high-fidelity prototypes
+              </span>
+              . The final product was a{" "}
               <span className={styles.highlight}>
                 Progressive Web App (PWA)
               </span>{" "}
               built with <span className={styles.highlight}>SvelteKit</span>,
               using <span className={styles.highlight}>JavaScript</span>,{" "}
-              <span className={styles.highlight}>HTML/CSS</span>, and{" "}
-              <span className={styles.highlight}>Firebase</span>.
+              <span className={styles.highlight}>HTML/CSS</span> and{" "}
+              <span className={styles.highlight}>Firebase</span> for
+              authentication,{" "}
+              <span className={styles.highlight}>Firestore database</span> and
+              hosting. Features include real-time chat, an event calendar,
+              announcement feeds, and structured building pages. The solution
+              uses a{" "}
+              <span className={styles.highlight}>
+                modular, component-based architecture
+              </span>{" "}
+              with a{" "}
+              <span className={styles.highlight}>
+                route-based file structure
+              </span>{" "}
+              (+page.svelte, +layout.svelte) and{" "}
+              <span className={styles.highlight}>dynamic routes</span> for
+              handling user-generated content. Data flow and UI states are
+              managed using{" "}
+              <span className={styles.highlight}>reactive Svelte stores</span>,
+              and the app includes service workers for offline support and fast
+              load times. Hosting is handled via{" "}
+              <span className={styles.highlight}>Firebase Hosting</span> with
+              secure <span className={styles.highlight}>TLS encryption</span>.
             </>
           ),
           tech: [
@@ -294,30 +316,37 @@ export default function Home() {
           image: "/icons/flower.svg",
           description: (
             <>
-              We developed Flower Power, a smart plant care prototype designed
-              to help young adults maintain their indoor plants through
-              automation and digital feedback. The solution uses a{" "}
+              Flower Power is a smart plant care prototype designed to help
+              young adults keep indoor plants alive through automation and
+              digital feedback. The solution uses a{" "}
               <span className={styles.highlight}>
                 Micro:bit microcontroller
               </span>{" "}
-              paired with a{" "}
+              together with a{" "}
               <span className={styles.highlight}>soil moisture sensor</span>,{" "}
               <span className={styles.highlight}>OLED display</span>,{" "}
-              <span className={styles.highlight}>water pump</span>, and water
+              <span className={styles.highlight}>water pump</span> and a water
               reservoir to monitor and maintain soil moisture levels. When the
-              moisture drops below a threshold, the system alerts the user and
-              activates the pump to water the plant. Our development process
+              level drops below the threshold value, the user is notified and
+              the pump is activated to water the plant. The development process
               included <span className={styles.highlight}>user research</span>,{" "}
               <span className={styles.highlight}>personas</span>,{" "}
-              <span className={styles.highlight}>lo-fi and hi-fi sketches</span>
-              , as well as{" "}
-              <span className={styles.highlight}>usability testing</span> to
-              validate the user experience. The system follows{" "}
+              <span className={styles.highlight}>
+                low-fidelity and high-fidelity sketches
+              </span>{" "}
+              as well as <span className={styles.highlight}>user testing</span>{" "}
+              to validate the user experience. The system is based on{" "}
               <span className={styles.highlight}>
                 Web of Things (WoT) principles
-              </span>
-              , with a communication model aimed at simplifying data flow
-              between sensors and users for better decision-making.
+              </span>{" "}
+              with a communication model that simplifies data flow between
+              sensors and users for improved decision-making. The project
+              targeted tech-savvy but forgetful plant owners aged 18–35 and
+              emphasized usability,{" "}
+              <span className={styles.highlight}>
+                accessibility of information
+              </span>{" "}
+              and <span className={styles.highlight}>automation</span>.
             </>
           ),
           tech: [
@@ -389,15 +418,21 @@ export default function Home() {
           image: "/icons/feedback.svg",
           description: (
             <>
-              A small <span className={styles.highlight}>full-stack demo</span>{" "}
+              A small <span className={styles.highlight}>fullstack demo</span>{" "}
               where visitors can leave anonymous feedback on this website.
+              Please note: although all feedback is displayed here and is
+              visible to both me and other visitors, it remains completely
+              anonymous.
               <br />
               <br />
-              Built with{" "}
+              Built using{" "}
               <span className={styles.highlight}>
-                Next.js API Routes
+                Next.js API routes
               </span> and <span className={styles.highlight}>MongoDB</span> for
-              data storage.
+              data storage. Demonstrates the connection between{" "}
+              <span className={styles.highlight}>frontend</span>,{" "}
+              <span className={styles.highlight}>backend</span> and{" "}
+              <span className={styles.highlight}>database</span>.
             </>
           ),
           tech: ["#NextJS", "#MongoDB", "#API", "#Fullstack"],
@@ -416,9 +451,19 @@ export default function Home() {
               A small{" "}
               <span className={styles.highlight}>API integration demo</span>{" "}
               that fetches data from the{" "}
-              <span className={styles.highlight}>NASA Open API</span> and
-              displays the Astronomy Picture of the Day with metadata and raw
-              JSON output.
+              <span className={styles.highlight}>NASA Open API</span>. Displays
+              the "Astronomy Picture of the Day" with title, description, and
+              image. Built using{" "}
+              <span className={styles.highlight}>Next.js API routes</span> and{" "}
+              <span className={styles.highlight}>fetch</span>. Demonstrates{" "}
+              <span className={styles.highlight}>JSON parsing</span>,{" "}
+              <span className={styles.highlight}>frontend integration</span> and{" "}
+              <span className={styles.highlight}>error handling</span>.
+              <br />
+              <br />
+              The raw JSON response is also displayed at the bottom as a
+              demonstration, to prove that the data above is fetched directly
+              from NASA's API.
             </>
           ),
           tech: ["#NextJS", "#API", "#JSON", "#FrontendIntegration"],
@@ -431,11 +476,30 @@ export default function Home() {
           image: "/icons/taskmanager.svg",
           description: (
             <>
-              A small <span className={styles.highlight}>full-stack demo</span>{" "}
+              A small <span className={styles.highlight}>fullstack demo</span>{" "}
               where users can create, update, and delete tasks. Built with{" "}
-              <span className={styles.highlight}>Node.js</span>,{" "}
-              <span className={styles.highlight}>React</span>, and{" "}
+              <span className={styles.highlight}>Node.js/Express</span>,{" "}
+              <span className={styles.highlight}>React</span> and{" "}
               <span className={styles.highlight}>MongoDB</span>.
+              <br />
+              <br />
+              Unlike the{" "}
+              <span className={styles.highlight}>Feedback Board</span> (which
+              uses Next.js API routes), this project runs on a{" "}
+              <span className={styles.highlight}>
+                separate backend deployed on Render
+              </span>
+              . Since it runs on{" "}
+              <span className={styles.highlight}>Render’s free tier</span>, the
+              server may “sleep” - it can take 20–30 seconds to start the first
+              time, but after that it runs normally.
+              <br />
+              <br />
+              Demonstrates{" "}
+              <span className={styles.highlight}>CRUD functionality</span>,{" "}
+              <span className={styles.highlight}>database integration</span> and{" "}
+              <span className={styles.highlight}>system design</span> — the kind
+              of structure real-world applications are built on.
             </>
           ),
           tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
@@ -450,8 +514,23 @@ export default function Home() {
             <>
               A lightweight <span className={styles.highlight}>Python</span>{" "}
               command-line tool that fetches{" "}
-              <span className={styles.highlight}>live weather data</span> from
-              public APIs and demonstrates API requests and fallback handling.
+              <span className={styles.highlight}>real-time weather data</span>{" "}
+              from public APIs. Demonstrates how to build{" "}
+              <span className={styles.highlight}>
+                software outside the browser
+              </span>
+              , make <span className={styles.highlight}>API calls</span> and
+              handle <span className={styles.highlight}>fallbacks</span> when a
+              service is unavailable. A simple{" "}
+              <span className={styles.highlight}>frontend integration</span> has
+              also been added so visitors can test the project directly on this
+              website and view the{" "}
+              <span className={styles.highlight}>raw JSON response</span> below
+              the results.
+              <br />
+              <br />
+              <strong>Note:</strong> You must search by city name (e.g. London,
+              Paris, Oslo), not country.
             </>
           ),
           tech: [
@@ -477,8 +556,13 @@ export default function Home() {
               A small{" "}
               <span className={styles.highlight}>retro arcade game</span> built
               with <span className={styles.highlight}>Phaser.js</span>.
-              Demonstrates game loops, collision detection, and scoring systems
-              in the browser.
+              Demonstrates how to implement a{" "}
+              <span className={styles.highlight}>game loop</span>, handle{" "}
+              <span className={styles.highlight}>collision detection</span>, and
+              implement a{" "}
+              <span className={styles.highlight}>scoring system</span>.
+              Showcases creativity and interactive programming directly in the
+              browser.
             </>
           ),
           tech: [
@@ -530,11 +614,12 @@ export default function Home() {
 
       aboutTitle: "Om meg",
       aboutItems: [
-        "Jeg heter Hedda, er en 26 år gammel webutvikler fra Norge med en bachelorgrad i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
-        "Jeg brenner for å skape engasjerende og brukervennlige digitale opplevelser, med bakgrunn innen webutvikling, litt UX/UI-design og litt grafisk design. Jeg liker å kombinere kreativitet og teknologi for å gjøre ideer til virkelighet – enten det er å bygge moderne eller morsomme nettsider, designe intuitive grensesnitt eller eksperimentere med nye løsninger.",
-        "Utenom dette liker jeg å tegne og male, høre på musikk, reise, se filmer og serier, samt lese bøker – spesielt innen fantasy og sci-fi. Og aller mest elsker jeg hunder.",
-        "Målet mitt er å fortsette å utfordre meg selv, samtidig som jeg bidrar til meningsfulle prosjekter der design og utvikling møtes for å skape noe som virkelig betyr noe.",
+        "Jeg heter Hedda, er 26 år og kommer fra Norge, med en bachelorgrad i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
+        "Jeg brenner for å skape engasjerende og brukervennlige digitale opplevelser. Jeg liker å kombinere kreativitet og teknologi for å gjøre ideer til virkelighet, enten det er å bygge stilrene eller morsomme nettsider, designe intuitive grensesnitt eller eksperimentere med nye ideer.",
+        "Utenom dette liker jeg å tegne og male, høre på musikk, reise, hunder, filmer og å lese bøker – spesielt innen fantasy- og sci-fi-sjangeren. Jeg er også interessert i AI, fremvoksende teknologier og teknologi generelt.",
+        "Målet mitt er å fortsette å utfordre meg selv samtidig som jeg bidrar til meningsfulle prosjekter der design og utvikling kommer sammen for å utgjøre en forskjell.",
       ],
+
       servicesTitle: "Hva jeg kan og mine ferdigheter",
       services: {
         webDev: {
@@ -598,10 +683,10 @@ export default function Home() {
             "Jobbet prosjektbasert med planlegging og samarbeid.",
             "Dekket universell utforming (WCAG), SEO (meta-tags) og brukertesting.",
             "Lært informasjonsarkitektur, databaser og innholdsstrukturering.",
-            "Utforsket skytjenester, utrulling og Raspberry Pi-servere.",
+            "Utforsket skytjenester, deployment og Raspberry Pi-servere.",
             "Studert historien og protokollene bak Internett og WWW.",
             "Forståelse av GDPR, etikk, lovverk og forskningsmetoder.",
-            "Alt kursarbeid på engelsk – flytende skriftlig og muntlig engelsk.",
+            "Alt kursarbeid på engelsk – høyt nivå skriftlig og muntlig engelsk.",
             "Valgt som tillitsvalgt for Fakultet for arkitektur og design i 2023.",
           ],
         },
@@ -610,9 +695,9 @@ export default function Home() {
       workTitle: "Jobberfaring",
       jobs: {
         job1: {
-          title: "Helsefagarbeider",
+          title: "Pleiemedarbeider",
           company: "Villa Skaar Jevnaker",
-          period: "Somre/mer – 2018, 2020, 2021, 2022, 2023, 2024",
+          period: "Sesonger(sommer) 2018-2024",
           description: [
             "Fikk praktisk erfaring innen geriatrisk omsorg, smittevernrutiner og grunnleggende medisinsk kunnskap knyttet til vanlige sykdommer hos eldre.",
             "Opplæring i trygg pasienthåndtering og forflytningsteknikker, inkludert forebygging av skader ved tunge løft og forflytninger.",
@@ -625,18 +710,18 @@ export default function Home() {
           company: "Forsvaret (FOH – Forsvarets operative hovedkvarter)",
           period: "2019",
           description: [
-            "Tjenestegjorde i Sjøforsvaret ved FOH.",
-            "Stasjonert på Overvåkingssenteret med sanntids maritim overvåkning og situasjonsforståelse i norske og NATO-områder.",
-            "Opererte klassifiserte overvåknings- og kommandosystemer i et høysikkerhetsmiljø for å spore, rapportere og vurdere sjøaktivitet i strategiske farvann som Nord-Atlanteren.",
-            "Bidro til nasjonal beredskap og samhandling med allierte styrker.",
-            "Praktisk erfaring med både tekniske og operative systemer i maritimt miljø, med fokus på sikker informasjonsflyt, oppdragsstøtte og operativ oversikt.",
-            "Kurs: Kvalifisert førstehjelp nivå 2.",
-            "Kurs: Organisasjonsarbeid, møteteknikk og HMS.",
+            "Tjenestegjorde i Sjøforsvaret ved Forsvarets operative hovedkvarter (FOH).",
+            "Stasjonert ved et overvåkings- og operasjonssenter, med bidrag til maritim situasjonsforståelse i norske og NATO-områder.",
+            "Arbeidet i et høysikkerhets operativt miljø med støtte til overvåkning, rapportering og vurdering av maritim aktivitet.",
+            "Bidro til nasjonal beredskap og koordinering med allierte styrker.",
+            "Opparbeidet praktisk erfaring med tekniske og operative systemer i maritim sammenheng, med fokus på sikker informasjonsflyt, oppdragsstøtte og operativ oversikt.",
+            "Kurs: Kvalifisert førstehjelp – nivå 2.",
+            "Kurs: Organisasjonsarbeid, møteteknikk og helse, miljø og sikkerhet (HMS).",
             "Tillitsvalgt i skiftlaget.",
           ],
         },
         job3: {
-          title: "Helsefagarbeider",
+          title: "Pleiemedarbeider",
           company: "JORS – Jevnaker omsorg og rehabilitering",
           period: "Sommer 2017",
           description: [
@@ -787,7 +872,7 @@ export default function Home() {
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
-          id: "python-chatbot", // 👈 samme id
+          id: "python-chatbot",
           title: "Python chatbot",
           image: "/icons/python.svg",
           description: (
@@ -812,7 +897,7 @@ export default function Home() {
           extraImages: [
             "/images/chatbot_postman.png",
             "/images/chatbot_code.png",
-          ], // 👈 nye bilder
+          ], //
           link: null,
         },
         {
@@ -905,7 +990,7 @@ export default function Home() {
             </>
           ),
           tech: ["#NodeJS", "#React", "#MongoDB", "#CRUD", "#Fullstack"],
-          extraImages: ["/images/taskmanager.png", "/images/taskpostman.png"], // 👈 nye bilder
+          extraImages: ["/images/taskmanager.png", "/images/taskpostman.png"],
           link: null,
         },
         {
@@ -945,13 +1030,13 @@ export default function Home() {
           extraImages: [
             "/images/weather_code.png",
             "/images/weather_python.png",
-          ], // 👈 nye bilder
+          ],
           link: null,
         },
         {
           id: "space-shooter",
           title: "Space Shooter",
-          image: "/icons/space.svg", // legg et ikon i /public/icons/
+          image: "/icons/space.svg",
           description: (
             <>
               Et lite{" "}
@@ -994,7 +1079,6 @@ export default function Home() {
 
   const t = translations[language];
 
-  // Respekter brukerens prefers-reduced-motion (WCAG)
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1069,7 +1153,6 @@ export default function Home() {
     return () => projectsRef.current && observer.unobserve(projectsRef.current);
   }, [prefersReducedMotion]);
 
-  // Lås scroll når prosjekt-takeover er åpen
   useEffect(() => {
     document.body.style.overflow = selectedProject ? "hidden" : "";
   }, [selectedProject]);

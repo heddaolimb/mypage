@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
         L2880,600 L0,600Z
       "
           />
-          {/* Bølge nr 2 (kopi, flyttet til høyre) */}
+          {/* Bølge nr 2 */}
           <path
             fill="#040407ff"
             fillOpacity="0.3"

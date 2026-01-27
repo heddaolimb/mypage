@@ -43,11 +43,11 @@ export default function SpaceShooter() {
 
         preload() {
           this.load.image("ship", "/icons/ship.svg");
-          this.load.image("enemy", "/icons/alien.svg"); // 👽 alien-ikon
+          this.load.image("enemy", "/icons/alien.svg");
         }
 
         create() {
-          // ⭐ Stjerner
+          // stars
           for (let i = 0; i < 100; i++) {
             const x = PhaserLib.Math.Between(0, width);
             const y = PhaserLib.Math.Between(0, height);
@@ -63,20 +63,20 @@ export default function SpaceShooter() {
             });
           }
 
-          // 🚀 Skip
+          // ships
           this.ship = this.physics.add.sprite(width / 2, height - 40, "ship");
           this.ship.setScale(0.15);
           this.ship.setCollideWorldBounds(true);
           this.ship.body.immovable = true;
 
-          // 👇 Strammere hitbox på skipet
+          // hitbox
           this.ship.body.setSize(this.ship.width * 0.5, this.ship.height * 0.5);
           this.ship.body.setOffset(
             this.ship.width * 0.25,
             this.ship.height * 0.25
           );
 
-          // 🎮 Input PC
+          // input pc
           this.cursors = this.input.keyboard.createCursorKeys();
           this.spaceKey = this.input.keyboard.addKey(
             PhaserLib.Input.Keyboard.KeyCodes.SPACE
@@ -85,35 +85,34 @@ export default function SpaceShooter() {
           this.game.canvas.setAttribute("tabindex", "0");
           this.game.canvas.focus();
 
-          // 🔫 Player bullets
+          // player bullets
           this.bullets = this.physics.add.group({
             defaultKey: "bullet",
             maxSize: 30,
           });
 
-          // 👉 Rød bullet texture
+          // red bullet
           const graphics = this.make.graphics({ x: 0, y: 0, add: false });
           graphics.fillStyle(0xff0000, 1);
           graphics.fillRect(0, 0, 4, 12);
           graphics.generateTexture("bullet", 4, 12);
           graphics.destroy();
 
-          // 👉 Grønn enemy bullet
+          // green bullet
           const g2 = this.make.graphics({ x: 0, y: 0, add: false });
           g2.fillStyle(0x00ff00, 1);
           g2.fillRect(0, 0, 4, 12);
           g2.generateTexture("enemyBullet", 4, 12);
           g2.destroy();
-          // 🔫 Enemy bullets
+          // enemy
           this.enemyBullets = this.physics.add.group({
             defaultKey: "enemyBullet",
             maxSize: 50,
           });
 
-          // 👾 Enemies
+          // enemies
           this.enemies = this.physics.add.group();
 
-          // Spawn en enemy hvert 2. sekund
           this.time.addEvent({
             delay: 2000,
             callback: () => {
@@ -123,11 +122,9 @@ export default function SpaceShooter() {
               enemy.setScale(0.08);
               enemy.setVelocityY(100);
 
-              // 👇 Strammere hitbox på enemy
               enemy.body.setSize(enemy.width * 0.8, enemy.height * 0.8);
               enemy.body.setOffset(enemy.width * 0.1, enemy.height * 0.1);
 
-              // 👇 fienden begynner å skyte umiddelbart
               this.time.addEvent({
                 delay: PhaserLib.Math.Between(1000, 1800),
                 callback: () => {
@@ -140,13 +137,13 @@ export default function SpaceShooter() {
             loop: true,
           });
 
-          // 🏆 Score
+          // score
           this.scoreText = this.add.text(10, 10, "Score: 0", {
             fontSize: "20px",
             fill: "#fff",
           });
 
-          // ⚡ Collision: player bullets → enemies
+          // collision
           this.physics.add.overlap(
             this.bullets,
             this.enemies,
@@ -158,18 +155,16 @@ export default function SpaceShooter() {
             }
           );
 
-          // 💥 Collision: enemies → ship
           this.physics.add.overlap(this.enemies, this.ship, () => {
             this.endGame();
           });
 
-          // 💥 Collision: enemy bullets → ship
           this.physics.add.overlap(this.enemyBullets, this.ship, (bullet) => {
             bullet.destroy(); // fjern kula
             this.endGame();
           });
 
-          // 📱 Mobilknapper
+          // phone controls
           if (isMobile) {
             this.createMobileControls();
           }
@@ -178,14 +173,12 @@ export default function SpaceShooter() {
         update() {
           if (this.gameOver) return;
 
-          // 🚀 PC eller mobil-kontroller
           if (this.cursors.left.isDown || this.leftPressed) {
             this.ship.x -= 5;
           } else if (this.cursors.right.isDown || this.rightPressed) {
             this.ship.x += 5;
           }
 
-          // 🔫 Skyte
           if (
             (this.spaceKey &&
               PhaserLib.Input.Keyboard.JustDown(this.spaceKey)) ||
@@ -195,18 +188,15 @@ export default function SpaceShooter() {
             this.shootPressed = false;
           }
 
-          // Fjern player bullets utenfor
           this.bullets.getChildren().forEach((bullet) => {
             if (bullet.active && bullet.y < 0) bullet.destroy();
           });
 
-          // Fjern enemy bullets utenfor
           this.enemyBullets.getChildren().forEach((bullet) => {
             if (bullet.active && bullet.y > this.sys.game.config.height)
               bullet.destroy();
           });
 
-          // Game Over hvis enemy treffer bunnen
           this.enemies.getChildren().forEach((enemy) => {
             if (enemy.y > this.sys.game.config.height) this.endGame();
           });
@@ -226,7 +216,6 @@ export default function SpaceShooter() {
             );
             bullet.setVelocityY(-300);
 
-            // 👇 DETTE ER FEILEN SOM MANGLER
             bullet.body.setSize(4, 12);
             bullet.body.setOffset(0, 0);
           }
@@ -239,8 +228,7 @@ export default function SpaceShooter() {
             bullet.setVisible(true);
             bullet.setVelocityY(200);
 
-            // 👇 Strammere hitbox på enemy bullet
-            bullet.body.setSize(2, 8); // mye mindre treffboks
+            bullet.body.setSize(2, 8);
             bullet.body.setOffset(1, 2);
           }
         }
@@ -268,18 +256,17 @@ export default function SpaceShooter() {
             .setOrigin(0.5)
             .setInteractive()
             .on("pointerdown", () => {
-              this.scene.restart(); // reset alt
-              this.gameOver = false; // nullstill flagget
+              this.scene.restart();
+              this.gameOver = false;
             });
 
-          this.physics.pause(); // pause ved game over
+          this.physics.pause();
         }
 
         createMobileControls() {
           const btnSize = 60;
           const y = this.sys.game.config.height - 70;
 
-          // Venstre
           this.add
             .rectangle(50, y, btnSize, btnSize, 0x666666)
             .setInteractive()
@@ -287,7 +274,6 @@ export default function SpaceShooter() {
             .on("pointerup", () => (this.leftPressed = false))
             .on("pointerout", () => (this.leftPressed = false));
 
-          // Høyre
           this.add
             .rectangle(120, y, btnSize, btnSize, 0x666666)
             .setInteractive()
@@ -295,7 +281,6 @@ export default function SpaceShooter() {
             .on("pointerup", () => (this.rightPressed = false))
             .on("pointerout", () => (this.rightPressed = false));
 
-          // Skyte
           this.add
             .rectangle(
               this.sys.game.config.width - 70,
@@ -326,7 +311,7 @@ export default function SpaceShooter() {
         parent: "phaser-container",
         physics: { default: "arcade" },
         input: {
-          activePointers: 3, // 👈 touch support
+          activePointers: 3,
         },
         scene: [MainScene],
       };

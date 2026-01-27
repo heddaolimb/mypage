@@ -51,12 +51,10 @@ app.delete("/api/tasks/:id", async (req, res) => {
   res.json({ success: true });
 });
 
-// ✅ Legg til en enkel root route
 app.get("/", (req, res) => {
   res.send("🚀 Task Manager API is running. Use /api/tasks");
 });
 
-// 🚀 Connect til MongoDB Atlas
 const PORT = process.env.PORT || 5000;
 
 mongoose

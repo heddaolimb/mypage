@@ -193,18 +193,16 @@ main {
 }
 
 /* =====================================================
-   🔧 MOBILE FIX (TRYGG – INGEN INNHOLD KUTTES)
+   MOBILE FIX
    ===================================================== */
 
 @media (max-width: 768px) {
-  /* Viktig: IKKE global max-width på alt */
   html,
   body {
     width: 100%;
     overflow-x: hidden;
   }
 
-  /* Kun elementer som faktisk kan brekke layout */
   img,
   video,
   canvas,
@@ -213,7 +211,6 @@ main {
     height: auto;
   }
 
-  /* Skjul tagcloud på mobil (global klasse – korrekt sted) */
   .tagcloud {
     display: none !important;
   }

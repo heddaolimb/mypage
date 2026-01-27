@@ -24,7 +24,6 @@ export default function SentimentProject() {
       console.log("NER raw response:", data);
 
       if (res.ok) {
-        // ✅ merge tokens
         const merged = [];
         let current = null;
 
@@ -54,10 +53,10 @@ export default function SentimentProject() {
   };
 
   const colorMap = {
-    PER: "#4caf50", // grønn for personer
-    ORG: "#2196f3", // blå for organisasjoner
-    LOC: "#ff9800", // oransje for steder
-    MISC: "#9c27b0", // lilla for diverse
+    PER: "#4caf50",
+    ORG: "#2196f3",
+    LOC: "#ff9800",
+    MISC: "#9c27b0",
   };
 
   return (

@@ -10,7 +10,6 @@ export default function Chatbot() {
 
   const [input, setInput] = useState("");
 
-  // 👇 logger hvilken backend-URL som brukes
   console.log(
     "🌟 TEST BACKEND URL:",
     process.env.NEXT_PUBLIC_BACKEND_URL || "NOT FOUND"

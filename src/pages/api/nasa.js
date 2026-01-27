@@ -1,7 +1,7 @@
 // pages/api/nasa.js
 export default async function handler(req, res) {
   try {
-    const apiKey = process.env.NASA_API_KEY; // legg inn nøkkel i .env.local
+    const apiKey = process.env.NASA_API_KEY;
     const response = await fetch(
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
     );

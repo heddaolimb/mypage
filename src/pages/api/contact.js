@@ -2,12 +2,11 @@ import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).end(); // Only allow POST
+    return res.status(405).end();
   }
 
   const { name, email, message } = req.body;
 
-  // Gmail transport
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -17,9 +16,8 @@ export default async function handler(req, res) {
   });
 
   try {
-    // 1️⃣ Send til deg selv
     const info = await transporter.sendMail({
-      from: `"Hedda Olimb" <${process.env.EMAIL_USER}>`, // ✅ profesjonell avsender
+      from: `"Hedda Olimb" <${process.env.EMAIL_USER}>`,
       replyTo: email,
       to: process.env.EMAIL_TO,
       subject: `Kontakt fra ${name}`,
@@ -34,9 +32,8 @@ export default async function handler(req, res) {
 
     console.log("Message sent to you: %s", info.messageId);
 
-    // 2️⃣ Bekreftelse til avsenderen
     const confirm = await transporter.sendMail({
-      from: `"Hedda Olimb" <${process.env.EMAIL_USER}>`, // ✅ ser ut som vanlig mail fra deg
+      from: `"Hedda Olimb" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: "Thank you for contacting me",
       html: `

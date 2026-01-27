@@ -131,7 +131,7 @@
 .aboutImage {
   position: relative;
   display: block;
-  max-width: 280px; /* ← stopper gigantisk bilde */
+  max-width: 280px;
   margin: 0 auto;
 }
 
@@ -571,10 +571,10 @@
 /* Layout */
 .jobSection {
   display: flex;
-  flex-direction: column; /* tabs over content */
+  flex-direction: column;
   gap: 2rem;
   margin: 2.5rem auto 0;
-  max-width: 750px; /* kontrollert, proff bredde */
+  max-width: 750px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
@@ -671,7 +671,7 @@
   background: none;
   padding: 0;
   border-radius: 0;
-  font-size: 2.5rem; /* system */
+  font-size: 2.5rem;
   color: #b9b9b9;
   font-family: "VemanemX", sans-serif;
   font-weight: 800;
@@ -683,7 +683,7 @@
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem; /* system */
+  gap: 2.5rem;
   max-width: 1200px;
   margin: 2.5rem auto 0;
   align-items: start;
@@ -895,7 +895,7 @@
   background: none;
   padding: 0;
   border-radius: 0;
-  font-size: 2.5rem; /* system */
+  font-size: 2.5rem;
   color: #b9b9b9;
   font-family: "VemanemX", sans-serif;
   font-weight: 800;
@@ -1001,9 +1001,9 @@
   background: rgba(0, 0, 0, 0.9);
   color: #969696;
   text-align: center;
-  padding: 1.5rem; /* litt mer luft, matcher seksjonsrytmen */
+  padding: 1.5rem;
   font-size: 0.9rem;
-  margin-top: 0; /* footer skal avslutte siden clean */
+  margin-top: 0;
   font-family: "Poppins", sans-serif;
 }
 
@@ -1012,14 +1012,12 @@
    ========================= */
 
 @media (max-width: 1024px) {
-  /* SECTION er det som gjør siden smal */
   .section {
     padding-left: 0 !important;
     padding-right: 0 !important;
     align-items: stretch;
   }
 
-  /* Full-bleed seksjoner – riktig på mobil */
   .servicesOuter,
   .educationOuter,
   .workOuter,
@@ -1186,7 +1184,6 @@
    ========================================================= */
 
 @media (max-width: 1024px) {
-  /* 1. STOPP full-bleed hack på mobil */
   .servicesOuter,
   .educationOuter,
   .workOuter,
