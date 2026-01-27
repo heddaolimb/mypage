@@ -206,7 +206,7 @@ export default function Home() {
         {
           id: "heimat-app",
           title: "Heimat App",
-          image: "/images/heimatapp.png",
+          image: "/icons/iphone.svg",
           description: (
             <>
               We developed a{" "}
@@ -248,6 +248,7 @@ export default function Home() {
             "#UXUI",
           ],
           link: "https://appheimat.netlify.app/",
+          extraImages: ["/images/Heimat.png"],
           extraLink:
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
@@ -255,7 +256,7 @@ export default function Home() {
         {
           id: "flower-power",
           title: "Flower Power – Cosmo & Wanda",
-          image: "/images/cosmowanda.jpg",
+          image: "/icons/flower.svg",
           description: (
             <>
               We developed Flower Power, a smart plant care prototype designed
@@ -297,7 +298,7 @@ export default function Home() {
         {
           id: "portfolio-site",
           title: "My Website",
-          image: "/images/code.png",
+          image: "/icons/website.svg",
           description: (
             <>
               I designed and developed a fully responsive, animated portfolio
@@ -345,7 +346,7 @@ export default function Home() {
         {
           id: "feedback-board",
           title: "Feedback Board",
-          image: "/icons/mongodb.svg",
+          image: "/icons/feedback.svg",
           description: (
             <>
               A small <span className={styles.highlight}>full-stack demo</span>{" "}
@@ -578,7 +579,7 @@ export default function Home() {
         {
           id: "heimat-app",
           title: "Heimat App",
-          image: "/images/heimatapp.png",
+          image: "/icons/iphone.svg",
           description: (
             <>
               Vi utviklet en{" "}
@@ -643,7 +644,7 @@ export default function Home() {
         {
           id: "flower-power",
           title: "Flower Power – Cosmo & Wanda",
-          image: "/images/cosmowanda.jpg",
+          image: "/icons/flower.svg",
           description: (
             <>
               Flower Power er en smart plantepleieprototyp laget for å hjelpe
@@ -690,7 +691,7 @@ export default function Home() {
         {
           id: "portfolio-site",
           title: "Min nettside",
-          image: "/images/code.png",
+          image: "/icons/website.svg",
           description:
             "En fullt responsiv, animert porteføljeside bygget med Next.js, React Hooks og CSS Modules for å vise utdanning, erfaring og prosjekter. Inneholder scroll-animasjoner med IntersectionObserver, interaktive jobbtabs og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Jobb, Prosjekter, Kontakt.",
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
@@ -728,7 +729,7 @@ export default function Home() {
         {
           id: "feedback-board",
           title: "Feedback Board",
-          image: "/icons/mongodb.svg",
+          image: "/icons/feedback.svg",
           description: (
             <>
               En liten <span className={styles.highlight}>fullstack-demo</span>{" "}
@@ -1755,25 +1756,7 @@ export default function Home() {
                     }
                   }}
                 >
-                  <img
-                    src={proj.image}
-                    alt=""
-                    className={
-                      proj.id === "feedback-board"
-                        ? styles.mongoDbImage
-                        : proj.id === "python-chatbot"
-                        ? styles.smallProjectImage
-                        : proj.id === "nasa-api"
-                        ? styles.nasaImage
-                        : proj.id === "task-manager"
-                        ? styles.taskManagerImage
-                        : proj.id === "weather-cli"
-                        ? styles.cliImage
-                        : proj.id === "space-shooter"
-                        ? styles.spaceShooterImage
-                        : styles.projectImage
-                    }
-                  />
+                  <img src={proj.image} alt="" className={styles.projectIcon} />
 
                   <h3>{proj.title}</h3>
                 </article>

@@ -4,8 +4,7 @@ export default async function handler(req, res) {
   try {
     const client = await clientPromise;
 
-    // 👇 VIKTIG: bruk database-navnet direkte
-    const db = client.db("portfolio"); // 🔁 bytt hvis DB-en din heter noe annet
+    const db = client.db("portfolio");
     const collection = db.collection("feedbacks");
 
     if (req.method === "GET") {

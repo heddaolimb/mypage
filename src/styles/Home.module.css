@@ -736,6 +736,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 /* === PROJECT DESCRIPTION (GRID) === */
@@ -859,20 +860,6 @@
 }
 
 /* === IMAGE VARIANTS === */
-.smallProjectImage {
-  height: 200px;
-  object-fit: contain;
-}
-
-.mongoDbImage {
-  height: 200px;
-  object-fit: contain;
-}
-
-.cliImage {
-  height: 240px;
-  object-fit: contain;
-}
 
 /* === PROJECT IMAGES (MULTI) === */
 .projectImages {
@@ -1500,4 +1487,16 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+/* === PROJECT ICONS – ONE SIZE FOR ALL === */
+.projectIcon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+
+  object-fit: contain;
+
+  /* SVG color control */
+  fill: #4c0d9a;
+  color: #4c0d9a;
 }
