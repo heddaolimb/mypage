@@ -120,6 +120,41 @@ export default function Home() {
         "Outside of this, I love drawing and painting, music, traveling, watching movies and series, and reading books – especially fantasy and sci-fi. And above all, I’m a huge dog lover.",
         "My goal is to keep challenging myself while contributing to meaningful projects where design and development come together to make a difference.",
       ],
+      servicesTitle: "What I Can Do and My Skills",
+      services: {
+        webDev: {
+          title: "Web Development",
+          text: "Building modern, responsive websites with React & Next.js.",
+        },
+        uiux: {
+          title: "UI/UX Design",
+          text: "Creating intuitive user interfaces, wireframes, and prototypes.",
+        },
+        api: {
+          title: "API Integrations",
+          text: "Connecting external APIs like NASA, weather data, or AI models.",
+        },
+        seo: {
+          title: "SEO & Optimization",
+          text: "Optimizing for performance, accessibility (WCAG), and SEO.",
+        },
+        fast: {
+          title: "Fast",
+          text: "Delivering quick, effective solutions.",
+        },
+        responsive: {
+          title: "Responsive",
+          text: "Designs that adapt to mobile, tablet, and desktop.",
+        },
+        intuitive: {
+          title: "Intuitive",
+          text: "Putting the user at the center of design and development.",
+        },
+        dynamic: {
+          title: "Dynamic",
+          text: "Exploring new tech like AI, game dev, and IoT.",
+        },
+      },
 
       educationTitle: "Education",
       education: [
@@ -500,6 +535,41 @@ export default function Home() {
         "Utenom dette liker jeg å tegne og male, høre på musikk, reise, se filmer og serier, samt lese bøker – spesielt innen fantasy og sci-fi. Og aller mest elsker jeg hunder.",
         "Målet mitt er å fortsette å utfordre meg selv, samtidig som jeg bidrar til meningsfulle prosjekter der design og utvikling møtes for å skape noe som virkelig betyr noe.",
       ],
+      servicesTitle: "Hva jeg kan og mine ferdigheter",
+      services: {
+        webDev: {
+          title: "Webutvikling",
+          text: "Bygger moderne og responsive nettsider med React og Next.js.",
+        },
+        uiux: {
+          title: "UI/UX-design",
+          text: "Lager intuitive brukergrensesnitt, wireframes og prototyper.",
+        },
+        api: {
+          title: "API-integrasjoner",
+          text: "Kobler eksterne API-er som NASA, værdata og AI-modeller.",
+        },
+        seo: {
+          title: "SEO og optimalisering",
+          text: "Optimaliserer for ytelse, universell utforming (WCAG) og SEO.",
+        },
+        fast: {
+          title: "Rask",
+          text: "Leverer raske og effektive løsninger.",
+        },
+        responsive: {
+          title: "Responsiv",
+          text: "Design som tilpasser seg mobil, nettbrett og desktop.",
+        },
+        intuitive: {
+          title: "Intuitiv",
+          text: "Setter brukeren i sentrum av design og utvikling.",
+        },
+        dynamic: {
+          title: "Dynamisk",
+          text: "Utforsker ny teknologi som AI, spillutvikling og IoT.",
+        },
+      },
 
       educationTitle: "Utdanning",
       education: [
@@ -1499,7 +1569,7 @@ export default function Home() {
         >
           <div ref={servicesRef} className={styles.servicesOuter}>
             <h2 id="services-title" className={styles.sectionTitle}>
-              What I Can Do and My Skills
+              {t.servicesTitle}
             </h2>
 
             <div className={styles.servicesGrid}>
@@ -1512,10 +1582,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   💻
                 </div>
-                <h3>Web Development</h3>
-                <p>
-                  Building modern, responsive websites with React & Next.js.
-                </p>
+                <h3>{t.services.webDev.title}</h3>
+                <p>{t.services.webDev.text}</p>
               </div>
 
               <div
@@ -1527,11 +1595,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   🎨
                 </div>
-                <h3>UI/UX Design</h3>
-                <p>
-                  Creating intuitive user interfaces, wireframes, and
-                  prototypes.
-                </p>
+                <h3>{t.services.uiux.title}</h3>
+                <p>{t.services.uiux.text}</p>
               </div>
 
               <div
@@ -1543,11 +1608,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   🔗
                 </div>
-                <h3>API Integrations</h3>
-                <p>
-                  Connecting external APIs like NASA, weather data, or AI
-                  models.
-                </p>
+                <h3>{t.services.api.title}</h3>
+                <p>{t.services.api.text}</p>
               </div>
 
               <div
@@ -1559,10 +1621,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   ⚡
                 </div>
-                <h3>SEO & Optimization</h3>
-                <p>
-                  Optimizing for performance, accessibility (WCAG), and SEO.
-                </p>
+                <h3>{t.services.seo.title}</h3>
+                <p>{t.services.seo.text}</p>
               </div>
 
               <div
@@ -1574,8 +1634,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   🚀
                 </div>
-                <h3>Fast</h3>
-                <p>Delivering quick, effective solutions.</p>
+                <h3>{t.services.fast.title}</h3>
+                <p>{t.services.fast.text}</p>
               </div>
 
               <div
@@ -1587,8 +1647,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   📱
                 </div>
-                <h3>Responsive</h3>
-                <p>Designs that adapt to mobile, tablet, and desktop.</p>
+                <h3>{t.services.responsive.title}</h3>
+                <p>{t.services.responsive.text}</p>
               </div>
 
               <div
@@ -1600,8 +1660,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   ✨
                 </div>
-                <h3>Intuitive</h3>
-                <p>Putting the user at the center of design and development.</p>
+                <h3>{t.services.intuitive.title}</h3>
+                <p>{t.services.intuitive.text}</p>
               </div>
 
               <div
@@ -1613,8 +1673,8 @@ export default function Home() {
                 <div className={styles.iconPlaceholder} aria-hidden="true">
                   🌍
                 </div>
-                <h3>Dynamic</h3>
-                <p>Exploring new tech like AI, game dev, and IoT.</p>
+                <h3>{t.services.dynamic.title}</h3>
+                <p>{t.services.dynamic.text}</p>
               </div>
             </div>
           </div>
