@@ -94,7 +94,7 @@ export default function Home() {
   const translations = {
     en: {
       meta: {
-        title: "Hedda Olimb – Website",
+        title: "Hedda Olimb",
         description:
           "Website of Hedda Olimb – Web Developer. Explore projects, education, work experience, and contact.",
         keywords:
@@ -305,7 +305,7 @@ export default function Home() {
             "#UXUI",
           ],
           link: "https://appheimat.netlify.app/",
-          extraImages: ["/images/Heimat.png"],
+          extraImages: ["/images/heimatapp.png"],
           extraLink:
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
@@ -366,20 +366,50 @@ export default function Home() {
           image: "/icons/website.svg",
           description: (
             <>
-              I designed and developed a fully responsive, animated portfolio
-              website using Next.js, React Hooks, and CSS Modules to present my
-              education, experience, and projects in a dynamic and user-friendly
-              way. The site features scroll-based animations with
-              IntersectionObserver, interactive job tabs with stateful display
-              logic, and dynamic project rendering using structured data
-              objects.
+              This project is a personal{" "}
+              <span className={styles.highlight}>portfolio website</span> that
+              showcases who I am and what I can do. The website is built with{" "}
+              <span className={styles.highlight}>Next.js</span> and{" "}
+              <span className={styles.highlight}>React</span>, and includes
+              sections for presentation, education, work experience, projects,
+              and contact, as well as modals for project details and integrated
+              demos. In this project,{" "}
+              <span className={styles.highlight}>HTML</span>,{" "}
+              <span className={styles.highlight}>CSS</span> and{" "}
+              <span className={styles.highlight}>JavaScript</span> are used on
+              the frontend, with <span className={styles.highlight}>React</span>{" "}
+              and <span className={styles.highlight}>Next.js</span> as the
+              framework. Styling is done using{" "}
+              <span className={styles.highlight}>CSS Modules</span>, media
+              queries, animations, and responsive adaptation for mobile, tablet,
+              and desktop. The website includes dynamic navigation, language
+              selection (Norwegian and English), a contact form,{" "}
+              <span className={styles.highlight}>SEO metadata</span>, and
+              accessibility attributes. The projects integrated into the website
+              use, among other things,{" "}
+              <span className={styles.highlight}>
+                API routes, Node.js, Express, Python and Flask
+              </span>
+              . <span className={styles.highlight}>MongoDB</span> is used as the
+              database in fullstack projects, with{" "}
+              <span className={styles.highlight}>CRUD</span> functionality and
+              data storage. APIs are tested and validated with{" "}
+              <span className={styles.highlight}>Postman</span>, and several
+              projects communicate between frontend and backend via{" "}
+              <span className={styles.highlight}>fetch</span> and{" "}
+              <span className={styles.highlight}>JSON</span>. External APIs are
+              used to fetch real-time data, including NASA Open API and weather
+              APIs. <span className={styles.highlight}>Python</span> is used
+              both for backend APIs and as a command-line tool (CLI), with
+              handling of API calls,{" "}
+              <span className={styles.highlight}>JSON</span> data, and error
+              handling. Game development is represented through a browser-based
+              game built with{" "}
+              <span className={styles.highlight}>Phaser.js</span>.
             </>
           ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
-          extraImages: [
-            "/images/feedback_postman.png",
-            "/images/feedback_code.png",
-          ],
+          extraImages: ["/images/mypage.png"],
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
@@ -593,7 +623,7 @@ export default function Home() {
     // NORSK OVERSETTELSE
     no: {
       meta: {
-        title: "Hedda Olimb – Nettside",
+        title: "Hedda Olimb",
         description:
           "Nettside for Hedda Olimb – webutvikler. Utforsk prosjekter, utdanning, jobberfaring,kontakt.",
         keywords:
@@ -798,7 +828,7 @@ export default function Home() {
             "#UXUI",
           ],
           link: "https://appheimat.netlify.app/",
-          extraImages: ["/images/Heimat.png"],
+          extraImages: ["/images/heimatapp.png"],
           extraLink:
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
@@ -856,19 +886,50 @@ export default function Home() {
           image: "/icons/website.svg",
           description: (
             <>
-              En fullt responsiv, animert porteføljeside bygget med Next.js,
-              React Hooks og CSS Modules for å vise utdanning, erfaring og
-              prosjekter. Inneholder scroll-animasjoner med
-              IntersectionObserver, interaktive jobbtabs og dynamisk
-              prosjektrendering. Seksjoner: Om meg, Utdanning, Jobb, Prosjekter,
-              Kontakt.
+              Dette prosjektet er en personlig{" "}
+              <span className={styles.highlight}>porteføljenettside</span> som
+              viser frem hvem jeg er og hva jeg kan. Nettsiden er bygget med{" "}
+              <span className={styles.highlight}>Next.js</span> og{" "}
+              <span className={styles.highlight}>React</span>, og inneholder
+              seksjoner for presentasjon, utdanning, arbeidserfaring, prosjekter
+              og kontakt, samt modaler for prosjektdetaljer og integrerte
+              demoer. I prosjektet er det brukt{" "}
+              <span className={styles.highlight}>HTML</span>,{" "}
+              <span className={styles.highlight}>CSS</span> og{" "}
+              <span className={styles.highlight}>JavaScript</span> på frontend,
+              med <span className={styles.highlight}>React</span> og{" "}
+              <span className={styles.highlight}>Next.js</span> som rammeverk.
+              Styling er gjort med{" "}
+              <span className={styles.highlight}>CSS Modules</span>, media
+              queries, animasjoner og responsiv tilpasning for mobil, nettbrett
+              og desktop. Nettsiden inkluderer dynamisk navigasjon, språkvalg
+              (norsk og engelsk), skjema for kontakt,{" "}
+              <span className={styles.highlight}>SEO-metadata</span> og
+              tilgjengelighetsattributter. Prosjektene som er integrert i
+              nettsiden bruker blant annet{" "}
+              <span className={styles.highlight}>
+                API-ruter, Node.js, Express, Python og Flask
+              </span>
+              . Det er brukt <span className={styles.highlight}>MongoDB</span>{" "}
+              som database i fullstack-prosjekter, med{" "}
+              <span className={styles.highlight}>CRUD</span>-funksjonalitet og
+              lagring av data. API-er er testet og validert med{" "}
+              <span className={styles.highlight}>Postman</span>, og flere
+              prosjekter kommuniserer mellom frontend og backend via{" "}
+              <span className={styles.highlight}>fetch</span> og{" "}
+              <span className={styles.highlight}>JSON</span>. Eksterne API-er er
+              brukt for å hente sanntidsdata, blant annet NASA Open API og
+              vær-API-er. <span className={styles.highlight}>Python</span> er
+              brukt både til backend-API-er og som kommandolinjeverktøy (CLI),
+              med håndtering av API-kall,{" "}
+              <span className={styles.highlight}>JSON</span>-data og
+              feilhåndtering. Spillutvikling er representert gjennom et
+              nettleserbasert spill bygget med{" "}
+              <span className={styles.highlight}>Phaser.js</span>.
             </>
           ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
-          extraImages: [
-            "/images/feedback_postman.png",
-            "/images/feedback_code.png",
-          ],
+          extraImages: ["/images/mypage.png"],
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
