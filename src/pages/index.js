@@ -1351,6 +1351,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="language" content={language === "no" ? "no" : "en"} />
 
+        {/* FAVICON */}
+        <link rel="icon" type="image/png" href="/favicon.png" />
+
         <meta property="og:title" content={t.meta.title} />
         <meta property="og:description" content={t.meta.description} />
         <meta property="og:type" content="website" />
