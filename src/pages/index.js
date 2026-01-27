@@ -294,6 +294,7 @@ export default function Home() {
             "#Automation",
             "#UXDesign",
           ],
+          extraImages: ["/images/cosmowanda.jpg"],
         },
         {
           id: "portfolio-site",
@@ -311,6 +312,10 @@ export default function Home() {
             </>
           ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
+          extraImages: [
+            "/images/feedback_postman.png",
+            "/images/feedback_code.png",
+          ],
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
@@ -638,6 +643,7 @@ export default function Home() {
             "#UXUI",
           ],
           link: "https://appheimat.netlify.app/",
+          extraImages: ["/images/Heimat.png"],
           extraLink:
             "https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3078733?show=full&locale-attribute=en",
         },
@@ -687,14 +693,27 @@ export default function Home() {
             "#Automation",
             "#UXDesign",
           ],
+          extraImages: ["/images/cosmowanda.jpg"],
         },
         {
           id: "portfolio-site",
           title: "Min nettside",
           image: "/icons/website.svg",
-          description:
-            "En fullt responsiv, animert porteføljeside bygget med Next.js, React Hooks og CSS Modules for å vise utdanning, erfaring og prosjekter. Inneholder scroll-animasjoner med IntersectionObserver, interaktive jobbtabs og dynamisk prosjektrendering. Seksjoner: Om meg, Utdanning, Jobb, Prosjekter, Kontakt.",
+          description: (
+            <>
+              En fullt responsiv, animert porteføljeside bygget med Next.js,
+              React Hooks og CSS Modules for å vise utdanning, erfaring og
+              prosjekter. Inneholder scroll-animasjoner med
+              IntersectionObserver, interaktive jobbtabs og dynamisk
+              prosjektrendering. Seksjoner: Om meg, Utdanning, Jobb, Prosjekter,
+              Kontakt.
+            </>
+          ),
           tech: ["#NextJS", "#React", "#JavaScript", "#CSSModules"],
+          extraImages: [
+            "/images/feedback_postman.png",
+            "/images/feedback_code.png",
+          ],
           link: "https://github.com/heddaolimb/mypage.git",
         },
         {
@@ -1815,41 +1834,23 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      {selectedProject.id !== "python-chatbot" &&
-                        selectedProject.id !== "feedback-board" &&
-                        selectedProject.id !== "nasa-api" &&
-                        selectedProject.id !== "task-manager" &&
-                        selectedProject.id !== "weather-cli" &&
-                        selectedProject.id !== "space-shooter" && (
-                          <img
-                            src={selectedProject.image}
-                            alt={selectedProject.title}
-                            className={styles.nasaImageLarge}
-                          />
-                        )}
-
                       <h3 id="project-title">{selectedProject.title}</h3>
                       <div className={styles.projectDescription}>
                         {selectedProject.description}
                       </div>
-
-                      {(selectedProject.id === "python-chatbot" ||
-                        selectedProject.id === "feedback-board" ||
-                        selectedProject.id === "task-manager" ||
-                        selectedProject.id === "weather-cli") &&
-                        selectedProject.extraImages && (
-                          <div className={styles.projectImages}>
-                            {selectedProject.extraImages.map((img, i) => (
-                              <img
-                                key={i}
-                                src={img}
-                                alt={`${selectedProject.title} screenshot ${
-                                  i + 1
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        )}
+                      {selectedProject.extraImages && (
+                        <div className={styles.projectImages}>
+                          {selectedProject.extraImages.map((img, i) => (
+                            <img
+                              key={i}
+                              src={img}
+                              alt={`${selectedProject.title} screenshot ${
+                                i + 1
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      )}
 
                       <div className={styles.techList}>
                         {selectedProject.tech.map((tag, i) => (
