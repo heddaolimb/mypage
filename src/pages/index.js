@@ -9,6 +9,7 @@ import NasaProject from "../components/NasaProject";
 import TaskManager from "../components/TaskManager";
 import WeatherWidget from "../components/WeatherWidget";
 import SpaceShooter from "../components/SpaceShooter";
+import StockDashboard from "../components/StockDashboard";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -603,6 +604,28 @@ export default function Home() {
           ],
           link: null,
         },
+        {
+          id: "stock-dashboard",
+          title: "Stock & Risk Analysis Dashboard",
+          image: "/icons/chart.svg",
+          description: (
+            <>
+              An interactive financial dashboard for analyzing stock performance
+              and risk. Includes calculations such as{" "}
+              <span className={styles.highlight}>returns</span>,{" "}
+              <span className={styles.highlight}>moving averages</span>,{" "}
+              <span className={styles.highlight}>volatility</span> and{" "}
+              <span className={styles.highlight}>drawdown</span>.
+              <br />
+              <br />
+              Built with <span className={styles.highlight}>Python</span>,{" "}
+              <span className={styles.highlight}>pandas</span> and{" "}
+              <span className={styles.highlight}>financial data APIs</span>.
+            </>
+          ),
+          tech: ["#Python", "#Pandas", "#Finance", "#DataAnalysis", "#API"],
+          link: null,
+        },
       ],
 
       contactTitle: "Contact",
@@ -1120,6 +1143,28 @@ export default function Home() {
           ],
           link: null,
         },
+        {
+          id: "stock-dashboard",
+          title: "Aksje- og risikoanalyse dashboard",
+          image: "/icons/chart.svg",
+          description: (
+            <>
+              Et interaktivt finansielt dashboard for analyse av aksjer og
+              risiko. Inkluderer beregninger som{" "}
+              <span className={styles.highlight}>avkastning</span>,{" "}
+              <span className={styles.highlight}>glidende gjennomsnitt</span>,{" "}
+              <span className={styles.highlight}>volatilitet</span> og{" "}
+              <span className={styles.highlight}>drawdown</span>.
+              <br />
+              <br />
+              Bygget med <span className={styles.highlight}>Python</span>,{" "}
+              <span className={styles.highlight}>pandas</span> og{" "}
+              <span className={styles.highlight}>finansielle API-er</span>.
+            </>
+          ),
+          tech: ["#Python", "#Pandas", "#Finans", "#Dataanalyse", "#API"],
+          link: null,
+        },
       ],
 
       contactTitle: "Kontakt",
@@ -1153,7 +1198,7 @@ export default function Home() {
 
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowJobs(true),
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (jobsRef.current) observer.observe(jobsRef.current);
@@ -1169,7 +1214,7 @@ export default function Home() {
 
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowAboutItems(true),
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (aboutRef.current) observer.observe(aboutRef.current);
@@ -1190,7 +1235,7 @@ export default function Home() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (educationRef.current) observer.observe(educationRef.current);
@@ -1207,7 +1252,7 @@ export default function Home() {
 
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowProjects(true),
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
     if (projectsRef.current) observer.observe(projectsRef.current);
@@ -1234,7 +1279,7 @@ export default function Home() {
           observer.disconnect();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     const node = aboutRef.current;
@@ -1284,7 +1329,7 @@ export default function Home() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (servicesRef.current) observer.observe(servicesRef.current);
@@ -1303,7 +1348,7 @@ export default function Home() {
 
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setShowContact(true),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (contactRef.current) observer.observe(contactRef.current);
@@ -1995,7 +2040,11 @@ export default function Home() {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="project-title"
-                onClick={() => setSelectedProject(null)}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) {
+                    setSelectedProject(null);
+                  }
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") {
                     setSelectedProject(null);
@@ -2075,6 +2124,9 @@ export default function Home() {
                       {selectedProject.id === "task-manager" && <TaskManager />}
                       {selectedProject.id === "weather-cli" && (
                         <WeatherWidget />
+                      )}
+                      {selectedProject.id === "stock-dashboard" && (
+                        <StockDashboard />
                       )}
 
                       {selectedProject.link && (

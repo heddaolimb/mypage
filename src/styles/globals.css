@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
 
 /* === VIEWPORT SAFETY FIX (MOBIL) === */
 html,
@@ -83,7 +82,10 @@ section[id] {
 .tagcloud .tagcloud--item {
   color: #878787;
   text-shadow: 0 0 8px rgba(129, 66, 255, 0.35);
-  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    text-shadow 0.25s ease;
 }
 
 .tagcloud a:hover,
