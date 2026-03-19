@@ -623,7 +623,14 @@ export default function Home() {
               <span className={styles.highlight}>financial data APIs</span>.
             </>
           ),
-          tech: ["#Python", "#Pandas", "#Finance", "#DataAnalysis", "#API"],
+          tech: [
+            "#Python",
+            "#Pandas",
+            "#Finance",
+            "#DataAnalysis",
+            "#API",
+            "#yfinance",
+          ],
           link: null,
         },
       ],
@@ -1162,7 +1169,14 @@ export default function Home() {
               <span className={styles.highlight}>finansielle API-er</span>.
             </>
           ),
-          tech: ["#Python", "#Pandas", "#Finans", "#Dataanalyse", "#API"],
+          tech: [
+            "#Python",
+            "#Pandas",
+            "#Finans",
+            "#Dataanalyse",
+            "#API",
+            "#yfinance",
+          ],
           link: null,
         },
       ],

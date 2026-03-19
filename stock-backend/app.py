@@ -11,7 +11,7 @@ def get_stock():
     symbol = request.args.get("symbol", "AAPL")
 
     data = yf.download(symbol, period="1y", auto_adjust=True)
-    data.columns = data.columns.map(str)
+    data.columns = [col[0] for col in data.columns]
 
     data.reset_index(inplace=True)
     data["Date"] = data["Date"].astype(str)
