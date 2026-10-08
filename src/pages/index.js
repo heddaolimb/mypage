@@ -116,7 +116,7 @@ export default function Home() {
 
       aboutTitle: "About Me",
       aboutItems: [
-        "My name is Hedda, 26 years old from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
+        "My name is Hedda, 27 years old from Norway with a bachelor’s degree in Web Development from NTNU – the Norwegian University of Science and Technology.",
         "I’m passionate about creating engaging and user-friendly digital experiences. I enjoy combining creativity and technology to bring ideas to life, whether it’s building sleek or fun websites, designing intuitive interfaces, or experimenting with new ideas.",
         "Outside of this, I love drawing and painting, music, traveling, dogs, movies, and reading books – especially fantasy and sci-fi genres. I’m also interested in AI, emerging technologies, and technology in general.",
         "My goal is to keep challenging myself while contributing to meaningful projects where design and development come together to make a difference.",
@@ -404,7 +404,10 @@ export default function Home() {
               both for backend APIs and as a command-line tool (CLI), with
               handling of API calls,{" "}
               <span className={styles.highlight}>JSON</span> data, and error
-              handling. Game development is represented through a browser-based
+              handling. <span className={styles.highlight}>Pandas</span> and{" "}
+              <span className={styles.highlight}>yfinance</span> are also used
+              for financial data analysis and processing in the Stock Dashboard
+              project. Game development is represented through a browser-based
               game built with{" "}
               <span className={styles.highlight}>Phaser.js</span>.
             </>
@@ -607,7 +610,7 @@ export default function Home() {
         {
           id: "stock-dashboard",
           title: "Stock & Risk Analysis Dashboard",
-          image: "/icons/chart.svg",
+          image: "/icons/stock.svg",
           description: (
             <>
               An interactive financial dashboard for analyzing stock performance
@@ -621,6 +624,11 @@ export default function Home() {
               Built with <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>pandas</span> and{" "}
               <span className={styles.highlight}>financial data APIs</span>.
+              <br />
+              <br />
+              The backend is deployed on Render’s free plan. It may take up to
+              20-30 seconds to respond the first time as the server wakes up.
+              After that, the dashboard works normally. This is not a bug.
             </>
           ),
           tech: [
@@ -674,7 +682,7 @@ export default function Home() {
 
       aboutTitle: "Om meg",
       aboutItems: [
-        "Jeg heter Hedda, er 26 år og kommer fra Norge, med en bachelorgrad i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
+        "Jeg heter Hedda, er 27 år og kommer fra Norge, med en bachelorgrad i webutvikling fra NTNU – Norges teknisk-naturvitenskapelige universitet.",
         "Jeg brenner for å skape engasjerende og brukervennlige digitale opplevelser. Jeg liker å kombinere kreativitet og teknologi for å gjøre ideer til virkelighet, enten det er å bygge stilrene eller morsomme nettsider, designe intuitive grensesnitt eller eksperimentere med nye ideer.",
         "Utenom dette liker jeg å tegne og male, høre på musikk, reise, hunder, filmer og å lese bøker – spesielt innen fantasy- og sci-fi-sjangeren. Jeg er også interessert i AI, fremvoksende teknologier og teknologi generelt.",
         "Målet mitt er å fortsette å utfordre meg selv samtidig som jeg bidrar til meningsfulle prosjekter der design og utvikling kommer sammen for å utgjøre en forskjell.",
@@ -953,7 +961,10 @@ export default function Home() {
               brukt både til backend-API-er og som kommandolinjeverktøy (CLI),
               med håndtering av API-kall,{" "}
               <span className={styles.highlight}>JSON</span>-data og
-              feilhåndtering. Spillutvikling er representert gjennom et
+              feilhåndtering. <span className={styles.highlight}>Pandas</span>{" "}
+              og <span className={styles.highlight}>yfinance</span> brukes også
+              til analyse og behandling av finansielle data i Stock
+              Dashboard-prosjektet. Spillutvikling er representert gjennom et
               nettleserbasert spill bygget med{" "}
               <span className={styles.highlight}>Phaser.js</span>.
             </>
@@ -1153,7 +1164,7 @@ export default function Home() {
         {
           id: "stock-dashboard",
           title: "Aksje- og risikoanalyse dashboard",
-          image: "/icons/chart.svg",
+          image: "/icons/stock.svg",
           description: (
             <>
               Et interaktivt finansielt dashboard for analyse av aksjer og
@@ -1167,6 +1178,11 @@ export default function Home() {
               Bygget med <span className={styles.highlight}>Python</span>,{" "}
               <span className={styles.highlight}>pandas</span> og{" "}
               <span className={styles.highlight}>finansielle API-er</span>.
+              <br />
+              <br />
+              Backenden er distribuert på Render sin gratisplan. Det kan ta
+              opptil 20-30 sekunder å svare første gang, mens serveren våkner.
+              Etter det fungerer dashboardet normalt. Dette er ikke en feil.
             </>
           ),
           tech: [

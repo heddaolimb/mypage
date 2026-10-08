@@ -12,7 +12,7 @@ export default function Chatbot() {
 
   console.log(
     "🌟 TEST BACKEND URL:",
-    process.env.NEXT_PUBLIC_BACKEND_URL || "NOT FOUND"
+    process.env.NEXT_PUBLIC_BACKEND_URL || "NOT FOUND",
   );
 
   const sendMessage = async () => {
@@ -43,22 +43,32 @@ export default function Chatbot() {
 
   return (
     <div
+      onClick={(e) => e.stopPropagation()}
       style={{
-        padding: "1rem",
-        background: "#161624",
-        borderRadius: "12px",
-        color: "white",
-        marginTop: "2rem",
+        position: "relative",
+        zIndex: 20,
+        padding: "10px",
+        fontFamily: "inherit",
       }}
     >
+      <h4
+        style={{
+          marginBottom: "18px",
+          fontSize: "20px",
+        }}
+      >
+        AI Chatbot
+      </h4>
+
       <div
         style={{
           maxHeight: "200px",
           overflowY: "auto",
-          marginBottom: "1rem",
-          border: "3px solid #bcbcbcff",
+          marginBottom: "25px",
+          border: "1px solid rgba(255,255,255,0.2)",
           borderRadius: "8px",
-          padding: "0.5rem",
+          padding: "12px",
+          background: "rgba(255,255,255,0.06)",
         }}
       >
         {messages.map((m, i) => (
@@ -66,7 +76,7 @@ export default function Chatbot() {
             key={i}
             style={{
               textAlign: m.sender === "user" ? "right" : "left",
-              margin: "0.3rem 0",
+              margin: "0.5rem 0",
             }}
           >
             <strong>{m.sender === "user" ? "You: " : "Bot: "}</strong>
@@ -75,34 +85,48 @@ export default function Chatbot() {
         ))}
       </div>
 
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Write a message..."
+      <div
         style={{
-          width: "80%",
-          marginRight: "0.5rem",
-          padding: "0.5rem",
-          borderRadius: "6px",
-          border: "1px solid #555",
-          background: "#1f1f2e",
-          color: "white",
-        }}
-      />
-
-      <button
-        onClick={sendMessage}
-        style={{
-          padding: "0.5rem 1rem",
-          borderRadius: "6px",
-          background: "#3c0071ff",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+          flexWrap: "wrap",
         }}
       >
-        Send
-      </button>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Write a message..."
+          style={{
+            flex: 1,
+            padding: "11px 14px",
+            borderRadius: "8px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            background: "rgba(255,255,255,0.06)",
+            color: "inherit",
+            outline: "none",
+            fontSize: "14px",
+            minWidth: "180px",
+          }}
+        />
+
+        <button
+          onClick={sendMessage}
+          style={{
+            padding: "11px 20px",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "600",
+            fontSize: "14px",
+            background: "rgba(255,255,255,0.12)",
+            color: "inherit",
+            transition: "all 0.2s ease",
+          }}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 }

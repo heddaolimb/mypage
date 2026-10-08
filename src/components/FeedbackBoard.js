@@ -11,6 +11,7 @@ export default function FeedbackBoard() {
       try {
         const res = await fetch("/api/feedback");
         const data = await res.json();
+        console.log("FEEDBACK DATA:", data);
         setFeedbacks(data.feedbacks || []);
       } catch (err) {
         console.error("Error fetching feedbacks:", err);
@@ -47,31 +48,94 @@ export default function FeedbackBoard() {
   };
 
   return (
-    <div className={styles.feedbackBoard}>
-      <h4 className={styles.feedbackTitle}>Leave feedback</h4>
+    <div
+      className={styles.feedbackBoard}
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        position: "relative",
+        zIndex: 20,
+        padding: "10px",
+        fontFamily: "inherit",
+      }}
+    >
+      <h4
+        style={{
+          marginBottom: "18px",
+          fontSize: "20px",
+        }}
+      >
+        Leave feedback
+      </h4>
 
-      <form onSubmit={handleSubmit} className={styles.feedbackForm}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          marginBottom: "25px",
+        }}
+      >
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Write your feedback..."
-          className={styles.feedbackTextarea}
+          style={{
+            padding: "11px 14px",
+            borderRadius: "8px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            background: "rgba(255,255,255,0.06)",
+            color: "inherit",
+            outline: "none",
+            fontSize: "14px",
+            fontFamily: "inherit",
+            minHeight: "90px",
+            resize: "vertical",
+          }}
         />
+
         <button
           type="submit"
-          className={styles.feedbackButton}
           disabled={loading}
+          style={{
+            alignSelf: "flex-start",
+            padding: "11px 20px",
+            borderRadius: "8px",
+            border: "none",
+            cursor: loading ? "default" : "pointer",
+            fontWeight: "600",
+            fontSize: "14px",
+            background: "rgba(255,255,255,0.12)",
+            color: "inherit",
+            transition: "all 0.2s ease",
+            opacity: loading ? 0.6 : 1,
+          }}
         >
           {loading ? "Sending..." : "Send"}
         </button>
       </form>
 
-      <div className={styles.feedbackList}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
         {feedbacks.length === 0 ? (
-          <p className={styles.feedbackEmpty}>No feedback yet.</p>
+          <p>No feedback yet.</p>
         ) : (
           feedbacks.map((fb, i) => (
-            <div key={i} className={styles.feedbackItem}>
+            <div
+              key={i}
+              style={{
+                padding: "12px 14px",
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.15)",
+                background: "rgba(255,255,255,0.06)",
+                fontSize: "14px",
+              }}
+            >
               {fb.message}
             </div>
           ))

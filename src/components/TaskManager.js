@@ -55,25 +55,99 @@ export default function TaskManager() {
   if (loading) return <p>Loading tasks...</p>;
 
   return (
-    <div className={styles.taskManager}>
-      <h3>Mini Task Manager</h3>
+    <div
+      className={styles.taskManager}
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        position: "relative",
+        zIndex: 20,
+        padding: "10px",
+        fontFamily: "inherit",
+      }}
+    >
+      <h4
+        style={{
+          marginBottom: "18px",
+          fontSize: "20px",
+        }}
+      >
+        Mini Task Manager
+      </h4>
 
-      <form onSubmit={handleAddTask} className={styles.taskForm}>
+      <form
+        onSubmit={handleAddTask}
+        style={{
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+          marginBottom: "25px",
+          flexWrap: "wrap",
+        }}
+      >
         <input
           type="text"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Write a new task"
+          style={{
+            padding: "11px 14px",
+            borderRadius: "8px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            background: "rgba(255,255,255,0.06)",
+            color: "inherit",
+            outline: "none",
+            fontSize: "14px",
+            minWidth: "180px",
+          }}
         />
-        <button type="submit">Add</button>
+
+        <button
+          type="submit"
+          style={{
+            padding: "11px 20px",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "600",
+            fontSize: "14px",
+            background: "rgba(255,255,255,0.12)",
+            color: "inherit",
+            transition: "all 0.2s ease",
+          }}
+        >
+          Add
+        </button>
       </form>
 
       {tasks.length === 0 ? (
         <p>No tasks yet.</p>
       ) : (
-        <ul className={styles.taskList}>
+        <ul
+          className={styles.taskList}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            padding: 0,
+            margin: 0,
+            listStyle: "none",
+          }}
+        >
           {tasks.map((task) => (
-            <li key={task._id} className={styles.taskItem}>
+            <li
+              key={task._id}
+              className={styles.taskItem}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "10px",
+                padding: "12px 14px",
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.15)",
+                background: "rgba(255,255,255,0.06)",
+              }}
+            >
               <span
                 className={`${styles.taskTitle} ${
                   task.completed ? styles.completed : ""
@@ -81,12 +155,26 @@ export default function TaskManager() {
                 onClick={() =>
                   handleToggleComplete(task._id, task.completed, task.title)
                 }
+                style={{
+                  cursor: "pointer",
+                  flex: 1,
+                }}
               >
                 {task.title}
               </span>
+
               <button
                 onClick={() => handleDeleteTask(task._id)}
                 className={styles.deleteBtn}
+                style={{
+                  padding: "7px 10px",
+                  borderRadius: "8px",
+                  border: "none",
+                  cursor: "pointer",
+                  background: "rgba(255,255,255,0.12)",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
               >
                 ✕
               </button>

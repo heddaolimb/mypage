@@ -36,34 +36,89 @@ export default function WeatherWidget() {
   };
 
   return (
-    <div className={styles.weatherWidget}>
-      <h3>Weather Checker</h3>
-      <input
-        type="text"
-        placeholder="Enter city..."
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={getWeather}>Check</button>
+    <div
+      className={styles.weatherWidget}
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        position: "relative",
+        zIndex: 20,
+        padding: "10px",
+        fontFamily: "inherit",
+      }}
+    >
+      <h4
+        style={{
+          marginBottom: "18px",
+          fontSize: "20px",
+        }}
+      >
+        Weather Checker
+      </h4>
+
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+          marginBottom: "25px",
+          flexWrap: "wrap",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Enter city..."
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          onKeyDown={handleKeyDown}
+          style={{
+            padding: "11px 14px",
+            borderRadius: "8px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            background: "rgba(255,255,255,0.06)",
+            color: "inherit",
+            outline: "none",
+            fontSize: "14px",
+            minWidth: "180px",
+          }}
+        />
+
+        <button
+          onClick={getWeather}
+          style={{
+            padding: "11px 20px",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "600",
+            fontSize: "14px",
+            background: "rgba(255,255,255,0.12)",
+            color: "inherit",
+            transition: "all 0.2s ease",
+          }}
+        >
+          Check
+        </button>
+      </div>
 
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
+
       {weather && (
         <div>
           <p>
             <strong>{weather.city}</strong>: {weather.temp}°C, {weather.desc}
           </p>
+
           <p>
             Feels like: {weather.feels_like}°C <br />
             Humidity: {weather.humidity}% <br />
             Wind: {weather.wind} m/s
           </p>
+
           <p style={{ fontSize: "0.8rem", color: "#999" }}>
             (source: {weather.source})
           </p>
 
-          {/* JSON*/}
           {weather.raw && (
             <pre
               style={{
